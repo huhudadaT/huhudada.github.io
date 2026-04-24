@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ty [Last Name] — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        /* Palette sampled from 000001.jpg (index background) */
+        :root {
+            --sky-deep:   #15669d;
+            --sky:        #3a8ab8;
+            --sky-soft:   #94c6c3;
+            --cream:      #f5ead8;
+            --paper:      #fbf6ec;
+            --paper-soft: #f0e4d1;
+            --rose:       #cb8f9b;
+            --rose-deep:  #8d3c4f;
+            --ink:        #1e2a3a;
+            --ink-dim:    #5a6477;
+            --ink-faint:  #a0a8b5;
+            --line:       #e5d9c3;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ============ TOP HEADER ============
+           Name, discipline, affiliation, and contact info — all
+           visible at the top, like a professional header on a CV. */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(251, 246, 236, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+            padding: 20px 40px;
+        }
+        .site-header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .identity {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .identity-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 22px;
+            letter-spacing: 0.5px;
+            color: var(--ink);
+        }
+        .identity-role {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+        }
+        .identity-role::before {
+            content: '/';
+            margin-right: 10px;
+            color: var(--rose-deep);
+        }
+
+        /* ============ LAYOUT ============ */
+        .wrap {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        section {
+            padding: 120px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            margin-bottom: 48px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-label::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--rose-deep);
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            min-height: 80vh;
+            padding: 140px 0 100px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    to bottom,
+                    var(--sky-deep) 0%,
+                    var(--sky) 35%,
+                    var(--sky-soft) 60%,
+                    var(--cream) 78%,
+                    var(--rose) 92%,
+                    var(--rose-deep) 100%
+                );
+            border-bottom: none;
+        }
+        /* Darkening overlay behind text for legibility */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(135deg, rgba(15, 35, 70, 0.45) 0%, rgba(15, 35, 70, 0.15) 50%, transparent 80%),
+                radial-gradient(ellipse 60% 80% at 20% 40%, rgba(15, 35, 70, 0.35), transparent 70%);
+        }
+        .hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-kicker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 32px;
+            text-shadow: 0 2px 12px rgba(15, 35, 70, 0.4);
+        }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(44px, 6.5vw, 96px);
+            line-height: 1.05;
+            letter-spacing: -0.015em;
+            margin: 0 0 36px;
+            max-width: 16ch;
+            color: #ffffff;
+            text-shadow: 0 2px 20px rgba(15, 35, 70, 0.5);
+        }
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 500;
+            color: #ffffff;
+        }
+        .hero-sub {
+            font-size: 19px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #ffffff;
+            max-width: 54ch;
+            margin: 0;
+            text-shadow: 0 2px 12px rgba(15, 35, 70, 0.5);
+        }
+
+        /* ============ ABOUT ============ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 96px;
+            align-items: start;
+        }
+        .about-portrait {
+            aspect-ratio: 4/5;
+            background: var(--paper-soft);
+            border: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .about-portrait::after {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px dashed var(--ink-faint);
+            opacity: 0.5;
+        }
+        .about-portrait-note {
+            text-align: center;
+            color: var(--ink-dim);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+        .about-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.15;
+            margin: 0 0 28px;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+        .about-text h2 em {
+            font-style: italic;
+            color: var(--rose-deep);
+        }
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--ink-dim);
+            margin: 0 0 18px;
+        }
+        .about-text p strong {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        /* Education / affiliation block */
+        .about-facts {
+            margin-top: 36px;
+            padding-top: 28px;
+            border-top: 1px solid var(--line);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .about-fact h5 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rose-deep);
+            margin: 0 0 8px;
+        }
+        .about-fact p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--ink);
+            margin: 0;
+        }
+
+        .about-contact {
+            margin-top: 28px;
+            padding-top: 28px;
+            border-top: 1px solid var(--line);
+        }
+        .about-contact h5 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rose-deep);
+            margin: 0 0 14px;
+        }
+        .about-contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 28px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+        .about-contact-links a {
+            color: var(--ink);
+            padding-bottom: 2px;
+            border-bottom: 1px solid var(--line);
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .about-contact-links a:hover {
+            color: var(--rose-deep);
+            border-bottom-color: var(--rose-deep);
+        }
+
+        /* ============ WORK ============ */
+        .work-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 64px;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .work-head h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.1;
+            margin: 0;
+            letter-spacing: -0.01em;
+            max-width: 18ch;
+            color: var(--ink);
+        }
+        .work-head h2 em {
+            font-style: italic;
+            color: var(--rose-deep);
+        }
+        .work-head-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            max-width: 32ch;
+            line-height: 1.8;
+        }
+
+        .work-list {
+            display: flex;
+            flex-direction: column;
+        }
+        .work-item {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 56px;
+            padding: 56px 0;
+            border-top: 1px solid var(--line);
+            align-items: center;
+        }
+        .work-item:last-child {
+            border-bottom: 1px solid var(--line);
+        }
+        .work-item:nth-child(even) {
+            grid-template-columns: 1.3fr 1fr;
+        }
+        .work-item:nth-child(even) .work-thumb-wrap {
+            order: 2;
+        }
+        .work-thumb-wrap { position: relative; }
+        .work-thumb {
+            aspect-ratio: 4/3;
+            background: var(--paper-soft);
+            border: 1px solid var(--line);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: border-color 0.5s, transform 0.5s;
+        }
+        .work-thumb::after {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px dashed var(--ink-faint);
+            opacity: 0.4;
+        }
+        .work-item:hover .work-thumb {
+            border-color: var(--rose-deep);
+            transform: translateY(-4px);
+        }
+        .work-thumb-placeholder {
+            text-align: center;
+            color: var(--ink-dim);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 2;
+            position: relative;
+            z-index: 1;
+        }
+        .work-num {
+            position: absolute;
+            top: -32px;
+            left: -12px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 96px;
+            line-height: 1;
+            color: var(--rose-deep);
+            opacity: 0.18;
+            pointer-events: none;
+        }
+        .work-meta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            margin-bottom: 16px;
+        }
+        .work-meta .dot { color: var(--line); }
+        .work-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(26px, 2.6vw, 34px);
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+            margin: 0 0 16px;
+            color: var(--ink);
+        }
+        .work-desc {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--ink-dim);
+            margin: 0 0 24px;
+            max-width: 54ch;
+        }
+        .work-role {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            padding-top: 16px;
+            border-top: 1px dashed var(--line);
+            margin-bottom: 24px;
+            line-height: 1.9;
+        }
+        .work-role b {
+            color: var(--ink);
+            font-weight: 500;
+        }
+        .work-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink);
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--rose-deep);
+            transition: color 0.3s, letter-spacing 0.3s;
+        }
+        .work-link:hover {
+            color: var(--rose-deep);
+            letter-spacing: 3px;
+        }
+
+        /* ============ CAPABILITIES ============ */
+        .cap-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 96px;
+        }
+        .cap-intro h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.1;
+            margin: 0 0 20px;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+        .cap-intro h2 em {
+            font-style: italic;
+            color: var(--rose-deep);
+        }
+        .cap-intro p {
+            font-size: 15px;
+            color: var(--ink-dim);
+            line-height: 1.7;
+            margin: 0;
+            max-width: 32ch;
+        }
+        .cap-cols {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        .cap-col h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 400;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rose-deep);
+            margin: 0 0 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+        }
+        .cap-col ul { list-style: none; padding: 0; margin: 0; }
+        .cap-col li {
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            padding: 40px;
+            background: var(--paper);
+            border-top: 1px solid var(--line);
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+        }
+        .footer-contact {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-contact a {
+            transition: color 0.3s;
+        }
+        .footer-contact a:hover { color: var(--rose-deep); }
+
+        /* ============ REVEAL ============ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 900px) {
+            .site-header { padding: 16px 20px; }
+            .site-header-inner { gap: 14px; }
+            .identity-name { font-size: 20px; }
+
+            .wrap, .hero-inner { padding-left: 20px; padding-right: 20px; }
+            section { padding: 80px 0; }
+            .hero { padding-top: 100px; min-height: auto; }
+
+            .about-grid, .cap-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .about-facts { grid-template-columns: 1fr; gap: 20px; }
+            .cap-cols { grid-template-columns: 1fr; gap: 32px; }
+
+            .work-item, .work-item:nth-child(even) {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                padding: 40px 0;
+            }
+            .work-item:nth-child(even) .work-thumb-wrap { order: 0; }
+            .work-num { font-size: 72px; top: -24px; }
+
+            .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+            .footer-contact { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ TOP HEADER ============ -->
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div class="identity">
+                <span class="identity-name">Ty [Last Name]</span>
+                <span class="identity-role">Bioengineering &amp; Biochemistry · University of Pittsburgh</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-kicker reveal">Portfolio · 2026</div>
+            <h1 class="reveal">
+                Selected work in<br>
+                <em>bioengineering</em> and<br>
+                <em>biochemistry.</em>
+            </h1>
+            <p class="hero-sub reveal">
+                Undergraduate research, coursework projects, and independent work across
+                organ-on-a-chip systems, molecular biology, and translational engineering.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about">
+        <div class="wrap">
+            <div class="section-label reveal">§ 01 / About</div>
+            <div class="about-grid">
+                <div class="about-portrait reveal">
+                    <div class="about-portrait-note">
+                        Portrait<br>—<br>Photograph
+                    </div>
+                </div>
+                <div class="about-text reveal">
+                    <h2>Background &amp; <em>focus.</em></h2>
+                    <p>
+                        Undergraduate student at the University of Pittsburgh pursuing
+                        studies in <strong>bioengineering and biochemistry</strong>, with
+                        a research focus on in-vitro translational systems. Current work
+                        centers on organ-on-a-chip platforms, AAV-based delivery, and
+                        signaling pathways relevant to liver and tumor biology.
+                    </p>
+                    <p>
+                        Broader interests include ultrasound-based therapeutics,
+                        extracellular vesicles as biomarkers, and the application of
+                        engineering principles to molecular and cellular systems.
+                    </p>
+
+                    <div class="about-facts">
+                        <div class="about-fact">
+                            <h5>Institution</h5>
+                            <p>University of Pittsburgh<br>Swanson School of Engineering</p>
+                        </div>
+                        <div class="about-fact">
+                            <h5>Affiliation</h5>
+                            <p>OPTIn Program<br>Organ-on-a-Chip In Vitro Translation</p>
+                        </div>
+                        <div class="about-fact">
+                            <h5>Fields</h5>
+                            <p>Bioengineering<br>Biochemistry</p>
+                        </div>
+                        <div class="about-fact">
+                            <h5>Location</h5>
+                            <p>Pittsburgh, PA</p>
+                        </div>
+                    </div>
+
+                    <div class="about-contact">
+                        <h5>Contact</h5>
+                        <div class="about-contact-links">
+                            <a href="mailto:your-email@pitt.edu">your-email@pitt.edu</a>
+                            <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+                            <a href="#" target="_blank" rel="noopener">GitHub</a>
+                            <a href="#" target="_blank" rel="noopener">CV (PDF)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section id="work">
+        <div class="wrap">
+            <div class="section-label reveal">§ 02 / Selected work</div>
+            <div class="work-head reveal">
+                <h2>Research, coursework, and <em>independent projects.</em></h2>
+                <p class="work-head-note">
+                    Each case study documents the problem, methodology,
+                    and outcomes, with contributors explicitly credited.
+                </p>
+            </div>
+
+            <div class="work-list">
+
+                <!-- PROJECT 01 -->
+                <article class="work-item reveal">
+                    <div class="work-thumb-wrap">
+                        <span class="work-num">01</span>
+                        <div class="work-thumb">
+                            <div class="work-thumb-placeholder">
+                                Project image<br>—<br>Primary visual
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-meta">
+                            <span>Research</span>
+                            <span class="dot">·</span>
+                            <span>OPTIn Lab</span>
+                            <span class="dot">·</span>
+                            <span>2025 — Present</span>
+                        </div>
+                        <h3 class="work-title">Project title</h3>
+                        <p class="work-desc">
+                            Brief project summary outlining the research question,
+                            motivation, and scope of the investigation. Placeholder
+                            text to be replaced with project-specific content.
+                        </p>
+                        <div class="work-role">
+                            <b>Role</b> — Undergraduate researcher<br>
+                            <b>Collaborators</b> — Principal investigator and lab members<br>
+                            <b>Methods</b> — AAV delivery · immunohistochemistry · pathway analysis
+                        </div>
+                        <a href="#" class="work-link">View case study →</a>
+                    </div>
+                </article>
+
+                <!-- PROJECT 02 -->
+                <article class="work-item reveal">
+                    <div class="work-thumb-wrap">
+                        <span class="work-num">02</span>
+                        <div class="work-thumb">
+                            <div class="work-thumb-placeholder">
+                                Project image<br>—<br>Primary visual
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-meta">
+                            <span>Coursework</span>
+                            <span class="dot">·</span>
+                            <span>BIOENG 1630</span>
+                            <span class="dot">·</span>
+                            <span>2025</span>
+                        </div>
+                        <h3 class="work-title">Project title</h3>
+                        <p class="work-desc">
+                            Brief summary of the coursework project, its technical
+                            scope, and the approach taken. Placeholder text to be
+                            replaced with project-specific content.
+                        </p>
+                        <div class="work-role">
+                            <b>Role</b> — [Individual or team contribution]<br>
+                            <b>Tools</b> — MATLAB · analytical derivation · LaTeX
+                        </div>
+                        <a href="#" class="work-link">View case study →</a>
+                    </div>
+                </article>
+
+                <!-- PROJECT 03 -->
+                <article class="work-item reveal">
+                    <div class="work-thumb-wrap">
+                        <span class="work-num">03</span>
+                        <div class="work-thumb">
+                            <div class="work-thumb-placeholder">
+                                Project image<br>—<br>Primary visual
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-meta">
+                            <span>Independent project</span>
+                            <span class="dot">·</span>
+                            <span>2024</span>
+                        </div>
+                        <h3 class="work-title">Project title</h3>
+                        <p class="work-desc">
+                            Brief summary of the independent project, including
+                            motivation, approach, and outcomes. Placeholder text
+                            to be replaced with project-specific content.
+                        </p>
+                        <div class="work-role">
+                            <b>Role</b> — Sole contributor<br>
+                            <b>Tools</b> — [Relevant tools and methods]
+                        </div>
+                        <a href="#" class="work-link">View case study →</a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CAPABILITIES ============ -->
+    <section id="capabilities">
+        <div class="wrap">
+            <div class="section-label reveal">§ 03 / Capabilities</div>
+            <div class="cap-grid">
+                <div class="cap-intro reveal">
+                    <h2>Technical <em>skills.</em></h2>
+                    <p>
+                        Methods and tools applied across research, coursework,
+                        and independent projects.
+                    </p>
+                </div>
+                <div class="cap-cols">
+                    <div class="cap-col reveal">
+                        <h4>Laboratory</h4>
+                        <ul>
+                            <li>Mammalian cell culture</li>
+                            <li>AAV-based delivery</li>
+                            <li>Immunohistochemistry</li>
+                            <li>Western blot</li>
+                            <li>Protein purification</li>
+                        </ul>
+                    </div>
+                    <div class="cap-col reveal">
+                        <h4>Engineering</h4>
+                        <ul>
+                            <li>Structural mechanics</li>
+                            <li>Heat &amp; mass transfer</li>
+                            <li>Thermodynamics</li>
+                            <li>MATLAB</li>
+                            <li>Python</li>
+                        </ul>
+                    </div>
+                    <div class="cap-col reveal">
+                        <h4>Analysis &amp; comms</h4>
+                        <ul>
+                            <li>LaTeX</li>
+                            <li>Scientific writing</li>
+                            <li>ImageJ / FIJI</li>
+                            <li>Figure design</li>
+                            <li>Adobe Creative Cloud</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div>© 2026 Ty [Last Name]</div>
+            <div class="footer-contact">
+                <a href="mailto:your-email@pitt.edu">your-email@pitt.edu</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+                setTimeout(() => el.classList.add('visible'), i * 120);
+            });
+        });
+    </script>
+
+</body>
+</html>
