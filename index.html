@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +15,6 @@
             height: 200vh;
             overflow-x: hidden;
         }
-
         .background {
             background-image: url("000001.jpg");
             background-size: cover;
@@ -30,7 +28,6 @@
             text-align: center;
             overflow: hidden;
         }
-
         .background::before {
             content: '';
             background-size: cover;
@@ -43,7 +40,6 @@
             right: 0;
             z-index: -99;
         }
-
         h1 {
             position: absolute;
             text-align: center;
@@ -51,7 +47,6 @@
             letter-spacing: 10px;
             color: #fff;
         }
-
         h2 {
             position: absolute;
             letter-spacing: 2px;
@@ -64,10 +59,31 @@
             background-color: rgba(0, 0, 0, .3);
             margin-top: 100px;
         }
+        .portfolio-link {
+            position: fixed;
+            top: 24px;
+            right: 32px;
+            z-index: 10;
+            color: #fff;
+            text-decoration: none;
+            font-family: monospace;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .portfolio-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff;
+        }
     </style>
 </head>
-
 <body>
+    <a href="/portfolio.html" class="portfolio-link">Portfolio →</a>
     <h1>
         <br>HUHUDADA<br /></h1>
     <div class="background">Ty</div>
@@ -89,5 +105,4 @@
         })
     </script>
 </body>
-
 </html>
