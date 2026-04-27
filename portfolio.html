@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,27 +8,32 @@
     <title>Ty Zhang — Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
     <style>
         /* Palette sampled from 000001.jpg (index background) */
         :root {
-            --sky-deep:   #15669d;
-            --sky:        #3a8ab8;
-            --sky-soft:   #94c6c3;
-            --cream:      #f5ead8;
-            --paper:      #fbf6ec;
+            --sky-deep: #15669d;
+            --sky: #3a8ab8;
+            --sky-soft: #94c6c3;
+            --cream: #f5ead8;
+            --paper: #fbf6ec;
             --paper-soft: #f0e4d1;
-            --rose:       #cb8f9b;
-            --rose-deep:  #8d3c4f;
-            --ink:        #1e2a3a;
-            --ink-dim:    #5a6477;
-            --ink-faint:  #a0a8b5;
-            --line:       #e5d9c3;
+            --rose: #cb8f9b;
+            --rose-deep: #8d3c4f;
+            --ink: #1e2a3a;
+            --ink-dim: #5a6477;
+            --ink-faint: #a0a8b5;
+            --line: #e5d9c3;
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             background: var(--paper);
@@ -40,7 +46,10 @@
             overflow-x: hidden;
         }
 
-        a { color: inherit; text-decoration: none; }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
         /* ============ TOP HEADER ============ */
         .site-header {
@@ -53,6 +62,7 @@
             border-bottom: 1px solid var(--line);
             padding: 20px 40px;
         }
+
         .site-header-inner {
             max-width: 1280px;
             margin: 0 auto;
@@ -62,12 +72,14 @@
             gap: 32px;
             flex-wrap: wrap;
         }
+
         .identity {
             display: flex;
             align-items: baseline;
             gap: 14px;
             flex-wrap: wrap;
         }
+
         .identity-name {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 500;
@@ -75,6 +87,7 @@
             letter-spacing: 0.5px;
             color: var(--ink);
         }
+
         .identity-role {
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
@@ -82,6 +95,7 @@
             text-transform: uppercase;
             color: var(--ink-dim);
         }
+
         .identity-role::before {
             content: '/';
             margin-right: 10px;
@@ -111,6 +125,7 @@
             align-items: center;
             gap: 12px;
         }
+
         .section-label::before {
             content: '';
             width: 32px;
@@ -127,17 +142,16 @@
             align-items: center;
             overflow: hidden;
             background:
-                linear-gradient(
-                    to bottom,
+                linear-gradient(to bottom,
                     var(--sky-deep) 0%,
                     var(--sky) 35%,
                     var(--sky-soft) 60%,
                     var(--cream) 78%,
                     var(--rose) 92%,
-                    var(--rose-deep) 100%
-                );
+                    var(--rose-deep) 100%);
             border-bottom: none;
         }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -147,6 +161,7 @@
                 linear-gradient(135deg, rgba(15, 35, 70, 0.45) 0%, rgba(15, 35, 70, 0.15) 50%, transparent 80%),
                 radial-gradient(ellipse 60% 80% at 20% 40%, rgba(15, 35, 70, 0.35), transparent 70%);
         }
+
         .hero-inner {
             max-width: 1280px;
             margin: 0 auto;
@@ -155,6 +170,7 @@
             position: relative;
             z-index: 1;
         }
+
         .hero-kicker {
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
@@ -165,6 +181,7 @@
             margin-bottom: 32px;
             text-shadow: 0 2px 12px rgba(15, 35, 70, 0.4);
         }
+
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
@@ -176,11 +193,13 @@
             color: #ffffff;
             text-shadow: 0 2px 20px rgba(15, 35, 70, 0.5);
         }
+
         .hero h1 em {
             font-style: italic;
             font-weight: 500;
             color: #ffffff;
         }
+
         .hero-sub {
             font-size: 19px;
             font-weight: 400;
@@ -198,6 +217,7 @@
             gap: 96px;
             align-items: start;
         }
+
         .about-portrait {
             aspect-ratio: 4/5;
             background: var(--paper-soft);
@@ -207,6 +227,7 @@
             justify-content: center;
             position: relative;
         }
+
         .about-portrait::after {
             content: '';
             position: absolute;
@@ -214,6 +235,7 @@
             border: 1px dashed var(--ink-faint);
             opacity: 0.5;
         }
+
         .about-portrait-note {
             text-align: center;
             color: var(--ink-dim);
@@ -225,6 +247,7 @@
             position: relative;
             z-index: 1;
         }
+
         .about-text h2 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
@@ -234,16 +257,19 @@
             letter-spacing: -0.01em;
             color: var(--ink);
         }
+
         .about-text h2 em {
             font-style: italic;
             color: var(--rose-deep);
         }
+
         .about-text p {
             font-size: 16px;
             line-height: 1.75;
             color: var(--ink-dim);
             margin: 0 0 18px;
         }
+
         .about-text p strong {
             color: var(--ink);
             font-weight: 500;
@@ -257,6 +283,7 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 24px;
         }
+
         .about-fact h5 {
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
@@ -266,6 +293,7 @@
             color: var(--rose-deep);
             margin: 0 0 8px;
         }
+
         .about-fact p {
             font-size: 14px;
             line-height: 1.6;
@@ -278,6 +306,7 @@
             padding-top: 28px;
             border-top: 1px solid var(--line);
         }
+
         .about-contact h5 {
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
@@ -287,6 +316,7 @@
             color: var(--rose-deep);
             margin: 0 0 14px;
         }
+
         .about-contact-links {
             display: flex;
             flex-wrap: wrap;
@@ -295,12 +325,14 @@
             font-size: 13px;
             letter-spacing: 0.5px;
         }
+
         .about-contact-links a {
             color: var(--ink);
             padding-bottom: 2px;
             border-bottom: 1px solid var(--line);
             transition: color 0.3s, border-color 0.3s;
         }
+
         .about-contact-links a:hover {
             color: var(--rose-deep);
             border-bottom-color: var(--rose-deep);
@@ -315,6 +347,7 @@
             gap: 40px;
             flex-wrap: wrap;
         }
+
         .work-head h2 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
@@ -325,10 +358,12 @@
             max-width: 18ch;
             color: var(--ink);
         }
+
         .work-head h2 em {
             font-style: italic;
             color: var(--rose-deep);
         }
+
         .work-head-note {
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
@@ -343,6 +378,7 @@
             display: flex;
             flex-direction: column;
         }
+
         .work-item {
             display: grid;
             grid-template-columns: 1fr 1.3fr;
@@ -351,16 +387,23 @@
             border-top: 1px solid var(--line);
             align-items: center;
         }
+
         .work-item:last-child {
             border-bottom: 1px solid var(--line);
         }
+
         .work-item:nth-child(even) {
             grid-template-columns: 1.3fr 1fr;
         }
+
         .work-item:nth-child(even) .work-thumb-wrap {
             order: 2;
         }
-        .work-thumb-wrap { position: relative; }
+
+        .work-thumb-wrap {
+            position: relative;
+        }
+
         .work-thumb {
             aspect-ratio: 4/3;
             background: var(--paper-soft);
@@ -372,17 +415,39 @@
             position: relative;
             transition: border-color 0.5s, transform 0.5s;
         }
+
+        .work-thumb img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .work-item:hover .work-thumb img {
+            transform: scale(1.04);
+        }
+
         .work-thumb::after {
             content: '';
             position: absolute;
             inset: 12px;
             border: 1px dashed var(--ink-faint);
             opacity: 0.4;
+            pointer-events: none;
         }
+
+        .work-thumb:has(img)::after {
+            display: none;
+        }
+
         .work-item:hover .work-thumb {
             border-color: var(--rose-deep);
             transform: translateY(-4px);
         }
+
         .work-thumb-placeholder {
             text-align: center;
             color: var(--ink-dim);
@@ -394,6 +459,7 @@
             position: relative;
             z-index: 1;
         }
+
         .work-num {
             position: absolute;
             top: -32px;
@@ -407,6 +473,7 @@
             opacity: 0.18;
             pointer-events: none;
         }
+
         .work-meta {
             display: flex;
             gap: 12px;
@@ -418,7 +485,11 @@
             color: var(--ink-dim);
             margin-bottom: 16px;
         }
-        .work-meta .dot { color: var(--line); }
+
+        .work-meta .dot {
+            color: var(--line);
+        }
+
         .work-title {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
@@ -428,6 +499,7 @@
             margin: 0 0 16px;
             color: var(--ink);
         }
+
         .work-desc {
             font-size: 16px;
             line-height: 1.7;
@@ -435,6 +507,7 @@
             margin: 0 0 24px;
             max-width: 54ch;
         }
+
         .work-role {
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
@@ -446,10 +519,12 @@
             margin-bottom: 24px;
             line-height: 1.9;
         }
+
         .work-role b {
             color: var(--ink);
             font-weight: 500;
         }
+
         .work-link {
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
@@ -460,6 +535,7 @@
             border-bottom: 1px solid var(--rose-deep);
             transition: color 0.3s, letter-spacing 0.3s;
         }
+
         .work-link:hover {
             color: var(--rose-deep);
             letter-spacing: 3px;
@@ -471,6 +547,7 @@
             grid-template-columns: 1fr 2fr;
             gap: 96px;
         }
+
         .cap-intro h2 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
@@ -480,10 +557,12 @@
             letter-spacing: -0.01em;
             color: var(--ink);
         }
+
         .cap-intro h2 em {
             font-style: italic;
             color: var(--rose-deep);
         }
+
         .cap-intro p {
             font-size: 15px;
             color: var(--ink-dim);
@@ -491,11 +570,13 @@
             margin: 0;
             max-width: 32ch;
         }
+
         .cap-cols {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
         }
+
         .cap-col h4 {
             font-family: 'JetBrains Mono', monospace;
             font-weight: 400;
@@ -507,7 +588,13 @@
             padding-bottom: 12px;
             border-bottom: 1px solid var(--line);
         }
-        .cap-col ul { list-style: none; padding: 0; margin: 0; }
+
+        .cap-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
         .cap-col li {
             padding: 8px 0;
             font-size: 14px;
@@ -526,6 +613,7 @@
             gap: 40px;
             flex-wrap: wrap;
         }
+
         .gallery-head h2 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
@@ -535,10 +623,12 @@
             letter-spacing: -0.01em;
             color: var(--ink);
         }
+
         .gallery-head h2 em {
             font-style: italic;
             color: var(--rose-deep);
         }
+
         .gallery-head-note {
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
@@ -554,10 +644,16 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
+
         /* Editorial irregularity: a few tiles span two columns or
            two rows so the grid doesn't look like a uniform contact sheet. */
-        .gallery-tile.tile-wide  { grid-column: span 2; }
-        .gallery-tile.tile-tall  { grid-row: span 2; }
+        .gallery-tile.tile-wide {
+            grid-column: span 2;
+        }
+
+        .gallery-tile.tile-tall {
+            grid-row: span 2;
+        }
 
         .gallery-tile {
             position: relative;
@@ -571,11 +667,16 @@
             text-decoration: none;
             transition: border-color 0.4s, transform 0.4s;
         }
-        .gallery-tile.tile-tall { aspect-ratio: 4/5; }
+
+        .gallery-tile.tile-tall {
+            aspect-ratio: 4/5;
+        }
+
         .gallery-tile:hover {
             border-color: var(--rose-deep);
             transform: translateY(-4px);
         }
+
         /* Image fills the tile if present */
         .gallery-tile img {
             position: absolute;
@@ -586,7 +687,10 @@
             display: block;
             transition: transform 0.6s ease;
         }
-        .gallery-tile:hover img { transform: scale(1.04); }
+
+        .gallery-tile:hover img {
+            transform: scale(1.04);
+        }
 
         /* Empty-state placeholder note (when no img) */
         .gallery-tile-placeholder {
@@ -603,6 +707,7 @@
             text-transform: uppercase;
             line-height: 2;
         }
+
         .gallery-tile-placeholder::after {
             content: '';
             position: absolute;
@@ -615,7 +720,9 @@
         /* Caption sits at the bottom — visible by default, brighter on hover */
         .gallery-tile-caption {
             position: absolute;
-            left: 0; right: 0; bottom: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             padding: 14px 16px;
             background: linear-gradient(to top, rgba(30, 42, 58, 0.85) 0%, rgba(30, 42, 58, 0) 100%);
             color: #ffffff;
@@ -628,10 +735,12 @@
             transition: opacity 0.4s, transform 0.4s;
             pointer-events: none;
         }
+
         .gallery-tile:hover .gallery-tile-caption {
             opacity: 1;
             transform: translateY(0);
         }
+
         .gallery-tile-title {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
@@ -639,6 +748,7 @@
             font-size: 18px;
             letter-spacing: 0.2px;
         }
+
         .gallery-tile-tag {
             font-family: 'JetBrains Mono', monospace;
             font-size: 9px;
@@ -654,6 +764,7 @@
             background: var(--paper);
             border-top: 1px solid var(--line);
         }
+
         .footer-inner {
             max-width: 1280px;
             margin: 0 auto;
@@ -668,14 +779,19 @@
             text-transform: uppercase;
             color: var(--ink-dim);
         }
+
         .footer-contact {
             display: flex;
             gap: 24px;
         }
+
         .footer-contact a {
             transition: color 0.3s;
         }
-        .footer-contact a:hover { color: var(--rose-deep); }
+
+        .footer-contact a:hover {
+            color: var(--rose-deep);
+        }
 
         /* ============ REVEAL ============ */
         .reveal {
@@ -683,6 +799,7 @@
             transform: translateY(20px);
             transition: opacity 0.9s ease, transform 0.9s ease;
         }
+
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
@@ -690,50 +807,96 @@
 
         /* ============ RESPONSIVE ============ */
         @media (max-width: 900px) {
-            .site-header { padding: 16px 20px; }
-            .site-header-inner { gap: 14px; }
-            .identity-name { font-size: 20px; }
+            .site-header {
+                padding: 16px 20px;
+            }
 
-            .wrap, .hero-inner { padding-left: 20px; padding-right: 20px; }
-            section { padding: 80px 0; }
-            .hero { padding-top: 100px; min-height: auto; }
+            .site-header-inner {
+                gap: 14px;
+            }
 
-            .about-grid, .cap-grid {
+            .identity-name {
+                font-size: 20px;
+            }
+
+            .wrap,
+            .hero-inner {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .hero {
+                padding-top: 100px;
+                min-height: auto;
+            }
+
+            .about-grid,
+            .cap-grid {
                 grid-template-columns: 1fr;
                 gap: 48px;
             }
-            .about-facts { grid-template-columns: 1fr; gap: 20px; }
-            .cap-cols { grid-template-columns: 1fr; gap: 32px; }
 
-            .work-item, .work-item:nth-child(even) {
+            .about-facts {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .cap-cols {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .work-item,
+            .work-item:nth-child(even) {
                 grid-template-columns: 1fr;
                 gap: 28px;
                 padding: 40px 0;
             }
-            .work-item:nth-child(even) .work-thumb-wrap { order: 0; }
-            .work-num { font-size: 72px; top: -24px; }
+
+            .work-item:nth-child(even) .work-thumb-wrap {
+                order: 0;
+            }
+
+            .work-num {
+                font-size: 72px;
+                top: -24px;
+            }
 
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
+
             .gallery-tile.tile-wide,
             .gallery-tile.tile-tall {
                 grid-column: span 2;
                 grid-row: span 1;
                 aspect-ratio: 4/3;
             }
+
             /* Make captions always visible on mobile (no hover) */
             .gallery-tile-caption {
                 opacity: 1;
                 transform: translateY(0);
             }
 
-            .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
-            .footer-contact { justify-content: center; }
+            .footer-inner {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .footer-contact {
+                justify-content: center;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- ============ TOP HEADER ============ -->
@@ -782,8 +945,8 @@
                         <div class="about-fact">
                             <h5>Affiliation</h5>
                             <p>Department of Bioengineering, Swanson School of Engineering<br>
-                            Department of Biological Science, Dietrich School of Arts and Sciences<br>
-                            Organ Pathobiology and Therapeutics Institute</p>
+                                Department of Biological Science, Dietrich School of Arts and Sciences<br>
+                                Organ Pathobiology and Therapeutics Institute</p>
                         </div>
                         <div class="about-fact">
                             <h5>Fields</h5>
@@ -799,7 +962,8 @@
                         <h5>Contact</h5>
                         <div class="about-contact-links">
                             <a href="mailto:tyz10@pitt.edu">tyz10@pitt.edu</a>
-                            <a href="https://www.linkedin.com/in/ty-zhang-338218398/" target="_blank" rel="noopener">LinkedIn</a>
+                            <a href="https://www.linkedin.com/in/ty-zhang-338218398/" target="_blank"
+                                rel="noopener">LinkedIn</a>
                             <a href="https://github.com/tyz10Pitt" target="_blank" rel="noopener">GitHub</a>
                             <a href="#" target="_blank" rel="noopener">CV (PDF)</a>
                         </div>
@@ -880,7 +1044,8 @@
                     <div class="work-thumb-wrap">
                         <span class="work-num">03</span>
                         <div class="work-thumb">
-                            <img src="portfolio_projects/image-project-03-1.jpg" alt="Simian Virus 40 OBD Protein" loading="lazy">
+                            <img src="portfolio_projects/image-project-03-1.jpg" alt="Simian Virus 40 OBD Protein"
+                                loading="lazy">
                         </div>
                     </div>
                     <div class="work-body">
@@ -891,7 +1056,8 @@
                         </div>
                         <h3 class="work-title">Simian Virus 40 OBD Protein</h3>
                         <p class="work-desc">
-                            Purification and analysis of the Simian Virus 40 OBD protein, a key player in viral replication.
+                            Purification and analysis of the Simian Virus 40 OBD protein, a key player in viral
+                            replication.
                         </p>
                         <div class="work-role">
                             <b>Role</b> Researcher<br>
@@ -1047,4 +1213,5 @@
     </script>
 
 </body>
+
 </html>
