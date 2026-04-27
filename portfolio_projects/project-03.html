@@ -1,800 +1,584 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- TODO: change page title for each project -->
-    <title>Project Title — Ty Zhang</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-    <style>
-        /* ============================================
-           SHARED PALETTE — keep identical to main portfolio page
-           ============================================ */
-        :root {
-            --sky-deep:   #15669d;
-            --sky:        #3a8ab8;
-            --sky-soft:   #94c6c3;
-            --cream:      #f5ead8;
-            --paper:      #fbf6ec;
-            --paper-soft: #f0e4d1;
-            --rose:       #cb8f9b;
-            --rose-deep:  #8d3c4f;
-            --ink:        #1e2a3a;
-            --ink-dim:    #5a6477;
-            --ink-faint:  #a0a8b5;
-            --line:       #e5d9c3;
-        }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simian Virus 40 OBD Protein — Ty Zhang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --sky-deep: #15669d;
+      --sky: #3a8ab8;
+      --sky-soft: #94c6c3;
+      --cream: #f5ead8;
+      --paper: #fbf6ec;
+      --paper-soft: #f0e4d1;
+      --rose: #cb8f9b;
+      --rose-deep: #8d3c4f;
+      --ink: #1e2a3a;
+      --ink-dim: #5a6477;
+      --ink-faint: #a0a8b5;
+      --line: #e5d9c3;
+    }
 
-        * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box
+    }
 
-        html, body {
-            margin: 0;
-            padding: 0;
-            background: var(--paper);
-            color: var(--ink);
-            font-family: 'Inter', system-ui, sans-serif;
-            font-weight: 300;
-            font-size: 16px;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden
+    }
 
-        a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none
+    }
 
-        /* ============ TOP HEADER ============ */
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(251, 246, 236, 0.94);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--line);
-            padding: 20px 40px;
-        }
-        .site-header-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-        .identity {
-            display: flex;
-            align-items: baseline;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-        .identity-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 500;
-            font-size: 22px;
-            letter-spacing: 0.5px;
-            color: var(--ink);
-        }
-        .identity-role {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--ink-dim);
-        }
-        .identity-role::before {
-            content: '/';
-            margin-right: 10px;
-            color: var(--rose-deep);
-        }
-        /* Back link sits on the right of the header */
-        .header-back {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--ink-dim);
-            transition: color 0.3s;
-            padding-bottom: 2px;
-            border-bottom: 1px solid transparent;
-        }
-        .header-back:hover {
-            color: var(--rose-deep);
-            border-bottom-color: var(--rose-deep);
-        }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(251, 246, 236, .94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      padding: 20px 40px
+    }
 
-        /* ============ LAYOUT ============ */
-        .wrap {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-        .wrap-wide {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
+    .site-header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap
+    }
 
-        section {
-            padding: 96px 0;
-        }
-        section + section { padding-top: 0; }
+    .identity {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap
+    }
 
-        /* ============ PROJECT HEADER ============
-           A small, focused intro — kicker, title, one-line summary.
-           Sits at the top of every project page. */
-        .project-header {
-            padding: 100px 0 60px;
-        }
-        .project-kicker {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--rose-deep);
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .project-kicker::before {
-            content: '';
-            width: 32px;
-            height: 1px;
-            background: var(--rose-deep);
-        }
-        .project-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
-            font-size: clamp(40px, 5.5vw, 72px);
-            line-height: 1.05;
-            letter-spacing: -0.015em;
-            margin: 0 0 32px;
-            max-width: 22ch;
-            color: var(--ink);
-        }
-        .project-title em {
-            font-style: italic;
-            color: var(--rose-deep);
-        }
-        .project-summary {
-            font-size: 19px;
-            line-height: 1.6;
-            color: var(--ink-dim);
-            max-width: 60ch;
-            margin: 0 0 48px;
-        }
+    .identity-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 22px;
+      letter-spacing: .5px;
+      color: var(--ink)
+    }
 
-        /* Meta strip — quick facts row */
-        .project-meta {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            padding: 28px 0;
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-        }
-        .project-meta-item h5 {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--rose-deep);
-            margin: 0 0 8px;
-        }
-        .project-meta-item p {
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--ink);
-            margin: 0;
-        }
+    .identity-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink-dim)
+    }
 
-        /* ============ HERO IMAGE ============
-           Big, clean, single image. The "hero shot" from the Barber deck —
-           a clear photo of the project as a whole. */
-        .hero-image {
-            margin: 0 auto;
-            max-width: 1280px;
-            padding: 0 40px 96px;
-        }
-        .hero-image-frame {
-            aspect-ratio: 16/9;
-            background: var(--paper-soft);
-            border: 1px solid var(--line);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-image-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .hero-image-frame::after {
-            content: '';
-            position: absolute;
-            inset: 12px;
-            border: 1px dashed var(--ink-faint);
-            opacity: 0.4;
-            pointer-events: none;
-        }
-        /* hide dashed frame when an actual image is loaded */
-        .hero-image-frame:has(img)::after { display: none; }
+    .identity-role::before {
+      content: '/';
+      margin-right: 10px;
+      color: var(--rose-deep)
+    }
 
-        .hero-image-placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--ink-dim);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            line-height: 2;
-        }
-        .hero-image-caption {
-            margin-top: 14px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--ink-dim);
-            text-align: right;
-        }
+    .header-back {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      transition: color .3s;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent
+    }
 
-        /* ============ STORY BLOCK ============
-           Each labeled block is the unit of a project narrative.
-           Used for: Problem, Process, Outcome, etc. */
-        .block {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 60px;
-            padding: 64px 0;
-            border-top: 1px solid var(--line);
-        }
-        .block:first-of-type { border-top: none; padding-top: 0; }
+    .header-back:hover {
+      color: var(--rose-deep);
+      border-bottom-color: var(--rose-deep)
+    }
 
-        .block-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--rose-deep);
-            padding-top: 8px;
-        }
-        .block-content h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
-            font-size: clamp(28px, 3.5vw, 40px);
-            line-height: 1.15;
-            letter-spacing: -0.01em;
-            margin: 0 0 24px;
-            color: var(--ink);
-        }
-        .block-content h2 em {
-            font-style: italic;
-            color: var(--rose-deep);
-        }
-        .block-content p {
-            font-size: 17px;
-            line-height: 1.75;
-            color: var(--ink);
-            margin: 0 0 20px;
-        }
-        .block-content p strong {
-            color: var(--ink);
-            font-weight: 500;
-        }
-        .block-content ul {
-            font-size: 17px;
-            line-height: 1.8;
-            color: var(--ink);
-            padding: 0;
-            margin: 0 0 20px;
-            list-style: none;
-        }
-        .block-content ul li {
-            padding-left: 24px;
-            position: relative;
-        }
-        .block-content ul li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--rose-deep);
-        }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px
+    }
 
-        /* Inline secondary image (single image inside a block) */
-        .block-image {
-            margin: 32px 0 8px;
-        }
-        .block-image-frame {
-            aspect-ratio: 16/10;
-            background: var(--paper-soft);
-            border: 1px solid var(--line);
-            position: relative;
-            overflow: hidden;
-        }
-        .block-image-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .block-image-frame::after {
-            content: '';
-            position: absolute;
-            inset: 12px;
-            border: 1px dashed var(--ink-faint);
-            opacity: 0.4;
-            pointer-events: none;
-        }
-        .block-image-frame:has(img)::after { display: none; }
-        .block-image-placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--ink-dim);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            line-height: 2;
-        }
-        .block-image-caption {
-            margin-top: 12px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--ink-dim);
-        }
+    .wrap-wide {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px
+    }
 
-        /* Two-up image grid for process / contextual photos */
-        .image-pair {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 32px 0 8px;
-        }
+    section {
+      padding: 96px 0
+    }
 
-        /* Pull-quote / key takeaway — used sparingly */
-        .pullquote {
-            margin: 32px 0;
-            padding: 24px 28px;
-            background: var(--paper-soft);
-            border-left: 2px solid var(--rose-deep);
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-weight: 400;
-            font-size: 22px;
-            line-height: 1.5;
-            color: var(--ink);
-        }
+    section+section {
+      padding-top: 0
+    }
 
-        /* ============ FULL-BLEED IMAGE BREAK ============
-           Optional: break up long projects with a wide image */
-        .bleed {
-            max-width: 1280px;
-            margin: 64px auto;
-            padding: 0 40px;
-        }
-        .bleed-frame {
-            aspect-ratio: 21/9;
-            background: var(--paper-soft);
-            border: 1px solid var(--line);
-            position: relative;
-            overflow: hidden;
-        }
-        .bleed-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .bleed-frame::after {
-            content: '';
-            position: absolute;
-            inset: 12px;
-            border: 1px dashed var(--ink-faint);
-            opacity: 0.4;
-            pointer-events: none;
-        }
-        .bleed-frame:has(img)::after { display: none; }
-        .bleed-placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--ink-dim);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+    .project-header {
+      padding: 100px 0 60px
+    }
 
-        /* ============ NEXT / PREV ============ */
-        .nav-pair {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-            margin-top: 64px;
-        }
-        .nav-pair a {
-            padding: 32px 0;
-            display: block;
-            transition: background 0.3s;
-        }
-        .nav-pair a:hover {
-            background: var(--paper-soft);
-        }
-        .nav-pair a + a {
-            border-left: 1px solid var(--line);
-            padding-left: 32px;
-            text-align: right;
-        }
-        .nav-pair a:first-child {
-            padding-right: 32px;
-        }
-        .nav-pair-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--rose-deep);
-            margin-bottom: 8px;
-        }
-        .nav-pair-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
-            font-size: 22px;
-            color: var(--ink);
-            line-height: 1.2;
-        }
-        .nav-pair-title em { font-style: italic; }
+    .project-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
 
-        /* ============ FOOTER ============ */
-        footer {
-            padding: 40px;
-            background: var(--paper);
-            border-top: 1px solid var(--line);
-        }
-        .footer-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--ink-dim);
-        }
-        .footer-contact {
-            display: flex;
-            gap: 24px;
-        }
-        .footer-contact a { transition: color 0.3s; }
-        .footer-contact a:hover { color: var(--rose-deep); }
+    .project-kicker::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--rose-deep)
+    }
 
-        /* ============ REVEAL ============ */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.9s ease, transform 0.9s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .project-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(40px, 5.5vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -.015em;
+      margin: 0 0 32px;
+      max-width: 22ch;
+      color: var(--ink)
+    }
 
-        /* ============ RESPONSIVE ============ */
-        @media (max-width: 900px) {
-            .site-header { padding: 16px 20px; }
-            .identity-name { font-size: 20px; }
+    .project-title em {
+      font-style: italic;
+      color: var(--rose-deep)
+    }
 
-            .wrap, .wrap-wide, .hero-image, .bleed { padding-left: 20px; padding-right: 20px; }
-            section { padding: 64px 0; }
-            .project-header { padding: 60px 0 40px; }
+    .project-summary {
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--ink-dim);
+      max-width: 60ch;
+      margin: 0 0 48px
+    }
 
-            .project-meta {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
+    .project-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line)
+    }
 
-            .block {
-                grid-template-columns: 1fr;
-                gap: 16px;
-                padding: 48px 0;
-            }
-            .block-label { padding-top: 0; }
+    .project-meta-item h5 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      margin: 0 0 8px
+    }
 
-            .image-pair { grid-template-columns: 1fr; }
+    .project-meta-item p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink);
+      margin: 0
+    }
 
-            .nav-pair { grid-template-columns: 1fr; }
-            .nav-pair a + a {
-                border-left: none;
-                border-top: 1px solid var(--line);
-                padding-left: 0;
-                text-align: left;
-            }
-            .nav-pair a:first-child { padding-right: 0; }
+    .hero-image {
+      margin: 0 auto;
+      max-width: 1280px;
+      padding: 0 40px 96px
+    }
 
-            .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
-            .footer-contact { justify-content: center; }
-        }
-    </style>
+    .hero-image-frame {
+      aspect-ratio: 16/9;
+      background: var(--paper-soft);
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .hero-image-caption {
+      margin-top: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      text-align: right
+    }
+
+    .block {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 60px;
+      padding: 64px 0;
+      border-top: 1px solid var(--line)
+    }
+
+    .block:first-of-type {
+      border-top: none;
+      padding-top: 0
+    }
+
+    .block-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      padding-top: 8px
+    }
+
+    .block-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(28px, 3.5vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -.01em;
+      margin: 0 0 24px;
+      color: var(--ink)
+    }
+
+    .block-content h2 em {
+      font-style: italic;
+      color: var(--rose-deep)
+    }
+
+    .block-content p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--ink);
+      margin: 0 0 20px
+    }
+
+    .block-content p strong {
+      color: var(--ink);
+      font-weight: 500
+    }
+
+    .block-content ul {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--ink);
+      padding: 0;
+      margin: 0 0 20px;
+      list-style: none
+    }
+
+    .block-content ul li {
+      padding-left: 24px;
+      position: relative
+    }
+
+    .block-content ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rose-deep)
+    }
+
+    .nav-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-top: 64px
+    }
+
+    .nav-pair a {
+      padding: 32px 0;
+      display: block;
+      transition: background .3s
+    }
+
+    .nav-pair a:hover {
+      background: var(--paper-soft)
+    }
+
+    .nav-pair a+a {
+      border-left: 1px solid var(--line);
+      padding-left: 32px;
+      text-align: right
+    }
+
+    .nav-pair a:first-child {
+      padding-right: 32px
+    }
+
+    .nav-pair-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      margin-bottom: 8px
+    }
+
+    .nav-pair-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--ink);
+      line-height: 1.2
+    }
+
+    .nav-pair-title em {
+      font-style: italic
+    }
+
+    footer {
+      padding: 40px;
+      background: var(--paper);
+      border-top: 1px solid var(--line)
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink-dim)
+    }
+
+    .footer-contact {
+      display: flex;
+      gap: 24px
+    }
+
+    .footer-contact a {
+      transition: color .3s
+    }
+
+    .footer-contact a:hover {
+      color: var(--rose-deep)
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none
+    }
+
+
+    @media (max-width:900px) {
+      .site-header {
+        padding: 16px 20px
+      }
+
+      .identity-name {
+        font-size: 20px
+      }
+
+      .wrap,
+      .wrap-wide,
+      .hero-image {
+        padding-left: 20px;
+        padding-right: 20px
+      }
+
+      section {
+        padding: 64px 0
+      }
+
+      .project-header {
+        padding: 60px 0 40px
+      }
+
+      .project-meta {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px
+      }
+
+      .block {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 48px 0
+      }
+
+      .block-label {
+        padding-top: 0
+      }
+
+      .nav-pair {
+        grid-template-columns: 1fr
+      }
+
+      .nav-pair a+a {
+        border-left: none;
+        border-top: 1px solid var(--line);
+        padding-left: 0;
+        text-align: left
+      }
+
+      .nav-pair a:first-child {
+        padding-right: 0
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center
+      }
+
+      .footer-contact {
+        justify-content: center
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- ============ TOP HEADER ============ -->
-    <header class="site-header">
-        <div class="site-header-inner">
-            <div class="identity">
-                <span class="identity-name">Ty Zhang</span>
-                <span class="identity-role">Bioengineering &amp; Biochemistry · University of Pittsburgh</span>
-            </div>
-            <a href="/portfolio" class="header-back">← Back to portfolio</a>
-        </div>
-    </header>
-
-    <!-- ============ PROJECT HEADER ============ -->
-    <section class="project-header">
-        <div class="wrap">
-            <!-- TODO: kicker = the category, e.g. RESEARCH · OPTIN LAB · 2025 -->
-            <div class="project-kicker reveal">Research · OPTIn Lab · 2025</div>
-
-            <!-- TODO: project title -->
-            <h1 class="project-title reveal">
-                Project title <em>goes here.</em>
-            </h1>
-
-            <!-- TODO: one-paragraph elevator pitch (the "what" and "why") -->
-            <p class="project-summary reveal">
-                A single short paragraph describing what this project is, what
-                question it set out to answer, and what made it worth doing.
-                Replace with the actual elevator pitch.
-            </p>
-
-            <div class="project-meta reveal">
-                <div class="project-meta-item">
-                    <h5>Role</h5>
-                    <p>Undergraduate researcher</p>
-                </div>
-                <div class="project-meta-item">
-                    <h5>Collaborators</h5>
-                    <p>PI &amp; lab members</p>
-                </div>
-                <div class="project-meta-item">
-                    <h5>Methods</h5>
-                    <p>AAV · IHC · pathway analysis</p>
-                </div>
-                <div class="project-meta-item">
-                    <h5>Timeline</h5>
-                    <p>2025 — Present</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ HERO IMAGE ============ -->
-    <!-- Per the portfolio guideline: a single clear "hero shot"
-         showing the project in its entirety. -->
-    <div class="hero-image reveal">
-        <div class="hero-image-frame">
-            <!-- TODO: replace with <img src="images/project-hero.jpg" alt="..."> -->
-            <div class="hero-image-placeholder">
-                Hero image<br>—<br>16 : 9 · primary visual of the project
-            </div>
-        </div>
-        <div class="hero-image-caption">Fig. 01 — Project overview</div>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="identity">
+        <span class="identity-name">Ty Zhang</span>
+        <span class="identity-role">Bioengineering &amp; Biochemistry · University of Pittsburgh</span>
+      </div>
+      <a href="../portfolio.html" class="header-back">← Back to portfolio</a>
     </div>
+  </header>
 
-    <!-- ============ STORY: BEGINNING ============ -->
-    <!-- "Beginning" from the Barber deck: introduction, overview,
-         problem statement. -->
-    <section>
-        <div class="wrap">
-            <div class="block reveal">
-                <div class="block-label">§ The problem</div>
-                <div class="block-content">
-                    <h2>What this project set out to <em>address.</em></h2>
-                    <p>
-                        Begin with the question. What was unclear, and why did
-                        it matter? Avoid jumping straight to methods — the
-                        reader needs to know the stakes before they care about
-                        how you tackled them.
-                    </p>
-                    <p>
-                        A second short paragraph can establish the broader
-                        context: relevant prior work, why current approaches
-                        fall short, or what motivated this specific angle.
-                    </p>
-                </div>
-            </div>
+  <section class="project-header">
+    <div class="wrap">
+      <div class="project-kicker reveal">Lab Coursework · 2026</div>
+      <h1 class="project-title reveal">Simian Virus 40 OBD Protein.</h1>
+      <p class="project-summary reveal">Purification and analysis of the Simian Virus 40 origin-binding domain (OBD)
+        protein, a key component in viral DNA replication.</p>
+      <div class="project-meta reveal">
+        <div class="project-meta-item">
+          <h5>Role</h5>
+          <p>Researcher</p>
         </div>
-    </section>
-
-    <!-- ============ STORY: MIDDLE ============ -->
-    <!-- "Middle" from the deck: process, methods, experiences. -->
-    <section>
-        <div class="wrap">
-            <div class="block reveal">
-                <div class="block-label">§ Approach</div>
-                <div class="block-content">
-                    <h2>Methodology &amp; <em>process.</em></h2>
-                    <p>
-                        Walk through the approach — how the project was
-                        actually carried out. What experiments, models, or
-                        analyses were involved, and why these specific choices
-                        were made over alternatives.
-                    </p>
-                    <ul>
-                        <li>First step or method, briefly described</li>
-                        <li>Second step or method</li>
-                        <li>Third step or method</li>
-                    </ul>
-
-                    <!-- Optional inline image inside the block -->
-                    <div class="block-image">
-                        <div class="block-image-frame">
-                            <!-- TODO: <img src="images/process.jpg" alt="..."> -->
-                            <div class="block-image-placeholder">
-                                Process image<br>—<br>16 : 10
-                            </div>
-                        </div>
-                        <div class="block-image-caption">Fig. 02 — Process or experimental setup</div>
-                    </div>
-                </div>
-            </div>
+        <div class="project-meta-item">
+          <h5>Type</h5>
+          <p>Lab coursework</p>
         </div>
-    </section>
-
-    <!-- ============ FULL-BLEED IMAGE BREAK (optional) ============ -->
-    <!-- Use to break long projects up. Delete if not needed. -->
-    <div class="bleed reveal">
-        <div class="bleed-frame">
-            <!-- TODO: <img src="images/wide-shot.jpg" alt="..."> -->
-            <div class="bleed-placeholder">
-                Wide image · 21 : 9 · contextual / detail shot
-            </div>
+        <div class="project-meta-item">
+          <h5>Methods</h5>
+          <p>Protein purification · gel electrophoresis</p>
         </div>
+        <div class="project-meta-item">
+          <h5>Timeline</h5>
+          <p>2026</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- ============ STORY: TWO-UP IMAGES ============ -->
-    <section>
-        <div class="wrap">
-            <div class="block reveal">
-                <div class="block-label">§ Detail</div>
-                <div class="block-content">
-                    <h2>Key findings or <em>milestones.</em></h2>
-                    <p>
-                        Use this block to show the heart of the work — data,
-                        figures, intermediate results, or critical milestones
-                        in the project's development.
-                    </p>
-
-                    <div class="image-pair">
-                        <div class="block-image-frame">
-                            <!-- TODO: <img src="images/detail-a.jpg" alt="..."> -->
-                            <div class="block-image-placeholder">
-                                Detail A
-                            </div>
-                        </div>
-                        <div class="block-image-frame">
-                            <!-- TODO: <img src="images/detail-b.jpg" alt="..."> -->
-                            <div class="block-image-placeholder">
-                                Detail B
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pullquote">
-                        A short, punchy takeaway sentence — useful for surfacing
-                        the single most important result or insight from the work.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ STORY: END ============ -->
-    <!-- "End" from the deck: outcomes, impact, conclusions. -->
-    <section>
-        <div class="wrap">
-            <div class="block reveal">
-                <div class="block-label">§ Outcomes</div>
-                <div class="block-content">
-                    <h2>Results &amp; <em>what's next.</em></h2>
-                    <p>
-                        Summarize what was accomplished. Be honest about
-                        limitations and what didn't work — those are often
-                        more interesting than what did.
-                    </p>
-                    <p>
-                        Close with what comes next: open questions, planned
-                        follow-up work, or how this project shaped your
-                        thinking on the broader research direction.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Credits / acknowledgments — explicit per portfolio guideline -->
-            <div class="block reveal">
-                <div class="block-label">§ Credits</div>
-                <div class="block-content">
-                    <h2>Acknowledgments.</h2>
-                    <p>
-                        <strong>Principal investigator</strong> — Name, Lab<br>
-                        <strong>Collaborators</strong> — Names of lab members or co-workers<br>
-                        <strong>Funding</strong> — Source, if applicable
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ NEXT / PREV ============ -->
-    <div class="wrap-wide">
-        <nav class="nav-pair">
-            <!-- TODO: link to previous project -->
-            <a href="/portfolio/project-name.html">
-                <div class="nav-pair-label">← Previous</div>
-                <div class="nav-pair-title">Previous project <em>title</em></div>
-            </a>
-            <!-- TODO: link to next project -->
-            <a href="/portfolio/project-name.html">
-                <div class="nav-pair-label">Next →</div>
-                <div class="nav-pair-title">Next project <em>title</em></div>
-            </a>
-        </nav>
+  <div class="hero-image reveal">
+    <div class="hero-image-frame">
+      <img src="image-project-03-1.jpg" alt="Simian Virus 40 OBD Protein">
     </div>
+    <div class="hero-image-caption">Fig. 01 — Simian Virus 40 OBD Protein</div>
+  </div>
 
-    <footer>
-        <div class="footer-inner">
-            <div>© 2026 Ty Zhang</div>
-            <div class="footer-contact">
-                <a href="mailto:tyz10@pitt.edu">tyz10@pitt.edu</a>
-                <a href="https://www.linkedin.com/in/ty-zhang-338218398/">LinkedIn</a>
-                <a href="https://github.com/tyz10Pitt">GitHub</a>
-            </div>
+  <section>
+    <div class="wrap">
+      <div class="block reveal">
+        <div class="block-label">§ Overview</div>
+        <div class="block-content">
+          <h2>About this <em>project.</em></h2>
+          <p>A laboratory coursework project focused on isolating and characterizing the SV40 OBD protein, which
+            initiates viral DNA replication by binding to the viral origin of replication.</p>
         </div>
-    </footer>
+      </div>
 
-    <script>
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    io.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      <div class="block reveal">
+        <div class="block-label">§ Approach</div>
+        <div class="block-content">
+          <h2>Methods &amp; <em>process.</em></h2>
+          <p>Standard protein purification techniques were used to isolate the target protein from a bacterial
+            expression system. Purity and identity were confirmed using gel electrophoresis.</p>
+        </div>
+      </div>
 
-        // Reveal hero items immediately
-        window.addEventListener('load', () => {
-            document.querySelectorAll('.project-header .reveal, .hero-image.reveal').forEach((el, i) => {
-                setTimeout(() => el.classList.add('visible'), i * 100);
-            });
-        });
-    </script>
+      <div class="block reveal">
+        <div class="block-label">§ Outcomes</div>
+        <div class="block-content">
+          <h2>Results.</h2>
+          <p>The exercise reinforced practical skills in protein biochemistry and provided a working understanding of
+            viral replication initiation. Detailed results to be added.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <div class="wrap-wide">
+    <nav class="nav-pair">
+      <a href="project-02.html">
+        <div class="nav-pair-label">← Previous</div>
+        <div class="nav-pair-title">Liver Cancer</div>
+      </a>
+      <a href="project-04.html">
+        <div class="nav-pair-label">Next →</div>
+        <div class="nav-pair-title">Microphage</div>
+      </a>
+    </nav>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 2026 Ty Zhang</div>
+      <div class="footer-contact">
+        <a href="mailto:tyz10@pitt.edu">tyz10@pitt.edu</a>
+        <a href="https://www.linkedin.com/in/ty-zhang-338218398/">LinkedIn</a>
+        <a href="https://github.com/tyz10Pitt">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.project-header .reveal, .hero-image.reveal').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 100);
+      });
+    });
+  </script>
 </body>
+
 </html>

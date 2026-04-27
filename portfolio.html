@@ -402,6 +402,10 @@
 
         .work-thumb-wrap {
             position: relative;
+            display: block;
+            cursor: pointer;
+            color: inherit;
+            text-decoration: none;
         }
 
         .work-thumb {
@@ -987,12 +991,12 @@
             <div class="work-list">
 
                 <article class="work-item reveal">
-                    <div class="work-thumb-wrap">
+                    <a href="/portfolio_projects/project-01.html" class="work-thumb-wrap">
                         <span class="work-num">01</span>
                         <div class="work-thumb">
                             <img src="portfolio_projects/image-project-01-1.jpg" alt="Bridge model" loading="lazy">
                         </div>
-                    </div>
+                    </a>
                     <div class="work-body">
                         <div class="work-meta">
                             <span>Project</span>
@@ -1013,12 +1017,12 @@
                 </article>
 
                 <article class="work-item reveal">
-                    <div class="work-thumb-wrap">
+                    <a href="/portfolio_projects/project-02.html" class="work-thumb-wrap">
                         <span class="work-num">02</span>
                         <div class="work-thumb">
                             <img src="portfolio_projects/image-project-02-1.jpg" alt="Liver cancer" loading="lazy">
                         </div>
-                    </div>
+                    </a>
                     <div class="work-body">
                         <div class="work-meta">
                             <span>Lab</span>
@@ -1041,13 +1045,13 @@
                 </article>
 
                 <article class="work-item reveal">
-                    <div class="work-thumb-wrap">
+                    <a href="/portfolio_projects/project-03.html" class="work-thumb-wrap">
                         <span class="work-num">03</span>
                         <div class="work-thumb">
                             <img src="portfolio_projects/image-project-03-1.jpg" alt="Simian Virus 40 OBD Protein"
                                 loading="lazy">
                         </div>
-                    </div>
+                    </a>
                     <div class="work-body">
                         <div class="work-meta">
                             <span>Lab Coursework</span>
@@ -1203,6 +1207,19 @@
             document.querySelectorAll('.hero .reveal').forEach((el, i) => {
                 setTimeout(() => el.classList.add('visible'), i * 120);
             });
+        });
+        // Save scroll position when leaving the page
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.setItem('portfolioScroll', window.scrollY);
+        });
+
+        // Restore scroll position on load
+        window.addEventListener('load', () => {
+            const saved = sessionStorage.getItem('portfolioScroll');
+            if (saved !== null) {
+                window.scrollTo(0, parseInt(saved, 10));
+                sessionStorage.removeItem('portfolioScroll');
+            }
         });
     </script>
 
