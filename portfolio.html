@@ -42,9 +42,7 @@
 
         a { color: inherit; text-decoration: none; }
 
-        /* ============ TOP HEADER ============
-           Name, discipline, affiliation, and contact info — all
-           visible at the top, like a professional header on a CV. */
+        /* ============ TOP HEADER ============ */
         .site-header {
             position: sticky;
             top: 0;
@@ -140,7 +138,6 @@
                 );
             border-bottom: none;
         }
-        /* Darkening overlay behind text for legibility */
         .hero::before {
             content: '';
             position: absolute;
@@ -252,7 +249,6 @@
             font-weight: 500;
         }
 
-        /* Education / affiliation block */
         .about-facts {
             margin-top: 36px;
             padding-top: 28px;
@@ -519,6 +515,139 @@
             line-height: 1.5;
         }
 
+        /* ============ GALLERY ============
+           Visual-first grid of images. Minimal text per tile —
+           short title and a small tag. Hover reveals caption. */
+        .gallery-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .gallery-head h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.1;
+            margin: 0;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+        .gallery-head h2 em {
+            font-style: italic;
+            color: var(--rose-deep);
+        }
+        .gallery-head-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            max-width: 32ch;
+            line-height: 1.8;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        /* Editorial irregularity: a few tiles span two columns or
+           two rows so the grid doesn't look like a uniform contact sheet. */
+        .gallery-tile.tile-wide  { grid-column: span 2; }
+        .gallery-tile.tile-tall  { grid-row: span 2; }
+
+        .gallery-tile {
+            position: relative;
+            display: block;
+            aspect-ratio: 4/3;
+            background: var(--paper-soft);
+            border: 1px solid var(--line);
+            overflow: hidden;
+            cursor: pointer;
+            color: inherit;
+            text-decoration: none;
+            transition: border-color 0.4s, transform 0.4s;
+        }
+        .gallery-tile.tile-tall { aspect-ratio: 4/5; }
+        .gallery-tile:hover {
+            border-color: var(--rose-deep);
+            transform: translateY(-4px);
+        }
+        /* Image fills the tile if present */
+        .gallery-tile img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .gallery-tile:hover img { transform: scale(1.04); }
+
+        /* Empty-state placeholder note (when no img) */
+        .gallery-tile-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--ink-dim);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 2;
+        }
+        .gallery-tile-placeholder::after {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px dashed var(--ink-faint);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* Caption sits at the bottom — visible by default, brighter on hover */
+        .gallery-tile-caption {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            padding: 14px 16px;
+            background: linear-gradient(to top, rgba(30, 42, 58, 0.85) 0%, rgba(30, 42, 58, 0) 100%);
+            color: #ffffff;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.4s, transform 0.4s;
+            pointer-events: none;
+        }
+        .gallery-tile:hover .gallery-tile-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .gallery-tile-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: 0.2px;
+        }
+        .gallery-tile-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85);
+            white-space: nowrap;
+        }
+
         /* ============ FOOTER ============ */
         footer {
             padding: 40px;
@@ -584,6 +713,22 @@
             .work-item:nth-child(even) .work-thumb-wrap { order: 0; }
             .work-num { font-size: 72px; top: -24px; }
 
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .gallery-tile.tile-wide,
+            .gallery-tile.tile-tall {
+                grid-column: span 2;
+                grid-row: span 1;
+                aspect-ratio: 4/3;
+            }
+            /* Make captions always visible on mobile (no hover) */
+            .gallery-tile-caption {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
             .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
             .footer-contact { justify-content: center; }
         }
@@ -636,7 +781,6 @@
                         </div>
                         <div class="about-fact">
                             <h5>Affiliation</h5>
-
                             <p>Department of Bioengineering, Swanson School of Engineering<br>
                             Department of Biological Science, Dietrich School of Arts and Sciences<br>
                             Organ Pathobiology and Therapeutics Institute</p>
@@ -672,14 +816,12 @@
             <div class="work-head reveal">
                 <h2>Research, coursework, and projects.</h2>
                 <p class="work-head-note">
-                    Thbe problem, methodology,
-                    and outcomes.
+                    The problem, methodology, and outcomes.
                 </p>
             </div>
 
             <div class="work-list">
 
-                <!-- PROJECT 01 -->
                 <article class="work-item reveal">
                     <div class="work-thumb-wrap">
                         <span class="work-num">01</span>
@@ -702,15 +844,12 @@
                             I build a bridge
                         </p>
                         <div class="work-role">
-                            <b>Role</b> — Undergraduate researcher<br>
-                            <b>Collaborators</b> — Principal investigator and lab members<br>
-                            <b>Methods</b> — AAV delivery · immunohistochemistry · pathway analysis
+                            <b>Role</b> — Engineer<br>
                         </div>
-                        <a href="#" class="work-link">View case study →</a>
+                        <a href="/Portfolio Projects/project-01.html" class="work-link">View details →</a>
                     </div>
                 </article>
 
-                <!-- PROJECT 02 -->
                 <article class="work-item reveal">
                     <div class="work-thumb-wrap">
                         <span class="work-num">02</span>
@@ -722,28 +861,25 @@
                     </div>
                     <div class="work-body">
                         <div class="work-meta">
-                            <span>Coursework</span>
+                            <span>Lab</span>
                             <span class="dot">·</span>
-                            <span>BIOENG 1630</span>
+                            <span>OPTIn</span>
                             <span class="dot">·</span>
-                            <span>2025</span>
+                            <span>2026</span>
                         </div>
-                        <h3 class="work-title">Project title</h3>
+                        <h3 class="work-title">Liver Canver</h3>
                         <p class="work-desc">
-                            Brief summary of the coursework project, its technical
-                            scope, and the approach taken. Placeholder text to be
-                            replaced with project-specific content.
+                            Study of beta-catenin induced liver tumorigenesis in Met-Nrf2 mouse model.
                         </p>
                         <div class="work-role">
                             <b>Role</b> — Undergraduate researcher<br>
-                            <b>Collaborators</b> — Principal investigator and lab members<br>
-                            <b>Methods</b> — AAV delivery · immunohistochemistry · pathway analysis
+                            <b>Collaborators</b> Dr. Junyan Tao<br>
+                            <b>Methods</b> immunohistochemistry · pathway analysis
                         </div>
-                        <a href="#" class="work-link">View case study →</a>
+                        <a href="/Portfolio Projects/project-02.html" class="work-link">View details →</a>
                     </div>
                 </article>
 
-                <!-- PROJECT 03 -->
                 <article class="work-item reveal">
                     <div class="work-thumb-wrap">
                         <span class="work-num">03</span>
@@ -755,21 +891,20 @@
                     </div>
                     <div class="work-body">
                         <div class="work-meta">
-                            <span>Independent project</span>
+                            <span>Lab Coursework</span>
                             <span class="dot">·</span>
-                            <span>2024</span>
+                            <span>2026</span>
                         </div>
-                        <h3 class="work-title">Project title</h3>
+                        <h3 class="work-title">Simian Virus 40 OBD Protein</h3>
                         <p class="work-desc">
                             Brief summary of the independent project, including
                             motivation, approach, and outcomes. Placeholder text
                             to be replaced with project-specific content.
                         </p>
                         <div class="work-role">
-                            <b>Role</b> — Sole contributor<br>
-                            <b>Tools</b> — [Relevant tools and methods]
+                            <b>Role</b> Researcher<br>
                         </div>
-                        <a href="#" class="work-link">View case study →</a>
+                        <a href="/Portfolio Projects/project-03.html" class="work-link">View details →</a>
                     </div>
                 </article>
 
@@ -795,17 +930,20 @@
                         <ul>
                             <li>Cell culture</li>
                             <li>Immunohistochemistry</li>
-                            <li>Western blot</li>
+                            <li>Gel electrophoresis</li>
                             <li>Protein purification</li>
+                            <li>Mini-prep</li>
                         </ul>
                     </div>
                     <div class="cap-col reveal">
                         <h4>Engineering</h4>
                         <ul>
-                            <li>Structural mechanics</li>
+                            <li>Mechanics</li>
                             <li>Thermodynamics</li>
                             <li>MATLAB</li>
                             <li>Python</li>
+                            <li>Java</li>
+                            <li>C</li>
                         </ul>
                     </div>
                     <div class="cap-col reveal">
@@ -816,9 +954,82 @@
                             <li>ImageJ / FIJI</li>
                             <li>Figure design</li>
                             <li>Adobe Creative Cloud</li>
+                            <li>Excel</li>
                         </ul>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section id="gallery">
+        <div class="wrap">
+            <div class="section-label reveal">§ 04 / Gallery</div>
+            <div class="gallery-head reveal">
+                <h2>Selected <em>visuals.</em></h2>
+                <p class="gallery-head-note">
+                    Lab work, coursework, and projects.
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+
+                <a href="/Portfolio Projects/project-01.html" class="gallery-tile reveal">
+                    <!-- Replace src with your image, e.g. images/ihc-liver.jpg -->
+                    <div class="gallery-tile-placeholder">
+                        Image 01<br>—<br>1600 × 1200
+                    </div>
+                    <figcaption class="gallery-tile-caption">
+                        <span class="gallery-tile-title">Bridge Model</span>
+                        <span class="gallery-tile-tag">Coursework · 2025</span>
+                    </figcaption>
+                </a>
+
+                <a href="/Portfolio Projects/project-02.html" class="gallery-tile reveal">
+                    <!-- Replace src with your image, e.g. images/bridge-render.jpg -->
+                    <div class="gallery-tile-placeholder">
+                        Image 02<br>—<br>1600 × 1200
+                    </div>
+                    <figcaption class="gallery-tile-caption">
+                        <span class="gallery-tile-title">Liver Cancer</span>
+                        <span class="gallery-tile-tag">Lab · 2026</span>
+                    </figcaption>
+                </a>
+
+                <a href="/Portfolio Projects/project-03.html" class="gallery-tile reveal">
+                    <!-- Replace src with your image, e.g. images/bridge-render.jpg -->
+                    <div class="gallery-tile-placeholder">
+                        Image 03<br>—<br>1600 × 1200
+                    </div>
+                    <figcaption class="gallery-tile-caption">
+                        <span class="gallery-tile-title">Simian Virus 40 OBD Protein</span>
+                        <span class="gallery-tile-tag">Lab Coursework · 2026</span>
+                    </figcaption>
+                </a>
+
+                <a href="/Portfolio Projects/project-04.html" class="gallery-tile reveal">
+                    <!-- Replace src with your image, e.g. images/bridge-render.jpg -->
+                    <div class="gallery-tile-placeholder">
+                        Image 04<br>—<br>1600 × 1200
+                    </div>
+                    <figcaption class="gallery-tile-caption">
+                        <span class="gallery-tile-title">Flower Microbiome</span>
+                        <span class="gallery-tile-tag">Lab Coursework · 2026</span>
+                    </figcaption>
+                </a>
+
+                <a href="/Portfolio Projects/project-05.html" class="gallery-tile reveal">
+                    <!-- Replace src with your image, e.g. images/bridge-render.jpg -->
+                    <div class="gallery-tile-placeholder">
+                        Image 05<br>—<br>1600 × 1200
+                    </div>
+                    <figcaption class="gallery-tile-caption">
+                        <span class="gallery-tile-title">Microphage</span>
+                        <span class="gallery-tile-tag">Lab Coursework · 2026</span>
+                    </figcaption>
+                </a>
+
             </div>
         </div>
     </section>
