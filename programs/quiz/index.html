@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quizzical — Quizzes</title>
+  <meta name="description" content="Quizzical — build multiple-choice quizzes by hand or import them, and take them with instant feedback and score tracking. Your quizzes stay on your device." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b45309' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20'/%3E%3Cpath d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z'/%3E%3C/svg%3E" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://esm.sh/react@18.3.1",
+      "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+      "react-dom": "https://esm.sh/react-dom@18.3.1?external=react",
+      "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?external=react",
+      "lucide-react": "https://esm.sh/lucide-react@0.383.0?external=react"
+    }
+  }
+  </script>
+
+  <script>
+    try {
+      var s = JSON.parse(localStorage.getItem('quizzical:settings:main') || '{}');
+      document.documentElement.style.background = s.darkMode ? '#1c1917' : '#fafaf9';
+    } catch (e) {
+      document.documentElement.style.background = '#fafaf9';
+    }
+  </script>
+
+  <style>
+    html, body { margin: 0; padding: 0; }
+    #boot {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', ui-monospace, monospace; color: #78716c;
+      font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"><div id="boot">Loading Quizzical…</div></div>
+
+  <noscript>
+    <div style="padding:2rem;font-family:system-ui,sans-serif;max-width:40rem;margin:0 auto;">
+      Quizzical needs JavaScript enabled to run. Please turn it on and reload.
+    </div>
+  </noscript>
+
+  <script>
+    setTimeout(function () {
+      var boot = document.getElementById('boot');
+      if (boot) {
+        boot.style.letterSpacing = '0';
+        boot.style.textTransform = 'none';
+        boot.style.padding = '2rem';
+        boot.style.textAlign = 'center';
+        boot.innerHTML = "Couldn't load Quizzical. This page needs an internet connection the first time it loads (it fetches React and icons from a CDN). Check your connection and reload. Your saved quizzes are stored locally and are safe.";
+      }
+    }, 12000);
+  </script>
+
+  <script type="module">
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { createRoot } from "react-dom/client";
+import { Plus, Trash2, Play, Edit3, Check, X, ArrowRight, ArrowLeft, ArrowUp, ArrowDown, RotateCcw, BookOpen, Trophy, FileText, Sparkles, Upload, Wand2, Settings, Shuffle, Info, ChevronDown, ChevronUp, Copy, Download, Search, BarChart3, Archive, Target, Clock, Moon } from "lucide-react";
+const STORE_PREFIX = "quizzical:";
+if (typeof window !== "undefined") {
+  window.storage = {
+    async get(key) {
+      try {
+        const raw = localStorage.getItem(STORE_PREFIX + key);
+        return raw === null ? null : { key, value: raw };
+      } catch (e) {
+        return null;
+      }
+    },
+    async set(key, value) {
+      localStorage.setItem(STORE_PREFIX + key, value);
+      return { key, value };
+    },
+    async delete(key) {
+      try {
+        localStorage.removeItem(STORE_PREFIX + key);
+      } catch (e) {
+      }
+      return { key, deleted: true };
+    },
+    async list(prefix = "") {
+      const keys = [];
+      const full = STORE_PREFIX + prefix;
+      try {
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && k.indexOf(full) === 0) keys.push(k.slice(STORE_PREFIX.length));
+        }
+      } catch (e) {
+      }
+      return { keys };
+    }
+  };
+}
+const AI_INSTRUCTIONS = `Generate EXAM-STYLE multiple-choice questions. Every quiz should feel like it belongs on a real test \u2014 serious, precise, and designed to genuinely measure whether someone understands the material.
+
+QUIZ TITLE AND DESCRIPTION \u2014 always include these, before any questions:
+
+- Every quiz MUST begin with a Title line and a Description line, in that order, before the questions. They are required, not optional.
+
+- Title: a short, specific title in Title Case. Name the actual subject (e.g., "The French Revolution", "JavaScript Closures"). Title Case, no surrounding quotes, no trailing punctuation, under about 60 characters. Prefer a real subject over a vague label.
+
+- Description: exactly one sentence stating what the quiz covers, ending in a period. Plain and informative \u2014 no marketing language, no "This quiz will test you on\u2026" filler.
+
+QUESTION QUALITY REQUIREMENTS \u2014 these are critical:
+
+- Exam-style voice. Write questions the way a real test or textbook assessment would write them. Formal, direct, measured. No conversational filler, no hedging, no "let's see if you know."
+
+- Concise phrasing. Go straight to the point. Strip out unnecessary setup, scene-setting, preamble, or flavor text. If a question can be asked in ten words instead of thirty, ask it in ten.
+
+- Non-obvious correct answer. The right answer must NOT be obvious at a glance. A test-taker should have to actually think \u2014 recall a specific fact, apply a concept, reason from principles, or distinguish between closely related ideas. If someone can pick the answer correctly without knowing the material, the question has failed.
+
+- Plausible distractors. Every wrong option must look credible. They should be the kinds of answers someone who half-knows the material would seriously consider. Avoid throwaway options, jokes, or obvious filler.
+
+- "All of the above" and "None of the above" are allowed when they genuinely fit the question \u2014 when all the other options really are correct, or really aren't. Use them sparingly, not as a crutch.
+
+- Broad coverage, moderate depth. Cover the topic broadly \u2014 touch different subtopics, different angles. But don't go to PhD-level obscurity. Test solid working knowledge, not trivia that only a specialist would know.
+
+- Varied reasoning types. Mix it up across the quiz: definitions, application to scenarios, comparison between concepts, cause and effect, sequence or ordering, identifying exceptions, interpreting outcomes, recognizing misconceptions.
+
+- Randomize correct-answer position. Don't default to any single slot. The correct answer should land in different positions roughly evenly across the quiz.
+
+NUMBER OF OPTIONS:
+- Default to 4 options per question \u2014 this is the typical case.
+- You may use between 2 and 8 options when the material naturally calls for a different number (e.g. 2 for a true/false-style question, 5 or 6 for broader categorizations). Don't pad to 4 with weak distractors just to hit the default.
+
+STRUCTURAL RULES:
+- Between 2 and 8 options per question (4 is typical).
+- Exactly one option must be marked as the correct answer.
+- Every question must have a concise, informative explanation \u2014 one or two sentences.
+
+TEST FOR EVERY QUESTION: "Does answering this correctly require actually knowing the material?" If yes, it's a good question. If a guesser could get it right through process of elimination against obviously wrong options, rewrite it.`;
+const SETTINGS_KEY = "settings:main";
+const MIN_OPTIONS = 2;
+const MAX_OPTIONS = 8;
+const DEFAULT_SETTINGS = {
+  shuffleQuestions: false,
+  shuffleOptions: false,
+  showExplanations: true,
+  immediateFeedback: true,
+  darkMode: false,
+  showTimer: false,
+  fontSize: "normal",
+  // small | normal | large
+  keyboardShortcuts: true
+};
+const SAMPLE_QUIZ = {
+  id: "sample-general-knowledge",
+  title: "A Tour of General Knowledge",
+  description: "Ten questions spanning science, history, geography, literature, and the arts \u2014 a fair warm-up for any curious mind.",
+  created: Date.now(),
+  questions: [
+    {
+      q: "Which planet in our solar system has the most confirmed moons?",
+      options: ["Jupiter", "Saturn", "Neptune", "Uranus"],
+      correct: 1,
+      explain: "Saturn overtook Jupiter in 2023 and now has over 140 confirmed moons."
+    },
+    {
+      q: "In what year did the Berlin Wall fall?",
+      options: ["1987", "1989", "1991", "1993"],
+      correct: 1,
+      explain: "The Berlin Wall fell on November 9, 1989, a pivotal moment in ending the Cold War."
+    },
+    {
+      q: "What is the chemical symbol for gold?",
+      options: ["Gd", "Go", "Au", "Ag"],
+      correct: 2,
+      explain: "Au comes from the Latin 'aurum,' meaning 'shining dawn.' Ag is silver."
+    },
+    {
+      q: "Who painted 'The Starry Night'?",
+      options: ["Claude Monet", "Pablo Picasso", "Vincent van Gogh", "Salvador Dal\xED"],
+      correct: 2,
+      explain: "Van Gogh painted it in June 1889 while staying at the Saint-Paul-de-Mausole asylum."
+    },
+    {
+      q: "What is the longest river in the world?",
+      options: ["Amazon", "Nile", "Yangtze", "Mississippi"],
+      correct: 1,
+      explain: "The Nile is traditionally considered the longest at about 6,650 km, though some studies argue the Amazon is longer."
+    },
+    {
+      q: "Which element has the atomic number 1?",
+      options: ["Helium", "Oxygen", "Hydrogen", "Carbon"],
+      correct: 2,
+      explain: "Hydrogen is the lightest and most abundant element in the universe."
+    },
+    {
+      q: "Who wrote the play 'Romeo and Juliet'?",
+      options: ["Christopher Marlowe", "William Shakespeare", "Ben Jonson", "John Webster"],
+      correct: 1,
+      explain: "Shakespeare wrote it early in his career, around 1594\u20131596."
+    },
+    {
+      q: "What is the capital of Australia?",
+      options: ["Sydney", "Melbourne", "Canberra", "Perth"],
+      correct: 2,
+      explain: "Canberra was purpose-built as the capital, a compromise between rival cities Sydney and Melbourne."
+    },
+    {
+      q: "In Greek mythology, who flew too close to the sun?",
+      options: ["Orpheus", "Icarus", "Perseus", "Theseus"],
+      correct: 1,
+      explain: "Icarus ignored his father Daedalus's warnings; the wax holding his wings together melted."
+    },
+    {
+      q: "What does CPU stand for in computing?",
+      options: ["Central Processing Unit", "Computer Personal Unit", "Central Program Utility", "Controlled Power Unit"],
+      correct: 0,
+      explain: "The CPU is the primary component that executes instructions in a computer."
+    }
+  ]
+};
+function shuffle(arr) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+function prepareQuizForTaking(quiz, settings) {
+  let questions = quiz.questions.map((q) => ({ ...q, options: [...q.options] }));
+  if (settings.shuffleOptions) {
+    questions = questions.map((q) => {
+      const indexed = q.options.map((opt, idx) => ({ opt, idx }));
+      const shuffled = shuffle(indexed);
+      const newCorrect = shuffled.findIndex((x) => x.idx === q.correct);
+      return { ...q, options: shuffled.map((x) => x.opt), correct: newCorrect };
+    });
+  }
+  if (settings.shuffleQuestions) {
+    questions = shuffle(questions);
+  }
+  return { ...quiz, questions };
+}
+const ConfirmContext = React.createContext(() => Promise.resolve(true));
+function useConfirm() {
+  return React.useContext(ConfirmContext);
+}
+function ConfirmProvider({ children }) {
+  const [dialog, setDialog] = useState(null);
+  const confirm = useCallback((opts) => {
+    const config = typeof opts === "string" ? { message: opts } : opts || {};
+    return new Promise((resolve) => setDialog({ ...config, resolve }));
+  }, []);
+  function close(val) {
+    setDialog((d) => {
+      if (d) d.resolve(val);
+      return null;
+    });
+  }
+  return /* @__PURE__ */ React.createElement(ConfirmContext.Provider, { value: confirm }, children, dialog && /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      className: "fixed inset-0 z-50 flex items-center justify-center p-4",
+      style: { background: "rgba(28,25,23,0.55)" },
+      onClick: () => close(false)
+    },
+    /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        onClick: (e) => e.stopPropagation(),
+        className: "bg-stone-50 border-2 border-stone-900 max-w-md w-full p-6 fade-up",
+        style: { boxShadow: "6px 6px 0 rgba(28,25,23,0.9)" }
+      },
+      /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-2" }, dialog.title || "Please confirm"),
+      /* @__PURE__ */ React.createElement("p", { className: "text-stone-800 mb-6 leading-relaxed" }, dialog.message),
+      /* @__PURE__ */ React.createElement("div", { className: "flex justify-end gap-2" }, /* @__PURE__ */ React.createElement(
+        "button",
+        {
+          onClick: () => close(false),
+          className: "border-2 border-stone-900 px-4 py-2 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors"
+        },
+        dialog.cancelLabel || "Cancel"
+      ), /* @__PURE__ */ React.createElement(
+        "button",
+        {
+          onClick: () => close(true),
+          className: `px-4 py-2 mono text-xs uppercase tracking-widest text-white transition-colors ${dialog.danger ? "bg-red-600 hover:bg-red-700" : "bg-amber-700 hover:bg-stone-900"}`
+        },
+        dialog.confirmLabel || "Confirm"
+      ))
+    )
+  ));
+}
+function QuizApp() {
+  const [view, setView] = useState("home");
+  const [createMode, setCreateMode] = useState("manual");
+  const [quizzes, setQuizzes] = useState([]);
+  const [settings, setSettings] = useState(DEFAULT_SETTINGS);
+  const [activeQuiz, setActiveQuiz] = useState(null);
+  const [originalQuiz, setOriginalQuiz] = useState(null);
+  const [quizStartTime, setQuizStartTime] = useState(null);
+  const [finalElapsedMs, setFinalElapsedMs] = useState(0);
+  const [stats, setStats] = useState({});
+  const [editingQuiz, setEditingQuiz] = useState(null);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [userAnswers, setUserAnswers] = useState([]);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [showFeedback, setShowFeedback] = useState(false);
+  useEffect(() => {
+    async function load() {
+      try {
+        try {
+          const sr = await window.storage.get(SETTINGS_KEY);
+          if (sr) setSettings({ ...DEFAULT_SETTINGS, ...JSON.parse(sr.value) });
+        } catch (e) {
+        }
+        const list = await window.storage.list("quiz:");
+        if (list && list.keys && list.keys.length > 0) {
+          const loaded = [];
+          for (const key of list.keys) {
+            try {
+              const r = await window.storage.get(key);
+              if (r) loaded.push(JSON.parse(r.value));
+            } catch (e) {
+            }
+          }
+          setQuizzes(loaded);
+        } else {
+          await window.storage.set("quiz:" + SAMPLE_QUIZ.id, JSON.stringify(SAMPLE_QUIZ));
+          setQuizzes([SAMPLE_QUIZ]);
+        }
+        try {
+          const statsList = await window.storage.list("stats:");
+          if (statsList && statsList.keys) {
+            const s = {};
+            for (const key of statsList.keys) {
+              try {
+                const r = await window.storage.get(key);
+                if (r) s[key.replace(/^stats:/, "")] = JSON.parse(r.value);
+              } catch (e) {
+              }
+            }
+            setStats(s);
+          }
+        } catch (e) {
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    load();
+  }, []);
+  async function saveSettings(next) {
+    setSettings(next);
+    try {
+      await window.storage.set(SETTINGS_KEY, JSON.stringify(next));
+    } catch (e) {
+    }
+  }
+  async function saveQuiz(quiz) {
+    try {
+      await window.storage.set("quiz:" + quiz.id, JSON.stringify(quiz));
+      setQuizzes((prev) => {
+        const idx = prev.findIndex((q) => q.id === quiz.id);
+        if (idx >= 0) {
+          const copy = [...prev];
+          copy[idx] = quiz;
+          return copy;
+        }
+        return [...prev, quiz];
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  async function deleteQuiz(id) {
+    try {
+      await window.storage.delete("quiz:" + id);
+      await window.storage.delete("stats:" + id);
+    } catch (e) {
+    }
+    setQuizzes((prev) => prev.filter((q) => q.id !== id));
+    setStats((prev) => {
+      const { [id]: _removed, ...rest } = prev;
+      return rest;
+    });
+  }
+  async function clearLibrary() {
+    try {
+      const list = await window.storage.list("quiz:");
+      if (list && list.keys) {
+        for (const key of list.keys) {
+          await window.storage.delete(key);
+        }
+      }
+      const statsList = await window.storage.list("stats:");
+      if (statsList && statsList.keys) {
+        for (const key of statsList.keys) {
+          await window.storage.delete(key);
+        }
+      }
+      setQuizzes([]);
+      setStats({});
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  async function clearStats() {
+    try {
+      const statsList = await window.storage.list("stats:");
+      if (statsList && statsList.keys) {
+        for (const key of statsList.keys) {
+          await window.storage.delete(key);
+        }
+      }
+      setStats({});
+    } catch (e) {
+    }
+  }
+  async function recordAttempt(quizId, score, total, elapsedMs) {
+    const percent = total > 0 ? Math.round(score / total * 100) : 0;
+    const now = Date.now();
+    const key = "stats:" + quizId;
+    let s = { attempts: 0, bestPercent: 0, lastPercent: 0, lastTakenAt: 0, recent: [] };
+    try {
+      const existing = await window.storage.get(key);
+      if (existing) s = { recent: [], ...JSON.parse(existing.value) };
+    } catch (e) {
+    }
+    s.attempts = (s.attempts || 0) + 1;
+    s.bestPercent = Math.max(s.bestPercent || 0, percent);
+    s.lastPercent = percent;
+    s.lastTakenAt = now;
+    s.recent = [{ score, total, percent, takenAt: now, elapsedMs: elapsedMs || 0 }, ...s.recent || []].slice(0, 10);
+    try {
+      await window.storage.set(key, JSON.stringify(s));
+    } catch (e) {
+    }
+    setStats((prev) => ({ ...prev, [quizId]: s }));
+  }
+  async function resetQuizStats(quizId) {
+    try {
+      await window.storage.delete("stats:" + quizId);
+    } catch (e) {
+    }
+    setStats((prev) => {
+      const { [quizId]: _removed, ...rest } = prev;
+      return rest;
+    });
+  }
+  async function importQuizzes(parsedQuizzes) {
+    const now = Date.now();
+    const toSave = parsedQuizzes.map((pz, idx) => ({
+      id: "q-" + (now + idx),
+      title: pz.title,
+      description: pz.description || "",
+      created: now + idx,
+      questions: pz.questions.map((qq) => ({ ...qq, options: [...qq.options] }))
+    }));
+    for (const qz of toSave) await saveQuiz(qz);
+    return toSave.length;
+  }
+  function startQuiz(quiz) {
+    const prepared = prepareQuizForTaking(quiz, settings);
+    setOriginalQuiz(quiz);
+    setActiveQuiz(prepared);
+    setCurrentQuestion(0);
+    setUserAnswers(new Array(prepared.questions.length).fill(void 0));
+    setSelectedAnswer(null);
+    setShowFeedback(false);
+    setQuizStartTime(Date.now());
+    setFinalElapsedMs(0);
+    setView("take");
+    if (!quiz.isMissedRetry) {
+      const updated = { ...quiz, lastOpenedAt: Date.now() };
+      saveQuiz(updated);
+    }
+  }
+  function retryMissed() {
+    if (!activeQuiz) return;
+    const missed = activeQuiz.questions.filter((q, i) => userAnswers[i] !== q.correct);
+    if (missed.length === 0) return;
+    const missedQuiz = {
+      ...activeQuiz,
+      title: activeQuiz.title.endsWith(" \u2014 Missed") ? activeQuiz.title : activeQuiz.title + " \u2014 Missed",
+      questions: missed,
+      isMissedRetry: true
+    };
+    const prepared = prepareQuizForTaking(missedQuiz, settings);
+    prepared.isMissedRetry = true;
+    setActiveQuiz(prepared);
+    setCurrentQuestion(0);
+    setUserAnswers(new Array(prepared.questions.length).fill(void 0));
+    setSelectedAnswer(null);
+    setShowFeedback(false);
+    setQuizStartTime(Date.now());
+    setFinalElapsedMs(0);
+    setView("take");
+  }
+  function finishQuiz(finalAnswers) {
+    const elapsed = quizStartTime ? Date.now() - quizStartTime : 0;
+    setFinalElapsedMs(elapsed);
+    const score = finalAnswers.reduce((acc, ans, i) => acc + (ans === activeQuiz.questions[i].correct ? 1 : 0), 0);
+    if (originalQuiz && !activeQuiz.isMissedRetry) {
+      recordAttempt(originalQuiz.id, score, activeQuiz.questions.length, elapsed);
+    }
+    setView("results");
+  }
+  function submitAnswer() {
+    if (selectedAnswer === null) return;
+    const newAnswers = [...userAnswers];
+    newAnswers[currentQuestion] = selectedAnswer;
+    setUserAnswers(newAnswers);
+    if (settings.immediateFeedback) {
+      setShowFeedback(true);
+    } else {
+      if (currentQuestion + 1 >= activeQuiz.questions.length) {
+        const firstMissing = newAnswers.findIndex((a) => a === void 0);
+        if (firstMissing === -1) {
+          finishQuiz(newAnswers);
+        } else {
+          goToIndex(firstMissing, newAnswers);
+        }
+      } else {
+        goToIndex(currentQuestion + 1, newAnswers);
+      }
+    }
+  }
+  function goToIndex(index, answersSource) {
+    const src = answersSource || userAnswers;
+    const priorAnswer = src[index];
+    setCurrentQuestion(index);
+    setSelectedAnswer(priorAnswer !== void 0 ? priorAnswer : null);
+    setShowFeedback(settings.immediateFeedback && priorAnswer !== void 0);
+  }
+  function nextQuestion() {
+    const newAnswers = [...userAnswers];
+    if (selectedAnswer !== null) {
+      newAnswers[currentQuestion] = selectedAnswer;
+      setUserAnswers(newAnswers);
+    }
+    if (currentQuestion + 1 >= activeQuiz.questions.length) {
+      const firstMissing = newAnswers.findIndex((a) => a === void 0);
+      if (firstMissing === -1) {
+        finishQuiz(newAnswers);
+      } else {
+        goToIndex(firstMissing, newAnswers);
+      }
+    } else {
+      goToIndex(currentQuestion + 1, newAnswers);
+    }
+  }
+  function previousQuestion() {
+    if (currentQuestion === 0) return;
+    const newAnswers = [...userAnswers];
+    if (selectedAnswer !== null) {
+      newAnswers[currentQuestion] = selectedAnswer;
+      setUserAnswers(newAnswers);
+    }
+    goToIndex(currentQuestion - 1, newAnswers);
+  }
+  function computeScore() {
+    return userAnswers.reduce((acc, ans, i) => {
+      return acc + (ans === activeQuiz.questions[i].correct ? 1 : 0);
+    }, 0);
+  }
+  const themeClass = settings.darkMode ? "dark" : "";
+  const fontSize = settings.fontSize || "normal";
+  return /* @__PURE__ */ React.createElement("div", { className: `${themeClass} font-scale-${fontSize} min-h-screen bg-stone-50 text-stone-900`, style: { fontFamily: "'Fraunces', Georgia, serif" } }, /* @__PURE__ */ React.createElement("style", null, `
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .display { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 144; }
+        .body-text { font-family: 'Inter', system-ui, sans-serif; }
+
+        /* ===== Font scale ===== */
+        /* Three scales with a meaningful spread. Each one applies a CSS
+           transform to the Tailwind text-* classes by overriding them in em,
+           so all descendant sizes scale proportionally. */
+        .font-scale-small { font-size: 13px; }
+        .font-scale-normal { font-size: 16px; }
+        .font-scale-large { font-size: 21px; }
+
+        .font-scale-small .text-\\[10px\\] { font-size: 0.65em !important; line-height: 1em; }
+        .font-scale-normal .text-\\[10px\\] { font-size: 0.625em !important; line-height: 1em; }
+        .font-scale-large .text-\\[10px\\] { font-size: 0.52em !important; line-height: 1em; }
+
+        .font-scale-small .text-xs, .font-scale-normal .text-xs, .font-scale-large .text-xs { font-size: 0.78em !important; line-height: 1.1em; }
+        .font-scale-small .text-sm, .font-scale-normal .text-sm, .font-scale-large .text-sm { font-size: 0.9em !important; line-height: 1.4em; }
+        .font-scale-small .text-base, .font-scale-normal .text-base, .font-scale-large .text-base { font-size: 1em !important; line-height: 1.5em; }
+        .font-scale-small .text-lg, .font-scale-normal .text-lg, .font-scale-large .text-lg { font-size: 1.15em !important; line-height: 1.5em; }
+        .font-scale-small .text-xl, .font-scale-normal .text-xl, .font-scale-large .text-xl { font-size: 1.3em !important; line-height: 1.4em; }
+        .font-scale-small .text-2xl, .font-scale-normal .text-2xl, .font-scale-large .text-2xl { font-size: 1.55em !important; line-height: 1.3em; }
+        .font-scale-small .text-3xl, .font-scale-normal .text-3xl, .font-scale-large .text-3xl { font-size: 1.9em !important; line-height: 1.2em; }
+        .font-scale-small .text-4xl, .font-scale-normal .text-4xl, .font-scale-large .text-4xl { font-size: 2.3em !important; line-height: 1.15em; }
+        .font-scale-small .text-5xl, .font-scale-normal .text-5xl, .font-scale-large .text-5xl { font-size: 2.9em !important; line-height: 1.1em; }
+        .font-scale-small .text-6xl, .font-scale-normal .text-6xl, .font-scale-large .text-6xl { font-size: 3.6em !important; line-height: 1.05em; }
+        .font-scale-small .text-7xl, .font-scale-normal .text-7xl, .font-scale-large .text-7xl { font-size: 4.4em !important; line-height: 1em; }
+        .font-scale-small .text-8xl, .font-scale-normal .text-8xl, .font-scale-large .text-8xl { font-size: 5.75em !important; line-height: 1em; }
+
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 0.4s ease-out both; }
+        .stagger-1 { animation-delay: 0.05s; }
+        .stagger-2 { animation-delay: 0.1s; }
+        .stagger-3 { animation-delay: 0.15s; }
+        .stagger-4 { animation-delay: 0.2s; }
+        @keyframes rot { to { transform: rotate(360deg); } }
+        .rot { animation: rot 1s linear infinite; }
+
+        /* ===== Dark mode overrides ===== */
+        .dark { color-scheme: dark; }
+        .dark.bg-stone-50, .dark .bg-stone-50 { background-color: #1c1917 !important; }
+        .dark .bg-stone-100 { background-color: #292524 !important; }
+        .dark .bg-white { background-color: #292524 !important; }
+        .dark .bg-stone-900 { background-color: #f5f5f4 !important; color: #1c1917 !important; }
+        .dark .bg-stone-800 { background-color: #44403c !important; }
+
+        .dark.text-stone-900, .dark .text-stone-900 { color: #f5f5f4 !important; }
+        .dark .text-stone-700 { color: #d6d3d1 !important; }
+        .dark .text-stone-600 { color: #a8a29e !important; }
+        .dark .text-stone-500 { color: #a8a29e !important; }
+        .dark .text-stone-400 { color: #78716c !important; }
+        .dark .text-stone-300 { color: #57534e !important; }
+        .dark .text-stone-50 { color: #1c1917 !important; }
+
+        .dark .border-stone-900 { border-color: #f5f5f4 !important; }
+        .dark .border-stone-400 { border-color: #78716c !important; }
+        .dark .border-stone-300 { border-color: #44403c !important; }
+        .dark .border-stone-200 { border-color: #44403c !important; }
+        .dark .divide-stone-900 > * + * { border-color: #f5f5f4 !important; }
+
+        /* Header bar stays dark-readable */
+        .dark header.bg-stone-50 { background-color: #1c1917 !important; }
+
+        /* Hover states need to be sensible in dark */
+        .dark .hover\\:bg-stone-100:hover { background-color: #292524 !important; }
+        .dark .hover\\:bg-stone-200:hover { background-color: #44403c !important; }
+        .dark .hover\\:bg-stone-900:hover { background-color: #f5f5f4 !important; color: #1c1917 !important; }
+
+        /* Colored accent backgrounds \u2014 keep feedback legible */
+        .dark .bg-emerald-50 { background-color: #064e3b !important; }
+        .dark .bg-red-50 { background-color: #7f1d1d !important; }
+        .dark .bg-amber-50 { background-color: #78350f !important; }
+        .dark .text-emerald-700 { color: #34d399 !important; }
+        .dark .text-red-700 { color: #fca5a5 !important; }
+        .dark .text-red-600 { color: #fca5a5 !important; }
+        .dark .text-amber-700 { color: #fbbf24 !important; }
+
+        /* Inputs */
+        .dark input, .dark textarea, .dark select { background-color: #292524 !important; color: #f5f5f4 !important; }
+        .dark input::placeholder, .dark textarea::placeholder { color: #78716c !important; }
+        .dark pre { background-color: #292524 !important; color: #d6d3d1 !important; }
+
+        /* Cards that should stay dark in both light and dark modes \u2014
+           the Format Guide and the AI gradient card want to be dark
+           accents against their surroundings regardless of theme. */
+        .dark-card {
+          background-color: #1c1917;
+          color: #f5f5f4;
+        }
+        .dark .dark-card {
+          background-color: #0c0a09;
+          color: #f5f5f4;
+        }
+        .dark .dark-card .text-stone-300 { color: #d6d3d1 !important; }
+        .dark .dark-card .text-stone-400 { color: #a8a29e !important; }
+
+        .amber-gradient-card {
+          background: linear-gradient(to bottom right, #b45309, #1c1917);
+          color: #f5f5f4;
+        }
+        .dark .amber-gradient-card {
+          background: linear-gradient(to bottom right, #92400e, #0c0a09);
+          color: #f5f5f4;
+        }
+
+        /* The primary dark-bg cards in dark mode need inverse treatment */
+        .dark .bg-gradient-to-br { background: linear-gradient(to bottom right, #78350f, #1c1917) !important; }
+
+        @media (prefers-reduced-motion: reduce) { .fade-up { animation: none !important; } }
+        *:focus-visible { outline: 2px solid #b45309; outline-offset: 2px; }
+      `), /* @__PURE__ */ React.createElement(ConfirmProvider, null, /* @__PURE__ */ React.createElement("header", { className: "border-b-2 border-stone-900 bg-stone-50 sticky top-0 z-10" }, /* @__PURE__ */ React.createElement("div", { className: "max-w-5xl mx-auto px-6 py-4 flex items-center justify-between" }, /* @__PURE__ */ React.createElement("button", { onClick: () => setView("home"), className: "flex items-center gap-3 group" }, /* @__PURE__ */ React.createElement("div", { className: "w-9 h-9 bg-stone-900 text-stone-50 flex items-center justify-center group-hover:bg-amber-600 transition-colors" }, /* @__PURE__ */ React.createElement(BookOpen, { size: 18 })), /* @__PURE__ */ React.createElement("div", { className: "text-left" }, /* @__PURE__ */ React.createElement("div", { className: "display text-xl font-bold leading-none" }, "Quizzical"), /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] text-stone-500 tracking-widest uppercase mt-1" }, quizzes.length, " ", quizzes.length === 1 ? "quiz" : "quizzes", " \xB7 ", Object.values(stats).reduce((sum, s) => sum + (s.attempts || 0), 0), " taken"))), /* @__PURE__ */ React.createElement("nav", { className: "flex gap-1 flex-wrap justify-end" }, /* @__PURE__ */ React.createElement(NavButton, { active: view === "home", onClick: () => setView("home") }, "Home"), /* @__PURE__ */ React.createElement(NavButton, { active: view === "browse", onClick: () => setView("browse") }, "Library (", quizzes.length, ")"), /* @__PURE__ */ React.createElement(NavButton, { active: view === "create", onClick: () => {
+    setEditingQuiz(null);
+    setCreateMode("manual");
+    setView("create");
+  } }, "Create"), /* @__PURE__ */ React.createElement(NavButton, { active: view === "settings", onClick: () => setView("settings") }, /* @__PURE__ */ React.createElement(Settings, { size: 12 }))))), /* @__PURE__ */ React.createElement("main", { className: "max-w-5xl mx-auto px-6 py-12" }, view === "home" && /* @__PURE__ */ React.createElement(HomeView, { quizzes, stats, onStart: startQuiz, onCreate: () => {
+    setEditingQuiz(null);
+    setCreateMode("manual");
+    setView("create");
+  }, onBrowse: () => setView("browse") }), view === "browse" && /* @__PURE__ */ React.createElement(BrowseView, { quizzes, stats, onStart: startQuiz, onEdit: (q) => {
+    setEditingQuiz(q);
+    setCreateMode("manual");
+    setView("create");
+  }, onDelete: deleteQuiz, onCreate: () => {
+    setEditingQuiz(null);
+    setCreateMode("manual");
+    setView("create");
+  }, onResetStats: resetQuizStats }), view === "create" && /* @__PURE__ */ React.createElement(CreateHub, { mode: createMode, setMode: setCreateMode, initial: editingQuiz, onSave: async (q) => {
+    await saveQuiz(q);
+    setView("browse");
+  }, onSaveMany: async (qs) => {
+    for (const q of qs) await saveQuiz(q);
+    setView("browse");
+  }, onCancel: () => setView("browse") }), view === "settings" && /* @__PURE__ */ React.createElement(SettingsView, { settings, quizzes, stats, onChange: saveSettings, onReset: () => saveSettings(DEFAULT_SETTINGS), onClearLibrary: clearLibrary, onClearStats: clearStats, onImportQuizzes: importQuizzes }), view === "take" && activeQuiz && /* @__PURE__ */ React.createElement(
+    TakeView,
+    {
+      quiz: activeQuiz,
+      currentQuestion,
+      userAnswers,
+      selectedAnswer,
+      setSelectedAnswer,
+      showFeedback,
+      submitAnswer,
+      nextQuestion,
+      previousQuestion,
+      onQuit: () => setView("home"),
+      settings,
+      quizStartTime
+    }
+  ), view === "results" && activeQuiz && /* @__PURE__ */ React.createElement(
+    ResultsView,
+    {
+      quiz: activeQuiz,
+      userAnswers,
+      score: computeScore(),
+      elapsedMs: finalElapsedMs,
+      onRetry: () => originalQuiz && startQuiz(originalQuiz),
+      onRetryMissed: retryMissed,
+      onHome: () => setView("home"),
+      settings
+    }
+  )), /* @__PURE__ */ React.createElement("footer", { className: "border-t border-stone-300 mt-24 py-8 text-center mono text-xs text-stone-500 tracking-widest uppercase" }, "Think \xB7 Answer \xB7 Learn")));
+}
+function NavButton({ active, onClick, children }) {
+  return /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick,
+      className: `px-4 py-2 mono text-xs uppercase tracking-widest transition-colors flex items-center gap-1 ${active ? "bg-stone-900 text-stone-50" : "text-stone-700 hover:bg-stone-200"}`
+    },
+    children
+  );
+}
+function HomeView({ quizzes, stats, onStart, onCreate, onBrowse }) {
+  const featured = quizzes.length === 0 ? null : [...quizzes].sort((a, b) => {
+    const aTime = a.lastOpenedAt || a.created || 0;
+    const bTime = b.lastOpenedAt || b.created || 0;
+    return bTime - aTime;
+  })[0];
+  const featuredStats = featured ? stats[featured.id] : null;
+  const hasCompletedAttempt = featuredStats && featuredStats.attempts > 0;
+  const hasBeenOpened = featured && featured.lastOpenedAt;
+  return /* @__PURE__ */ React.createElement("div", { className: "fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-[0.3em] text-stone-500 mb-4" }, "Quizzical"), /* @__PURE__ */ React.createElement("h1", { className: "display text-6xl sm:text-7xl md:text-8xl font-black leading-[0.9] mb-6 tracking-tight" }, "Test what ", /* @__PURE__ */ React.createElement("span", { className: "italic text-amber-700" }, "you know.")), /* @__PURE__ */ React.createElement("p", { className: "text-xl text-stone-600 max-w-2xl mb-12 leading-relaxed" }, "Build your own quizzes, import them, or let AI generate one. A simple, serious place to learn something."), /* @__PURE__ */ React.createElement("div", { className: "grid md:grid-cols-2 gap-6 mb-16" }, /* @__PURE__ */ React.createElement("button", { onClick: onBrowse, className: "group text-left bg-stone-900 text-stone-50 p-8 hover:bg-amber-700 transition-all fade-up stagger-1" }, /* @__PURE__ */ React.createElement(Play, { size: 28, className: "mb-4" }), /* @__PURE__ */ React.createElement("div", { className: "display text-3xl font-bold mb-2" }, "Take a quiz"), /* @__PURE__ */ React.createElement("div", { className: "text-stone-400 group-hover:text-stone-100" }, quizzes.length, " ", quizzes.length === 1 ? "quiz" : "quizzes", " waiting in your library.")), /* @__PURE__ */ React.createElement("button", { onClick: onCreate, className: "group text-left border-2 border-stone-900 p-8 hover:bg-stone-900 hover:text-stone-50 transition-all fade-up stagger-2" }, /* @__PURE__ */ React.createElement(Sparkles, { size: 28, className: "mb-4 group-hover:text-amber-400" }), /* @__PURE__ */ React.createElement("div", { className: "display text-3xl font-bold mb-2" }, "Build a quiz"), /* @__PURE__ */ React.createElement("div", { className: "text-stone-600 group-hover:text-stone-300" }, "Write manually, import text, or generate with AI."))), featured && /* @__PURE__ */ React.createElement("div", { className: "border-t-2 border-stone-900 pt-8 fade-up stagger-3" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-4" }, hasCompletedAttempt ? "Pick up where you left off" : "From your library"), /* @__PURE__ */ React.createElement("div", { className: "flex items-end justify-between gap-6 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "flex-1 min-w-0" }, /* @__PURE__ */ React.createElement("h2", { className: "display text-5xl font-bold mb-3" }, featured.title), featured.description && /* @__PURE__ */ React.createElement("p", { className: "text-stone-600 text-lg mb-2" }, featured.description), /* @__PURE__ */ React.createElement("div", { className: "mono text-xs text-stone-500 uppercase tracking-widest" }, featured.questions.length, " ", featured.questions.length === 1 ? "question" : "questions", hasBeenOpened && /* @__PURE__ */ React.createElement(React.Fragment, null, " \xB7 Opened ", formatRelativeTime(featured.lastOpenedAt)), hasCompletedAttempt && /* @__PURE__ */ React.createElement(React.Fragment, null, " \xB7 Best ", featuredStats.bestPercent, "%"))), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => onStart(featured),
+      className: "bg-amber-700 text-stone-50 px-8 py-4 mono text-xs uppercase tracking-widest hover:bg-stone-900 transition-colors flex items-center gap-2"
+    },
+    hasCompletedAttempt ? "Take again" : "Begin",
+    " ",
+    /* @__PURE__ */ React.createElement(ArrowRight, { size: 16 })
+  ))));
+}
+function BrowseView({ quizzes, stats, onStart, onEdit, onDelete, onCreate, onResetStats }) {
+  const confirm = useConfirm();
+  const [query, setQuery] = useState("");
+  const [sort, setSort] = useState("newest");
+  const [expandedStats, setExpandedStats] = useState(null);
+  if (quizzes.length === 0) {
+    return /* @__PURE__ */ React.createElement("div", { className: "text-center py-24 fade-up" }, /* @__PURE__ */ React.createElement(FileText, { size: 48, className: "mx-auto mb-4 text-stone-400" }), /* @__PURE__ */ React.createElement("div", { className: "display text-3xl font-bold mb-2" }, "Library is empty"), /* @__PURE__ */ React.createElement("p", { className: "text-stone-600 mb-6" }, "Create your first quiz to get started."), /* @__PURE__ */ React.createElement("button", { onClick: onCreate, className: "bg-stone-900 text-stone-50 px-6 py-3 mono text-xs uppercase tracking-widest hover:bg-amber-700 transition-colors" }, "Create a quiz"));
+  }
+  const q = query.trim().toLowerCase();
+  let filtered = q ? quizzes.filter(
+    (quiz) => quiz.title.toLowerCase().includes(q) || (quiz.description || "").toLowerCase().includes(q)
+  ) : quizzes;
+  const sorted = [...filtered].sort((a, b) => {
+    const sa = stats[a.id] || {};
+    const sb = stats[b.id] || {};
+    switch (sort) {
+      case "oldest":
+        return (a.created || 0) - (b.created || 0);
+      case "title":
+        return a.title.localeCompare(b.title);
+      case "size":
+        return b.questions.length - a.questions.length;
+      case "best":
+        return (sb.bestPercent || -1) - (sa.bestPercent || -1);
+      case "newest":
+      default:
+        return (b.created || 0) - (a.created || 0);
+    }
+  });
+  return /* @__PURE__ */ React.createElement("div", { className: "fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-end justify-between mb-8 border-b-2 border-stone-900 pb-4 gap-4 flex-wrap" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-[0.3em] text-stone-500 mb-2" }, "Your quizzes"), /* @__PURE__ */ React.createElement("h1", { className: "display text-5xl font-black" }, "Library")), /* @__PURE__ */ React.createElement("button", { onClick: onCreate, className: "bg-stone-900 text-stone-50 px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-amber-700 transition-colors flex items-center gap-2" }, /* @__PURE__ */ React.createElement(Plus, { size: 14 }), " New")), /* @__PURE__ */ React.createElement("div", { className: "mb-6 flex gap-3 items-center flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "relative flex-1 min-w-[200px]" }, /* @__PURE__ */ React.createElement(Search, { size: 14, className: "absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none" }), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      value: query,
+      onChange: (e) => setQuery(e.target.value),
+      placeholder: "Search by title or description...",
+      className: "w-full pl-9 pr-3 py-2 border-2 border-stone-300 focus:border-stone-900 outline-none bg-white mono text-sm placeholder:text-stone-400"
+    }
+  )), /* @__PURE__ */ React.createElement(
+    "select",
+    {
+      value: sort,
+      onChange: (e) => setSort(e.target.value),
+      className: "py-2 px-3 border-2 border-stone-300 focus:border-stone-900 outline-none bg-white mono text-xs uppercase tracking-widest"
+    },
+    /* @__PURE__ */ React.createElement("option", { value: "newest" }, "Newest first"),
+    /* @__PURE__ */ React.createElement("option", { value: "oldest" }, "Oldest first"),
+    /* @__PURE__ */ React.createElement("option", { value: "title" }, "Title A\u2013Z"),
+    /* @__PURE__ */ React.createElement("option", { value: "size" }, "Most questions"),
+    /* @__PURE__ */ React.createElement("option", { value: "best" }, "Best score")
+  )), sorted.length === 0 && /* @__PURE__ */ React.createElement("div", { className: "text-center py-12 border-2 border-dashed border-stone-300" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500" }, 'No quizzes match "', query, '"')), /* @__PURE__ */ React.createElement("div", { className: "grid gap-4" }, sorted.map((quiz, i) => {
+    const s = stats[quiz.id] || {};
+    const hasStats = s.attempts > 0;
+    const isExpanded = expandedStats === quiz.id;
+    return /* @__PURE__ */ React.createElement("div", { key: quiz.id, className: `group border-2 border-stone-900 transition-colors fade-up stagger-${Math.min(i + 1, 4)} ${isExpanded ? "bg-stone-50" : "hover:bg-stone-100"}` }, /* @__PURE__ */ React.createElement("div", { className: "p-6" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-start justify-between gap-6 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "flex-1 min-w-0" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-widest text-stone-500 mb-1" }, quiz.lastOpenedAt ? `Last opened ${formatRelativeTime(quiz.lastOpenedAt)}` : quiz.created ? `Created ${formatRelativeTime(quiz.created)}` : "New"), /* @__PURE__ */ React.createElement("h3", { className: "display text-3xl font-bold mb-2" }, quiz.title), quiz.description && /* @__PURE__ */ React.createElement("p", { className: "text-stone-600 mb-2" }, quiz.description), /* @__PURE__ */ React.createElement("div", { className: "mono text-xs text-stone-500 uppercase tracking-widest flex gap-4 flex-wrap items-center" }, /* @__PURE__ */ React.createElement("span", null, quiz.questions.length, " ", quiz.questions.length === 1 ? "question" : "questions"), hasStats ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("span", { className: "text-stone-400" }, "\xB7"), /* @__PURE__ */ React.createElement("span", null, "Taken ", s.attempts, "\xD7"), /* @__PURE__ */ React.createElement("span", { className: "text-amber-700" }, "Best ", s.bestPercent, "%"), /* @__PURE__ */ React.createElement("span", null, "Last ", s.lastPercent, "%"), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => setExpandedStats(isExpanded ? null : quiz.id),
+        className: "text-stone-700 hover:text-amber-700 flex items-center gap-1 underline"
+      },
+      isExpanded ? /* @__PURE__ */ React.createElement(React.Fragment, null, "Hide stats ", /* @__PURE__ */ React.createElement(ChevronUp, { size: 12 })) : /* @__PURE__ */ React.createElement(React.Fragment, null, "View stats ", /* @__PURE__ */ React.createElement(ChevronDown, { size: 12 }))
+    )) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("span", { className: "text-stone-400" }, "\xB7"), /* @__PURE__ */ React.createElement("span", { className: "text-stone-400" }, "Never taken")))), /* @__PURE__ */ React.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => onStart(quiz),
+        className: "bg-amber-700 text-stone-50 px-4 py-2 mono text-xs uppercase tracking-widest hover:bg-stone-900 transition-colors flex items-center gap-1"
+      },
+      /* @__PURE__ */ React.createElement(Play, { size: 12 }),
+      " Start"
+    ), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => onEdit(quiz),
+        className: "border-2 border-stone-900 px-4 py-2 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors flex items-center gap-1"
+      },
+      /* @__PURE__ */ React.createElement(Edit3, { size: 12 }),
+      " Edit"
+    ), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => downloadQuiz(quiz),
+        title: "Download as .txt",
+        className: "border-2 border-stone-300 text-stone-500 px-3 py-2 hover:border-stone-900 hover:text-stone-900 transition-colors"
+      },
+      /* @__PURE__ */ React.createElement(Download, { size: 14 })
+    ), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: async () => {
+          const ok = await confirm({ title: "Delete quiz", message: `Delete "${quiz.title}"? This cannot be undone.`, confirmLabel: "Delete", danger: true });
+          if (ok) onDelete(quiz.id);
+        },
+        title: "Delete",
+        className: "border-2 border-stone-300 text-stone-500 px-3 py-2 hover:border-red-600 hover:text-red-600 transition-colors"
+      },
+      /* @__PURE__ */ React.createElement(Trash2, { size: 14 })
+    )))), isExpanded && hasStats && /* @__PURE__ */ React.createElement(
+      QuizStatsPanel,
+      {
+        quizId: quiz.id,
+        quizTitle: quiz.title,
+        stats: s,
+        onReset: async () => {
+          const ok = await confirm({ title: "Reset stats", message: `Reset stats for "${quiz.title}"? This cannot be undone. The quiz itself will be kept.`, confirmLabel: "Reset stats", danger: true });
+          if (ok) {
+            onResetStats(quiz.id);
+            setExpandedStats(null);
+          }
+        }
+      }
+    ));
+  })));
+}
+function formatDuration(ms) {
+  if (!ms || ms < 0) return "\u2014";
+  const totalSec = Math.floor(ms / 1e3);
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor(totalSec % 3600 / 60);
+  const s = totalSec % 60;
+  if (h > 0) return `${h}h ${m}m ${s}s`;
+  if (m > 0) return `${m}m ${s.toString().padStart(2, "0")}s`;
+  return `${s}s`;
+}
+function formatRelativeTime(timestamp) {
+  if (!timestamp) return "\u2014";
+  const diff = Date.now() - timestamp;
+  const minute = 6e4, hour = 36e5, day = 864e5, week = 7 * day, month = 30 * day;
+  if (diff < minute) return "just now";
+  if (diff < hour) return Math.floor(diff / minute) + "m ago";
+  if (diff < day) return Math.floor(diff / hour) + "h ago";
+  if (diff < week) return Math.floor(diff / day) + "d ago";
+  if (diff < month) return Math.floor(diff / week) + "w ago";
+  return new Date(timestamp).toLocaleDateString(void 0, { month: "short", day: "numeric", year: "numeric" });
+}
+function QuizStatsPanel({ quizId, quizTitle, stats, onReset }) {
+  const recent = (stats.recent || []).slice(0, 10);
+  const average = recent.length > 0 ? Math.round(recent.reduce((sum, r) => sum + r.percent, 0) / recent.length) : 0;
+  const chrono = [...recent].reverse();
+  const maxH = 40;
+  const barWidth = chrono.length > 0 ? Math.max(6, Math.min(24, Math.floor(240 / chrono.length) - 2)) : 0;
+  return /* @__PURE__ */ React.createElement("div", { className: "border-t-2 border-stone-900 p-6 bg-white fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between mb-4 gap-4 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 flex items-center gap-2" }, /* @__PURE__ */ React.createElement(BarChart3, { size: 14 }), " Stats for this quiz"), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: onReset,
+      className: "mono text-xs uppercase tracking-widest border-2 border-red-600 text-red-600 px-3 py-1 hover:bg-red-600 hover:text-white transition-colors flex items-center gap-1"
+    },
+    /* @__PURE__ */ React.createElement(RotateCcw, { size: 10 }),
+    " Reset stats"
+  )), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-0 border-2 border-stone-900 mb-6" }, /* @__PURE__ */ React.createElement(StatCell, { value: stats.attempts || 0, label: "Attempts" }), /* @__PURE__ */ React.createElement(StatCell, { value: (stats.bestPercent || 0) + "%", label: "Best", border: true, accent: true }), /* @__PURE__ */ React.createElement(StatCell, { value: (stats.lastPercent || 0) + "%", label: "Last", border: true }), /* @__PURE__ */ React.createElement(StatCell, { value: average + "%", label: "Recent avg", border: true })), chrono.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "mb-6" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-3" }, "Recent trend (", chrono.length, " ", chrono.length === 1 ? "attempt" : "attempts", ", oldest \u2192 newest)"), /* @__PURE__ */ React.createElement("div", { className: "flex items-end gap-1 h-12 border-b border-stone-300 pb-0" }, chrono.map((r, idx) => {
+    const h = Math.max(3, Math.round(r.percent / 100 * maxH));
+    const color = r.percent >= 80 ? "bg-emerald-600" : r.percent >= 60 ? "bg-amber-600" : r.percent >= 40 ? "bg-amber-400" : "bg-red-500";
+    return /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        key: idx,
+        title: `${r.percent}% (${r.score} of ${r.total}) \xB7 ${formatRelativeTime(r.takenAt)}`,
+        className: `${color} transition-all`,
+        style: { width: barWidth + "px", height: h + "px" }
+      }
+    );
+  }))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-3" }, "Recent attempts"), /* @__PURE__ */ React.createElement("div", { className: "space-y-1" }, recent.map((r, idx) => /* @__PURE__ */ React.createElement("div", { key: idx, className: "flex items-center justify-between py-2 px-3 border border-stone-200 bg-stone-50 text-sm" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-3" }, /* @__PURE__ */ React.createElement("span", { className: "mono text-xs text-stone-500 w-8" }, "#", stats.attempts - idx), /* @__PURE__ */ React.createElement("span", { className: `mono text-xs font-semibold ${r.percent >= 80 ? "text-emerald-700" : r.percent >= 60 ? "text-amber-700" : r.percent >= 40 ? "text-amber-600" : "text-red-600"}` }, r.percent, "%"), /* @__PURE__ */ React.createElement("span", { className: "text-stone-600" }, r.score, " / ", r.total, " correct")), /* @__PURE__ */ React.createElement("span", { className: "mono text-xs text-stone-500" }, formatRelativeTime(r.takenAt)))))));
+}
+function CreateHub({ mode, setMode, initial, onSave, onSaveMany, onCancel }) {
+  useEffect(() => {
+    if (initial) setMode("manual");
+  }, [initial]);
+  return /* @__PURE__ */ React.createElement("div", { className: "fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "border-b-2 border-stone-900 pb-4 mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-[0.3em] text-stone-500 mb-2" }, initial ? "Editing" : "New quiz"), /* @__PURE__ */ React.createElement("h1", { className: "display text-5xl font-black" }, initial ? "Edit Quiz" : "Create a Quiz")), !initial && /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-0 mb-8 border-2 border-stone-900" }, /* @__PURE__ */ React.createElement(ModeTab, { active: mode === "manual", onClick: () => setMode("manual"), icon: /* @__PURE__ */ React.createElement(Edit3, { size: 16 }), label: "Manual", subtitle: "Build each question by hand" }), /* @__PURE__ */ React.createElement(ModeTab, { active: mode === "import", onClick: () => setMode("import"), icon: /* @__PURE__ */ React.createElement(Upload, { size: 16 }), label: "Import", subtitle: "From .txt or pasted text" })), mode === "manual" && /* @__PURE__ */ React.createElement(ManualCreate, { initial, onSave, onCancel }), mode === "import" && /* @__PURE__ */ React.createElement(ImportCreate, { onSave, onSaveMany, onCancel }));
+}
+function ModeTab({ active, onClick, icon, label, subtitle }) {
+  return /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick,
+      className: `p-4 text-left transition-colors border-r-2 border-stone-900 last:border-r-0 ${active ? "bg-stone-900 text-stone-50" : "bg-stone-50 hover:bg-stone-100"}`
+    },
+    /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2 mb-1" }, icon, /* @__PURE__ */ React.createElement("span", { className: "mono text-xs uppercase tracking-widest font-semibold" }, label)),
+    /* @__PURE__ */ React.createElement("div", { className: `text-xs ${active ? "text-stone-400" : "text-stone-500"}` }, subtitle)
+  );
+}
+function ManualCreate({ initial, onSave, onCancel }) {
+  const [title, setTitle] = useState(initial?.title || "");
+  const [description, setDescription] = useState(initial?.description || "");
+  const [questions, setQuestions] = useState(
+    initial?.questions || [{ q: "", options: ["", "", "", ""], correct: 0, explain: "" }]
+  );
+  const [saveError, setSaveError] = useState("");
+  function updateQuestion(i, patch) {
+    setQuestions((prev) => prev.map((q, idx) => idx === i ? { ...q, ...patch } : q));
+  }
+  function updateOption(qi, oi, value) {
+    setQuestions((prev) => prev.map((q, idx) => {
+      if (idx !== qi) return q;
+      const options = [...q.options];
+      options[oi] = value;
+      return { ...q, options };
+    }));
+  }
+  function addOption(qi) {
+    setQuestions((prev) => prev.map((q, idx) => {
+      if (idx !== qi) return q;
+      if (q.options.length >= MAX_OPTIONS) return q;
+      return { ...q, options: [...q.options, ""] };
+    }));
+  }
+  function removeOption(qi, oi) {
+    setQuestions((prev) => prev.map((q, idx) => {
+      if (idx !== qi) return q;
+      if (q.options.length <= MIN_OPTIONS) return q;
+      const options = q.options.filter((_, i) => i !== oi);
+      let correct = q.correct;
+      if (oi === q.correct) correct = 0;
+      else if (oi < q.correct) correct = q.correct - 1;
+      return { ...q, options, correct };
+    }));
+  }
+  function addQuestion() {
+    setQuestions((prev) => [...prev, { q: "", options: ["", "", "", ""], correct: 0, explain: "" }]);
+  }
+  function removeQuestion(i) {
+    if (questions.length === 1) return;
+    setQuestions((prev) => prev.filter((_, idx) => idx !== i));
+  }
+  function moveQuestion(i, direction) {
+    const targetIdx = direction === "up" ? i - 1 : i + 1;
+    if (targetIdx < 0 || targetIdx >= questions.length) return;
+    setQuestions((prev) => {
+      const copy = [...prev];
+      [copy[i], copy[targetIdx]] = [copy[targetIdx], copy[i]];
+      return copy;
+    });
+  }
+  function handleSave() {
+    if (!title.trim()) {
+      setSaveError("Please give your quiz a title.");
+      return;
+    }
+    const incompleteIdx = questions.findIndex((q) => !q.q.trim() || q.options.some((o) => !o.trim()));
+    if (incompleteIdx !== -1) {
+      const q = questions[incompleteIdx];
+      if (!q.q.trim()) {
+        setSaveError(`Question ${incompleteIdx + 1} is missing its prompt.`);
+      } else {
+        setSaveError(`Question ${incompleteIdx + 1} has one or more empty answer options.`);
+      }
+      return;
+    }
+    setSaveError("");
+    onSave({
+      id: initial?.id || "q-" + Date.now(),
+      title: title.trim(),
+      description: description.trim(),
+      created: initial?.created || Date.now(),
+      questions
+    });
+  }
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "flex justify-end gap-2 mb-6" }, /* @__PURE__ */ React.createElement("button", { onClick: onCancel, className: "border-2 border-stone-900 px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors" }, "Cancel"), /* @__PURE__ */ React.createElement("button", { onClick: handleSave, className: "bg-amber-700 text-stone-50 px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 transition-colors flex items-center gap-2" }, /* @__PURE__ */ React.createElement(Check, { size: 14 }), " Save Quiz")), saveError && /* @__PURE__ */ React.createElement("div", { className: "border-l-4 border-red-600 bg-red-50 p-4 mb-6 fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-red-700 mb-1" }, "Can't save yet"), /* @__PURE__ */ React.createElement("p", { className: "text-sm text-stone-700" }, saveError)), /* @__PURE__ */ React.createElement("div", { className: "space-y-4 mb-8" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "mono text-xs uppercase tracking-widest text-stone-500 block mb-2" }, "Title"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      value: title,
+      onChange: (e) => setTitle(e.target.value),
+      placeholder: "e.g., Ancient History",
+      className: "w-full display text-4xl font-bold bg-transparent border-b-2 border-stone-300 focus:border-stone-900 outline-none pb-2 placeholder:text-stone-300"
+    }
+  )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "mono text-xs uppercase tracking-widest text-stone-500 block mb-2" }, "Description (optional)"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      value: description,
+      onChange: (e) => setDescription(e.target.value),
+      placeholder: "What's this quiz about?",
+      className: "w-full text-lg bg-transparent border-b-2 border-stone-300 focus:border-stone-900 outline-none pb-2 placeholder:text-stone-300"
+    }
+  ))), /* @__PURE__ */ React.createElement("div", { className: "space-y-6" }, questions.map((q, qi) => /* @__PURE__ */ React.createElement("div", { key: qi, className: "border-2 border-stone-900 p-6 bg-stone-50" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between mb-4" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500" }, "Question ", String(qi + 1).padStart(2, "0")), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-1" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => moveQuestion(qi, "up"),
+      disabled: qi === 0,
+      title: "Move up",
+      className: "p-1 text-stone-400 hover:text-stone-900 disabled:opacity-30 disabled:hover:text-stone-400 transition-colors"
+    },
+    /* @__PURE__ */ React.createElement(ArrowUp, { size: 16 })
+  ), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => moveQuestion(qi, "down"),
+      disabled: qi === questions.length - 1,
+      title: "Move down",
+      className: "p-1 text-stone-400 hover:text-stone-900 disabled:opacity-30 disabled:hover:text-stone-400 transition-colors"
+    },
+    /* @__PURE__ */ React.createElement(ArrowDown, { size: 16 })
+  ), /* @__PURE__ */ React.createElement("span", { className: "w-2" }), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => removeQuestion(qi),
+      disabled: questions.length === 1,
+      title: "Delete question",
+      className: "p-1 text-stone-400 hover:text-red-600 disabled:opacity-30 disabled:hover:text-stone-400 transition-colors"
+    },
+    /* @__PURE__ */ React.createElement(Trash2, { size: 16 })
+  ))), /* @__PURE__ */ React.createElement(
+    "textarea",
+    {
+      value: q.q,
+      onChange: (e) => updateQuestion(qi, { q: e.target.value }),
+      placeholder: "What's your question?",
+      rows: 2,
+      className: "w-full display text-2xl font-medium bg-transparent border-b border-stone-300 focus:border-stone-900 outline-none pb-2 mb-6 placeholder:text-stone-300 resize-none"
+    }
+  ), /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-3" }, "Options \xB7 Click the circle to mark the correct answer"), /* @__PURE__ */ React.createElement("div", { className: "space-y-2 mb-2" }, q.options.map((opt, oi) => /* @__PURE__ */ React.createElement("div", { key: oi, className: "flex items-center gap-3" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => updateQuestion(qi, { correct: oi }),
+      className: `w-7 h-7 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition-colors ${q.correct === oi ? "bg-amber-700 border-amber-700 text-stone-50" : "border-stone-400 hover:border-stone-900"}`
+    },
+    q.correct === oi && /* @__PURE__ */ React.createElement(Check, { size: 14 })
+  ), /* @__PURE__ */ React.createElement("span", { className: "mono text-xs text-stone-500 w-4" }, String.fromCharCode(65 + oi)), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      value: opt,
+      onChange: (e) => updateOption(qi, oi, e.target.value),
+      placeholder: `Option ${String.fromCharCode(65 + oi)}`,
+      className: "flex-1 bg-transparent border-b border-stone-200 focus:border-stone-900 outline-none py-1 placeholder:text-stone-300"
+    }
+  ), q.options.length > MIN_OPTIONS && /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => removeOption(qi, oi),
+      title: "Remove option",
+      className: "p-1 text-stone-300 hover:text-red-600 transition-colors flex-shrink-0"
+    },
+    /* @__PURE__ */ React.createElement(X, { size: 14 })
+  )))), /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between mb-4 flex-wrap gap-2" }, q.options.length < MAX_OPTIONS ? /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => addOption(qi),
+      className: "mono text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition-colors flex items-center gap-1"
+    },
+    /* @__PURE__ */ React.createElement(Plus, { size: 12 }),
+    " Add option"
+  ) : /* @__PURE__ */ React.createElement("span", { className: "mono text-[10px] uppercase tracking-widest text-stone-400" }, "Max ", MAX_OPTIONS, " options"), /* @__PURE__ */ React.createElement("span", { className: "mono text-[10px] uppercase tracking-widest text-stone-400" }, q.options.length, " option", q.options.length === 1 ? "" : "s")), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "mono text-xs uppercase tracking-widest text-stone-500 block mb-2" }, "Explanation (optional)"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      value: q.explain,
+      onChange: (e) => updateQuestion(qi, { explain: e.target.value }),
+      placeholder: "Shown after answering",
+      className: "w-full bg-transparent border-b border-stone-200 focus:border-stone-900 outline-none py-1 placeholder:text-stone-300 italic"
+    }
+  ))))), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: addQuestion,
+      className: "w-full mt-6 border-2 border-dashed border-stone-400 py-6 mono text-xs uppercase tracking-widest text-stone-500 hover:border-stone-900 hover:text-stone-900 transition-colors flex items-center justify-center gap-2"
+    },
+    /* @__PURE__ */ React.createElement(Plus, { size: 16 }),
+    " Add question"
+  ));
+}
+const IMPORT_EXAMPLE = `Title: World Capitals
+Description: Test your geography knowledge
+
+Q: What is the capital of France?
+A. London
+*B. Paris
+C. Berlin
+D. Madrid
+Explain: Paris has been France's capital since the 10th century.
+
+Q: What is the capital of Japan?
+A. Osaka
+B. Kyoto
+*C. Tokyo
+D. Seoul
+Explain: Tokyo became the capital in 1868, replacing Kyoto.`;
+function parseSingleQuizText(text) {
+  const lines = text.split(/\r?\n/);
+  let title = "Imported Quiz";
+  let description = "";
+  const questions = [];
+  let current = null;
+  const errors = [];
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) continue;
+    const titleMatch = line.match(/^Title\s*:\s*(.+)$/i);
+    const descMatch = line.match(/^Description\s*:\s*(.+)$/i);
+    const qMatch = line.match(/^Q\s*[:.]?\s*(.+)$/i);
+    const optMatch = line.match(/^(\*?)\s*([A-Za-z])\s*[.):]\s*(.+)$/);
+    const explainMatch = line.match(/^Explain\s*:\s*(.+)$/i);
+    if (titleMatch && !current) {
+      title = titleMatch[1].trim();
+    } else if (descMatch && !current) {
+      description = descMatch[1].trim();
+    } else if (qMatch) {
+      if (current) questions.push(current);
+      current = { q: qMatch[1].trim(), options: [], correct: -1, explain: "" };
+    } else if (optMatch && current) {
+      const isCorrect = optMatch[1] === "*";
+      const letter = optMatch[2].toUpperCase();
+      const optText = optMatch[3].trim();
+      const idx = letter.charCodeAt(0) - 65;
+      if (idx >= MAX_OPTIONS) continue;
+      while (current.options.length <= idx) current.options.push("");
+      current.options[idx] = optText;
+      if (isCorrect) current.correct = idx;
+    } else if (explainMatch && current) {
+      current.explain = explainMatch[1].trim();
+    }
+  }
+  if (current) questions.push(current);
+  questions.forEach((q, i) => {
+    if (!q.q) errors.push(`Question ${i + 1}: missing prompt`);
+    if (q.options.length < MIN_OPTIONS) errors.push(`Question ${i + 1}: needs at least ${MIN_OPTIONS} options`);
+    if (q.options.length > MAX_OPTIONS) errors.push(`Question ${i + 1}: more than ${MAX_OPTIONS} options`);
+    if (q.options.some((o) => !o)) errors.push(`Question ${i + 1}: has empty options`);
+    if (q.correct < 0) errors.push(`Question ${i + 1}: no correct answer marked (use * before the letter)`);
+  });
+  if (questions.length === 0) errors.push("No questions found. Check the format.");
+  return { title, description, questions, errors };
+}
+function parseImportText(text) {
+  let working = text;
+  if (/^\s*Quizzical Library Export/i.test(working)) {
+    const firstSep = working.search(/^={5,}\s*$/m);
+    if (firstSep !== -1) {
+      working = working.slice(firstSep);
+    }
+  }
+  const sections = working.split(/^={5,}\s*$/m).map((s) => s.trim()).filter((s) => s.length > 0);
+  if (sections.length <= 1) {
+    return parseSingleQuizText(working);
+  }
+  const quizzes = [];
+  const allErrors = [];
+  sections.forEach((section, idx) => {
+    const result = parseSingleQuizText(section);
+    if (result.errors.length > 0) {
+      result.errors.forEach((err) => {
+        allErrors.push(`Quiz ${idx + 1} (${result.title}): ${err}`);
+      });
+    } else {
+      quizzes.push({
+        title: result.title,
+        description: result.description,
+        questions: result.questions
+      });
+    }
+  });
+  return { multi: true, quizzes, errors: allErrors };
+}
+function serializeQuizToText(quiz) {
+  const lines = [];
+  lines.push(`Title: ${quiz.title}`);
+  if (quiz.description) lines.push(`Description: ${quiz.description}`);
+  lines.push("");
+  quiz.questions.forEach((q, qi) => {
+    lines.push(`Q: ${q.q}`);
+    q.options.forEach((opt, oi) => {
+      const prefix = oi === q.correct ? "*" : "";
+      const letter = String.fromCharCode(65 + oi);
+      lines.push(`${prefix}${letter}. ${opt}`);
+    });
+    if (q.explain) lines.push(`Explain: ${q.explain}`);
+    if (qi < quiz.questions.length - 1) lines.push("");
+  });
+  return lines.join("\n");
+}
+function downloadQuiz(quiz) {
+  const text = serializeQuizToText(quiz);
+  const safeName = (quiz.title || "quiz").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60) || "quiz";
+  const filename = `${safeName}.txt`;
+  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1e3);
+}
+function downloadAllQuizzes(quizzes) {
+  if (!quizzes || quizzes.length === 0) return;
+  const separator = "\n\n" + "=".repeat(60) + "\n\n";
+  const parts = quizzes.map((q) => serializeQuizToText(q));
+  const text = `Quizzical Library Export
+Exported: ${(/* @__PURE__ */ new Date()).toISOString()}
+Quizzes: ${quizzes.length}
+` + separator + parts.join(separator);
+  const date = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
+  const filename = `quizzical-library-${date}.txt`;
+  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1e3);
+}
+function ImportCreate({ onSave, onSaveMany, onCancel }) {
+  const [text, setText] = useState("");
+  const [preview, setPreview] = useState(null);
+  const [errors, setErrors] = useState([]);
+  const [showInstructions, setShowInstructions] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
+  const EXTERNAL_AI_PROMPT = `${AI_INSTRUCTIONS}
+
+---
+
+OUTPUT FORMAT \u2014 follow exactly. Start with a Title line and a Description line (both required), then the questions. Plain text only, no JSON, no markdown, no commentary:
+
+Title: [a short, specific quiz title in Title Case]
+Description: [one sentence describing what the quiz covers]
+
+Q: [Question text]
+A. [Option A]
+*B. [Option B]
+C. [Option C]
+D. [Option D]
+Explain: [One-sentence explanation]
+
+Q: [Next question text]
+...
+
+FORMATTING RULES:
+- The Title line and Description line are both required, and come first, before any questions.
+- Each question starts with "Q:" followed by the question text.
+- List between 2 and 8 options labeled A., B., C., etc. on separate lines. Four options is typical \u2014 use more or fewer only when the material naturally calls for it.
+- Mark the correct answer by placing an asterisk (*) directly before its letter, like "*B. Paris".
+- Include an optional "Explain:" line after each question.
+- Leave a blank line between questions.
+- Do not add any text outside this format.
+
+TOPIC: [Replace with your topic]
+NUMBER OF QUESTIONS: [Replace with how many you want]
+DIFFICULTY: [easy / medium / hard]`;
+  async function copyPrompt() {
+    try {
+      await navigator.clipboard.writeText(EXTERNAL_AI_PROMPT);
+      setCopied(true);
+      setCopyFailed(false);
+      setTimeout(() => setCopied(false), 2e3);
+    } catch (e) {
+      setCopyFailed(true);
+      setTimeout(() => setCopyFailed(false), 4e3);
+    }
+  }
+  function handleFile(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => setText(ev.target.result);
+    reader.readAsText(file);
+  }
+  function handleParse() {
+    if (!text.trim()) {
+      setErrors(["Please paste some text or upload a file first."]);
+      setPreview(null);
+      return;
+    }
+    const result = parseImportText(text);
+    if (result.errors.length > 0) {
+      setErrors(result.errors);
+      setPreview(null);
+    } else {
+      setErrors([]);
+      setPreview(result);
+    }
+  }
+  function handleImport() {
+    if (!preview) return;
+    if (preview.multi) {
+      const now = Date.now();
+      const quizzesToSave = preview.quizzes.map((p, idx) => ({
+        id: "q-" + (now + idx),
+        title: p.title,
+        description: p.description,
+        created: now + idx,
+        questions: p.questions.map((q) => ({ ...q, options: [...q.options] }))
+      }));
+      onSaveMany(quizzesToSave);
+    } else {
+      onSave({
+        id: "q-" + Date.now(),
+        title: preview.title,
+        description: preview.description,
+        created: Date.now(),
+        questions: preview.questions.map((q) => ({ ...q, options: [...q.options] }))
+      });
+    }
+  }
+  function loadExample() {
+    setText(IMPORT_EXAMPLE);
+    setErrors([]);
+    setPreview(null);
+  }
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "dark-card p-6 mb-6" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-start gap-3" }, /* @__PURE__ */ React.createElement(Info, { size: 18, className: "mt-1 flex-shrink-0 text-amber-400" }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-amber-400 mb-3" }, "Format Guide"), /* @__PURE__ */ React.createElement("ol", { className: "text-stone-300 text-sm leading-relaxed mb-3 space-y-1 list-decimal list-inside" }, /* @__PURE__ */ React.createElement("li", null, "Start with a ", /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "Title:"), " line, then a ", /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "Description:"), " line"), /* @__PURE__ */ React.createElement("li", null, "Each question begins with ", /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "Q:")), /* @__PURE__ */ React.createElement("li", null, "List ", MIN_OPTIONS, "\u2013", MAX_OPTIONS, " options as ", /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "A."), ", ", /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "B."), ", ", /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "C."), ", \u2026 (four is typical)"), /* @__PURE__ */ React.createElement("li", null, "Mark the correct answer with an asterisk, e.g. ", /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "*B. Paris")), /* @__PURE__ */ React.createElement("li", null, "Optional ", /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "Explain:"), " line after each question")), /* @__PURE__ */ React.createElement("p", { className: "text-stone-400 text-xs leading-relaxed mb-3" }, 'To import multiple quizzes at once (e.g. a "Download all" backup), separate each quiz with a line of ', /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "======"), " characters."), /* @__PURE__ */ React.createElement("button", { onClick: loadExample, className: "mono text-xs uppercase tracking-widest text-amber-400 hover:text-amber-200 underline" }, "Load an example \u2192")))), /* @__PURE__ */ React.createElement("div", { className: "border-2 border-stone-900 mb-6" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => setShowInstructions(!showInstructions),
+      className: "w-full p-4 flex items-center justify-between hover:bg-stone-100 transition-colors"
+    },
+    /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-3 text-left" }, /* @__PURE__ */ React.createElement(Wand2, { size: 16, className: "text-stone-500 flex-shrink-0" }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest font-semibold" }, "AI Instructions for External Use"), /* @__PURE__ */ React.createElement("div", { className: "text-xs text-stone-500 mt-0.5" }, "Copy these instructions to use with ChatGPT, Claude, or any AI tool, then paste the result below"))),
+    showInstructions ? /* @__PURE__ */ React.createElement(ChevronUp, { size: 16 }) : /* @__PURE__ */ React.createElement(ChevronDown, { size: 16 })
+  ), showInstructions && /* @__PURE__ */ React.createElement("div", { className: "border-t-2 border-stone-900 p-4 bg-stone-50 fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between mb-3 gap-2 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-widest text-stone-500" }, "Paste this entire block into an AI chat, then bring the output back here"), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: copyPrompt,
+      className: `mono text-xs uppercase tracking-widest border-2 px-3 py-1 transition-colors flex items-center gap-1 ${copied ? "border-emerald-600 bg-emerald-600 text-white" : copyFailed ? "border-red-600 text-red-600" : "border-stone-900 hover:bg-stone-900 hover:text-stone-50"}`
+    },
+    copied ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Check, { size: 10 }), " Copied") : copyFailed ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(X, { size: 10 }), " Copy failed") : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Copy, { size: 10 }), " Copy prompt")
+  )), copyFailed && /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-widest text-red-600 mb-2" }, "Auto-copy blocked. Select the text below and copy manually."), /* @__PURE__ */ React.createElement("pre", { className: "mono text-xs text-stone-700 whitespace-pre-wrap bg-white border border-stone-300 p-3 max-h-64 overflow-y-auto leading-relaxed" }, EXTERNAL_AI_PROMPT))), /* @__PURE__ */ React.createElement("div", { className: "mb-4 flex items-center gap-3 flex-wrap" }, /* @__PURE__ */ React.createElement("label", { className: "border-2 border-stone-900 px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors cursor-pointer flex items-center gap-2" }, /* @__PURE__ */ React.createElement(Upload, { size: 14 }), " Upload .txt file", /* @__PURE__ */ React.createElement("input", { type: "file", accept: ".txt,text/plain", onChange: handleFile, className: "hidden" })), /* @__PURE__ */ React.createElement("span", { className: "mono text-xs text-stone-500 uppercase tracking-widest" }, "or paste below")), /* @__PURE__ */ React.createElement(
+    "textarea",
+    {
+      value: text,
+      onChange: (e) => setText(e.target.value),
+      placeholder: "Paste your quiz text here, or use the Upload button above...",
+      rows: 14,
+      className: "w-full mono text-sm bg-white border-2 border-stone-300 focus:border-stone-900 outline-none p-4 placeholder:text-stone-400"
+    }
+  ), /* @__PURE__ */ React.createElement("div", { className: "mt-4 flex justify-between items-center flex-wrap gap-2" }, /* @__PURE__ */ React.createElement("button", { onClick: handleParse, className: "bg-stone-900 text-stone-50 px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-amber-700 transition-colors" }, "Preview import"), /* @__PURE__ */ React.createElement("button", { onClick: onCancel, className: "border-2 border-stone-900 px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors" }, "Cancel")), errors.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "mt-6 border-l-4 border-red-600 bg-red-50 p-4 fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-red-700 mb-2" }, "Errors"), /* @__PURE__ */ React.createElement("ul", { className: "text-sm text-stone-700 space-y-1" }, errors.map((e, i) => /* @__PURE__ */ React.createElement("li", { key: i }, "\u2022 ", e)))), preview && !preview.multi && /* @__PURE__ */ React.createElement("div", { className: "mt-6 border-2 border-emerald-600 bg-emerald-50 p-6 fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-emerald-700 mb-4" }, "\u2713 Parsed successfully"), /* @__PURE__ */ React.createElement("h3", { className: "display text-3xl font-bold mb-1" }, preview.title), preview.description && /* @__PURE__ */ React.createElement("p", { className: "text-stone-600 mb-2" }, preview.description), /* @__PURE__ */ React.createElement("p", { className: "mono text-xs text-stone-500 uppercase tracking-widest mb-4" }, preview.questions.length, " questions"), /* @__PURE__ */ React.createElement("div", { className: "space-y-2 mb-6 max-h-64 overflow-y-auto" }, preview.questions.map((q, i) => /* @__PURE__ */ React.createElement("div", { key: i, className: "text-sm bg-white p-3 border border-stone-200" }, /* @__PURE__ */ React.createElement("div", { className: "font-semibold" }, i + 1, ". ", q.q), /* @__PURE__ */ React.createElement("div", { className: "text-emerald-700 text-xs mt-1" }, "\u2713 ", q.options[q.correct])))), /* @__PURE__ */ React.createElement("button", { onClick: handleImport, className: "bg-emerald-700 text-white px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 transition-colors flex items-center gap-2" }, /* @__PURE__ */ React.createElement(Check, { size: 14 }), " Import this quiz")), preview && preview.multi && /* @__PURE__ */ React.createElement("div", { className: "mt-6 border-2 border-emerald-600 bg-emerald-50 p-6 fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-emerald-700 mb-4" }, "\u2713 Parsed successfully \xB7 Multi-quiz file"), /* @__PURE__ */ React.createElement("div", { className: "display text-3xl font-bold mb-1" }, preview.quizzes.length, " quizzes ready to import"), /* @__PURE__ */ React.createElement("p", { className: "mono text-xs text-stone-500 uppercase tracking-widest mb-4" }, preview.quizzes.reduce((sum, q) => sum + q.questions.length, 0), " total questions"), /* @__PURE__ */ React.createElement("div", { className: "space-y-2 mb-6 max-h-80 overflow-y-auto" }, preview.quizzes.map((quiz, i) => /* @__PURE__ */ React.createElement("div", { key: i, className: "bg-white p-4 border border-stone-200" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-start justify-between gap-4" }, /* @__PURE__ */ React.createElement("div", { className: "flex-1 min-w-0" }, /* @__PURE__ */ React.createElement("div", { className: "font-semibold display text-lg" }, quiz.title), quiz.description && /* @__PURE__ */ React.createElement("div", { className: "text-xs text-stone-600 mt-1 italic" }, quiz.description)), /* @__PURE__ */ React.createElement("div", { className: "mono text-xs text-stone-500 uppercase tracking-widest flex-shrink-0" }, quiz.questions.length, " ", quiz.questions.length === 1 ? "q" : "qs"))))), /* @__PURE__ */ React.createElement("button", { onClick: handleImport, className: "bg-emerald-700 text-white px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 transition-colors flex items-center gap-2" }, /* @__PURE__ */ React.createElement(Check, { size: 14 }), " Import all ", preview.quizzes.length, " quizzes")));
+}
+function SettingsView({ settings, quizzes, stats, onChange, onReset, onClearLibrary, onClearStats, onImportQuizzes }) {
+  const confirm = useConfirm();
+  function toggle(key) {
+    onChange({ ...settings, [key]: !settings[key] });
+  }
+  const totalQuizzes = quizzes.length;
+  const totalQuestions = quizzes.reduce((sum, q) => sum + q.questions.length, 0);
+  const totalAttempts = Object.values(stats).reduce((sum, s) => sum + (s.attempts || 0), 0);
+  const quizzesWithStats = Object.values(stats).filter((s) => s.attempts > 0);
+  const avgBest = quizzesWithStats.length > 0 ? Math.round(quizzesWithStats.reduce((sum, s) => sum + (s.bestPercent || 0), 0) / quizzesWithStats.length) : null;
+  return /* @__PURE__ */ React.createElement("div", { className: "fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "border-b-2 border-stone-900 pb-4 mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-[0.3em] text-stone-500 mb-2" }, "Preferences and data"), /* @__PURE__ */ React.createElement("h1", { className: "display text-5xl font-black" }, "Settings")), /* @__PURE__ */ React.createElement("div", { className: "mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement("h2", { className: "display text-2xl font-bold" }, "At a Glance"), /* @__PURE__ */ React.createElement("p", { className: "text-stone-500 text-sm" }, "Your library and activity so far")), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-0 border-2 border-stone-900" }, /* @__PURE__ */ React.createElement(StatCell, { value: totalQuizzes, label: "Quizzes" }), /* @__PURE__ */ React.createElement(StatCell, { value: totalQuestions, label: "Questions", border: true }), /* @__PURE__ */ React.createElement(StatCell, { value: totalAttempts, label: "Attempts", border: true }), /* @__PURE__ */ React.createElement(StatCell, { value: avgBest === null ? "\u2014" : avgBest + "%", label: "Avg of bests", border: true, accent: true }))), /* @__PURE__ */ React.createElement(SettingGroup, { title: "Quiz Behavior", subtitle: "How questions are presented when you take a quiz" }, /* @__PURE__ */ React.createElement(
+    Toggle,
+    {
+      icon: /* @__PURE__ */ React.createElement(Shuffle, { size: 16 }),
+      label: "Shuffle question order",
+      description: "Randomize the order questions appear each time you take a quiz.",
+      value: settings.shuffleQuestions,
+      onChange: () => toggle("shuffleQuestions")
+    }
+  ), /* @__PURE__ */ React.createElement(
+    Toggle,
+    {
+      icon: /* @__PURE__ */ React.createElement(Shuffle, { size: 16 }),
+      label: "Shuffle answer options",
+      description: "Randomize the order of answer choices for each question.",
+      value: settings.shuffleOptions,
+      onChange: () => toggle("shuffleOptions")
+    }
+  ), /* @__PURE__ */ React.createElement(
+    Toggle,
+    {
+      icon: /* @__PURE__ */ React.createElement(Check, { size: 16 }),
+      label: "Immediate feedback",
+      description: "Show whether you're right or wrong after each question. Turn off to only see results at the end.",
+      value: settings.immediateFeedback,
+      onChange: () => toggle("immediateFeedback")
+    }
+  ), /* @__PURE__ */ React.createElement(
+    Toggle,
+    {
+      icon: /* @__PURE__ */ React.createElement(Info, { size: 16 }),
+      label: "Show explanations",
+      description: "Display the explanation text (when available) with feedback.",
+      value: settings.showExplanations,
+      onChange: () => toggle("showExplanations")
+    }
+  ), /* @__PURE__ */ React.createElement(
+    Toggle,
+    {
+      icon: /* @__PURE__ */ React.createElement(Clock, { size: 16 }),
+      label: "Show timer",
+      description: "Display an elapsed-time counter during the quiz and on the results screen. Useful for exam practice.",
+      value: settings.showTimer,
+      onChange: () => toggle("showTimer")
+    }
+  )), /* @__PURE__ */ React.createElement("div", { className: "mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement("h2", { className: "display text-2xl font-bold" }, "Appearance"), /* @__PURE__ */ React.createElement("p", { className: "text-stone-500 text-sm" }, "How the app looks and feels")), /* @__PURE__ */ React.createElement("div", { className: "border-2 border-stone-900 divide-y-2 divide-stone-900" }, /* @__PURE__ */ React.createElement(
+    Toggle,
+    {
+      icon: /* @__PURE__ */ React.createElement(Moon, { size: 16 }),
+      label: "Dark mode",
+      description: "Use a dark color scheme \u2014 easier on the eyes in low-light environments.",
+      value: settings.darkMode,
+      onChange: () => toggle("darkMode")
+    }
+  ), /* @__PURE__ */ React.createElement(
+    ChoiceRow,
+    {
+      icon: /* @__PURE__ */ React.createElement(FileText, { size: 16 }),
+      label: "Font size",
+      description: "Adjust the base text size across the app. Larger sizes improve readability.",
+      value: settings.fontSize,
+      options: [
+        { value: "small", label: "Small" },
+        { value: "normal", label: "Normal" },
+        { value: "large", label: "Large" }
+      ],
+      onChange: (v) => onChange({ ...settings, fontSize: v })
+    }
+  ))), /* @__PURE__ */ React.createElement("div", { className: "mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement("h2", { className: "display text-2xl font-bold" }, "Helpers"), /* @__PURE__ */ React.createElement("p", { className: "text-stone-500 text-sm" }, "Optional tools that speed up quiz-taking")), /* @__PURE__ */ React.createElement("div", { className: "border-2 border-stone-900 divide-y-2 divide-stone-900" }, /* @__PURE__ */ React.createElement(
+    Toggle,
+    {
+      icon: /* @__PURE__ */ React.createElement(Target, { size: 16 }),
+      label: "Keyboard shortcuts",
+      description: "Press A\u2013H or 1\u20138 to select an answer \xB7 Enter to submit or advance \xB7 \u2190 \u2192 to move between questions.",
+      value: settings.keyboardShortcuts,
+      onChange: () => toggle("keyboardShortcuts")
+    }
+  ))), /* @__PURE__ */ React.createElement("div", { className: "mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement("h2", { className: "display text-2xl font-bold" }, "Your Data"), /* @__PURE__ */ React.createElement("p", { className: "text-stone-500 text-sm" }, "Download, back up, or clear your library")), /* @__PURE__ */ React.createElement("div", { className: "border-2 border-stone-900 divide-y-2 divide-stone-900" }, /* @__PURE__ */ React.createElement(
+    ActionRow,
+    {
+      icon: /* @__PURE__ */ React.createElement(Archive, { size: 16 }),
+      label: "Download all quizzes",
+      description: totalQuizzes > 0 ? `Export all ${totalQuizzes} quizzes into a single .txt file you can back up or re-import later.` : "No quizzes to export yet.",
+      actionLabel: "Download",
+      actionIcon: /* @__PURE__ */ React.createElement(Download, { size: 12 }),
+      onClick: () => downloadAllQuizzes(quizzes),
+      disabled: totalQuizzes === 0,
+      tone: "default"
+    }
+  ), /* @__PURE__ */ React.createElement(ImportLibraryRow, { onImportQuizzes }), /* @__PURE__ */ React.createElement(
+    ActionRow,
+    {
+      icon: /* @__PURE__ */ React.createElement(BarChart3, { size: 16 }),
+      label: "Clear statistics",
+      description: "Erase attempt counts, best scores, and last-taken dates. Your quizzes will not be deleted.",
+      actionLabel: "Clear stats",
+      actionIcon: /* @__PURE__ */ React.createElement(RotateCcw, { size: 12 }),
+      onClick: async () => {
+        const ok = await confirm({ title: "Clear statistics", message: "Erase all quiz statistics? This cannot be undone. Your quizzes will be kept.", confirmLabel: "Clear stats", danger: true });
+        if (ok) onClearStats();
+      },
+      disabled: totalAttempts === 0,
+      tone: "warning"
+    }
+  ), /* @__PURE__ */ React.createElement(
+    ActionRow,
+    {
+      icon: /* @__PURE__ */ React.createElement(Trash2, { size: 16 }),
+      label: "Clear entire library",
+      description: "Delete every quiz and all statistics. This cannot be undone. Make sure you've downloaded a backup first.",
+      actionLabel: "Delete everything",
+      actionIcon: /* @__PURE__ */ React.createElement(Trash2, { size: 12 }),
+      onClick: async () => {
+        const ok1 = await confirm({ title: "Back up first?", message: "Before you do this \u2014 have you downloaded a backup? This cannot be undone.", confirmLabel: "Continue" });
+        if (!ok1) return;
+        const ok2 = await confirm({ title: "Final confirmation", message: `Permanently delete all ${totalQuizzes} quizzes and statistics?`, confirmLabel: "Delete everything", danger: true });
+        if (ok2) onClearLibrary();
+      },
+      disabled: totalQuizzes === 0,
+      tone: "danger"
+    }
+  ))), /* @__PURE__ */ React.createElement("div", { className: "mt-12 pt-6 border-t border-stone-300" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: async () => {
+        const ok = await confirm({ title: "Reset settings", message: "Reset all settings to defaults?", confirmLabel: "Reset" });
+        if (ok) onReset();
+      },
+      className: "mono text-xs uppercase tracking-widest text-stone-500 hover:text-red-600 transition-colors flex items-center gap-2"
+    },
+    /* @__PURE__ */ React.createElement(RotateCcw, { size: 12 }),
+    " Reset settings to defaults"
+  )));
+}
+function ImportLibraryRow({ onImportQuizzes }) {
+  const [msg, setMsg] = useState(null);
+  const inputRef = useRef(null);
+  function handleFile(e) {
+    const file = e.target.files?.[0];
+    if (e.target) e.target.value = "";
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async (ev) => {
+      const raw = ev.target.result;
+      const result = parseImportText(raw);
+      const parseErrors = result.errors || [];
+      if (result.multi) {
+        const quizzes = result.quizzes || [];
+        if (!quizzes.length) {
+          setMsg({ type: "err", text: parseErrors.length ? parseErrors.join(" ") : "No quizzes found in that file." });
+          return;
+        }
+        const count = await onImportQuizzes(quizzes);
+        let out = `Imported ${count} ${count === 1 ? "quiz" : "quizzes"}.`;
+        if (parseErrors.length) out += ` (${parseErrors.length} block${parseErrors.length === 1 ? "" : "s"} skipped.)`;
+        setMsg({ type: "ok", text: out });
+      } else {
+        if (parseErrors.length) {
+          setMsg({ type: "err", text: parseErrors.join(" ") });
+          return;
+        }
+        if (!result.questions || !result.questions.length) {
+          setMsg({ type: "err", text: "No questions found in that file." });
+          return;
+        }
+        const count = await onImportQuizzes([{ title: result.title, description: result.description, questions: result.questions }]);
+        setMsg({ type: "ok", text: `Imported ${count} quiz.` });
+      }
+    };
+    reader.readAsText(file);
+  }
+  return /* @__PURE__ */ React.createElement("div", { className: "p-5 flex items-start justify-between gap-6 bg-stone-50 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "flex gap-3 flex-1 min-w-[240px]" }, /* @__PURE__ */ React.createElement("div", { className: "mt-0.5 text-stone-500" }, /* @__PURE__ */ React.createElement(Upload, { size: 16 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "font-semibold" }, "Import library from .txt"), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-stone-600 mt-0.5" }, "Load quizzes from a .txt backup \u2014 a single quiz or a full multi-quiz export. Imported quizzes are added to your library."), msg && /* @__PURE__ */ React.createElement("div", { className: `mono text-[10px] uppercase tracking-widest mt-2 ${msg.type === "ok" ? "text-emerald-700" : "text-red-600"}` }, msg.text))), /* @__PURE__ */ React.createElement("label", { className: "flex-shrink-0 border-2 border-stone-900 px-4 py-2 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors flex items-center gap-2 cursor-pointer" }, /* @__PURE__ */ React.createElement(Upload, { size: 12 }), " Import", /* @__PURE__ */ React.createElement("input", { ref: inputRef, type: "file", accept: ".txt,text/plain", onChange: handleFile, className: "hidden" })));
+}
+function StatCell({ value, label, border, accent }) {
+  return /* @__PURE__ */ React.createElement("div", { className: `p-5 bg-stone-50 ${border ? "border-l-2 border-stone-900" : ""}` }, /* @__PURE__ */ React.createElement("div", { className: `display text-4xl font-black ${accent ? "text-amber-700" : ""}` }, value), /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-widest text-stone-500 mt-1" }, label));
+}
+function ActionRow({ icon, label, description, actionLabel, actionIcon, onClick, disabled, tone }) {
+  const toneClasses = {
+    default: "border-stone-900 hover:bg-stone-900 hover:text-stone-50",
+    warning: "border-amber-700 text-amber-700 hover:bg-amber-700 hover:text-white",
+    danger: "border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
+  }[tone || "default"];
+  return /* @__PURE__ */ React.createElement("div", { className: "p-5 flex items-start justify-between gap-6 bg-stone-50 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "flex gap-3 flex-1 min-w-[240px]" }, /* @__PURE__ */ React.createElement("div", { className: `mt-0.5 ${tone === "danger" ? "text-red-600" : tone === "warning" ? "text-amber-700" : "text-stone-500"}` }, icon), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "font-semibold" }, label), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-stone-600 mt-0.5" }, description))), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick,
+      disabled,
+      className: `flex-shrink-0 border-2 px-4 py-2 mono text-xs uppercase tracking-widest transition-colors flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-inherit ${toneClasses}`
+    },
+    actionIcon,
+    " ",
+    actionLabel
+  ));
+}
+function SettingGroup({ title, subtitle, children }) {
+  return /* @__PURE__ */ React.createElement("div", { className: "mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement("h2", { className: "display text-2xl font-bold" }, title), subtitle && /* @__PURE__ */ React.createElement("p", { className: "text-stone-500 text-sm" }, subtitle)), /* @__PURE__ */ React.createElement("div", { className: "border-2 border-stone-900 divide-y-2 divide-stone-900" }, children));
+}
+function Toggle({ icon, label, description, value, onChange }) {
+  return /* @__PURE__ */ React.createElement("div", { className: "p-5 flex items-start justify-between gap-6 bg-stone-50" }, /* @__PURE__ */ React.createElement("div", { className: "flex gap-3 flex-1 min-w-0" }, /* @__PURE__ */ React.createElement("div", { className: "mt-0.5 text-stone-500" }, icon), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "font-semibold" }, label), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-stone-600 mt-0.5" }, description))), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: onChange,
+      role: "switch",
+      "aria-checked": value,
+      className: `flex-shrink-0 w-14 h-8 rounded-full transition-colors relative ${value ? "bg-amber-700" : "bg-stone-300"}`
+    },
+    /* @__PURE__ */ React.createElement("span", { className: `absolute top-1 w-6 h-6 bg-white rounded-full transition-all ${value ? "left-7" : "left-1"}` })
+  ));
+}
+function ChoiceRow({ icon, label, description, value, options, onChange }) {
+  return /* @__PURE__ */ React.createElement("div", { className: "p-5 flex items-start justify-between gap-6 bg-stone-50 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "flex gap-3 flex-1 min-w-[240px]" }, /* @__PURE__ */ React.createElement("div", { className: "mt-0.5 text-stone-500" }, icon), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "font-semibold" }, label), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-stone-600 mt-0.5" }, description))), /* @__PURE__ */ React.createElement("div", { className: "flex gap-2 flex-shrink-0" }, options.map((opt) => /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      key: opt.value,
+      onClick: () => onChange(opt.value),
+      className: `px-4 py-2 mono text-xs uppercase tracking-widest border-2 transition-colors ${value === opt.value ? "bg-stone-900 text-stone-50 border-stone-900" : "border-stone-300 hover:border-stone-900"}`
+    },
+    opt.label
+  ))));
+}
+function TakeView({ quiz, currentQuestion, userAnswers, selectedAnswer, setSelectedAnswer, showFeedback, submitAnswer, nextQuestion, previousQuestion, onQuit, settings, quizStartTime }) {
+  const q = quiz.questions[currentQuestion];
+  const progress = (currentQuestion + 1) / quiz.questions.length * 100;
+  const isCorrect = selectedAnswer === q.correct;
+  const totalAnswered = userAnswers.filter((a) => a !== void 0).length;
+  const alreadyAnswered = userAnswers[currentQuestion] !== void 0;
+  const isLocked = settings.immediateFeedback && alreadyAnswered && showFeedback;
+  const isLastQuestion = currentQuestion + 1 >= quiz.questions.length;
+  const allAnswered = totalAnswered === quiz.questions.length;
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    if (!settings.showTimer || !quizStartTime) return;
+    const id = setInterval(() => setNow(Date.now()), 1e3);
+    return () => clearInterval(id);
+  }, [settings.showTimer, quizStartTime]);
+  const elapsedMs = settings.showTimer && quizStartTime ? now - quizStartTime : 0;
+  useEffect(() => {
+    if (!settings.keyboardShortcuts) return;
+    function handleKey(e) {
+      const tag = e.target.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || e.target.isContentEditable) return;
+      if (!showFeedback && /^[1-9]$/.test(e.key)) {
+        const nIdx = parseInt(e.key, 10) - 1;
+        if (nIdx < q.options.length) {
+          e.preventDefault();
+          setSelectedAnswer(nIdx);
+        }
+        return;
+      }
+      const key = e.key.toLowerCase();
+      if (!showFeedback && /^[a-z]$/.test(key)) {
+        const idx = key.charCodeAt(0) - 97;
+        if (idx < q.options.length) {
+          e.preventDefault();
+          setSelectedAnswer(idx);
+        }
+        return;
+      }
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (showFeedback) {
+          nextQuestion();
+        } else if (selectedAnswer !== null) {
+          submitAnswer();
+        }
+        return;
+      }
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        previousQuestion();
+      } else if (e.key === "ArrowRight" && showFeedback) {
+        e.preventDefault();
+        nextQuestion();
+      }
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [settings.keyboardShortcuts, showFeedback, selectedAnswer, q.options.length, submitAnswer, nextQuestion, previousQuestion, setSelectedAnswer]);
+  return /* @__PURE__ */ React.createElement("div", { className: "fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between mb-4 flex-wrap gap-2" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-[0.3em] text-stone-500" }, quiz.title, " \xB7 Question ", currentQuestion + 1, " of ", quiz.questions.length), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-3" }, settings.showTimer && quizStartTime && /* @__PURE__ */ React.createElement("span", { className: "mono text-xs uppercase tracking-widest text-amber-700 flex items-center gap-1" }, /* @__PURE__ */ React.createElement(Clock, { size: 12 }), " ", formatDuration(elapsedMs)), /* @__PURE__ */ React.createElement("span", { className: "mono text-xs uppercase tracking-widest text-stone-400" }, totalAnswered, " of ", quiz.questions.length, " answered"), /* @__PURE__ */ React.createElement("button", { onClick: onQuit, className: "mono text-xs uppercase tracking-widest text-stone-400 hover:text-red-600 transition-colors flex items-center gap-1" }, /* @__PURE__ */ React.createElement(X, { size: 14 }), " Quit"))), /* @__PURE__ */ React.createElement("div", { className: "h-1 bg-stone-200 mb-12 relative" }, /* @__PURE__ */ React.createElement("div", { className: "absolute inset-y-0 left-0 bg-amber-700 transition-all duration-500", style: { width: `${progress}%` } })), /* @__PURE__ */ React.createElement("div", { className: "mb-10" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-3 flex items-center gap-2 flex-wrap" }, /* @__PURE__ */ React.createElement("span", null, "\u2116 ", String(currentQuestion + 1).padStart(2, "0")), isLocked && /* @__PURE__ */ React.createElement("span", { className: "text-amber-700" }, "\xB7 Already answered"), settings.keyboardShortcuts && !isLocked && /* @__PURE__ */ React.createElement("span", { className: "text-stone-400" }, "\xB7 A\u2013", String.fromCharCode(64 + q.options.length), " or 1\u2013", q.options.length, " to choose \xB7 Enter to submit \xB7 \u2190 \u2192 to navigate")), /* @__PURE__ */ React.createElement("h2", { className: "body-text text-3xl md:text-4xl font-bold leading-snug" }, q.q)), /* @__PURE__ */ React.createElement("div", { className: "space-y-3 mb-8" }, q.options.map((opt, oi) => {
+    const isSelected = selectedAnswer === oi;
+    const isRight = oi === q.correct;
+    let stateClasses = "border-stone-300 hover:border-stone-900 hover:bg-stone-100";
+    if (showFeedback) {
+      if (isRight) stateClasses = "border-emerald-600 bg-emerald-50";
+      else if (isSelected) stateClasses = "border-red-600 bg-red-50";
+      else stateClasses = "border-stone-200 opacity-50";
+    } else if (isSelected) {
+      stateClasses = "border-stone-900 bg-stone-900 text-stone-50";
+    }
+    return /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        key: oi,
+        onClick: () => !showFeedback && setSelectedAnswer(oi),
+        disabled: showFeedback,
+        className: `w-full text-left border-2 p-5 transition-all flex items-center gap-4 ${stateClasses} fade-up stagger-${Math.min(oi + 1, 4)}`
+      },
+      /* @__PURE__ */ React.createElement("span", { className: `mono text-xs w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${showFeedback && isRight ? "bg-emerald-600 text-white" : showFeedback && isSelected ? "bg-red-600 text-white" : isSelected ? "bg-stone-50 text-stone-900" : "bg-stone-200 text-stone-700"}` }, String.fromCharCode(65 + oi)),
+      /* @__PURE__ */ React.createElement("span", { className: "body-text text-lg flex-1" }, opt),
+      showFeedback && isRight && /* @__PURE__ */ React.createElement(Check, { size: 20, className: "text-emerald-600" }),
+      showFeedback && isSelected && !isRight && /* @__PURE__ */ React.createElement(X, { size: 20, className: "text-red-600" })
+    );
+  })), /* @__PURE__ */ React.createElement("div", { className: "flex justify-between items-center gap-3 mb-6 flex-wrap" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: previousQuestion,
+      disabled: currentQuestion === 0,
+      className: "border-2 border-stone-900 px-6 py-4 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-stone-900 disabled:cursor-not-allowed flex items-center gap-2"
+    },
+    /* @__PURE__ */ React.createElement(ArrowLeft, { size: 14 }),
+    " Previous"
+  ), !showFeedback ? /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: submitAnswer,
+      disabled: selectedAnswer === null,
+      className: "bg-stone-900 text-stone-50 px-8 py-4 mono text-xs uppercase tracking-widest hover:bg-amber-700 transition-colors disabled:opacity-30 disabled:hover:bg-stone-900 flex items-center gap-2"
+    },
+    settings.immediateFeedback ? "Submit" : isLastQuestion && allAnswered ? "Finish" : "Save & next",
+    " ",
+    /* @__PURE__ */ React.createElement(ArrowRight, { size: 14 })
+  ) : /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: nextQuestion,
+      className: "bg-amber-700 text-stone-50 px-8 py-4 mono text-xs uppercase tracking-widest hover:bg-stone-900 transition-colors flex items-center gap-2"
+    },
+    isLastQuestion && allAnswered ? "See results" : isLastQuestion ? "Go to unanswered" : "Next question",
+    " ",
+    /* @__PURE__ */ React.createElement(ArrowRight, { size: 14 })
+  )), showFeedback && /* @__PURE__ */ React.createElement("div", { className: `border-l-4 p-5 fade-up ${isCorrect ? "border-emerald-600 bg-emerald-50" : "border-red-600 bg-red-50"}` }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest mb-2" }, isCorrect ? "\u2713 Correct" : "\u2717 Not quite"), settings.showExplanations && q.explain ? /* @__PURE__ */ React.createElement("p", { className: "body-text text-stone-700 italic" }, q.explain) : /* @__PURE__ */ React.createElement("p", { className: "body-text text-stone-700 italic" }, "The correct answer was ", /* @__PURE__ */ React.createElement("strong", null, String.fromCharCode(65 + q.correct), ". ", q.options[q.correct]), ".")));
+}
+function ResultsView({ quiz, userAnswers, score, elapsedMs, onRetry, onRetryMissed, onHome, settings }) {
+  const total = quiz.questions.length;
+  const percent = Math.round(score / total * 100);
+  const missedCount = total - score;
+  let verdict = "Worth another go.";
+  if (percent === 100) verdict = "Perfect. Extraordinary.";
+  else if (percent >= 80) verdict = "Excellent work.";
+  else if (percent >= 60) verdict = "Well done.";
+  else if (percent >= 40) verdict = "Getting there.";
+  else verdict = "Worth another go.";
+  return /* @__PURE__ */ React.createElement("div", { className: "fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "text-center mb-12 py-8 border-y-2 border-stone-900" }, /* @__PURE__ */ React.createElement(Trophy, { size: 40, className: "mx-auto mb-4 text-amber-700" }), /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-[0.3em] text-stone-500 mb-2" }, "Results"), /* @__PURE__ */ React.createElement("div", { className: "display text-8xl font-black mb-2" }, score, /* @__PURE__ */ React.createElement("span", { className: "text-stone-400" }, "/", total)), /* @__PURE__ */ React.createElement("div", { className: "mono text-sm uppercase tracking-widest text-stone-600 mb-4" }, percent, "% correct"), settings && settings.showTimer && elapsedMs > 0 && /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-4 flex items-center justify-center gap-2" }, /* @__PURE__ */ React.createElement(Clock, { size: 12 }), " Finished in ", formatDuration(elapsedMs)), /* @__PURE__ */ React.createElement("p", { className: "display text-2xl italic text-amber-700" }, verdict)), /* @__PURE__ */ React.createElement("div", { className: "mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-4" }, "Question by question"), /* @__PURE__ */ React.createElement("div", { className: "space-y-3" }, quiz.questions.map((q, i) => {
+    const userAns = userAnswers[i];
+    const correct = userAns === q.correct;
+    return /* @__PURE__ */ React.createElement("div", { key: i, className: `border-l-4 p-4 ${correct ? "border-emerald-600 bg-emerald-50" : "border-red-600 bg-red-50"}` }, /* @__PURE__ */ React.createElement("div", { className: "flex items-start gap-3" }, /* @__PURE__ */ React.createElement("div", { className: `mono text-xs w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1 ${correct ? "bg-emerald-600 text-white" : "bg-red-600 text-white"}` }, correct ? /* @__PURE__ */ React.createElement(Check, { size: 12 }) : /* @__PURE__ */ React.createElement(X, { size: 12 })), /* @__PURE__ */ React.createElement("div", { className: "flex-1" }, /* @__PURE__ */ React.createElement("div", { className: "body-text font-semibold mb-1" }, q.q), /* @__PURE__ */ React.createElement("div", { className: "body-text text-sm text-stone-600" }, "Your answer: ", /* @__PURE__ */ React.createElement("span", { className: correct ? "text-emerald-700" : "text-red-700" }, q.options[userAns]), !correct && /* @__PURE__ */ React.createElement(React.Fragment, null, " \xB7 ", "Correct: ", /* @__PURE__ */ React.createElement("span", { className: "text-emerald-700" }, q.options[q.correct]))))));
+  }))), /* @__PURE__ */ React.createElement("div", { className: "flex gap-3 justify-center flex-wrap" }, /* @__PURE__ */ React.createElement("button", { onClick: onRetry, className: "border-2 border-stone-900 px-6 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors flex items-center gap-2" }, /* @__PURE__ */ React.createElement(RotateCcw, { size: 14 }), " Try Again"), missedCount > 0 && onRetryMissed && /* @__PURE__ */ React.createElement("button", { onClick: onRetryMissed, className: "border-2 border-amber-700 text-amber-700 px-6 py-3 mono text-xs uppercase tracking-widest hover:bg-amber-700 hover:text-white transition-colors flex items-center gap-2" }, /* @__PURE__ */ React.createElement(Target, { size: 14 }), " Review missed (", missedCount, ")"), /* @__PURE__ */ React.createElement("button", { onClick: onHome, className: "bg-stone-900 text-stone-50 px-6 py-3 mono text-xs uppercase tracking-widest hover:bg-amber-700 transition-colors" }, "Home")));
+}
+const rootEl = document.getElementById("root");
+createRoot(rootEl).render(/* @__PURE__ */ React.createElement(QuizApp, null));
+  </script>
+</body>
+</html>

@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dendrite — Flashcards</title>
+  <meta name="description" content="Dendrite — build flashcard decks by hand or import them, and study with flip review or spaced repetition. Your decks stay on your device." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b45309' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2 2 7l10 5 10-5-10-5Z'/%3E%3Cpath d='m2 17 10 5 10-5'/%3E%3Cpath d='m2 12 10 5 10-5'/%3E%3C/svg%3E" />
+
+  <!-- Tailwind (Play CDN): generates utility classes at runtime by scanning the DOM. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Resolve bare module names to browser-ready ESM builds on esm.sh. -->
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://esm.sh/react@18.3.1",
+      "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+      "react-dom": "https://esm.sh/react-dom@18.3.1?external=react",
+      "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?external=react",
+      "lucide-react": "https://esm.sh/lucide-react@0.383.0?external=react"
+    }
+  }
+  </script>
+
+  <!-- Set the page background before React mounts so dark mode doesn't flash. -->
+  <script>
+    try {
+      var s = JSON.parse(localStorage.getItem('dendrite:settings:main') || '{}');
+      document.documentElement.style.background = s.darkMode ? '#1c1917' : '#fafaf9';
+    } catch (e) {
+      document.documentElement.style.background = '#fafaf9';
+    }
+  </script>
+
+  <style>
+    html, body { margin: 0; padding: 0; }
+    #boot {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', ui-monospace, monospace; color: #78716c;
+      font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"><div id="boot">Loading Dendrite…</div></div>
+
+  <noscript>
+    <div style="padding:2rem;font-family:system-ui,sans-serif;max-width:40rem;margin:0 auto;">
+      Dendrite needs JavaScript enabled to run. Please turn it on and reload.
+    </div>
+  </noscript>
+
+  <!-- If the app hasn't mounted shortly, the CDN modules were likely blocked. -->
+  <script>
+    setTimeout(function () {
+      var boot = document.getElementById('boot');
+      if (boot) {
+        boot.style.letterSpacing = '0';
+        boot.style.textTransform = 'none';
+        boot.style.padding = '2rem';
+        boot.style.textAlign = 'center';
+        boot.innerHTML = "Couldn't load Dendrite. This page needs an internet connection the first time it loads (it fetches React and icons from a CDN). Check your connection and reload. Your saved decks are stored locally and are safe.";
+      }
+    }, 12000);
+  </script>
+
+  <script type="module">
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { createRoot } from "react-dom/client";
+import { Plus, Trash2, Play, Edit3, Check, X, ArrowLeft, ArrowUp, ArrowDown, RotateCcw, Layers, Brain, FileText, Sparkles, Upload, Wand2, Settings, Shuffle, Info, ChevronDown, ChevronUp, Copy, Download, Search, BarChart3, Archive, Award, Clock, Moon, RefreshCw, ChevronRight, ChevronLeft } from "lucide-react";
+const STORE_PREFIX = "dendrite:";
+if (typeof window !== "undefined") {
+  window.storage = {
+    async get(key) {
+      try {
+        const raw = localStorage.getItem(STORE_PREFIX + key);
+        return raw === null ? null : { key, value: raw };
+      } catch (e) {
+        return null;
+      }
+    },
+    async set(key, value) {
+      localStorage.setItem(STORE_PREFIX + key, value);
+      return { key, value };
+    },
+    async delete(key) {
+      try {
+        localStorage.removeItem(STORE_PREFIX + key);
+      } catch (e) {
+      }
+      return { key, deleted: true };
+    },
+    async list(prefix = "") {
+      const keys = [];
+      const full = STORE_PREFIX + prefix;
+      try {
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && k.indexOf(full) === 0) keys.push(k.slice(STORE_PREFIX.length));
+        }
+      } catch (e) {
+      }
+      return { keys };
+    }
+  };
+}
+const AI_INSTRUCTIONS = `Generate a set of tight, focused flashcards in plain text. Every card should test one thing about the topic, straight to the point, with the answer being the actual answer \u2014 not a paragraph about it.
+
+DECK NAME AND DESCRIPTION \u2014 always include these, before any cards:
+
+- Every deck MUST begin with a Name line and a Description line, in that order, before the cards. They are required, not optional.
+
+- Name: a short, specific title in Title Case. Name the actual subject (e.g., "The Krebs Cycle", "Spanish Verbs \u2014 Present Tense"). Title Case, no surrounding quotes, no trailing punctuation, under about 60 characters. Prefer a real subject over a vague label.
+
+- Description: exactly one sentence stating what the deck covers, ending in a period. Plain and informative \u2014 no marketing language, no "This deck will help you\u2026" filler.
+
+CARD QUALITY REQUIREMENTS \u2014 these are critical:
+
+- One question per card. Each card tests exactly one thing. Never combine two prompts with "and" or "also" (e.g., no "What is X and how does Y work?"). If two ideas matter, make two cards.
+
+- Straight to the point. Questions are short and direct. Cut every word that isn't needed. Set-up, scene-setting, filler phrases like "Can you tell me..." or "In your own words..." \u2014 all of it goes. If a question works in six words, don't use twelve.
+
+- The answer IS the answer. The flip side gives the exact answer \u2014 the term, the number, the name, the definition \u2014 and nothing more. No explanations, no context, no "because..." trailing on the end, no teaching paragraphs. A card is not a mini-lesson; it's a prompt and a response.
+
+- Short answers. Most answers should be a word, a phrase, a single sentence at most. If an answer genuinely needs more than one sentence (rare), keep it to two. Never three.
+
+- One concept per card. One question, one answer, one thing being tested. Don't pack related facts together.
+
+- Active recall. Phrase questions so the learner must retrieve the answer, not recognize it. "Capital of France?" is better than "Is Paris the capital of France?"
+
+- Prefer "what / who / when / where / how / why" over yes/no. Yes/no questions test recognition, not recall.
+
+- Specific and unambiguous. Each question has one clear answer. Avoid vague prompts that could be answered several different ways.
+
+- Varied question types across the deck. Mix definitions, identifications, dates, quantities, causes, sequences, and terms. Don't ask the same shape of question ten times in a row.
+
+- Progressive difficulty. Start with foundational facts, build to relationships. A learner going through the deck in order should feel their understanding compound.
+
+- Broad coverage, moderate depth. Cover different angles and subtopics, but don't go to specialist trivia. Test solid working knowledge.
+
+STRUCTURAL RULES:
+- Start with a "Name:" line, then a "Description:" line, then a blank line, then the cards.
+- Each card has exactly two parts: a "Q:" line and an "A:" line.
+- Separate cards with a single blank line between them.
+- No numbering, no bullet points, no markdown, no headers, no commentary.
+- Output only the Name/Description header and the Q:/A: pairs.
+
+FORMAT:
+Name: [short, specific deck title in Title Case]
+Description: [one sentence describing what the deck covers]
+
+Q: [short, direct question]
+A: [the actual answer \u2014 brief]
+
+Q: [short, direct question]
+A: [the actual answer \u2014 brief]
+
+GOOD vs BAD \u2014 study the difference:
+
+BAD (no header, wordy, multi-part, explanatory answer):
+Q: Can you describe what the mitochondria does in the cell, and why it is often called the powerhouse of the cell?
+A: The mitochondria is an organelle found in eukaryotic cells that produces ATP through cellular respiration. It is called the powerhouse of the cell because it generates most of the cell's supply of adenosine triphosphate, which is used as a source of chemical energy.
+
+GOOD (header present, tight question, the answer IS the answer):
+Name: Cell Biology \u2014 The Mitochondria
+Description: Structure and function of the mitochondria in eukaryotic cells.
+
+Q: What does the mitochondria produce?
+A: ATP.
+
+Q: Why is the mitochondria called the powerhouse of the cell?
+A: It generates most of the cell's ATP.
+
+CHECKS FOR EVERY DECK:
+1. Header present? A "Name:" line in Title Case and a one-sentence "Description:" line, both before any cards.
+2. Is each question one question, not two?
+3. Is each answer the actual answer, not an explanation of it?
+4. Could anything be cut without losing the point?
+If any answer is "no," fix it.`;
+const DECKS_PREFIX = "deck:";
+const SETTINGS_KEY = "settings:main";
+const STATS_PREFIX = "stats:";
+const LEGACY_STORAGE_KEY = "flashcard-decks-v2";
+const MAX_CARDS = 1e3;
+const RENDER_BATCH = 50;
+const DEFAULT_SETTINGS = {
+  shuffleCards: false,
+  darkMode: false,
+  showTimer: false,
+  fontSize: "normal",
+  // small | normal | large
+  keyboardShortcuts: true
+};
+const SAMPLE_DECK = {
+  id: "sample-foundations",
+  name: "A Tour of Human Anatomy",
+  description: "Twelve tight cards covering organs, systems, and bodily functions \u2014 a solid starting set for any biology student.",
+  created: Date.now(),
+  cards: [
+    { id: "c1", front: "Largest organ in the human body?", back: "The skin." },
+    { id: "c2", front: "What do red blood cells carry?", back: "Oxygen." },
+    { id: "c3", front: "Where does digestion begin?", back: "The mouth." },
+    { id: "c4", front: "Which hormone from the pancreas lowers blood sugar?", back: "Insulin." },
+    { id: "c5", front: "How many chambers does the human heart have?", back: "Four." },
+    { id: "c6", front: "Primary function of the kidneys?", back: "Filter waste from the blood." },
+    { id: "c7", front: "What separates the chest cavity from the abdominal cavity?", back: "The diaphragm." },
+    { id: "c8", front: "Which part of the brain controls balance and coordination?", back: "The cerebellum." },
+    { id: "c9", front: "Longest bone in the human body?", back: "The femur." },
+    { id: "c10", front: "Where does gas exchange occur in the lungs?", back: "The alveoli." },
+    { id: "c11", front: "Which vessels carry blood away from the heart?", back: "Arteries." },
+    { id: "c12", front: "What is homeostasis?", back: "The body's maintenance of stable internal conditions." }
+  ].map((c) => ({ ...c, sr: { interval: 0, easeFactor: 2.5, repetitions: 0 }, nextReviewDate: 0 }))
+};
+function shuffle(arr) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+function nextReview(card, quality) {
+  let { interval = 0, easeFactor = 2.5, repetitions = 0 } = card.sr || {};
+  if (quality >= 3) {
+    repetitions += 1;
+    if (repetitions === 1) interval = 1;
+    else if (repetitions === 2) interval = 6;
+    else interval = Math.round(interval * easeFactor);
+    easeFactor = Math.max(1.3, easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)));
+  } else {
+    repetitions = 0;
+    interval = 0;
+  }
+  return {
+    sr: { interval, easeFactor, repetitions },
+    nextReviewDate: Date.now() + interval * 864e5
+  };
+}
+function dueCards(cards) {
+  return cards.filter((c) => !c.nextReviewDate || c.nextReviewDate <= Date.now());
+}
+function masteredCount(cards) {
+  return cards.filter((c) => (c.sr?.repetitions || 0) >= 3).length;
+}
+function formatDuration(ms) {
+  if (!ms || ms < 0) return "\u2014";
+  const totalSec = Math.floor(ms / 1e3);
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor(totalSec % 3600 / 60);
+  const s = totalSec % 60;
+  if (h > 0) return `${h}h ${m}m ${s}s`;
+  if (m > 0) return `${m}m ${s.toString().padStart(2, "0")}s`;
+  return `${s}s`;
+}
+function formatRelativeTime(timestamp) {
+  if (!timestamp) return "\u2014";
+  const diff = Date.now() - timestamp;
+  const minute = 6e4, hour = 36e5, day = 864e5, week = 7 * day, month = 30 * day;
+  if (diff < minute) return "just now";
+  if (diff < hour) return Math.floor(diff / minute) + "m ago";
+  if (diff < day) return Math.floor(diff / hour) + "h ago";
+  if (diff < week) return Math.floor(diff / day) + "d ago";
+  if (diff < month) return Math.floor(diff / week) + "w ago";
+  return new Date(timestamp).toLocaleDateString(void 0, { month: "short", day: "numeric", year: "numeric" });
+}
+const ConfirmContext = React.createContext(() => Promise.resolve(true));
+function useConfirm() {
+  return React.useContext(ConfirmContext);
+}
+function ConfirmProvider({ children }) {
+  const [dialog, setDialog] = useState(null);
+  const confirm = useCallback((opts) => {
+    const config = typeof opts === "string" ? { message: opts } : opts || {};
+    return new Promise((resolve) => setDialog({ ...config, resolve }));
+  }, []);
+  function close(val) {
+    setDialog((d) => {
+      if (d) d.resolve(val);
+      return null;
+    });
+  }
+  return /* @__PURE__ */ React.createElement(ConfirmContext.Provider, { value: confirm }, children, dialog && /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      className: "fixed inset-0 z-50 flex items-center justify-center p-4",
+      style: { background: "rgba(28,25,23,0.55)" },
+      onClick: () => close(false)
+    },
+    /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        onClick: (e) => e.stopPropagation(),
+        className: "bg-stone-50 border-2 border-stone-900 max-w-md w-full p-6 fade-up",
+        style: { boxShadow: "6px 6px 0 rgba(28,25,23,0.9)" }
+      },
+      /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-2" }, dialog.title || "Please confirm"),
+      /* @__PURE__ */ React.createElement("p", { className: "text-stone-800 mb-6 leading-relaxed" }, dialog.message),
+      /* @__PURE__ */ React.createElement("div", { className: "flex justify-end gap-2" }, /* @__PURE__ */ React.createElement(
+        "button",
+        {
+          onClick: () => close(false),
+          className: "border-2 border-stone-900 px-4 py-2 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors"
+        },
+        dialog.cancelLabel || "Cancel"
+      ), /* @__PURE__ */ React.createElement(
+        "button",
+        {
+          onClick: () => close(true),
+          className: `px-4 py-2 mono text-xs uppercase tracking-widest text-white transition-colors ${dialog.danger ? "bg-red-600 hover:bg-red-700" : "bg-amber-700 hover:bg-stone-900"}`
+        },
+        dialog.confirmLabel || "Confirm"
+      ))
+    )
+  ));
+}
+function parseTxt(text) {
+  const cards = [];
+  const blocks = text.split(/\n\s*\n/);
+  for (const block of blocks) {
+    const lines = block.trim().split("\n");
+    let front = "", back = "", readingBack = false;
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (/^Q:\s*/i.test(trimmed)) {
+        front = trimmed.replace(/^Q:\s*/i, "");
+        readingBack = false;
+      } else if (/^A:\s*/i.test(trimmed)) {
+        back = trimmed.replace(/^A:\s*/i, "");
+        readingBack = true;
+      } else if (readingBack && trimmed) {
+        back += " " + trimmed;
+      } else if (!readingBack && front && trimmed) {
+        front += " " + trimmed;
+      }
+    }
+    if (front && back) cards.push({ front: front.trim(), back: back.trim() });
+  }
+  return cards;
+}
+function parseSingleDeckText(text) {
+  const errors = [];
+  let name = "";
+  let description = "";
+  const lines = text.split(/\r?\n/);
+  const contentLines = [];
+  let sawHeaderSection = false;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+    const nameMatch = trimmed.match(/^(?:Name|Title)\s*:\s*(.+)$/i);
+    const descMatch = trimmed.match(/^Description\s*:\s*(.+)$/i);
+    if (nameMatch && !sawHeaderSection) {
+      name = nameMatch[1].trim();
+      continue;
+    }
+    if (descMatch && !sawHeaderSection) {
+      description = descMatch[1].trim();
+      continue;
+    }
+    if (/^Q:\s*/i.test(trimmed)) sawHeaderSection = true;
+    contentLines.push(line);
+  }
+  const cards = parseTxt(contentLines.join("\n"));
+  if (cards.length === 0) errors.push("No valid flashcards found. Use Q:/A: format separated by blank lines.");
+  return { name: name || "Imported Deck", description, cards, errors };
+}
+function parseImportText(text) {
+  let working = text;
+  if (/^\s*Dendrite Library Export/i.test(working)) {
+    const firstSep = working.search(/^={5,}\s*$/m);
+    if (firstSep !== -1) working = working.slice(firstSep);
+  }
+  const sections = working.split(/^={5,}\s*$/m).map((s) => s.trim()).filter((s) => s.length > 0);
+  if (sections.length <= 1) {
+    return parseSingleDeckText(working);
+  }
+  const decks = [];
+  const allErrors = [];
+  sections.forEach((section, idx) => {
+    const result = parseSingleDeckText(section);
+    if (result.errors.length > 0) {
+      result.errors.forEach((err) => allErrors.push(`Deck ${idx + 1} (${result.name}): ${err}`));
+    } else {
+      decks.push({ name: result.name, description: result.description, cards: result.cards });
+    }
+  });
+  return { multi: true, decks, errors: allErrors };
+}
+function serializeDeckToText(deck) {
+  const lines = [];
+  lines.push(`Name: ${deck.name}`);
+  if (deck.description) lines.push(`Description: ${deck.description}`);
+  lines.push("");
+  deck.cards.forEach((c, i) => {
+    lines.push(`Q: ${c.front}`);
+    lines.push(`A: ${c.back}`);
+    if (i < deck.cards.length - 1) lines.push("");
+  });
+  return lines.join("\n");
+}
+function downloadDeck(deck) {
+  const text = serializeDeckToText(deck);
+  const safeName = (deck.name || "deck").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60) || "deck";
+  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${safeName}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1e3);
+}
+function downloadAllDecks(decks) {
+  if (!decks || decks.length === 0) return;
+  const separator = "\n\n" + "=".repeat(60) + "\n\n";
+  const parts = decks.map((d) => serializeDeckToText(d));
+  const text = `Dendrite Library Export
+Exported: ${(/* @__PURE__ */ new Date()).toISOString()}
+Decks: ${decks.length}
+` + separator + parts.join(separator);
+  const date = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
+  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `dendrite-library-${date}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1e3);
+}
+function useProgressiveRender(totalCount) {
+  const [visibleCount, setVisibleCount] = useState(Math.min(RENDER_BATCH, totalCount));
+  const sentinelRef = useRef(null);
+  useEffect(() => {
+    setVisibleCount(Math.min(RENDER_BATCH, totalCount));
+  }, [totalCount]);
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el || visibleCount >= totalCount) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisibleCount((v) => Math.min(v + RENDER_BATCH, totalCount));
+      },
+      { rootMargin: "200px" }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [visibleCount, totalCount]);
+  return { visibleCount, sentinelRef };
+}
+function FlashcardApp() {
+  const [view, setView] = useState("home");
+  const [createMode, setCreateMode] = useState("manual");
+  const [decks, setDecks] = useState([]);
+  const [settings, setSettings] = useState(DEFAULT_SETTINGS);
+  const [activeDeck, setActiveDeck] = useState(null);
+  const [originalDeck, setOriginalDeck] = useState(null);
+  const [reviewMode, setReviewMode] = useState("flip");
+  const [sessionStartTime, setSessionStartTime] = useState(null);
+  const [finalElapsedMs, setFinalElapsedMs] = useState(0);
+  const [stats, setStats] = useState({});
+  const [editingDeck, setEditingDeck] = useState(null);
+  useEffect(() => {
+    async function load() {
+      try {
+        try {
+          const sr = await window.storage.get(SETTINGS_KEY);
+          if (sr) setSettings({ ...DEFAULT_SETTINGS, ...JSON.parse(sr.value) });
+        } catch (e) {
+        }
+        let loaded = [];
+        try {
+          const list = await window.storage.list(DECKS_PREFIX);
+          if (list && list.keys && list.keys.length > 0) {
+            for (const key of list.keys) {
+              try {
+                const r = await window.storage.get(key);
+                if (r) loaded.push(JSON.parse(r.value));
+              } catch (e) {
+              }
+            }
+          }
+        } catch (e) {
+        }
+        if (loaded.length === 0) {
+          try {
+            const legacy = await window.storage.get(LEGACY_STORAGE_KEY);
+            if (legacy) {
+              const legacyDecks = JSON.parse(legacy.value);
+              if (Array.isArray(legacyDecks) && legacyDecks.length > 0) {
+                for (const d of legacyDecks) {
+                  const migrated = { ...d, description: d.description || "", created: d.createdAt || d.created || Date.now() };
+                  await window.storage.set(DECKS_PREFIX + migrated.id, JSON.stringify(migrated));
+                  loaded.push(migrated);
+                }
+              }
+            }
+          } catch (e) {
+          }
+        }
+        if (loaded.length === 0) {
+          await window.storage.set(DECKS_PREFIX + SAMPLE_DECK.id, JSON.stringify(SAMPLE_DECK));
+          loaded = [SAMPLE_DECK];
+        }
+        setDecks(loaded);
+        try {
+          const statsList = await window.storage.list(STATS_PREFIX);
+          if (statsList && statsList.keys) {
+            const s = {};
+            for (const key of statsList.keys) {
+              try {
+                const r = await window.storage.get(key);
+                if (r) s[key.replace(new RegExp("^" + STATS_PREFIX), "")] = JSON.parse(r.value);
+              } catch (e) {
+              }
+            }
+            setStats(s);
+          }
+        } catch (e) {
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    load();
+  }, []);
+  async function saveSettings(next) {
+    setSettings(next);
+    try {
+      await window.storage.set(SETTINGS_KEY, JSON.stringify(next));
+    } catch (e) {
+    }
+  }
+  async function saveDeck(deck) {
+    try {
+      await window.storage.set(DECKS_PREFIX + deck.id, JSON.stringify(deck));
+      setDecks((prev) => {
+        const idx = prev.findIndex((d) => d.id === deck.id);
+        if (idx >= 0) {
+          const copy = [...prev];
+          copy[idx] = deck;
+          return copy;
+        }
+        return [...prev, deck];
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  async function deleteDeck(id) {
+    try {
+      await window.storage.delete(DECKS_PREFIX + id);
+      await window.storage.delete(STATS_PREFIX + id);
+    } catch (e) {
+    }
+    setDecks((prev) => prev.filter((d) => d.id !== id));
+    setStats((prev) => {
+      const { [id]: _removed, ...rest } = prev;
+      return rest;
+    });
+  }
+  async function clearLibrary() {
+    try {
+      const list = await window.storage.list(DECKS_PREFIX);
+      if (list && list.keys) {
+        for (const key of list.keys) await window.storage.delete(key);
+      }
+      const statsList = await window.storage.list(STATS_PREFIX);
+      if (statsList && statsList.keys) {
+        for (const key of statsList.keys) await window.storage.delete(key);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    setDecks([]);
+    setStats({});
+  }
+  async function clearStats() {
+    try {
+      const statsList = await window.storage.list(STATS_PREFIX);
+      if (statsList && statsList.keys) {
+        for (const key of statsList.keys) await window.storage.delete(key);
+      }
+    } catch (e) {
+    }
+    setStats({});
+  }
+  async function recordSession(deckId, sessionStats, elapsedMs) {
+    const { easy = 0, good = 0, hard = 0, again = 0 } = sessionStats;
+    const total = easy + good + hard + again;
+    if (total === 0) return;
+    const accuracy = Math.round((easy + good) / total * 100);
+    const now = Date.now();
+    const key = STATS_PREFIX + deckId;
+    let s = { sessions: 0, bestAccuracy: 0, lastAccuracy: 0, lastStudiedAt: 0, recent: [] };
+    try {
+      const existing = await window.storage.get(key);
+      if (existing) s = { recent: [], ...JSON.parse(existing.value) };
+    } catch (e) {
+    }
+    s.sessions = (s.sessions || 0) + 1;
+    s.bestAccuracy = Math.max(s.bestAccuracy || 0, accuracy);
+    s.lastAccuracy = accuracy;
+    s.lastStudiedAt = now;
+    s.recent = [{ easy, good, hard, again, total, accuracy, studiedAt: now, elapsedMs: elapsedMs || 0 }, ...s.recent || []].slice(0, 10);
+    try {
+      await window.storage.set(key, JSON.stringify(s));
+    } catch (e) {
+    }
+    setStats((prev) => ({ ...prev, [deckId]: s }));
+  }
+  async function resetDeckStats(deckId) {
+    try {
+      await window.storage.delete(STATS_PREFIX + deckId);
+    } catch (e) {
+    }
+    setStats((prev) => {
+      const { [deckId]: _removed, ...rest } = prev;
+      return rest;
+    });
+  }
+  async function importDecks(parsedDecks) {
+    const now = Date.now();
+    const toSave = parsedDecks.map((p, idx) => ({
+      id: "deck-" + (now + idx),
+      name: p.name,
+      description: p.description || "",
+      created: now + idx,
+      cards: p.cards.slice(0, MAX_CARDS).map((c, ci) => ({
+        id: `${now + idx}-${ci}`,
+        front: c.front,
+        back: c.back,
+        sr: { interval: 0, easeFactor: 2.5, repetitions: 0 },
+        nextReviewDate: 0
+      }))
+    }));
+    for (const d of toSave) await saveDeck(d);
+    return toSave.length;
+  }
+  function startReview(deck, mode) {
+    setOriginalDeck(deck);
+    setActiveDeck(deck);
+    setReviewMode(mode);
+    setSessionStartTime(Date.now());
+    setFinalElapsedMs(0);
+    setView("review");
+    const updated = { ...deck, lastOpenedAt: Date.now() };
+    saveDeck(updated);
+  }
+  const themeClass = settings.darkMode ? "dark" : "";
+  const fontSize = settings.fontSize || "normal";
+  return /* @__PURE__ */ React.createElement("div", { className: `${themeClass} font-scale-${fontSize} min-h-screen bg-stone-50 text-stone-900`, style: { fontFamily: "'Fraunces', Georgia, serif" } }, /* @__PURE__ */ React.createElement("style", null, `
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .display { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 144; }
+        .body-text { font-family: 'Inter', system-ui, sans-serif; }
+
+        .font-scale-small { font-size: 13px; }
+        .font-scale-normal { font-size: 16px; }
+        .font-scale-large { font-size: 21px; }
+
+        .font-scale-small .text-\\[10px\\] { font-size: 0.65em !important; line-height: 1em; }
+        .font-scale-normal .text-\\[10px\\] { font-size: 0.625em !important; line-height: 1em; }
+        .font-scale-large .text-\\[10px\\] { font-size: 0.52em !important; line-height: 1em; }
+
+        .font-scale-small .text-xs, .font-scale-normal .text-xs, .font-scale-large .text-xs { font-size: 0.78em !important; line-height: 1.1em; }
+        .font-scale-small .text-sm, .font-scale-normal .text-sm, .font-scale-large .text-sm { font-size: 0.9em !important; line-height: 1.4em; }
+        .font-scale-small .text-base, .font-scale-normal .text-base, .font-scale-large .text-base { font-size: 1em !important; line-height: 1.5em; }
+        .font-scale-small .text-lg, .font-scale-normal .text-lg, .font-scale-large .text-lg { font-size: 1.15em !important; line-height: 1.5em; }
+        .font-scale-small .text-xl, .font-scale-normal .text-xl, .font-scale-large .text-xl { font-size: 1.3em !important; line-height: 1.4em; }
+        .font-scale-small .text-2xl, .font-scale-normal .text-2xl, .font-scale-large .text-2xl { font-size: 1.55em !important; line-height: 1.3em; }
+        .font-scale-small .text-3xl, .font-scale-normal .text-3xl, .font-scale-large .text-3xl { font-size: 1.9em !important; line-height: 1.2em; }
+        .font-scale-small .text-4xl, .font-scale-normal .text-4xl, .font-scale-large .text-4xl { font-size: 2.3em !important; line-height: 1.15em; }
+        .font-scale-small .text-5xl, .font-scale-normal .text-5xl, .font-scale-large .text-5xl { font-size: 2.9em !important; line-height: 1.1em; }
+        .font-scale-small .text-6xl, .font-scale-normal .text-6xl, .font-scale-large .text-6xl { font-size: 3.6em !important; line-height: 1.05em; }
+        .font-scale-small .text-7xl, .font-scale-normal .text-7xl, .font-scale-large .text-7xl { font-size: 4.4em !important; line-height: 1em; }
+        .font-scale-small .text-8xl, .font-scale-normal .text-8xl, .font-scale-large .text-8xl { font-size: 5.75em !important; line-height: 1em; }
+
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 0.4s ease-out both; }
+        .stagger-1 { animation-delay: 0.05s; }
+        .stagger-2 { animation-delay: 0.1s; }
+        .stagger-3 { animation-delay: 0.15s; }
+        .stagger-4 { animation-delay: 0.2s; }
+
+        @keyframes cardFlip {
+          0% { transform: rotateY(0deg); opacity: 1; }
+          50% { transform: rotateY(90deg); opacity: 0.3; }
+          100% { transform: rotateY(0deg); opacity: 1; }
+        }
+        .card-flip { animation: cardFlip 0.4s ease-in-out; }
+
+        @media (prefers-reduced-motion: reduce) {
+          .fade-up, .card-flip { animation: none !important; }
+        }
+
+        /* ===== Dark mode overrides ===== */
+        .dark { color-scheme: dark; }
+        .dark.bg-stone-50, .dark .bg-stone-50 { background-color: #1c1917 !important; }
+        .dark .bg-stone-100 { background-color: #292524 !important; }
+        .dark .bg-white { background-color: #292524 !important; }
+        .dark .bg-stone-900 { background-color: #f5f5f4 !important; color: #1c1917 !important; }
+        .dark .bg-stone-800 { background-color: #44403c !important; }
+
+        .dark.text-stone-900, .dark .text-stone-900 { color: #f5f5f4 !important; }
+        .dark .text-stone-700 { color: #d6d3d1 !important; }
+        .dark .text-stone-600 { color: #a8a29e !important; }
+        .dark .text-stone-500 { color: #a8a29e !important; }
+        .dark .text-stone-400 { color: #78716c !important; }
+        .dark .text-stone-300 { color: #57534e !important; }
+        .dark .text-stone-50 { color: #1c1917 !important; }
+
+        .dark .border-stone-900 { border-color: #f5f5f4 !important; }
+        .dark .border-stone-400 { border-color: #78716c !important; }
+        .dark .border-stone-300 { border-color: #44403c !important; }
+        .dark .border-stone-200 { border-color: #44403c !important; }
+        .dark .divide-stone-900 > * + * { border-color: #f5f5f4 !important; }
+
+        .dark header.bg-stone-50 { background-color: #1c1917 !important; }
+
+        .dark .hover\\:bg-stone-100:hover { background-color: #292524 !important; }
+        .dark .hover\\:bg-stone-200:hover { background-color: #44403c !important; }
+        .dark .hover\\:bg-stone-900:hover { background-color: #f5f5f4 !important; color: #1c1917 !important; }
+
+        .dark .bg-emerald-50 { background-color: #064e3b !important; }
+        .dark .bg-red-50 { background-color: #7f1d1d !important; }
+        .dark .bg-amber-50 { background-color: #78350f !important; }
+        .dark .bg-blue-50 { background-color: #1e3a8a !important; }
+        .dark .text-emerald-700 { color: #34d399 !important; }
+        .dark .text-red-700 { color: #fca5a5 !important; }
+        .dark .text-red-600 { color: #fca5a5 !important; }
+        .dark .text-amber-700 { color: #fbbf24 !important; }
+        .dark .text-blue-700 { color: #93c5fd !important; }
+
+        .dark input, .dark textarea, .dark select { background-color: #292524 !important; color: #f5f5f4 !important; }
+        .dark input::placeholder, .dark textarea::placeholder { color: #78716c !important; }
+        .dark pre { background-color: #292524 !important; color: #d6d3d1 !important; }
+
+        .dark-card { background-color: #1c1917; color: #f5f5f4; }
+        .dark .dark-card { background-color: #0c0a09; color: #f5f5f4; }
+        .dark .dark-card .text-stone-300 { color: #d6d3d1 !important; }
+        .dark .dark-card .text-stone-400 { color: #a8a29e !important; }
+
+        .amber-gradient-card {
+          background: linear-gradient(to bottom right, #b45309, #1c1917);
+          color: #f5f5f4;
+        }
+        .dark .amber-gradient-card {
+          background: linear-gradient(to bottom right, #92400e, #0c0a09);
+          color: #f5f5f4;
+        }
+
+        .dark .bg-gradient-to-br { background: linear-gradient(to bottom right, #78350f, #1c1917) !important; }
+
+        *:focus-visible { outline: 2px solid #b45309; outline-offset: 2px; }
+      `), /* @__PURE__ */ React.createElement(ConfirmProvider, null, /* @__PURE__ */ React.createElement("header", { className: "border-b-2 border-stone-900 bg-stone-50 sticky top-0 z-10" }, /* @__PURE__ */ React.createElement("div", { className: "max-w-5xl mx-auto px-6 py-4 flex items-center justify-between" }, /* @__PURE__ */ React.createElement("button", { onClick: () => setView("home"), className: "flex items-center gap-3 group" }, /* @__PURE__ */ React.createElement("div", { className: "w-9 h-9 bg-stone-900 text-stone-50 flex items-center justify-center group-hover:bg-amber-600 transition-colors" }, /* @__PURE__ */ React.createElement(Layers, { size: 18 })), /* @__PURE__ */ React.createElement("div", { className: "text-left" }, /* @__PURE__ */ React.createElement("div", { className: "display text-xl font-bold leading-none" }, "Dendrite"), /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] text-stone-500 tracking-widest uppercase mt-1" }, decks.length, " ", decks.length === 1 ? "deck" : "decks", " \xB7 ", decks.reduce((s, d) => s + d.cards.length, 0), " cards"))), /* @__PURE__ */ React.createElement("nav", { className: "flex gap-1 flex-wrap justify-end" }, /* @__PURE__ */ React.createElement(NavButton, { active: view === "home", onClick: () => setView("home") }, "Home"), /* @__PURE__ */ React.createElement(NavButton, { active: view === "browse", onClick: () => setView("browse") }, "Library (", decks.length, ")"), /* @__PURE__ */ React.createElement(NavButton, { active: view === "create", onClick: () => {
+    setEditingDeck(null);
+    setCreateMode("manual");
+    setView("create");
+  } }, "Create"), /* @__PURE__ */ React.createElement(NavButton, { active: view === "settings", onClick: () => setView("settings") }, /* @__PURE__ */ React.createElement(Settings, { size: 12 }))))), /* @__PURE__ */ React.createElement("main", { className: "max-w-5xl mx-auto px-6 py-12" }, view === "home" && /* @__PURE__ */ React.createElement(HomeView, { decks, stats, onStart: startReview, onCreate: () => {
+    setEditingDeck(null);
+    setCreateMode("manual");
+    setView("create");
+  }, onBrowse: () => setView("browse") }), view === "browse" && /* @__PURE__ */ React.createElement(BrowseView, { decks, stats, onStart: startReview, onEdit: (d) => {
+    setEditingDeck(d);
+    setCreateMode("manual");
+    setView("create");
+  }, onDelete: deleteDeck, onCreate: () => {
+    setEditingDeck(null);
+    setCreateMode("manual");
+    setView("create");
+  }, onResetStats: resetDeckStats }), view === "create" && /* @__PURE__ */ React.createElement(CreateHub, { mode: createMode, setMode: setCreateMode, initial: editingDeck, onSave: async (d) => {
+    await saveDeck(d);
+    setView("browse");
+  }, onSaveMany: async (ds) => {
+    for (const d of ds) await saveDeck(d);
+    setView("browse");
+  }, onCancel: () => setView("browse") }), view === "settings" && /* @__PURE__ */ React.createElement(SettingsView, { settings, decks, stats, onChange: saveSettings, onReset: () => saveSettings(DEFAULT_SETTINGS), onClearLibrary: clearLibrary, onClearStats: clearStats, onImportDecks: importDecks }), view === "review" && activeDeck && /* @__PURE__ */ React.createElement(
+    ReviewView,
+    {
+      deck: activeDeck,
+      mode: reviewMode,
+      settings,
+      sessionStartTime,
+      onFinish: (sessionStats) => {
+        const elapsed = sessionStartTime ? Date.now() - sessionStartTime : 0;
+        setFinalElapsedMs(elapsed);
+        if (originalDeck) recordSession(originalDeck.id, sessionStats, elapsed);
+      },
+      onUpdateCard: (cardId, update) => {
+        if (!originalDeck) return;
+        const updatedDeck = { ...originalDeck, cards: originalDeck.cards.map((c) => c.id === cardId ? { ...c, ...update } : c) };
+        setOriginalDeck(updatedDeck);
+        setActiveDeck((prev) => ({ ...prev, cards: prev.cards.map((c) => c.id === cardId ? { ...c, ...update } : c) }));
+        saveDeck(updatedDeck);
+      },
+      onQuit: () => setView("browse"),
+      onHome: () => setView("home"),
+      finalElapsedMs
+    }
+  )), /* @__PURE__ */ React.createElement("footer", { className: "border-t border-stone-300 mt-24 py-8 text-center mono text-xs text-stone-500 tracking-widest uppercase" }, "Question \xB7 Recall \xB7 Remember")));
+}
+function NavButton({ active, onClick, children }) {
+  return /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick,
+      className: `px-4 py-2 mono text-xs uppercase tracking-widest transition-colors flex items-center gap-1 ${active ? "bg-stone-900 text-stone-50" : "text-stone-700 hover:bg-stone-200"}`
+    },
+    children
+  );
+}
+function HomeView({ decks, stats, onStart, onCreate, onBrowse }) {
+  const featured = decks.length === 0 ? null : [...decks].sort((a, b) => {
+    const aTime = a.lastOpenedAt || a.created || 0;
+    const bTime = b.lastOpenedAt || b.created || 0;
+    return bTime - aTime;
+  })[0];
+  const featuredStats = featured ? stats[featured.id] : null;
+  const hasSessions = featuredStats && featuredStats.sessions > 0;
+  const hasBeenOpened = featured && featured.lastOpenedAt;
+  const due = featured ? dueCards(featured.cards).length : 0;
+  return /* @__PURE__ */ React.createElement("div", { className: "fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-[0.3em] text-stone-500 mb-4" }, "Dendrite"), /* @__PURE__ */ React.createElement("h1", { className: "display text-6xl sm:text-7xl md:text-8xl font-black leading-[0.9] mb-6 tracking-tight" }, "Cards for ", /* @__PURE__ */ React.createElement("span", { className: "italic text-amber-700" }, "remembering.")), /* @__PURE__ */ React.createElement("p", { className: "text-xl text-stone-600 max-w-2xl mb-12 leading-relaxed" }, "Build flashcard decks by hand or import them. Study with flip review or a spaced repetition schedule."), /* @__PURE__ */ React.createElement("div", { className: "grid md:grid-cols-2 gap-6 mb-16" }, /* @__PURE__ */ React.createElement("button", { onClick: onBrowse, className: "group text-left bg-stone-900 text-stone-50 p-8 hover:bg-amber-700 transition-all fade-up stagger-1" }, /* @__PURE__ */ React.createElement(Play, { size: 28, className: "mb-4" }), /* @__PURE__ */ React.createElement("div", { className: "display text-3xl font-bold mb-2" }, "Study a deck"), /* @__PURE__ */ React.createElement("div", { className: "text-stone-400 group-hover:text-stone-100" }, decks.length, " ", decks.length === 1 ? "deck" : "decks", " waiting in your library.")), /* @__PURE__ */ React.createElement("button", { onClick: onCreate, className: "group text-left border-2 border-stone-900 p-8 hover:bg-stone-900 hover:text-stone-50 transition-all fade-up stagger-2" }, /* @__PURE__ */ React.createElement(Sparkles, { size: 28, className: "mb-4 group-hover:text-amber-400" }), /* @__PURE__ */ React.createElement("div", { className: "display text-3xl font-bold mb-2" }, "Build a deck"), /* @__PURE__ */ React.createElement("div", { className: "text-stone-600 group-hover:text-stone-300" }, "Write cards by hand or import them from text."))), featured && /* @__PURE__ */ React.createElement("div", { className: "border-t-2 border-stone-900 pt-8 fade-up stagger-3" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-4" }, hasSessions ? "Pick up where you left off" : "From your library"), /* @__PURE__ */ React.createElement("div", { className: "flex items-end justify-between gap-6 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "flex-1 min-w-0" }, /* @__PURE__ */ React.createElement("h2", { className: "display text-5xl font-bold mb-3" }, featured.name), featured.description && /* @__PURE__ */ React.createElement("p", { className: "text-stone-600 text-lg mb-2" }, featured.description), /* @__PURE__ */ React.createElement("div", { className: "mono text-xs text-stone-500 uppercase tracking-widest" }, featured.cards.length, " ", featured.cards.length === 1 ? "card" : "cards", due > 0 && /* @__PURE__ */ React.createElement(React.Fragment, null, " \xB7 ", /* @__PURE__ */ React.createElement("span", { className: "text-amber-700" }, due, " due")), hasBeenOpened && /* @__PURE__ */ React.createElement(React.Fragment, null, " \xB7 Opened ", formatRelativeTime(featured.lastOpenedAt)), hasSessions && /* @__PURE__ */ React.createElement(React.Fragment, null, " \xB7 Best ", featuredStats.bestAccuracy, "%"))), /* @__PURE__ */ React.createElement("div", { className: "flex gap-2 flex-wrap" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => onStart(featured, "flip"),
+      className: "border-2 border-stone-900 px-6 py-4 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors flex items-center gap-2"
+    },
+    /* @__PURE__ */ React.createElement(RefreshCw, { size: 14 }),
+    " Flip review"
+  ), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => onStart(featured, "spaced"),
+      className: "bg-amber-700 text-stone-50 px-6 py-4 mono text-xs uppercase tracking-widest hover:bg-stone-900 transition-colors flex items-center gap-2"
+    },
+    /* @__PURE__ */ React.createElement(Brain, { size: 14 }),
+    " Spaced ",
+    due > 0 && `(${due})`
+  )))));
+}
+function BrowseView({ decks, stats, onStart, onEdit, onDelete, onCreate, onResetStats }) {
+  const confirm = useConfirm();
+  const [query, setQuery] = useState("");
+  const [sort, setSort] = useState("newest");
+  const [expandedStats, setExpandedStats] = useState(null);
+  if (decks.length === 0) {
+    return /* @__PURE__ */ React.createElement("div", { className: "text-center py-24 fade-up" }, /* @__PURE__ */ React.createElement(Layers, { size: 48, className: "mx-auto mb-4 text-stone-400" }), /* @__PURE__ */ React.createElement("div", { className: "display text-3xl font-bold mb-2" }, "Library is empty"), /* @__PURE__ */ React.createElement("p", { className: "text-stone-600 mb-6" }, "Create your first deck to get started."), /* @__PURE__ */ React.createElement("button", { onClick: onCreate, className: "bg-stone-900 text-stone-50 px-6 py-3 mono text-xs uppercase tracking-widest hover:bg-amber-700 transition-colors" }, "Create a deck"));
+  }
+  const q = query.trim().toLowerCase();
+  let filtered = q ? decks.filter((d) => d.name.toLowerCase().includes(q) || (d.description || "").toLowerCase().includes(q)) : decks;
+  const sorted = [...filtered].sort((a, b) => {
+    const sa = stats[a.id] || {};
+    const sb = stats[b.id] || {};
+    switch (sort) {
+      case "oldest":
+        return (a.created || 0) - (b.created || 0);
+      case "title":
+        return a.name.localeCompare(b.name);
+      case "size":
+        return b.cards.length - a.cards.length;
+      case "best":
+        return (sb.bestAccuracy || -1) - (sa.bestAccuracy || -1);
+      case "due":
+        return dueCards(b.cards).length - dueCards(a.cards).length;
+      case "newest":
+      default:
+        return (b.created || 0) - (a.created || 0);
+    }
+  });
+  return /* @__PURE__ */ React.createElement("div", { className: "fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-end justify-between mb-8 border-b-2 border-stone-900 pb-4 gap-4 flex-wrap" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-[0.3em] text-stone-500 mb-2" }, "Your decks"), /* @__PURE__ */ React.createElement("h1", { className: "display text-5xl font-black" }, "Library")), /* @__PURE__ */ React.createElement("button", { onClick: onCreate, className: "bg-stone-900 text-stone-50 px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-amber-700 transition-colors flex items-center gap-2" }, /* @__PURE__ */ React.createElement(Plus, { size: 14 }), " New")), /* @__PURE__ */ React.createElement("div", { className: "mb-6 flex gap-3 items-center flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "relative flex-1 min-w-[200px]" }, /* @__PURE__ */ React.createElement(Search, { size: 14, className: "absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none" }), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      value: query,
+      onChange: (e) => setQuery(e.target.value),
+      placeholder: "Search by name or description...",
+      className: "w-full pl-9 pr-3 py-2 border-2 border-stone-300 focus:border-stone-900 outline-none bg-white mono text-sm placeholder:text-stone-400"
+    }
+  )), /* @__PURE__ */ React.createElement(
+    "select",
+    {
+      value: sort,
+      onChange: (e) => setSort(e.target.value),
+      className: "py-2 px-3 border-2 border-stone-300 focus:border-stone-900 outline-none bg-white mono text-xs uppercase tracking-widest"
+    },
+    /* @__PURE__ */ React.createElement("option", { value: "newest" }, "Newest first"),
+    /* @__PURE__ */ React.createElement("option", { value: "oldest" }, "Oldest first"),
+    /* @__PURE__ */ React.createElement("option", { value: "title" }, "Name A\u2013Z"),
+    /* @__PURE__ */ React.createElement("option", { value: "size" }, "Most cards"),
+    /* @__PURE__ */ React.createElement("option", { value: "due" }, "Most due"),
+    /* @__PURE__ */ React.createElement("option", { value: "best" }, "Best score")
+  )), sorted.length === 0 && /* @__PURE__ */ React.createElement("div", { className: "text-center py-12 border-2 border-dashed border-stone-300" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500" }, 'No decks match "', query, '"')), /* @__PURE__ */ React.createElement("div", { className: "grid gap-4" }, sorted.map((deck, i) => {
+    const s = stats[deck.id] || {};
+    const hasStats = s.sessions > 0;
+    const isExpanded = expandedStats === deck.id;
+    const due = dueCards(deck.cards).length;
+    const mastered = masteredCount(deck.cards);
+    return /* @__PURE__ */ React.createElement("div", { key: deck.id, className: `group border-2 border-stone-900 transition-colors fade-up stagger-${Math.min(i + 1, 4)} ${isExpanded ? "bg-stone-50" : "hover:bg-stone-100"}` }, /* @__PURE__ */ React.createElement("div", { className: "p-6" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-start justify-between gap-6 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "flex-1 min-w-0" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-widest text-stone-500 mb-1" }, deck.lastOpenedAt ? `Last opened ${formatRelativeTime(deck.lastOpenedAt)}` : deck.created ? `Created ${formatRelativeTime(deck.created)}` : "New"), /* @__PURE__ */ React.createElement("h3", { className: "display text-3xl font-bold mb-2" }, deck.name), deck.description && /* @__PURE__ */ React.createElement("p", { className: "text-stone-600 mb-2" }, deck.description), /* @__PURE__ */ React.createElement("div", { className: "mono text-xs text-stone-500 uppercase tracking-widest flex gap-4 flex-wrap items-center" }, /* @__PURE__ */ React.createElement("span", null, deck.cards.length, " ", deck.cards.length === 1 ? "card" : "cards"), /* @__PURE__ */ React.createElement("span", { className: "text-stone-400" }, "\xB7"), /* @__PURE__ */ React.createElement("span", { className: due > 0 ? "text-amber-700" : "" }, due, " due"), /* @__PURE__ */ React.createElement("span", { className: "text-stone-400" }, "\xB7"), /* @__PURE__ */ React.createElement("span", { className: "text-emerald-700" }, mastered, " mastered"), hasStats && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("span", { className: "text-stone-400" }, "\xB7"), /* @__PURE__ */ React.createElement("span", null, s.sessions, " ", s.sessions === 1 ? "session" : "sessions"), /* @__PURE__ */ React.createElement("span", { className: "text-amber-700" }, "Best ", s.bestAccuracy, "%"), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => setExpandedStats(isExpanded ? null : deck.id),
+        className: "text-stone-700 hover:text-amber-700 flex items-center gap-1 underline"
+      },
+      isExpanded ? /* @__PURE__ */ React.createElement(React.Fragment, null, "Hide stats ", /* @__PURE__ */ React.createElement(ChevronUp, { size: 12 })) : /* @__PURE__ */ React.createElement(React.Fragment, null, "View stats ", /* @__PURE__ */ React.createElement(ChevronDown, { size: 12 }))
+    )))), /* @__PURE__ */ React.createElement("div", { className: "flex gap-2 flex-wrap" }, /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => onStart(deck, "flip"),
+        className: "border-2 border-stone-900 px-4 py-2 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors flex items-center gap-1",
+        title: "Flip review \u2014 go through all cards"
+      },
+      /* @__PURE__ */ React.createElement(RefreshCw, { size: 12 }),
+      " Flip"
+    ), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => onStart(deck, "spaced"),
+        className: "bg-amber-700 text-stone-50 px-4 py-2 mono text-xs uppercase tracking-widest hover:bg-stone-900 transition-colors flex items-center gap-1",
+        title: "Spaced repetition \u2014 review only cards due today"
+      },
+      /* @__PURE__ */ React.createElement(Brain, { size: 12 }),
+      " Spaced ",
+      due > 0 && /* @__PURE__ */ React.createElement("span", { className: "bg-stone-50 text-amber-700 px-1 -my-0.5 ml-1" }, due)
+    ), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => onEdit(deck),
+        className: "border-2 border-stone-300 text-stone-500 px-3 py-2 hover:border-stone-900 hover:text-stone-900 transition-colors",
+        title: "Edit"
+      },
+      /* @__PURE__ */ React.createElement(Edit3, { size: 14 })
+    ), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => downloadDeck(deck),
+        title: "Download as .txt",
+        className: "border-2 border-stone-300 text-stone-500 px-3 py-2 hover:border-stone-900 hover:text-stone-900 transition-colors"
+      },
+      /* @__PURE__ */ React.createElement(Download, { size: 14 })
+    ), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: async () => {
+          const ok = await confirm({ title: "Delete deck", message: `Delete "${deck.name}"? This cannot be undone.`, confirmLabel: "Delete", danger: true });
+          if (ok) onDelete(deck.id);
+        },
+        title: "Delete",
+        className: "border-2 border-stone-300 text-stone-500 px-3 py-2 hover:border-red-600 hover:text-red-600 transition-colors"
+      },
+      /* @__PURE__ */ React.createElement(Trash2, { size: 14 })
+    )))), isExpanded && hasStats && /* @__PURE__ */ React.createElement(
+      DeckStatsPanel,
+      {
+        deckName: deck.name,
+        stats: s,
+        onReset: async () => {
+          const ok = await confirm({ title: "Reset stats", message: `Reset stats for "${deck.name}"? This cannot be undone. The deck itself will be kept.`, confirmLabel: "Reset stats", danger: true });
+          if (ok) {
+            onResetStats(deck.id);
+            setExpandedStats(null);
+          }
+        }
+      }
+    ));
+  })));
+}
+function DeckStatsPanel({ deckName, stats, onReset }) {
+  const recent = (stats.recent || []).slice(0, 10);
+  const average = recent.length > 0 ? Math.round(recent.reduce((sum, r) => sum + r.accuracy, 0) / recent.length) : 0;
+  const chrono = [...recent].reverse();
+  const maxH = 40;
+  const barWidth = chrono.length > 0 ? Math.max(6, Math.min(24, Math.floor(240 / chrono.length) - 2)) : 0;
+  return /* @__PURE__ */ React.createElement("div", { className: "border-t-2 border-stone-900 p-6 bg-white fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between mb-4 gap-4 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 flex items-center gap-2" }, /* @__PURE__ */ React.createElement(BarChart3, { size: 14 }), " Stats for this deck"), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: onReset,
+      className: "mono text-xs uppercase tracking-widest border-2 border-red-600 text-red-600 px-3 py-1 hover:bg-red-600 hover:text-white transition-colors flex items-center gap-1"
+    },
+    /* @__PURE__ */ React.createElement(RotateCcw, { size: 10 }),
+    " Reset stats"
+  )), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-0 border-2 border-stone-900 mb-6" }, /* @__PURE__ */ React.createElement(StatCell, { value: stats.sessions || 0, label: "Sessions" }), /* @__PURE__ */ React.createElement(StatCell, { value: (stats.bestAccuracy || 0) + "%", label: "Best", border: true, accent: true }), /* @__PURE__ */ React.createElement(StatCell, { value: (stats.lastAccuracy || 0) + "%", label: "Last", border: true }), /* @__PURE__ */ React.createElement(StatCell, { value: average + "%", label: "Recent avg", border: true })), chrono.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "mb-6" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-3" }, "Recent trend (", chrono.length, " ", chrono.length === 1 ? "session" : "sessions", ", oldest \u2192 newest)"), /* @__PURE__ */ React.createElement("div", { className: "flex items-end gap-1 h-12 border-b border-stone-300 pb-0" }, chrono.map((r, idx) => {
+    const h = Math.max(3, Math.round(r.accuracy / 100 * maxH));
+    const color = r.accuracy >= 80 ? "bg-emerald-600" : r.accuracy >= 60 ? "bg-amber-600" : r.accuracy >= 40 ? "bg-amber-400" : "bg-red-500";
+    return /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        key: idx,
+        title: `${r.accuracy}% (${r.easy + r.good} of ${r.total}) \xB7 ${formatRelativeTime(r.studiedAt)}`,
+        className: `${color} transition-all`,
+        style: { width: barWidth + "px", height: h + "px" }
+      }
+    );
+  }))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-3" }, "Recent sessions"), /* @__PURE__ */ React.createElement("div", { className: "space-y-1" }, recent.map((r, idx) => /* @__PURE__ */ React.createElement("div", { key: idx, className: "flex items-center justify-between py-2 px-3 border border-stone-200 bg-stone-50 text-sm flex-wrap gap-2" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-3 flex-wrap" }, /* @__PURE__ */ React.createElement("span", { className: "mono text-xs text-stone-500 w-8" }, "#", stats.sessions - idx), /* @__PURE__ */ React.createElement("span", { className: `mono text-xs font-semibold ${r.accuracy >= 80 ? "text-emerald-700" : r.accuracy >= 60 ? "text-amber-700" : r.accuracy >= 40 ? "text-amber-600" : "text-red-600"}` }, r.accuracy, "%"), /* @__PURE__ */ React.createElement("span", { className: "text-stone-600 text-xs" }, r.easy, "e \xB7 ", r.good, "g \xB7 ", r.hard, "h \xB7 ", r.again, "a")), /* @__PURE__ */ React.createElement("span", { className: "mono text-xs text-stone-500" }, formatRelativeTime(r.studiedAt)))))));
+}
+function CreateHub({ mode, setMode, initial, onSave, onSaveMany, onCancel }) {
+  useEffect(() => {
+    if (initial) setMode("manual");
+  }, [initial]);
+  return /* @__PURE__ */ React.createElement("div", { className: "fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "border-b-2 border-stone-900 pb-4 mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-[0.3em] text-stone-500 mb-2" }, initial ? "Editing" : "New deck"), /* @__PURE__ */ React.createElement("h1", { className: "display text-5xl font-black" }, initial ? "Edit Deck" : "Create a Deck")), !initial && /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-0 mb-8 border-2 border-stone-900" }, /* @__PURE__ */ React.createElement(ModeTab, { active: mode === "manual", onClick: () => setMode("manual"), icon: /* @__PURE__ */ React.createElement(Edit3, { size: 16 }), label: "Manual", subtitle: "Build each card by hand" }), /* @__PURE__ */ React.createElement(ModeTab, { active: mode === "import", onClick: () => setMode("import"), icon: /* @__PURE__ */ React.createElement(Upload, { size: 16 }), label: "Import", subtitle: "From .txt or pasted text" })), mode === "manual" && /* @__PURE__ */ React.createElement(ManualCreate, { initial, onSave, onCancel }), mode === "import" && /* @__PURE__ */ React.createElement(ImportCreate, { onSave, onSaveMany, onCancel }));
+}
+function ModeTab({ active, onClick, icon, label, subtitle }) {
+  return /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick,
+      className: `p-4 text-left transition-colors border-r-2 border-stone-900 last:border-r-0 ${active ? "bg-stone-900 text-stone-50" : "bg-stone-50 hover:bg-stone-100"}`
+    },
+    /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2 mb-1" }, icon, /* @__PURE__ */ React.createElement("span", { className: "mono text-xs uppercase tracking-widest font-semibold" }, label)),
+    /* @__PURE__ */ React.createElement("div", { className: `text-xs ${active ? "text-stone-400" : "text-stone-500"}` }, subtitle)
+  );
+}
+function ManualCreate({ initial, onSave, onCancel }) {
+  const confirm = useConfirm();
+  const [name, setName] = useState(initial?.name || "");
+  const [description, setDescription] = useState(initial?.description || "");
+  const [cards, setCards] = useState(
+    initial?.cards || [{ id: "new-1", front: "", back: "", sr: { interval: 0, easeFactor: 2.5, repetitions: 0 }, nextReviewDate: 0 }]
+  );
+  const [searchQuery, setSearchQuery] = useState("");
+  const [saveError, setSaveError] = useState("");
+  const { visibleCount, sentinelRef } = useProgressiveRender(cards.length);
+  function updateCard(i, patch) {
+    setCards((prev) => prev.map((c, idx) => idx === i ? { ...c, ...patch } : c));
+  }
+  function addCard() {
+    if (cards.length >= MAX_CARDS) return;
+    setCards((prev) => [...prev, {
+      id: "new-" + Date.now() + "-" + Math.random().toString(36).slice(2, 6),
+      front: "",
+      back: "",
+      sr: { interval: 0, easeFactor: 2.5, repetitions: 0 },
+      nextReviewDate: 0
+    }]);
+  }
+  function removeCard(i) {
+    if (cards.length === 1) return;
+    setCards((prev) => prev.filter((_, idx) => idx !== i));
+  }
+  function moveCard(i, direction) {
+    const targetIdx = direction === "up" ? i - 1 : i + 1;
+    if (targetIdx < 0 || targetIdx >= cards.length) return;
+    setCards((prev) => {
+      const copy = [...prev];
+      [copy[i], copy[targetIdx]] = [copy[targetIdx], copy[i]];
+      return copy;
+    });
+  }
+  async function resetProgress() {
+    const ok = await confirm({ title: "Reset progress", message: "Reset review progress for all cards in this deck? Your cards and edits will be kept.", confirmLabel: "Reset" });
+    if (!ok) return;
+    setCards((prev) => prev.map((c) => ({ ...c, sr: { interval: 0, easeFactor: 2.5, repetitions: 0 }, nextReviewDate: 0 })));
+  }
+  function handleSave() {
+    if (!name.trim()) {
+      setSaveError("Please give your deck a name.");
+      return;
+    }
+    const incompleteIdx = cards.findIndex((c) => !c.front.trim() || !c.back.trim());
+    if (incompleteIdx !== -1) {
+      const c = cards[incompleteIdx];
+      if (!c.front.trim()) setSaveError(`Card ${incompleteIdx + 1} is missing its question.`);
+      else setSaveError(`Card ${incompleteIdx + 1} is missing its answer.`);
+      return;
+    }
+    setSaveError("");
+    onSave({
+      id: initial?.id || "deck-" + Date.now(),
+      name: name.trim(),
+      description: description.trim(),
+      created: initial?.created || Date.now(),
+      lastOpenedAt: initial?.lastOpenedAt,
+      cards: cards.map((c) => ({
+        ...c,
+        front: c.front.trim(),
+        back: c.back.trim()
+      }))
+    });
+  }
+  const q = searchQuery.trim().toLowerCase();
+  const filteredIndices = q ? cards.map((c, i) => c.front.toLowerCase().includes(q) || c.back.toLowerCase().includes(q) ? i : -1).filter((i) => i !== -1) : cards.map((_, i) => i);
+  const displayIndices = filteredIndices.slice(0, visibleCount);
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "flex justify-end gap-2 mb-6 flex-wrap" }, /* @__PURE__ */ React.createElement("button", { onClick: onCancel, className: "border-2 border-stone-900 px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors" }, "Cancel"), /* @__PURE__ */ React.createElement("button", { onClick: handleSave, className: "bg-amber-700 text-stone-50 px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 transition-colors flex items-center gap-2" }, /* @__PURE__ */ React.createElement(Check, { size: 14 }), " Save Deck")), saveError && /* @__PURE__ */ React.createElement("div", { className: "border-l-4 border-red-600 bg-red-50 p-4 mb-6 fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-red-700 mb-1" }, "Can't save yet"), /* @__PURE__ */ React.createElement("p", { className: "text-sm text-stone-700" }, saveError)), /* @__PURE__ */ React.createElement("div", { className: "space-y-4 mb-8" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "mono text-xs uppercase tracking-widest text-stone-500 block mb-2" }, "Name"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      value: name,
+      onChange: (e) => setName(e.target.value),
+      placeholder: "e.g., Spanish Vocabulary",
+      className: "w-full display text-4xl font-bold bg-transparent border-b-2 border-stone-300 focus:border-stone-900 outline-none pb-2 placeholder:text-stone-300"
+    }
+  )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "mono text-xs uppercase tracking-widest text-stone-500 block mb-2" }, "Description (optional)"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      value: description,
+      onChange: (e) => setDescription(e.target.value),
+      placeholder: "What's this deck about?",
+      className: "w-full text-lg bg-transparent border-b-2 border-stone-300 focus:border-stone-900 outline-none pb-2 placeholder:text-stone-300"
+    }
+  ))), initial && cards.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: resetProgress,
+      className: "mono text-xs uppercase tracking-widest border-2 border-red-600 text-red-600 px-3 py-2 hover:bg-red-600 hover:text-white transition-colors flex items-center gap-1"
+    },
+    /* @__PURE__ */ React.createElement(RotateCcw, { size: 12 }),
+    " Reset all review progress"
+  )), cards.length > 10 && /* @__PURE__ */ React.createElement("div", { className: "mb-4 relative" }, /* @__PURE__ */ React.createElement(Search, { size: 14, className: "absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none" }), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      value: searchQuery,
+      onChange: (e) => setSearchQuery(e.target.value),
+      placeholder: "Search cards...",
+      className: "w-full pl-9 pr-3 py-2 border-2 border-stone-300 focus:border-stone-900 outline-none bg-white mono text-sm placeholder:text-stone-400"
+    }
+  ), q && /* @__PURE__ */ React.createElement("p", { className: "mono text-[10px] uppercase tracking-widest text-stone-500 mt-1" }, filteredIndices.length, ' matching "', searchQuery, '"')), /* @__PURE__ */ React.createElement("div", { className: "space-y-4" }, displayIndices.map((ci) => {
+    const c = cards[ci];
+    return /* @__PURE__ */ React.createElement("div", { key: c.id, className: "border-2 border-stone-900 p-6 bg-stone-50" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between mb-4" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500" }, "Card ", String(ci + 1).padStart(3, "0")), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-1" }, !q && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => moveCard(ci, "up"),
+        disabled: ci === 0,
+        title: "Move up",
+        className: "p-1 text-stone-400 hover:text-stone-900 disabled:opacity-30 disabled:hover:text-stone-400 transition-colors"
+      },
+      /* @__PURE__ */ React.createElement(ArrowUp, { size: 16 })
+    ), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => moveCard(ci, "down"),
+        disabled: ci === cards.length - 1,
+        title: "Move down",
+        className: "p-1 text-stone-400 hover:text-stone-900 disabled:opacity-30 disabled:hover:text-stone-400 transition-colors"
+      },
+      /* @__PURE__ */ React.createElement(ArrowDown, { size: 16 })
+    ), /* @__PURE__ */ React.createElement("span", { className: "w-2" })), /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick: () => removeCard(ci),
+        disabled: cards.length === 1,
+        title: "Delete card",
+        className: "p-1 text-stone-400 hover:text-red-600 disabled:opacity-30 disabled:hover:text-stone-400 transition-colors"
+      },
+      /* @__PURE__ */ React.createElement(Trash2, { size: 16 })
+    ))), /* @__PURE__ */ React.createElement("div", { className: "mb-3" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-widest text-amber-700 font-semibold mb-1" }, "Question"), /* @__PURE__ */ React.createElement(
+      "textarea",
+      {
+        value: c.front,
+        onChange: (e) => updateCard(ci, { front: e.target.value }),
+        placeholder: "What goes on the front of the card?",
+        rows: 2,
+        className: "w-full display text-lg font-medium bg-transparent border-b border-stone-300 focus:border-stone-900 outline-none pb-2 placeholder:text-stone-300 resize-none"
+      }
+    )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-widest text-emerald-700 font-semibold mb-1" }, "Answer"), /* @__PURE__ */ React.createElement(
+      "textarea",
+      {
+        value: c.back,
+        onChange: (e) => updateCard(ci, { back: e.target.value }),
+        placeholder: "What goes on the back?",
+        rows: 2,
+        className: "w-full body-text text-base bg-transparent border-b border-stone-300 focus:border-stone-900 outline-none pb-2 placeholder:text-stone-300 resize-none"
+      }
+    )));
+  })), visibleCount < filteredIndices.length && /* @__PURE__ */ React.createElement("div", { ref: sentinelRef, className: "py-5 text-center mono text-xs uppercase tracking-widest text-stone-500" }, "Loading more\u2026 (", visibleCount, " of ", filteredIndices.length, ")"), !q && cards.length < MAX_CARDS && /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: addCard,
+      className: "w-full mt-6 border-2 border-dashed border-stone-400 py-6 mono text-xs uppercase tracking-widest text-stone-500 hover:border-stone-900 hover:text-stone-900 transition-colors flex items-center justify-center gap-2"
+    },
+    /* @__PURE__ */ React.createElement(Plus, { size: 16 }),
+    " Add card"
+  ));
+}
+const IMPORT_EXAMPLE = `Name: World Capitals
+Description: Quick recall practice for national capital cities.
+
+Q: Capital of France?
+A: Paris.
+
+Q: Capital of Japan?
+A: Tokyo.
+
+Q: Capital of Australia?
+A: Canberra.
+
+Q: Largest country by area?
+A: Russia.
+
+Q: What does photosynthesis produce from sunlight,
+water, and carbon dioxide?
+A: Glucose and oxygen.`;
+function ImportCreate({ onSave, onSaveMany, onCancel }) {
+  const [text, setText] = useState("");
+  const [preview, setPreview] = useState(null);
+  const [errors, setErrors] = useState([]);
+  const [showInstructions, setShowInstructions] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
+  const EXTERNAL_AI_PROMPT = `${AI_INSTRUCTIONS}
+
+---
+
+OUTPUT FORMAT \u2014 follow exactly. Start with a Name line and a Description line (both required), then the cards:
+
+Name: [a short, specific deck title in Title Case]
+Description: [one sentence describing what the deck covers]
+
+Q: [first question]
+A: [first answer]
+
+Q: [next question]
+A: [next answer]
+
+Produce plain text only \u2014 no markdown, no JSON, no commentary before or after.
+
+TOPIC: [replace with your topic]
+NUMBER OF CARDS: [replace with how many \u2014 default to 20]`;
+  async function copyPrompt() {
+    try {
+      await navigator.clipboard.writeText(EXTERNAL_AI_PROMPT);
+      setCopied(true);
+      setCopyFailed(false);
+      setTimeout(() => setCopied(false), 2e3);
+    } catch (e) {
+      setCopyFailed(true);
+      setTimeout(() => setCopyFailed(false), 4e3);
+    }
+  }
+  function handleFile(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => setText(ev.target.result);
+    reader.readAsText(file);
+  }
+  function handleParse() {
+    if (!text.trim()) {
+      setErrors(["Please paste some text or upload a file first."]);
+      setPreview(null);
+      return;
+    }
+    const result = parseImportText(text);
+    if (result.errors && result.errors.length > 0) {
+      setErrors(result.errors);
+      setPreview(null);
+    } else {
+      setErrors([]);
+      setPreview(result);
+    }
+  }
+  function handleImport() {
+    if (!preview) return;
+    if (preview.multi) {
+      const now = Date.now();
+      const decksToSave = preview.decks.map((p, idx) => ({
+        id: "deck-" + (now + idx),
+        name: p.name,
+        description: p.description,
+        created: now + idx,
+        cards: p.cards.slice(0, MAX_CARDS).map((c, ci) => ({
+          id: `${now + idx}-${ci}`,
+          front: c.front,
+          back: c.back,
+          sr: { interval: 0, easeFactor: 2.5, repetitions: 0 },
+          nextReviewDate: 0
+        }))
+      }));
+      onSaveMany(decksToSave);
+    } else {
+      const now = Date.now();
+      onSave({
+        id: "deck-" + now,
+        name: preview.name,
+        description: preview.description,
+        created: now,
+        cards: preview.cards.slice(0, MAX_CARDS).map((c, ci) => ({
+          id: `${now}-${ci}`,
+          front: c.front,
+          back: c.back,
+          sr: { interval: 0, easeFactor: 2.5, repetitions: 0 },
+          nextReviewDate: 0
+        }))
+      });
+    }
+  }
+  function loadExample() {
+    setText(IMPORT_EXAMPLE);
+    setErrors([]);
+    setPreview(null);
+  }
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "dark-card p-6 mb-6" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-start gap-3" }, /* @__PURE__ */ React.createElement(Info, { size: 18, className: "mt-1 flex-shrink-0 text-amber-400" }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-amber-400 mb-3" }, "Format Guide"), /* @__PURE__ */ React.createElement("ol", { className: "text-stone-300 text-sm leading-relaxed mb-3 space-y-1 list-decimal list-inside" }, /* @__PURE__ */ React.createElement("li", null, "Start with a ", /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "Name:"), " line, then a ", /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "Description:"), " line"), /* @__PURE__ */ React.createElement("li", null, "Each card has a ", /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "Q:"), " line for the question"), /* @__PURE__ */ React.createElement("li", null, "Followed by an ", /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "A:"), " line for the answer"), /* @__PURE__ */ React.createElement("li", null, "Separate cards with a ", /* @__PURE__ */ React.createElement("strong", null, "blank line")), /* @__PURE__ */ React.createElement("li", null, "Multi-line answers are fine \u2014 any unprefixed lines continue the previous field")), /* @__PURE__ */ React.createElement("p", { className: "text-stone-400 text-xs leading-relaxed mb-3" }, 'To import multiple decks at once (e.g. a "Download all" backup), separate each deck with a line of ', /* @__PURE__ */ React.createElement("span", { className: "mono bg-stone-800 px-1" }, "======"), " characters. Max ", MAX_CARDS, " cards per deck."), /* @__PURE__ */ React.createElement("button", { onClick: loadExample, className: "mono text-xs uppercase tracking-widest text-amber-400 hover:text-amber-200 underline" }, "Load an example \u2192")))), /* @__PURE__ */ React.createElement("div", { className: "border-2 border-stone-900 mb-6" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => setShowInstructions(!showInstructions),
+      className: "w-full p-4 flex items-center justify-between hover:bg-stone-100 transition-colors"
+    },
+    /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-3 text-left" }, /* @__PURE__ */ React.createElement(Wand2, { size: 16, className: "text-stone-500 flex-shrink-0" }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest font-semibold" }, "AI Instructions for External Use"), /* @__PURE__ */ React.createElement("div", { className: "text-xs text-stone-500 mt-0.5" }, "Copy these instructions to use with ChatGPT, Claude, or any AI tool, then paste the result below"))),
+    showInstructions ? /* @__PURE__ */ React.createElement(ChevronUp, { size: 16 }) : /* @__PURE__ */ React.createElement(ChevronDown, { size: 16 })
+  ), showInstructions && /* @__PURE__ */ React.createElement("div", { className: "border-t-2 border-stone-900 p-4 bg-stone-50 fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between mb-3 gap-2 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-widest text-stone-500" }, "Paste this entire block into an AI chat, then bring the output back here"), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: copyPrompt,
+      className: `mono text-xs uppercase tracking-widest border-2 px-3 py-1 transition-colors flex items-center gap-1 ${copied ? "border-emerald-600 bg-emerald-600 text-white" : copyFailed ? "border-red-600 text-red-600" : "border-stone-900 hover:bg-stone-900 hover:text-stone-50"}`
+    },
+    copied ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Check, { size: 10 }), " Copied") : copyFailed ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(X, { size: 10 }), " Copy failed") : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Copy, { size: 10 }), " Copy prompt")
+  )), copyFailed && /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-widest text-red-600 mb-2" }, "Auto-copy blocked. Select the text below and copy manually."), /* @__PURE__ */ React.createElement("pre", { className: "mono text-xs text-stone-700 whitespace-pre-wrap bg-white border border-stone-300 p-3 max-h-64 overflow-y-auto leading-relaxed" }, EXTERNAL_AI_PROMPT))), /* @__PURE__ */ React.createElement("div", { className: "mb-4 flex items-center gap-3 flex-wrap" }, /* @__PURE__ */ React.createElement("label", { className: "border-2 border-stone-900 px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors cursor-pointer flex items-center gap-2" }, /* @__PURE__ */ React.createElement(Upload, { size: 14 }), " Upload .txt file", /* @__PURE__ */ React.createElement("input", { type: "file", accept: ".txt,text/plain", onChange: handleFile, className: "hidden" })), /* @__PURE__ */ React.createElement("span", { className: "mono text-xs text-stone-500 uppercase tracking-widest" }, "or paste below")), /* @__PURE__ */ React.createElement(
+    "textarea",
+    {
+      value: text,
+      onChange: (e) => setText(e.target.value),
+      placeholder: "Paste your flashcard text here, or use the Upload button above...",
+      rows: 14,
+      className: "w-full mono text-sm bg-white border-2 border-stone-300 focus:border-stone-900 outline-none p-4 placeholder:text-stone-400"
+    }
+  ), /* @__PURE__ */ React.createElement("div", { className: "mt-4 flex justify-between items-center flex-wrap gap-2" }, /* @__PURE__ */ React.createElement("button", { onClick: handleParse, className: "bg-stone-900 text-stone-50 px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-amber-700 transition-colors" }, "Preview import"), /* @__PURE__ */ React.createElement("button", { onClick: onCancel, className: "border-2 border-stone-900 px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors" }, "Cancel")), errors.length > 0 && /* @__PURE__ */ React.createElement("div", { className: "mt-6 border-l-4 border-red-600 bg-red-50 p-4 fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-red-700 mb-2" }, "Errors"), /* @__PURE__ */ React.createElement("ul", { className: "text-sm text-stone-700 space-y-1" }, errors.map((e, i) => /* @__PURE__ */ React.createElement("li", { key: i }, "\u2022 ", e)))), preview && !preview.multi && /* @__PURE__ */ React.createElement("div", { className: "mt-6 border-2 border-emerald-600 bg-emerald-50 p-6 fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-emerald-700 mb-4" }, "\u2713 Parsed successfully \u2014 ", preview.cards.length, " ", preview.cards.length === 1 ? "card" : "cards", preview.cards.length > MAX_CARDS && /* @__PURE__ */ React.createElement("span", { className: "ml-2 text-amber-700" }, "(only first ", MAX_CARDS, " will be kept)")), /* @__PURE__ */ React.createElement("h3", { className: "display text-3xl font-bold mb-1" }, preview.name), preview.description && /* @__PURE__ */ React.createElement("p", { className: "text-stone-600 mb-2 italic" }, preview.description), /* @__PURE__ */ React.createElement("p", { className: "mono text-xs text-stone-500 uppercase tracking-widest mb-4" }, Math.min(preview.cards.length, MAX_CARDS), " cards will be imported"), /* @__PURE__ */ React.createElement("div", { className: "space-y-2 mb-6 max-h-80 overflow-y-auto" }, preview.cards.slice(0, 30).map((c, i) => /* @__PURE__ */ React.createElement("div", { key: i, className: "text-sm bg-white p-3 border border-stone-200" }, /* @__PURE__ */ React.createElement("div", { className: "font-semibold text-sm" }, i + 1, ". ", c.front), /* @__PURE__ */ React.createElement("div", { className: "text-emerald-700 text-xs mt-1" }, "\u2192 ", c.back))), preview.cards.length > 30 && /* @__PURE__ */ React.createElement("div", { className: "mono text-xs text-stone-500 uppercase tracking-widest text-center py-2" }, "+ ", preview.cards.length - 30, " more\u2026")), /* @__PURE__ */ React.createElement("button", { onClick: handleImport, className: "bg-emerald-700 text-white px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 transition-colors flex items-center gap-2" }, /* @__PURE__ */ React.createElement(Check, { size: 14 }), " Import this deck")), preview && preview.multi && /* @__PURE__ */ React.createElement("div", { className: "mt-6 border-2 border-emerald-600 bg-emerald-50 p-6 fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-emerald-700 mb-4" }, "\u2713 Parsed successfully \xB7 Multi-deck file"), /* @__PURE__ */ React.createElement("div", { className: "display text-3xl font-bold mb-1" }, preview.decks.length, " decks ready to import"), /* @__PURE__ */ React.createElement("p", { className: "mono text-xs text-stone-500 uppercase tracking-widest mb-4" }, preview.decks.reduce((sum, d) => sum + d.cards.length, 0), " total cards"), /* @__PURE__ */ React.createElement("div", { className: "space-y-2 mb-6 max-h-80 overflow-y-auto" }, preview.decks.map((d, i) => /* @__PURE__ */ React.createElement("div", { key: i, className: "bg-white p-4 border border-stone-200" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-start justify-between gap-4" }, /* @__PURE__ */ React.createElement("div", { className: "flex-1 min-w-0" }, /* @__PURE__ */ React.createElement("div", { className: "font-semibold display text-lg" }, d.name), d.description && /* @__PURE__ */ React.createElement("div", { className: "text-xs text-stone-600 mt-1 italic" }, d.description)), /* @__PURE__ */ React.createElement("div", { className: "mono text-xs text-stone-500 uppercase tracking-widest flex-shrink-0" }, d.cards.length, " ", d.cards.length === 1 ? "card" : "cards"))))), /* @__PURE__ */ React.createElement("button", { onClick: handleImport, className: "bg-emerald-700 text-white px-5 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 transition-colors flex items-center gap-2" }, /* @__PURE__ */ React.createElement(Check, { size: 14 }), " Import all ", preview.decks.length, " decks")));
+}
+function SettingsView({ settings, decks, stats, onChange, onReset, onClearLibrary, onClearStats, onImportDecks }) {
+  const confirm = useConfirm();
+  function toggle(key) {
+    onChange({ ...settings, [key]: !settings[key] });
+  }
+  const totalDecks = decks.length;
+  const totalCards = decks.reduce((sum, d) => sum + d.cards.length, 0);
+  const totalMastered = decks.reduce((sum, d) => sum + masteredCount(d.cards), 0);
+  const totalSessions = Object.values(stats).reduce((sum, s) => sum + (s.sessions || 0), 0);
+  const decksWithStats = Object.values(stats).filter((s) => s.sessions > 0);
+  const avgBest = decksWithStats.length > 0 ? Math.round(decksWithStats.reduce((sum, s) => sum + (s.bestAccuracy || 0), 0) / decksWithStats.length) : null;
+  return /* @__PURE__ */ React.createElement("div", { className: "fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "border-b-2 border-stone-900 pb-4 mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-[0.3em] text-stone-500 mb-2" }, "Preferences and data"), /* @__PURE__ */ React.createElement("h1", { className: "display text-5xl font-black" }, "Settings")), /* @__PURE__ */ React.createElement("div", { className: "mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement("h2", { className: "display text-2xl font-bold" }, "At a Glance"), /* @__PURE__ */ React.createElement("p", { className: "text-stone-500 text-sm" }, "Your library and activity so far")), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 md:grid-cols-5 gap-0 border-2 border-stone-900" }, /* @__PURE__ */ React.createElement(StatCell, { value: totalDecks, label: "Decks" }), /* @__PURE__ */ React.createElement(StatCell, { value: totalCards, label: "Cards", border: true }), /* @__PURE__ */ React.createElement(StatCell, { value: totalMastered, label: "Mastered", border: true, accent: true }), /* @__PURE__ */ React.createElement(StatCell, { value: totalSessions, label: "Sessions", border: true }), /* @__PURE__ */ React.createElement(StatCell, { value: avgBest === null ? "\u2014" : avgBest + "%", label: "Avg of bests", border: true }))), /* @__PURE__ */ React.createElement(SettingGroup, { title: "Review Behavior", subtitle: "How cards are presented during study sessions" }, /* @__PURE__ */ React.createElement(
+    Toggle,
+    {
+      icon: /* @__PURE__ */ React.createElement(Shuffle, { size: 16 }),
+      label: "Shuffle cards",
+      description: "Randomize card order each time you start a flip review. Spaced repetition always shuffles due cards.",
+      value: settings.shuffleCards,
+      onChange: () => toggle("shuffleCards")
+    }
+  ), /* @__PURE__ */ React.createElement(
+    Toggle,
+    {
+      icon: /* @__PURE__ */ React.createElement(Clock, { size: 16 }),
+      label: "Show timer",
+      description: "Display an elapsed-time counter during the session and on the summary screen.",
+      value: settings.showTimer,
+      onChange: () => toggle("showTimer")
+    }
+  )), /* @__PURE__ */ React.createElement("div", { className: "mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement("h2", { className: "display text-2xl font-bold" }, "Appearance"), /* @__PURE__ */ React.createElement("p", { className: "text-stone-500 text-sm" }, "How the app looks and feels")), /* @__PURE__ */ React.createElement("div", { className: "border-2 border-stone-900 divide-y-2 divide-stone-900" }, /* @__PURE__ */ React.createElement(
+    Toggle,
+    {
+      icon: /* @__PURE__ */ React.createElement(Moon, { size: 16 }),
+      label: "Dark mode",
+      description: "Use a dark color scheme \u2014 easier on the eyes in low-light environments.",
+      value: settings.darkMode,
+      onChange: () => toggle("darkMode")
+    }
+  ), /* @__PURE__ */ React.createElement(
+    ChoiceRow,
+    {
+      icon: /* @__PURE__ */ React.createElement(FileText, { size: 16 }),
+      label: "Font size",
+      description: "Adjust the base text size across the app. Larger sizes improve readability.",
+      value: settings.fontSize,
+      options: [
+        { value: "small", label: "Small" },
+        { value: "normal", label: "Normal" },
+        { value: "large", label: "Large" }
+      ],
+      onChange: (v) => onChange({ ...settings, fontSize: v })
+    }
+  ))), /* @__PURE__ */ React.createElement("div", { className: "mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement("h2", { className: "display text-2xl font-bold" }, "Helpers"), /* @__PURE__ */ React.createElement("p", { className: "text-stone-500 text-sm" }, "Optional tools that speed up studying")), /* @__PURE__ */ React.createElement("div", { className: "border-2 border-stone-900 divide-y-2 divide-stone-900" }, /* @__PURE__ */ React.createElement(
+    Toggle,
+    {
+      icon: /* @__PURE__ */ React.createElement("span", { className: "mono text-sm font-bold" }, "\u2328"),
+      label: "Keyboard shortcuts",
+      description: "Space flips the card \xB7 \u2190 \u2192 move between cards \xB7 \u2191 \u2193 rate in flip review \xB7 1\u20134 rate in spaced review.",
+      value: settings.keyboardShortcuts,
+      onChange: () => toggle("keyboardShortcuts")
+    }
+  ))), /* @__PURE__ */ React.createElement("div", { className: "mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement("h2", { className: "display text-2xl font-bold" }, "Your Data"), /* @__PURE__ */ React.createElement("p", { className: "text-stone-500 text-sm" }, "Download, back up, import, or clear your library")), /* @__PURE__ */ React.createElement("div", { className: "border-2 border-stone-900 divide-y-2 divide-stone-900" }, /* @__PURE__ */ React.createElement(
+    ActionRow,
+    {
+      icon: /* @__PURE__ */ React.createElement(Archive, { size: 16 }),
+      label: "Download all decks",
+      description: totalDecks > 0 ? `Export all ${totalDecks} decks into a single .txt file you can back up or re-import later.` : "No decks to export yet.",
+      actionLabel: "Download",
+      actionIcon: /* @__PURE__ */ React.createElement(Download, { size: 12 }),
+      onClick: () => downloadAllDecks(decks),
+      disabled: totalDecks === 0,
+      tone: "default"
+    }
+  ), /* @__PURE__ */ React.createElement(ImportLibraryRow, { onImportDecks }), /* @__PURE__ */ React.createElement(
+    ActionRow,
+    {
+      icon: /* @__PURE__ */ React.createElement(BarChart3, { size: 16 }),
+      label: "Clear statistics",
+      description: "Erase session counts and accuracy history. Your decks and review progress will not be deleted.",
+      actionLabel: "Clear stats",
+      actionIcon: /* @__PURE__ */ React.createElement(RotateCcw, { size: 12 }),
+      onClick: async () => {
+        const ok = await confirm({ title: "Clear statistics", message: "Erase all session statistics? This cannot be undone. Your decks will be kept.", confirmLabel: "Clear stats", danger: true });
+        if (ok) onClearStats();
+      },
+      disabled: totalSessions === 0,
+      tone: "warning"
+    }
+  ), /* @__PURE__ */ React.createElement(
+    ActionRow,
+    {
+      icon: /* @__PURE__ */ React.createElement(Trash2, { size: 16 }),
+      label: "Clear entire library",
+      description: "Delete every deck, every card, and all statistics. This cannot be undone. Download a backup first.",
+      actionLabel: "Delete everything",
+      actionIcon: /* @__PURE__ */ React.createElement(Trash2, { size: 12 }),
+      onClick: async () => {
+        const ok1 = await confirm({ title: "Back up first?", message: "Before you do this \u2014 have you downloaded a backup? This cannot be undone.", confirmLabel: "Continue" });
+        if (!ok1) return;
+        const ok2 = await confirm({ title: "Final confirmation", message: `Permanently delete all ${totalDecks} decks and statistics?`, confirmLabel: "Delete everything", danger: true });
+        if (ok2) onClearLibrary();
+      },
+      disabled: totalDecks === 0,
+      tone: "danger"
+    }
+  ))), /* @__PURE__ */ React.createElement("div", { className: "mt-12 pt-6 border-t border-stone-300" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: async () => {
+        const ok = await confirm({ title: "Reset settings", message: "Reset all settings to defaults?", confirmLabel: "Reset" });
+        if (ok) onReset();
+      },
+      className: "mono text-xs uppercase tracking-widest text-stone-500 hover:text-red-600 transition-colors flex items-center gap-2"
+    },
+    /* @__PURE__ */ React.createElement(RotateCcw, { size: 12 }),
+    " Reset settings to defaults"
+  )));
+}
+function ImportLibraryRow({ onImportDecks }) {
+  const [msg, setMsg] = useState(null);
+  const inputRef = useRef(null);
+  function handleFile(e) {
+    const file = e.target.files?.[0];
+    if (e.target) e.target.value = "";
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async (ev) => {
+      const raw = ev.target.result;
+      const result = parseImportText(raw);
+      let decks = [];
+      const parseErrors = result.errors || [];
+      if (result.multi) decks = result.decks || [];
+      else if (result.cards && result.cards.length) decks = [{ name: result.name, description: result.description, cards: result.cards }];
+      if (!decks.length) {
+        setMsg({ type: "err", text: parseErrors.length ? parseErrors.join(" ") : "No decks found in that file." });
+        return;
+      }
+      const count = await onImportDecks(decks);
+      let out = `Imported ${count} ${count === 1 ? "deck" : "decks"}.`;
+      if (parseErrors.length) out += ` (${parseErrors.length} block${parseErrors.length === 1 ? "" : "s"} skipped.)`;
+      setMsg({ type: "ok", text: out });
+    };
+    reader.readAsText(file);
+  }
+  return /* @__PURE__ */ React.createElement("div", { className: "p-5 flex items-start justify-between gap-6 bg-stone-50 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "flex gap-3 flex-1 min-w-[240px]" }, /* @__PURE__ */ React.createElement("div", { className: "mt-0.5 text-stone-500" }, /* @__PURE__ */ React.createElement(Upload, { size: 16 })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "font-semibold" }, "Import library from .txt"), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-stone-600 mt-0.5" }, "Load decks from a .txt backup \u2014 a single deck or a full multi-deck export. Imported decks are added to your library."), msg && /* @__PURE__ */ React.createElement("div", { className: `mono text-[10px] uppercase tracking-widest mt-2 ${msg.type === "ok" ? "text-emerald-700" : "text-red-600"}` }, msg.text))), /* @__PURE__ */ React.createElement("label", { className: "flex-shrink-0 border-2 border-stone-900 px-4 py-2 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors flex items-center gap-2 cursor-pointer" }, /* @__PURE__ */ React.createElement(Upload, { size: 12 }), " Import", /* @__PURE__ */ React.createElement("input", { ref: inputRef, type: "file", accept: ".txt,text/plain", onChange: handleFile, className: "hidden" })));
+}
+function StatCell({ value, label, border, accent }) {
+  return /* @__PURE__ */ React.createElement("div", { className: `p-5 bg-stone-50 ${border ? "border-l-2 border-stone-900" : ""}` }, /* @__PURE__ */ React.createElement("div", { className: `display text-4xl font-black ${accent ? "text-amber-700" : ""}` }, value), /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-widest text-stone-500 mt-1" }, label));
+}
+function ActionRow({ icon, label, description, actionLabel, actionIcon, onClick, disabled, tone }) {
+  const toneClasses = {
+    default: "border-stone-900 hover:bg-stone-900 hover:text-stone-50",
+    warning: "border-amber-700 text-amber-700 hover:bg-amber-700 hover:text-white",
+    danger: "border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
+  }[tone || "default"];
+  return /* @__PURE__ */ React.createElement("div", { className: "p-5 flex items-start justify-between gap-6 bg-stone-50 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "flex gap-3 flex-1 min-w-[240px]" }, /* @__PURE__ */ React.createElement("div", { className: `mt-0.5 ${tone === "danger" ? "text-red-600" : tone === "warning" ? "text-amber-700" : "text-stone-500"}` }, icon), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "font-semibold" }, label), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-stone-600 mt-0.5" }, description))), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick,
+      disabled,
+      className: `flex-shrink-0 border-2 px-4 py-2 mono text-xs uppercase tracking-widest transition-colors flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-inherit ${toneClasses}`
+    },
+    actionIcon,
+    " ",
+    actionLabel
+  ));
+}
+function SettingGroup({ title, subtitle, children }) {
+  return /* @__PURE__ */ React.createElement("div", { className: "mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement("h2", { className: "display text-2xl font-bold" }, title), subtitle && /* @__PURE__ */ React.createElement("p", { className: "text-stone-500 text-sm" }, subtitle)), /* @__PURE__ */ React.createElement("div", { className: "border-2 border-stone-900 divide-y-2 divide-stone-900" }, children));
+}
+function Toggle({ icon, label, description, value, onChange }) {
+  return /* @__PURE__ */ React.createElement("div", { className: "p-5 flex items-start justify-between gap-6 bg-stone-50" }, /* @__PURE__ */ React.createElement("div", { className: "flex gap-3 flex-1 min-w-0" }, /* @__PURE__ */ React.createElement("div", { className: "mt-0.5 text-stone-500" }, icon), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "font-semibold" }, label), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-stone-600 mt-0.5" }, description))), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: onChange,
+      role: "switch",
+      "aria-checked": value,
+      "aria-label": label,
+      className: `flex-shrink-0 w-14 h-8 rounded-full transition-colors relative ${value ? "bg-amber-700" : "bg-stone-300"}`
+    },
+    /* @__PURE__ */ React.createElement("span", { className: `absolute top-1 w-6 h-6 bg-white rounded-full transition-all ${value ? "left-7" : "left-1"}` })
+  ));
+}
+function ChoiceRow({ icon, label, description, value, options, onChange }) {
+  return /* @__PURE__ */ React.createElement("div", { className: "p-5 flex items-start justify-between gap-6 bg-stone-50 flex-wrap" }, /* @__PURE__ */ React.createElement("div", { className: "flex gap-3 flex-1 min-w-[240px]" }, /* @__PURE__ */ React.createElement("div", { className: "mt-0.5 text-stone-500" }, icon), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "font-semibold" }, label), /* @__PURE__ */ React.createElement("div", { className: "text-sm text-stone-600 mt-0.5" }, description))), /* @__PURE__ */ React.createElement("div", { className: "flex gap-2 flex-shrink-0" }, options.map((opt) => /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      key: opt.value,
+      onClick: () => onChange(opt.value),
+      className: `px-4 py-2 mono text-xs uppercase tracking-widest border-2 transition-colors ${value === opt.value ? "bg-stone-900 text-stone-50 border-stone-900" : "border-stone-300 hover:border-stone-900"}`
+    },
+    opt.label
+  ))));
+}
+function ReviewView({ deck, mode, settings, sessionStartTime, onFinish, onUpdateCard, onQuit, onHome, finalElapsedMs }) {
+  const initialCards = mode === "spaced" ? shuffle(dueCards(deck.cards)) : settings.shuffleCards ? shuffle(deck.cards) : [...deck.cards];
+  const [cards, setCards] = useState(initialCards);
+  const [idx, setIdx] = useState(0);
+  const [flipped, setFlipped] = useState(false);
+  const [sessionStats, setSessionStats] = useState({ easy: 0, good: 0, hard: 0, again: 0 });
+  const [done, setDone] = useState(cards.length === 0);
+  const current = cards[idx];
+  function handleShuffle() {
+    setCards((prev) => shuffle(prev));
+    setIdx(0);
+    setFlipped(false);
+    setSessionStats({ easy: 0, good: 0, hard: 0, again: 0 });
+  }
+  function goTo(n) {
+    if (n < 0 || n >= cards.length) return;
+    setIdx(n);
+    setFlipped(false);
+  }
+  function handleRate(quality) {
+    const label = quality === 5 ? "easy" : quality === 4 ? "good" : quality === 3 ? "hard" : "again";
+    const newStats = { ...sessionStats, [label]: sessionStats[label] + 1 };
+    setSessionStats(newStats);
+    if (mode === "spaced" && current) {
+      const update = nextReview(current, quality);
+      onUpdateCard(current.id, update);
+    }
+    if (idx + 1 >= cards.length) {
+      setDone(true);
+      onFinish(newStats);
+    } else {
+      setIdx((i) => i + 1);
+      setFlipped(false);
+    }
+  }
+  useEffect(() => {
+    if (!settings.keyboardShortcuts || done) return;
+    function handleKey(e) {
+      const tag = e.target.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || e.target.isContentEditable) return;
+      if (e.key === " " || e.code === "Space") {
+        e.preventDefault();
+        setFlipped((f) => !f);
+        return;
+      }
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        goTo(idx - 1);
+        return;
+      }
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        if (idx < cards.length - 1) goTo(idx + 1);
+        return;
+      }
+      if (flipped) {
+        if (mode === "spaced") {
+          if (e.key === "1") {
+            e.preventDefault();
+            handleRate(1);
+          } else if (e.key === "2") {
+            e.preventDefault();
+            handleRate(3);
+          } else if (e.key === "3") {
+            e.preventDefault();
+            handleRate(4);
+          } else if (e.key === "4") {
+            e.preventDefault();
+            handleRate(5);
+          }
+        } else {
+          if (e.key === "ArrowUp") {
+            e.preventDefault();
+            handleRate(5);
+          } else if (e.key === "ArrowDown") {
+            e.preventDefault();
+            handleRate(1);
+          }
+        }
+      }
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [settings.keyboardShortcuts, flipped, idx, cards.length, done, mode]);
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    if (!settings.showTimer || !sessionStartTime || done) return;
+    const id = setInterval(() => setNow(Date.now()), 1e3);
+    return () => clearInterval(id);
+  }, [settings.showTimer, sessionStartTime, done]);
+  const elapsedMs = done ? finalElapsedMs : settings.showTimer && sessionStartTime ? now - sessionStartTime : 0;
+  if (done) {
+    const total = sessionStats.easy + sessionStats.good + sessionStats.hard + sessionStats.again;
+    const correct = sessionStats.easy + sessionStats.good;
+    const accuracy = total > 0 ? Math.round(correct / total * 100) : 0;
+    let verdict = "Worth another go.";
+    if (total === 0) verdict = "Nothing was due.";
+    else if (accuracy === 100) verdict = "Perfect. Extraordinary.";
+    else if (accuracy >= 80) verdict = "Excellent work.";
+    else if (accuracy >= 60) verdict = "Well done.";
+    else if (accuracy >= 40) verdict = "Getting there.";
+    return /* @__PURE__ */ React.createElement("div", { className: "fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "text-center mb-12 py-8 border-y-2 border-stone-900" }, /* @__PURE__ */ React.createElement(Brain, { size: 40, className: "mx-auto mb-4 text-amber-700" }), /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-[0.3em] text-stone-500 mb-2" }, "Session complete"), total > 0 ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "display text-8xl font-black mb-2" }, correct, /* @__PURE__ */ React.createElement("span", { className: "text-stone-400" }, "/", total)), /* @__PURE__ */ React.createElement("div", { className: "mono text-sm uppercase tracking-widest text-stone-600 mb-4" }, accuracy, "% correct")) : /* @__PURE__ */ React.createElement("div", { className: "display text-5xl font-black mb-4" }, "No cards due"), settings.showTimer && elapsedMs > 0 && /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-4 flex items-center justify-center gap-2" }, /* @__PURE__ */ React.createElement(Clock, { size: 12 }), " Finished in ", formatDuration(elapsedMs)), /* @__PURE__ */ React.createElement("p", { className: "display text-2xl italic text-amber-700" }, verdict)), total > 0 && (mode === "flip" ? /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-0 border-2 border-stone-900 mb-8" }, /* @__PURE__ */ React.createElement(RatingStatCell, { value: sessionStats.easy, label: "Knew it", color: "text-emerald-700" }), /* @__PURE__ */ React.createElement(RatingStatCell, { value: sessionStats.again, label: "Didn't know", color: "text-red-600", border: true })) : /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-0 border-2 border-stone-900 mb-8" }, /* @__PURE__ */ React.createElement(RatingStatCell, { value: sessionStats.easy, label: "Easy", color: "text-emerald-700" }), /* @__PURE__ */ React.createElement(RatingStatCell, { value: sessionStats.good, label: "Good", color: "text-blue-700", border: true }), /* @__PURE__ */ React.createElement(RatingStatCell, { value: sessionStats.hard, label: "Hard", color: "text-amber-700", border: true }), /* @__PURE__ */ React.createElement(RatingStatCell, { value: sessionStats.again, label: "Again", color: "text-red-600", border: true }))), /* @__PURE__ */ React.createElement("div", { className: "flex gap-3 justify-center flex-wrap" }, /* @__PURE__ */ React.createElement("button", { onClick: onQuit, className: "border-2 border-stone-900 px-6 py-3 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors flex items-center gap-2" }, /* @__PURE__ */ React.createElement(ArrowLeft, { size: 14 }), " Back to library"), /* @__PURE__ */ React.createElement("button", { onClick: onHome, className: "bg-stone-900 text-stone-50 px-6 py-3 mono text-xs uppercase tracking-widest hover:bg-amber-700 transition-colors" }, "Home")));
+  }
+  const progress = (idx + 1) / cards.length * 100;
+  const sessCorrect = sessionStats.easy + sessionStats.good;
+  const sessStruggled = sessionStats.hard + sessionStats.again;
+  return /* @__PURE__ */ React.createElement("div", { className: "fade-up" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between mb-3 flex-wrap gap-2" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-[0.3em] text-stone-500" }, deck.name, " \xB7 Card ", idx + 1, " of ", cards.length), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-3 flex-wrap" }, /* @__PURE__ */ React.createElement("span", { className: `mono text-xs uppercase tracking-widest px-2 py-1 ${mode === "spaced" ? "bg-amber-700 text-stone-50" : "bg-stone-900 text-stone-50"}` }, mode === "spaced" ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Brain, { size: 10, className: "inline mr-1" }), " Spaced") : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(RefreshCw, { size: 10, className: "inline mr-1" }), " Flip")), settings.showTimer && sessionStartTime && /* @__PURE__ */ React.createElement("span", { className: "mono text-xs uppercase tracking-widest text-amber-700 flex items-center gap-1" }, /* @__PURE__ */ React.createElement(Clock, { size: 12 }), " ", formatDuration(elapsedMs)), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: handleShuffle,
+      title: "Shuffle the cards and restart this pass",
+      className: "mono text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition-colors flex items-center gap-1"
+    },
+    /* @__PURE__ */ React.createElement(Shuffle, { size: 12 }),
+    " Shuffle"
+  ), /* @__PURE__ */ React.createElement("button", { onClick: onQuit, className: "mono text-xs uppercase tracking-widest text-stone-400 hover:text-red-600 transition-colors flex items-center gap-1" }, /* @__PURE__ */ React.createElement(X, { size: 14 }), " Quit"))), /* @__PURE__ */ React.createElement("div", { className: "h-1 bg-stone-200 mb-4 relative" }, /* @__PURE__ */ React.createElement("div", { className: "absolute inset-y-0 left-0 bg-amber-700 transition-all duration-500", style: { width: `${progress}%` } })), /* @__PURE__ */ React.createElement("div", { className: "mb-3" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-widest text-stone-400 mb-2" }, "\u2116 ", String(idx + 1).padStart(3, "0")), /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      onClick: () => setFlipped((f) => !f),
+      className: "border-2 border-stone-900 bg-white p-6 md:p-8 min-h-[240px] md:min-h-[280px] flex flex-col justify-center items-center text-center transition-all cursor-pointer hover:bg-stone-50",
+      style: { boxShadow: flipped ? "0 4px 24px rgba(180, 83, 9, 0.15)" : "none" }
+    },
+    /* @__PURE__ */ React.createElement("div", { key: flipped ? "back" : "front", className: "card-flip w-full" }, !flipped ? /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-[0.3em] text-amber-700 font-bold mb-4" }, "Question"), /* @__PURE__ */ React.createElement("div", { className: "body-text text-2xl md:text-3xl leading-relaxed max-w-3xl mx-auto" }, current.front)) : /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-[0.3em] text-emerald-700 font-bold mb-4" }, "Answer"), /* @__PURE__ */ React.createElement("div", { className: "body-text text-2xl md:text-3xl leading-relaxed max-w-3xl mx-auto" }, current.back)))
+  ), /* @__PURE__ */ React.createElement("div", { className: "text-center mono text-xs uppercase tracking-widest text-stone-400 mt-3" }, settings.keyboardShortcuts ? "Tap the card or press Space to flip" : "Tap the card to flip")), /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between gap-3 mb-4 flex-wrap" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => goTo(idx - 1),
+      disabled: idx === 0,
+      className: "border-2 border-stone-900 px-4 py-2 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-stone-900 disabled:cursor-not-allowed flex items-center gap-2"
+    },
+    /* @__PURE__ */ React.createElement(ChevronLeft, { size: 14 }),
+    " Prev"
+  ), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2 mono text-xs uppercase tracking-widest text-stone-500" }, /* @__PURE__ */ React.createElement("span", null, "Card"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      type: "number",
+      min: 1,
+      max: cards.length,
+      value: idx + 1,
+      onChange: (e) => goTo(Math.min(cards.length, Math.max(1, parseInt(e.target.value) || 1)) - 1),
+      className: "w-16 py-1.5 px-2 text-center border-2 border-stone-300 focus:border-stone-900 outline-none bg-white mono text-sm"
+    }
+  ), /* @__PURE__ */ React.createElement("span", null, "of ", cards.length)), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => goTo(idx + 1),
+      disabled: idx === cards.length - 1,
+      className: "border-2 border-stone-900 px-4 py-2 mono text-xs uppercase tracking-widest hover:bg-stone-900 hover:text-stone-50 transition-colors disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-stone-900 disabled:cursor-not-allowed flex items-center gap-2"
+    },
+    "Next ",
+    /* @__PURE__ */ React.createElement(ChevronRight, { size: 14 })
+  )), flipped && /* @__PURE__ */ React.createElement("div", { className: "fade-up mb-4" }, /* @__PURE__ */ React.createElement("div", { className: "mono text-xs uppercase tracking-widest text-stone-500 mb-3 text-center" }, mode === "spaced" ? "Rate your recall" : "Did you know it?"), mode === "flip" ? /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-3" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => handleRate(1),
+      className: "border-2 border-red-600 bg-red-50 text-red-700 py-3 mono text-sm uppercase tracking-widest font-bold hover:bg-red-600 hover:text-white transition-colors flex items-center justify-center gap-2"
+    },
+    /* @__PURE__ */ React.createElement(X, { size: 16 }),
+    " Didn't know",
+    settings.keyboardShortcuts && /* @__PURE__ */ React.createElement("span", { className: "mono text-[10px] opacity-60 ml-1" }, "[\u2193]")
+  ), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => handleRate(5),
+      className: "border-2 border-emerald-600 bg-emerald-50 text-emerald-700 py-3 mono text-sm uppercase tracking-widest font-bold hover:bg-emerald-600 hover:text-white transition-colors flex items-center justify-center gap-2"
+    },
+    /* @__PURE__ */ React.createElement(Check, { size: 16 }),
+    " Knew it",
+    settings.keyboardShortcuts && /* @__PURE__ */ React.createElement("span", { className: "mono text-[10px] opacity-60 ml-1" }, "[\u2191]")
+  )) : /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-4 gap-2" }, [
+    { q: 1, label: "Again", classes: "border-red-600 text-red-600 hover:bg-red-600 hover:text-white", key: "1" },
+    { q: 3, label: "Hard", classes: "border-amber-700 text-amber-700 hover:bg-amber-700 hover:text-white", key: "2" },
+    { q: 4, label: "Good", classes: "border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white", key: "3" },
+    { q: 5, label: "Easy", classes: "border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white", key: "4" }
+  ].map(({ q, label, classes, key }) => /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      key: q,
+      onClick: () => handleRate(q),
+      className: `border-2 py-3 mono text-xs uppercase tracking-widest font-bold transition-colors ${classes}`
+    },
+    label,
+    settings.keyboardShortcuts && /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] opacity-60 mt-1" }, "[", key, "]")
+  )))), /* @__PURE__ */ React.createElement("div", { className: "text-center mono text-xs uppercase tracking-widest text-stone-400" }, sessCorrect, " correct \xB7 ", sessStruggled, " struggled"));
+}
+function RatingStatCell({ value, label, color, border }) {
+  return /* @__PURE__ */ React.createElement("div", { className: `p-5 bg-stone-50 ${border ? "border-l-2 border-stone-900" : ""}` }, /* @__PURE__ */ React.createElement("div", { className: `display text-4xl font-black ${color}` }, value), /* @__PURE__ */ React.createElement("div", { className: "mono text-[10px] uppercase tracking-widest text-stone-500 mt-1" }, label));
+}
+const rootEl = document.getElementById("root");
+createRoot(rootEl).render(/* @__PURE__ */ React.createElement(FlashcardApp, null));
+  </script>
+</body>
+</html>

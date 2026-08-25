@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs — Ty Zhang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Palette from the portfolio (sampled from 000001.jpg) */
+        :root {
+            --sky: #3a8ab8;
+            --paper: #fbf6ec;
+            --paper-soft: #f0e4d1;
+            --rose: #cb8f9b;
+            --rose-deep: #8d3c4f;
+            --ink: #1e2a3a;
+            --ink-dim: #5a6477;
+            --ink-faint: #a0a8b5;
+            --line: #e5d9c3;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: var(--ink);
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            /* Warm paper with the faintest sky-top / rose-bottom wash —
+               a quiet nod to the portfolio's sky-to-rose gradient. */
+            background:
+                radial-gradient(ellipse 85% 55% at 50% -12%, rgba(58, 138, 184, 0.10), transparent 62%),
+                radial-gradient(ellipse 95% 55% at 50% 112%, rgba(139, 60, 79, 0.08), transparent 62%),
+                var(--paper);
+            background-attachment: fixed;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ============ CORNER NAV (from the first design, re-skinned) ============ */
+        .pill {
+            position: fixed;
+            top: 24px;
+            z-index: 10;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            padding: 9px 16px;
+            border: 1px solid var(--line);
+            background: rgba(251, 246, 236, 0.7);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .pill:hover { color: var(--rose-deep); border-color: var(--rose-deep); }
+        .pill-left { left: 32px; }
+        .pill-right { right: 32px; }
+
+        /* ============ CENTERED HERO + MENU ============ */
+        main {
+            min-height: 100vh;
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 128px 24px 72px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            margin-bottom: 30px;
+        }
+        .kicker::before, .kicker::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--rose-deep);
+            opacity: 0.65;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(52px, 11vw, 116px);
+            line-height: 1;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            margin: 0;
+        }
+        h1 em { font-style: italic; color: var(--rose-deep); }
+
+        .sub {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: clamp(1rem, 2.4vw, 1.2rem);
+            line-height: 1.65;
+            color: var(--ink-dim);
+            max-width: 48ch;
+            margin: 28px auto 0;
+        }
+
+        .grid {
+            margin-top: 60px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px;
+        }
+
+        /* Light bordered cards (the first design's cards, in paper/ink/rose) */
+        .card {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.35);
+            border: 1px solid var(--line);
+            transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s, background 0.35s;
+        }
+        .card:hover {
+            border-color: var(--rose-deep);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(30, 42, 58, 0.09);
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+        }
+        .tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rose-deep);
+            border: 1px solid var(--line);
+            padding: 5px 11px;
+        }
+        .arrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            color: var(--rose-deep);
+            transition: transform 0.35s;
+        }
+        .card:hover .arrow { transform: translateX(6px); }
+
+        .card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 2rem;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+            margin: 0 0 12px;
+            transition: color 0.35s;
+        }
+        .card:hover .card-title { color: var(--rose-deep); }
+
+        .card-desc {
+            font-size: 0.98rem;
+            line-height: 1.7;
+            color: var(--ink-dim);
+            margin: 0;
+        }
+
+        footer {
+            padding: 24px;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+        }
+
+        /* Understated entrance */
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .animate { animation: rise 0.7s ease-out both; }
+        .d1 { animation-delay: 0.04s; }
+        .d2 { animation-delay: 0.12s; }
+        .d3 { animation-delay: 0.20s; }
+        .d4 { animation-delay: 0.28s; }
+        .d5 { animation-delay: 0.36s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animate { animation: none; }
+            .card, .arrow, .card-title { transition: none; }
+        }
+
+        @media (max-width: 520px) {
+            .pill-left { left: 16px; }
+            .pill-right { right: 16px; }
+            main { padding-top: 104px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="../" class="pill pill-left">← Home</a>
+    <a href="../portfolio/" class="pill pill-right">Portfolio →</a>
+
+    <main>
+        <div class="kicker animate d1">Huhudada · Programs</div>
+        <h1 class="animate d2">Programs</h1>
+        <p class="sub animate d3">
+            Small tools I've built. Each one runs entirely in your browser —
+            nothing to install, and your data stays on your device.
+        </p>
+
+        <div class="grid">
+            <a href="flashcards/" class="card animate d4">
+                <div class="card-top">
+                    <span class="tag">Flashcards</span>
+                    <span class="arrow">→</span>
+                </div>
+                <h2 class="card-title">Dendrite</h2>
+                <p class="card-desc">
+                    Build flashcard decks by hand or import them from text, then study
+                    with flip review or a spaced-repetition schedule.
+                </p>
+            </a>
+
+            <a href="quiz/" class="card animate d5">
+                <div class="card-top">
+                    <span class="tag">Quiz</span>
+                    <span class="arrow">→</span>
+                </div>
+                <h2 class="card-title">Quizzical</h2>
+                <p class="card-desc">
+                    Write multiple-choice quizzes or import them, then take them with
+                    instant feedback and score tracking.
+                </p>
+            </a>
+        </div>
+    </main>
+
+    <footer>© 2026 · Ty Zhang</footer>
+
+</body>
+
+</html>
