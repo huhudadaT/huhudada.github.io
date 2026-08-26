@@ -133,7 +133,7 @@ const DEFAULT_SETTINGS = {
 const SAMPLE_DECK = {
   id: "sample-foundations",
   name: "A Tour of Human Anatomy",
-  description: "Twelve tight cards covering organs, systems, and bodily functions — a solid starting set for any biology student.",
+  description: "Twelve tight cards covering organs, systems, and bodily functions — a solid starting set for any biology student. (Sample deck)",
   created: Date.now(),
   cards: [
     { id: "c1", front: "Largest organ in the human body?", back: "The skin." },
@@ -379,7 +379,7 @@ function downloadAllDecks(decks) {
   if (!decks || decks.length === 0) return;
   const separator = "\n\n" + "=".repeat(60) + "\n\n";
   const parts = decks.map(d => serializeDeckToText(d));
-  const text = `Dendrite Library Export\nExported: ${new Date().toISOString()}\nDecks: ${decks.length}\n` + separator + parts.join(separator);
+  const text = `Cardly Library Export\nExported: ${new Date().toISOString()}\nDecks: ${decks.length}\n` + separator + parts.join(separator);
   const date = new Date().toISOString().slice(0, 10);
   const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
   const url = URL.createObjectURL(blob);
@@ -738,7 +738,7 @@ function FlashcardApp() {
                 <Layers size={18} />
               </div>
               <div className="text-left">
-                <div className="display text-xl font-bold leading-none">Dendrite</div>
+                <div className="display text-xl font-bold leading-none">Cardly</div>
                 <div className="mono text-[10px] text-stone-500 tracking-widest uppercase mt-1">
                   {decks.length} {decks.length === 1 ? "deck" : "decks"} · {decks.reduce((s, d) => s + d.cards.length, 0)} cards
                 </div>
@@ -821,7 +821,7 @@ function HomeView({ decks, stats, onStart, onCreate, onBrowse }) {
 
   return (
     <div className="fade-up">
-      <div className="mono text-xs uppercase tracking-[0.3em] text-stone-500 mb-4">Dendrite</div>
+      <div className="mono text-xs uppercase tracking-[0.3em] text-stone-500 mb-4">Cardly</div>
       <h1 className="display text-6xl sm:text-7xl md:text-8xl font-black leading-[0.9] mb-6 tracking-tight">
         Cards for <span className="italic text-amber-700">remembering.</span>
       </h1>

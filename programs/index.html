@@ -49,11 +49,22 @@
 
         a { color: inherit; text-decoration: none; }
 
-        /* ============ CORNER NAV (from the first design, re-skinned) ============ */
-        .pill {
+        /* ============ DROPDOWN NAV (cover-page structure, interior paper skin) ============ */
+        .nav-menu {
             position: fixed;
             top: 24px;
+            left: 32px;
             z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Toggle keeps the same paper-pill language as the old corner links */
+        .nav-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
             letter-spacing: 2px;
@@ -64,11 +75,43 @@
             background: rgba(251, 246, 236, 0.7);
             -webkit-backdrop-filter: blur(8px);
             backdrop-filter: blur(8px);
+            cursor: pointer;
             transition: color 0.3s, border-color 0.3s;
         }
-        .pill:hover { color: var(--rose-deep); border-color: var(--rose-deep); }
-        .pill-left { left: 32px; }
-        .pill-right { right: 32px; }
+        .nav-toggle:hover,
+        .nav-toggle:focus-visible {
+            color: var(--rose-deep);
+            border-color: var(--rose-deep);
+            outline: none;
+        }
+        .nav-caret { display: inline-block; transition: transform 0.3s; }
+        .nav-toggle[aria-expanded="true"] .nav-caret { transform: rotate(180deg); }
+        .nav-dropdown {
+            display: none;
+            flex-direction: column;
+            margin-top: 8px;
+            border: 1px solid var(--line);
+            background: rgba(251, 246, 236, 0.92);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            overflow: hidden;
+        }
+        .nav-dropdown.open { display: flex; }
+        .nav-dropdown a {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            text-align: left;
+            padding: 11px 16px;
+            transition: color 0.3s, background 0.3s;
+        }
+        .nav-dropdown a:hover,
+        .nav-dropdown a:focus-visible {
+            color: var(--rose-deep);
+            background: var(--paper-soft);
+            outline: none;
+        }
 
         /* ============ CENTERED HERO + MENU ============ */
         main {
@@ -215,11 +258,11 @@
         @media (prefers-reduced-motion: reduce) {
             .animate { animation: none; }
             .card, .arrow, .card-title { transition: none; }
+            .nav-toggle, .nav-caret, .nav-dropdown a { transition: none; }
         }
 
         @media (max-width: 520px) {
-            .pill-left { left: 16px; }
-            .pill-right { right: 16px; }
+            .nav-menu { left: 16px; }
             main { padding-top: 104px; }
         }
     </style>
@@ -227,15 +270,22 @@
 
 <body>
 
-    <a href="../" class="pill pill-left">← Home</a>
-    <a href="../portfolio/" class="pill pill-right">Portfolio →</a>
+    <nav class="nav-menu">
+        <button class="nav-toggle" aria-expanded="false" aria-haspopup="true">
+            Menu <span class="nav-caret" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="nav-dropdown">
+            <a href="../">Home</a>
+            <a href="./">Programs</a>
+            <a href="../portfolio/">Portfolio</a>
+        </div>
+    </nav>
 
     <main>
         <div class="kicker animate d1">Huhudada · Programs</div>
         <h1 class="animate d2">Programs</h1>
         <p class="sub animate d3">
-            Small tools I've built. Each one runs entirely in your browser —
-            nothing to install, and your data stays on your device.
+            Small tools I've built. Runs entirely in your browser and your data stays on your device.
         </p>
 
         <div class="grid">
@@ -244,7 +294,7 @@
                     <span class="tag">Flashcards</span>
                     <span class="arrow">→</span>
                 </div>
-                <h2 class="card-title">Dendrite</h2>
+                <h2 class="card-title">Cardly</h2>
                 <p class="card-desc">
                     Build flashcard decks by hand or import them from text, then study
                     with flip review or a spaced-repetition schedule.
@@ -266,6 +316,31 @@
     </main>
 
     <footer>© 2026 · Ty Zhang</footer>
+
+    <script>
+        // Dropdown nav: toggle open/closed, and close on outside-click or Escape.
+        const navToggle = document.querySelector(".nav-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+        const navDropdown = document.querySelector(".nav-dropdown");
+
+        navToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = navDropdown.classList.toggle("open");
+            navToggle.setAttribute("aria-expanded", isOpen);
+        });
+        document.addEventListener("click", (e) => {
+            if (!navMenu.contains(e.target)) {
+                navDropdown.classList.remove("open");
+                navToggle.setAttribute("aria-expanded", "false");
+            }
+        });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                navDropdown.classList.remove("open");
+                navToggle.setAttribute("aria-expanded", "false");
+            }
+        });
+    </script>
 
 </body>
 

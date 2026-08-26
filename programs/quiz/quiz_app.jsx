@@ -93,7 +93,7 @@ const DEFAULT_SETTINGS = {
 
 const SAMPLE_QUIZ = {
   id: "sample-general-knowledge",
-  title: "A Tour of General Knowledge",
+  title: "A Tour of General Knowledge (Sample Quiz)",
   description: "Ten questions spanning science, history, geography, literature, and the arts — a fair warm-up for any curious mind.",
   created: Date.now(),
   questions: [

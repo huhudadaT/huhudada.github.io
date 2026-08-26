@@ -67,7 +67,7 @@
             max-width: 1280px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             gap: 32px;
             flex-wrap: wrap;
@@ -100,6 +100,78 @@
             content: '/';
             margin-right: 10px;
             color: var(--rose-deep);
+        }
+
+        /* ============ HEADER DROPDOWN NAV ============ */
+        .nav-menu {
+            position: fixed;
+            top: 24px;
+            left: 32px;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .nav-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            padding: 9px 16px;
+            border: 1px solid var(--line);
+            background: rgba(251, 246, 236, 0.7);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            cursor: pointer;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .nav-toggle:hover,
+        .nav-toggle:focus-visible {
+            color: var(--rose-deep);
+            border-color: var(--rose-deep);
+            outline: none;
+        }
+        .nav-caret {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        .nav-toggle[aria-expanded="true"] .nav-caret {
+            transform: rotate(180deg);
+        }
+        .nav-dropdown {
+            display: none;
+            flex-direction: column;
+            margin-top: 8px;
+            border: 1px solid var(--line);
+            background: rgba(251, 246, 236, 0.92);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            overflow: hidden;
+        }
+        .nav-dropdown.open {
+            display: flex;
+        }
+        .nav-dropdown a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            text-align: left;
+            white-space: nowrap;
+            padding: 11px 16px;
+            transition: color 0.3s, background 0.3s;
+        }
+        .nav-dropdown a:hover,
+        .nav-dropdown a:focus-visible {
+            color: var(--rose-deep);
+            background: var(--paper-soft);
+            outline: none;
         }
 
         /* ============ LAYOUT ============ */
@@ -823,6 +895,10 @@
                 font-size: 20px;
             }
 
+            .identity-role {
+                display: none;
+            }
+
             .wrap,
             .hero-inner {
                 padding-left: 20px;
@@ -898,10 +974,43 @@
                 justify-content: center;
             }
         }
+
+        /* ============ REDUCED MOTION ============ */
+        @media (prefers-reduced-motion: reduce) {
+            .nav-toggle,
+            .nav-caret,
+            .nav-dropdown a {
+                transition: none;
+            }
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* Pull the fixed menu in on very small screens (matches §5 / other pages) */
+        @media (max-width: 520px) {
+            .nav-menu {
+                left: 16px;
+            }
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- ============ NAVIGATION (fixed top-left, site-wide) ============ -->
+    <nav class="nav-menu">
+        <button class="nav-toggle" aria-expanded="false" aria-haspopup="true">
+            Menu <span class="nav-caret" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="nav-dropdown">
+            <a href="../">Home</a>
+            <a href="../programs/">Programs</a>
+            <a href="./">Portfolio</a>
+        </div>
+    </nav>
 
     <!-- ============ TOP HEADER ============ -->
     <header class="site-header">
@@ -1219,6 +1328,29 @@
             if (saved !== null) {
                 window.scrollTo(0, parseInt(saved, 10));
                 sessionStorage.removeItem('portfolioScroll');
+            }
+        });
+
+        // Dropdown nav: toggle open/closed, and close on outside-click or Escape.
+        const navToggle = document.querySelector(".nav-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+        const navDropdown = document.querySelector(".nav-dropdown");
+
+        navToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = navDropdown.classList.toggle("open");
+            navToggle.setAttribute("aria-expanded", isOpen);
+        });
+        document.addEventListener("click", (e) => {
+            if (!navMenu.contains(e.target)) {
+                navDropdown.classList.remove("open");
+                navToggle.setAttribute("aria-expanded", "false");
+            }
+        });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                navDropdown.classList.remove("open");
+                navToggle.setAttribute("aria-expanded", "false");
             }
         });
     </script>

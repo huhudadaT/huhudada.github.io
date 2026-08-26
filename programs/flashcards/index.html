@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dendrite — Flashcards</title>
-  <meta name="description" content="Dendrite — build flashcard decks by hand or import them, and study with flip review or spaced repetition. Your decks stay on your device." />
+  <title>Cardly — Flashcards</title>
+  <meta name="description" content="Cardly — build flashcard decks by hand or import them, and study with flip review or spaced repetition. Your decks stay on your device." />
   <meta name="color-scheme" content="light dark" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b45309' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2 2 7l10 5 10-5-10-5Z'/%3E%3Cpath d='m2 17 10 5 10-5'/%3E%3Cpath d='m2 12 10 5 10-5'/%3E%3C/svg%3E" />
 
@@ -44,11 +44,84 @@
   </style>
 </head>
 <body>
-  <div id="root"><div id="boot">Loading Dendrite…</div></div>
+  <!-- huhudada · return-to-site control (lives in the page shell, outside the React app) -->
+  <a id="site-return" href="../" aria-label="Return to the programs menu">
+    <span aria-hidden="true">&larr;</span> Programs
+  </a>
+  <style>
+    #site-return {
+      position: fixed; top: 24px; left: 32px; z-index: 40;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 9px 14px; text-decoration: none;
+      color: #1c1917; border: 1px solid #1c1917;
+      background: rgba(250, 250, 249, 0.82);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    #site-return:hover, #site-return:focus-visible {
+      background: #1c1917; color: #fafaf9; border-color: #1c1917; outline: none;
+    }
+    #site-return[data-dark="true"] {
+      color: #f5f5f4; border-color: #f5f5f4; background: rgba(28, 25, 23, 0.82);
+    }
+    #site-return[data-dark="true"]:hover,
+    #site-return[data-dark="true"]:focus-visible {
+      background: #f5f5f4; color: #1c1917; border-color: #f5f5f4;
+    }
+    #root header.sticky > div {
+      padding-left: max(24px, 164px - max(0px, (100vw - 1024px) / 2));
+    }
+    @media (max-width: 520px) { #site-return { left: 16px; } }
+    @media (prefers-reduced-motion: reduce) { #site-return { transition: none; } }
+  </style>
+  <script>
+  (function () {
+    var el = document.getElementById('site-return');
+    if (!el) return;
+    // Before the app mounts, guess the theme from any saved app settings so the
+    // button doesn't flash the wrong colors on load.
+    function savedDark() {
+      try {
+        for (var i = 0; i < localStorage.length; i++) {
+          var k = localStorage.key(i);
+          if (k && /:settings:main$/.test(k)) {
+            var v = JSON.parse(localStorage.getItem(k) || '{}');
+            return !!(v && v.darkMode);
+          }
+        }
+      } catch (e) {}
+      return false;
+    }
+    // Once the app has mounted, trust its live `dark` class (kept in sync on toggle).
+    function currentDark() {
+      var root = document.getElementById('root');
+      var app = root && root.firstElementChild;
+      if (app && app.id !== 'boot' && app.classList) return app.classList.contains('dark');
+      return savedDark();
+    }
+    function sync() { el.setAttribute('data-dark', currentDark() ? 'true' : 'false'); }
+    sync();
+    function watch() {
+      var root = document.getElementById('root');
+      if (root) {
+        new MutationObserver(sync).observe(root, {
+          childList: true, subtree: true, attributes: true, attributeFilter: ['class']
+        });
+      }
+      sync();
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch);
+    else watch();
+  })();
+  </script>
+
+<div id="root"><div id="boot">Loading Cardly…</div></div>
 
   <noscript>
     <div style="padding:2rem;font-family:system-ui,sans-serif;max-width:40rem;margin:0 auto;">
-      Dendrite needs JavaScript enabled to run. Please turn it on and reload.
+      Cardly needs JavaScript enabled to run. Please turn it on and reload.
     </div>
   </noscript>
 
@@ -61,9 +134,19 @@
         boot.style.textTransform = 'none';
         boot.style.padding = '2rem';
         boot.style.textAlign = 'center';
-        boot.innerHTML = "Couldn't load Dendrite. This page needs an internet connection the first time it loads (it fetches React and icons from a CDN). Check your connection and reload. Your saved decks are stored locally and are safe.";
+        boot.innerHTML = "Couldn't load Cardly. This page needs an internet connection the first time it loads (it fetches React and icons from a CDN). Check your connection and reload. Your saved decks are stored locally and are safe.";
       }
     }, 12000);
+  </script>
+
+  <script>
+    new MutationObserver(function () {
+      document.querySelectorAll('#root *').forEach(function (node) {
+        if (node.childNodes.length === 1 && node.firstChild.nodeType === 3 && node.textContent === 'Dendrite') {
+          node.textContent = 'Cardly';
+        }
+      });
+    }).observe(document.getElementById('root'), { childList: true, subtree: true });
   </script>
 
   <script type="module">
@@ -196,7 +279,7 @@ const DEFAULT_SETTINGS = {
 const SAMPLE_DECK = {
   id: "sample-foundations",
   name: "A Tour of Human Anatomy",
-  description: "Twelve tight cards covering organs, systems, and bodily functions \u2014 a solid starting set for any biology student.",
+  description: "Twelve tight cards covering organs, systems, and bodily functions \u2014 a solid starting set for any biology student. (Sample deck)",
   created: Date.now(),
   cards: [
     { id: "c1", front: "Largest organ in the human body?", back: "The skin." },
