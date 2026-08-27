@@ -1,0 +1,190 @@
+Name: BIOSC 1820 HO11 Nitrogen-Containing Compounds
+Description: Nitrogen cycling, heme synthesis, neurotransmitter derivatives, and nucleotide biosynthesis.
+Class: BIOSC 1820
+Semester: Spring 2026
+
+Q: What is nitrogen fixation?
+A: Conversion of N2 to NH3.
+
+Q: What is nitrification?
+A: Conversion of NH3 to NO2- to NO3-.
+
+Q: What is denitrification?
+A: Conversion of NO3- back to N2.
+
+Q: What do organisms use NH3 for?
+A: To make amino acids and other nitrogen-containing compounds.
+
+Q: Is NH4+ oxidized or reduced?
+A: Reduced.
+
+Q: Are NO2- and NO3- oxidized or reduced?
+A: Oxidized.
+
+Q: What two molecules combine to start heme synthesis?
+A: Succinyl CoA + glycine.
+
+Q: What enzyme catalyzes the first step of heme synthesis?
+A: Aminolevulinate synthase.
+
+Q: What is the product of succinyl CoA + glycine?
+A: Aminolevulinate.
+
+Q: How many aminolevulinate molecules build one heme?
+A: 8.
+
+Q: What metal ion does heme contain?
+A: Fe2+.
+
+Q: What are many neurotransmitters and hormones derived from?
+A: Modified amino acids.
+
+Q: What enzyme converts tyrosine to dopa?
+A: Tyrosine hydroxylase.
+
+Q: What enzyme converts dopa to dopamine?
+A: Aromatic amino acid decarboxylase.
+
+Q: What enzyme converts dopamine to norepinephrine?
+A: Dopamine hydroxylase.
+
+Q: What is norepinephrine converted to next?
+A: Epinephrine.
+
+Q: What is the full catecholamine pathway from tyrosine?
+A: Tyrosine → dopa → dopamine → norepinephrine → epinephrine.
+
+Q: What enzyme converts glutamate to aminobutyrate (GABA)?
+A: Glutamate decarboxylase.
+
+Q: What enzyme converts histidine to histamine?
+A: Histidine decarboxylase.
+
+Q: What two enzymes convert tryptophan to serotonin?
+A: Tryptophan hydroxylase, then aromatic amino acid decarboxylase.
+
+Q: Why must cells constantly synthesize nucleotides?
+A: The nucleotide pool is low (except ATP).
+
+Q: What enzyme cleaves nucleic acids into oligonucleotides?
+A: Endonuclease.
+
+Q: What enzyme cleaves oligonucleotides into nucleoside monophosphates?
+A: Phosphodiesterase.
+
+Q: What enzyme converts nucleoside monophosphates to nucleosides?
+A: Nucleotidases.
+
+Q: What enzyme converts nucleosides to nucleobases?
+A: Phosphorylases.
+
+Q: What is a nucleoside?
+A: A nucleotide without the phosphate (base + sugar).
+
+Q: What is a nucleobase?
+A: A nucleotide without the ribose and phosphate (just the base).
+
+Q: What enzyme makes PRPP from ribose-5-phosphate + ATP?
+A: PRPP synthetase.
+
+Q: What is the product of ribose-5-phosphate + ATP?
+A: PRPP + AMP.
+
+Q: What enzyme uses PRPP + guanine to make GMP?
+A: Phosphoribosyl transferase.
+
+Q: What is the byproduct when PRPP + guanine → GMP?
+A: PPi.
+
+Q: How many steps are in purine biosynthesis?
+A: 10 steps.
+
+Q: What is the regulated enzyme of purine biosynthesis?
+A: PRPP amidotransferase.
+
+Q: What amino acids are required for purine synthesis?
+A: 2 glutamine, 1 aspartate, and 1 glycine.
+
+Q: What inhibits purine biosynthesis?
+A: AMP and GMP (feedback inhibition).
+
+Q: What is the first complete purine product of de novo synthesis?
+A: IMP.
+
+Q: What two purines is IMP converted to?
+A: AMP and GMP.
+
+Q: Draw: succinyl CoA
+A: HOOC-CH2-CH2-C(=O)-S-CoA (4C dicarboxylate-like with one carboxyl and one thioester to CoA).
+
+Q: Draw: glycine
+A: H2N-CH2-COOH (smallest amino acid; no side chain, just H).
+
+Q: Draw: aminolevulinate (5-aminolevulinate, ALA)
+A: H2N-CH2-C(=O)-CH2-CH2-COOH (5C: amino group on C5, ketone at C4, carboxyl at C1).
+
+Q: Draw: tyrosine
+A: Amino acid with a para-hydroxyphenyl side chain (HO-C6H4-CH2-CH(NH2)-COOH).
+
+Q: Draw: dopa (L-DOPA)
+A: Tyrosine with an additional -OH on the ring (3,4-dihydroxyphenylalanine).
+
+Q: Draw: dopamine
+A: Dopa minus the carboxyl group: 3,4-dihydroxyphenyl-CH2-CH2-NH2.
+
+Q: Draw: norepinephrine
+A: Dopamine with an -OH on the beta carbon (3,4-dihydroxyphenyl-CH(OH)-CH2-NH2).
+
+Q: Draw: epinephrine
+A: Norepinephrine with N-methyl group (3,4-dihydroxyphenyl-CH(OH)-CH2-NH-CH3).
+
+Q: Draw: glutamate
+A: HOOC-CH(NH2)-CH2-CH2-COOH (5C amino acid with two carboxyls — alpha and gamma).
+
+Q: Draw: aminobutyrate (GABA)
+A: H2N-CH2-CH2-CH2-COOH (4C: amino group on C4, carboxyl on C1; glutamate minus the alpha-carboxyl).
+
+Q: Draw: histidine
+A: Amino acid with an imidazole ring side chain (-CH2-imidazole).
+
+Q: Draw: histamine
+A: Histidine minus the carboxyl: imidazole-CH2-CH2-NH2.
+
+Q: Draw: tryptophan
+A: Amino acid with an indole ring side chain (-CH2-indole).
+
+Q: Draw: serotonin (5-HT)
+A: Tryptophan minus the carboxyl, plus -OH at position 5 of the indole (5-hydroxytryptamine).
+
+Q: Draw: ribose
+A: 5-carbon aldose sugar; furanose ring with -OH on C1, C2, C3 and -CH2OH off C4.
+
+Q: Draw: deoxyribose
+A: Ribose with H instead of -OH on C2 (no 2'-OH).
+
+Q: Draw: adenine
+A: Purine base: fused 6+5 ring system with -NH2 at C6.
+
+Q: Draw: thymine
+A: Pyrimidine base: 6-membered ring with two C=O groups and a methyl group at C5.
+
+Q: Draw: guanine
+A: Purine base: fused 6+5 ring system with -NH2 at C2 and C=O at C6.
+
+Q: Draw: cytosine
+A: Pyrimidine base: 6-membered ring with one C=O (C2) and -NH2 at C4.
+
+Q: Draw: uracil
+A: Pyrimidine base: 6-membered ring with two C=O groups, no methyl (thymine without the methyl).
+
+Q: Draw: PRPP
+A: Ribose-5-phosphate with a pyrophosphate group on C1 (5-phosphoribosyl-1-pyrophosphate).
+
+Q: Draw: IMP
+A: Inosine monophosphate — hypoxanthine base attached to ribose-5-phosphate.
+
+Q: Which bases are purines?
+A: Adenine and guanine.
+
+Q: Which bases are pyrimidines?
+A: Cytosine, thymine, and uracil.

@@ -1,0 +1,217 @@
+Name: BIOSC 1820 HO07 Urea Cycle
+Description: Protein digestion, transamination, ammonia transport, and the urea cycle.
+Class: BIOSC 1820
+Semester: Spring 2026
+
+Q: What hormone does protein in the stomach trigger?
+A: Gastrin.
+
+Q: What does gastrin trigger?
+A: HCl and pepsinogen release.
+
+Q: What hormone neutralizes pH in the small intestine?
+A: Secretin (triggers bicarbonate release).
+
+Q: What converts pepsinogen to pepsin?
+A: Pepsin itself (autocatalytic).
+
+Q: Where does pepsin cleave?
+A: N-terminal of F, W, Y (very different from most proteases).
+
+Q: Where does chymotrypsin cleave?
+A: After F, W, Y.
+
+Q: Where does trypsin cleave?
+A: After K, R.
+
+Q: Where are amino acids primarily oxidized?
+A: In the liver.
+
+Q: What enzyme catalyzes transamination?
+A: Transaminase.
+
+Q: What is the cofactor of transaminase?
+A: Pyridoxal phosphate (PLP, vitamin B6).
+
+Q: What residue holds PLP at the transaminase active site?
+A: Lysine.
+
+Q: What kind of kinetics does transaminase use?
+A: Ping-pong (enzyme alternates between two states).
+
+Q: What does glutamate + PLP produce?
+A: α-ketoglutarate + PMP.
+
+Q: What does oxaloacetate + PMP produce?
+A: Aspartate + PLP.
+
+Q: What is PMP?
+A: PLP + NH3 (pyridoxamine phosphate).
+
+Q: What enzyme releases free NH3 from glutamate?
+A: Glutamate dehydrogenase.
+
+Q: What molecule acts as an NH3 carrier to the liver?
+A: Glutamate.
+
+Q: What enzyme converts glutamate + NH3 → glutamine?
+A: Glutamine synthetase.
+
+Q: What enzyme converts glutamine → glutamate + NH3 in the liver?
+A: Glutaminase.
+
+Q: Besides amino acid catabolism, what else produces ammonia?
+A: Nucleotide breakdown.
+
+Q: What does glutamate + pyruvate produce?
+A: Alanine + α-ketoglutarate.
+
+Q: What carries NH3 from muscle to liver?
+A: Alanine.
+
+Q: What happens to alanine in the liver?
+A: Alanine + α-ketoglutarate → pyruvate + glutamate.
+
+Q: What is the glucose-alanine cycle?
+A: Muscle Ala → liver → pyruvate → glucose → back to muscle → Ala.
+
+Q: How does glutamate restore from α-ketoglutarate?
+A: α-ketoglutarate + NH3 → glutamate.
+
+Q: What is the nitrogen excretion product in aquatic animals?
+A: NH4+ (ammonotelic).
+
+Q: What is the nitrogen excretion product in vertebrates (and sharks)?
+A: Urea (ureotelic).
+
+Q: What is the nitrogen excretion product in birds and reptiles?
+A: Uric acid (uricotelic).
+
+Q: What enzyme makes carbamoyl phosphate?
+A: Carbamoyl phosphate synthetase.
+
+Q: What are the inputs to carbamoyl phosphate synthetase?
+A: NH4+ + HCO3- + 2 ATP.
+
+Q: What enzyme makes citrulline?
+A: Ornithine transcarbamoylase.
+
+Q: What are the inputs that make citrulline?
+A: Carbamoyl phosphate + ornithine.
+
+Q: What enzyme makes argininosuccinate?
+A: Argininosuccinate synthetase.
+
+Q: What is the intermediate before argininosuccinate?
+A: Citrullyl-AMP.
+
+Q: What two molecules combine to make argininosuccinate?
+A: Citrullyl-AMP + aspartate.
+
+Q: What enzyme cleaves argininosuccinate to arginine + fumarate?
+A: Argininosuccinate lyase (argininosuccinase).
+
+Q: Which urea cycle step is the only reversible one?
+A: Argininosuccinate lyase.
+
+Q: What enzyme makes urea?
+A: Arginase.
+
+Q: What are the products of arginase?
+A: Urea + ornithine.
+
+Q: What two factors regulate the urea cycle (broad)?
+A: Ammonia mass action and N-acetylglutamate.
+
+Q: What activates carbamoyl phosphate synthetase (the committed step)?
+A: N-acetylglutamate.
+
+Q: What is the structure of tetrahydrofolate?
+A: Pterin – PABA – glutamate; CH2 bridge between N5 and N10.
+
+Q: What is the degradation pathway of glycine in the kidney?
+A: Glycine → glyoxylate → oxalate (via D-amino acid oxidase).
+
+Q: What enzyme converts phenylalanine to tyrosine?
+A: Phenylalanine hydroxylase.
+
+Q: What disease results from phenylalanine hydroxylase defect?
+A: PKU (phenylketonuria).
+
+Q: What causes PKU symptoms?
+A: Phenylalanine build-up and downstream products (phenylpyruvate, phenylacetate, phenyllactate).
+
+Q: What is the glucose-alanine cycle's role?
+A: Transfers nitrogen from muscle to liver while shuttling glucose back to muscle.
+
+Q: Besides amino acid catabolism, what major source produces ammonia?
+A: Nucleotide breakdown.
+
+Q: Where in the cell does glutaminase work?
+A: Liver mitochondria.
+
+Q: Draw: glutamate
+A: HOOC-CH(NH2)-CH2-CH2-COOH (5C amino acid with two carboxyls — alpha and gamma).
+
+Q: Draw: α-ketoglutarate
+A: HOOC-C(=O)-CH2-CH2-COOH (5C: carboxyl – ketone – CH2 – CH2 – carboxyl).
+
+Q: Draw: oxaloacetate
+A: HOOC-C(=O)-CH2-COOH (4C: carboxyl – ketone – CH2 – carboxyl).
+
+Q: Draw: aspartate
+A: HOOC-CH(NH2)-CH2-COOH (4C amino acid: amino acid backbone + CH2-COOH side chain).
+
+Q: Draw: glutamine
+A: H2N-C(=O)-CH2-CH2-CH(NH2)-COOH (glutamate with the gamma-carboxyl converted to an amide).
+
+Q: Draw: pyruvate
+A: CH3-C(=O)-COO- (3C: methyl – ketone – carboxylate).
+
+Q: Draw: alanine
+A: CH3-CH(NH2)-COOH (amino acid with methyl side chain).
+
+Q: Draw: carbamoyl phosphate
+A: H2N-C(=O)-O-PO3 (amide carbonyl linked through oxygen to phosphate).
+
+Q: Draw: ornithine
+A: H2N-CH2-CH2-CH2-CH(NH2)-COOH (5C amino acid; amino acid backbone with 3-CH2 side chain ending in -NH2; like lysine but one CH2 shorter).
+
+Q: Draw: citrulline
+A: Ornithine with the side-chain amino group replaced by ureido (-NH-C(=O)-NH2) on the delta carbon.
+
+Q: Draw: citrullyl-AMP
+A: Citrulline with AMP attached to the ureido oxygen (activated intermediate before argininosuccinate).
+
+Q: Draw: argininosuccinate
+A: Arginine's guanidinium nitrogen linked to aspartate's alpha-carbon (arginine + aspartate joined through -N-CH(COO-)-CH2-COO-).
+
+Q: Draw: arginine
+A: 6C amino acid: amino acid backbone + 3-CH2 side chain ending in a guanidinium group (-NH-C(=NH2+)-NH2).
+
+Q: Draw: fumarate
+A: HOOC-CH=CH-COOH (4C trans dicarboxylic acid with central C=C double bond).
+
+Q: Draw: urea
+A: H2N-C(=O)-NH2 (carbonyl flanked by two amino groups).
+
+Q: Recognize: PLP (pyridoxal phosphate)
+A: Pyridine ring with -CHO (aldehyde) at one position, -OH, -CH3, and a -CH2-O-PO3 phosphate group.
+
+Q: Recognize: PMP (pyridoxamine phosphate)
+A: PLP with the aldehyde (-CHO) replaced by an aminomethyl (-CH2-NH2) group.
+
+Q: Recognize: uric acid
+A: Purine-like fused 6+5 ring system with three C=O groups (a heavily oxidized purine).
+
+Q: Recognize: pterin
+A: Bicyclic ring system: a pyrazine ring fused to a pyrimidine ring (with -NH2 and =O on the pyrimidine).
+
+Q: Recognize: tetrahydrofolate (THF)
+A: Pterin (reduced) – PABA (para-aminobenzoate) – glutamate; the active 1-carbon unit binds at N5 and/or N10.
+
+Q: Where on tetrahydrofolate is glutamate located?
+A: On the right side.
+
+Q: Where is the CH2 bridge in N5,N10-methylene-THF?
+A: Between positions 5 and 10.

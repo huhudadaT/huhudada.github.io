@@ -1,0 +1,732 @@
+Title: BIOSC 1250 Final Master Quiz
+Description: Cumulative final review of the respiratory, urinary, and reproductive systems plus clinical terms.
+Class: BIOSC 1250
+Semester: Summer 2026
+
+Q: Air enters the nasal cavity and mouth, both of which lead to the ____, a muscular tube that is a common passageway for food and air.
+*A. pharynx
+B. trachea
+C. larynx
+D. alveoli
+E. bronchi
+Explain: The pharynx is the shared passage for the respiratory and digestive tracts; the larynx and everything below it carry air only.
+
+Q: Which of the following structures is found in the respiratory zone of the airways?
+A. pharynx
+B. larynx
+C. trachea
+D. bronchioles
+*E. alveolar sacs
+Explain: The respiratory zone (where gas exchange occurs) starts at the respiratory bronchioles and includes alveolar ducts and sacs; the pharynx through terminal bronchioles are conducting zone.
+
+Q: Which of the following pressures associated with ventilation is always negative?
+A. atmospheric pressure
+B. alveolar pressure
+*C. intrapleural pressure
+D. both atmospheric and alveolar pressures
+E. atmospheric, alveolar, and intrapleural pressures
+Explain: Intrapleural pressure stays below atmospheric throughout the breathing cycle; alveolar pressure swings both above and below atmospheric.
+
+Q: Which respiratory muscles do you contract when forcefully blowing out the candles on a birthday cake?
+A. the diaphragm and external intercostal muscles
+B. the sternocleidomastoid and the scalene muscles
+*C. the abdominal and internal intercostal muscles
+D. the diaphragm and internal intercostal muscles
+Explain: Forced expiration is active — abdominal muscles and internal intercostals push air out; the diaphragm and external intercostals drive inspiration.
+
+Q: A patient with pulmonary edema must generate a bigger pressure gradient to fill the same lung volume. Pulmonary edema
+A. increases lung compliance
+B. does not affect lung compliance
+*C. decreases lung compliance
+D. None of the choices is correct.
+Explain: Needing a larger pressure change for the same volume means the lung is stiffer — that is lower compliance.
+
+Q: Secretion of surfactant by type II alveolar cells causes a marked ____ in lung surface tension to ____ the work required to breathe.
+*A. decrease; decrease
+B. increase; increase
+C. decrease; increase
+D. increase; increase
+Explain: Surfactant lowers alveolar surface tension, which reduces the effort needed to inflate the lungs and prevents alveolar collapse.
+
+Q: Which volume is the air inspired or expired during a single breathing cycle under resting conditions?
+A. residual volume (RV)
+B. expiratory reserve volume (ERV)
+C. inspiratory reserve volume (IRV)
+*D. tidal volume (VT)
+Explain: Tidal volume is the air moved in one normal resting breath (about 500 mL).
+
+Q: Which is the maximum volume of air that can be inspired after a normal expiration?
+A. functional residual capacity (FRC)
+*B. inspiratory capacity (IC)
+C. vital capacity (VC)
+D. total lung capacity (TLC)
+Explain: Inspiratory capacity (IC = TV + IRV) is the most air you can inhale starting from the end of a normal resting expiration.
+
+Q: Which of the following would promote the exchange of gases between two compartments?
+*A. increasing the partial pressure difference of the gases between the two compartments
+B. decreasing the surface area available for gas exchange
+C. increasing the diffusion distance between the two compartments
+D. None of the choices would promote gas exchange.
+Explain: By Fick's law, diffusion rises with a larger partial-pressure gradient and larger surface area, and falls with greater distance.
+
+Q: Approximately what percentage of inhaled oxygen is dissolved in blood plasma, with the remainder bound to hemoglobin?
+*A. 1.5%
+B. 5%
+C. 10%
+D. 30%
+E. 45%
+Explain: Only about 1.5% of blood O2 is dissolved in plasma; roughly 98.5% is carried bound to hemoglobin.
+
+Q: The greatest percentage of CO2 is transported in the blood
+A. bound to the surface of erythrocytes
+B. as dissolved CO2 in the plasma
+C. as carbaminohemoglobin
+*D. as bicarbonate ions
+E. bound to carbonic anhydrase
+Explain: About 70% of CO2 travels as bicarbonate (HCO3-); roughly 23% as carbaminohemoglobin and 7% dissolved.
+
+Q: Which of the following would make the oxygen-hemoglobin dissociation curve shift right?
+*A. increased H+ concentration
+B. increased pH
+C. decreased temperature
+D. decreased CO2 concentration
+E. None of the choices is correct.
+Explain: A right shift (lower O2 affinity, easier unloading) is caused by increased H+, CO2, temperature, and BPG — the Bohr effect.
+
+Q: Which of the following statements about hemoglobin is TRUE?
+*A. Oxyhemoglobin and deoxyhemoglobin differ markedly in their affinity for oxygen.
+B. BPG (2,3-bisphosphoglycerate) raises the oxygen affinity of hemoglobin.
+C. Both H+ and CO2 inhibit the release of bound oxygen.
+D. The binding of oxygen to a hemoglobin molecule diminishes the binding of additional oxygen.
+Explain: The oxygenated (R) and deoxygenated (T) states have very different O2 affinities; BPG lowers affinity, H+/CO2 promote O2 release, and O2 binding increases affinity for more O2.
+
+Q: Which of the following structures generates the basic respiratory rhythm?
+A. the cerebral cortex
+B. the pneumotaxic area in the upper pons
+C. the apneustic area in the lower pons
+*D. the pre-Botzinger complex in the ventral respiratory group (VRG)
+E. the diaphragm and the external intercostal muscles
+Explain: The pre-Botzinger complex in the medulla's ventral respiratory group is the pacemaker that sets the basic breathing rhythm.
+
+Q: Which of the following statements about the control of respiration is FALSE?
+*A. The only output from the medullary respiratory centers is via the phrenic nerve.
+B. Information from the cerebral cortex can override the medullary respiratory center.
+C. The normal rhythmic pattern of breathing originates from neurons in the pre-Botzinger complex.
+D. The respiratory muscles have no intrinsic rhythmical activity.
+Explain: False — the medullary centers also drive the intercostal muscles via the intercostal nerves, not only the diaphragm via the phrenic nerve.
+
+Q: Dalton's law states that
+A. the volume of gas that dissolves in a solvent is proportional to its solubility and gas pressure.
+B. gas volume and temperature are directly proportional.
+C. gas volume and pressure are inversely proportional.
+*D. in a mixture of gases, the total pressure is the sum of the individual partial pressures.
+E. None of the answers are correct.
+Explain: Dalton's law: in a gas mixture, total pressure equals the sum of each gas's partial pressure. Option A describes Henry's law.
+
+Q: Boyle's law states that gas volume is
+A. inversely proportional to temperature.
+B. directly proportional to pressure.
+*C. inversely proportional to pressure.
+D. directly proportional to temperature.
+E. None of the answers are correct.
+Explain: Boyle's law: at constant temperature, gas volume and pressure are inversely proportional — the basis of airflow during breathing.
+
+Q: A typical value for intrapleural pressure is ____ mm Hg relative to atmospheric pressure.
+A. +4
+B. -760
+C. 0
+*D. -4
+E. +760
+Explain: Intrapleural pressure is about -4 mm Hg relative to atmospheric at rest, keeping the lungs inflated against the chest wall.
+
+Q: When the diaphragm, external intercostal, and scalene muscles contract,
+A. intrapulmonary pressure increases.
+*B. intrapleural pressure decreases.
+C. the volume of the lungs decreases.
+D. expiration occurs.
+E. All of the answers are correct.
+Explain: These are inspiratory muscles; their contraction expands the thorax, making intrapleural pressure more negative and drawing air in.
+
+Q: An increase in PCO2 would cause the bronchioles to
+*A. dilate and the systemic arterioles to dilate.
+B. constrict and the systemic arterioles to dilate.
+C. constrict and the systemic arterioles to constrict.
+D. dilate and the systemic arterioles to constrict.
+E. None of the answers are correct.
+Explain: High CO2 dilates airway bronchioles to boost ventilation to that region, and dilates systemic arterioles to increase tissue perfusion.
+
+Q: Under what condition is lung compliance increased?
+*A. Emphysema
+B. Asthma
+C. Prolonged shallow breathing
+D. Respiratory distress syndrome of the newborn
+E. Cystic fibrosis
+Explain: Emphysema destroys elastic lung tissue, so the lungs become floppy and easier to inflate — increased compliance. The others reduce it.
+
+Q: The local matching of blood flow with ventilation is called
+*A. ventilation-perfusion coupling
+B. the Haldane effect
+C. the Bohr effect
+D. chloride shifting
+Explain: Ventilation-perfusion coupling adjusts airway and vessel diameter so blood flow matches airflow in each lung region.
+
+Q: What is the tidal volume of the lungs?
+A. the maximum volume that can be inspired after a normal inspiration
+B. the maximum volume that can be expired after a maximum inspiration
+C. the volume that remains in the lungs after a maximum expiration
+*D. the volume of air inspired or expired during a single breathing cycle under resting conditions
+E. the maximum volume that can be expired after a normal expiration
+Explain: Tidal volume is the air moved in and out during one normal resting breath. A is IRV, B is vital capacity, C is residual volume, E is ERV.
+
+Q: Which of the following correctly represents the formula for the maximum volume of air the lungs can hold?
+A. TLC = VC + ERV
+B. VC = VT + RV
+C. FEV1 = VC + 1.0
+*D. TLC = VC + RV
+Explain: Total lung capacity = vital capacity + residual volume; RV cannot be exhaled, so it must be added to VC to get the true maximum.
+
+Q: Which of the following is NOT an obstructive pulmonary disorder?
+A. Asthma
+*B. Tuberculosis
+C. COPD
+D. Emphysema
+E. Chronic bronchitis
+Explain: Tuberculosis is an infectious/restrictive process, not an obstructive one; asthma, COPD, emphysema, and chronic bronchitis all obstruct airflow.
+
+Q: Which of the following is NOT a function of the kidneys?
+A. excrete wastes from the body
+B. regulate blood ionic composition
+C. regulate blood pH
+*D. regulate body temperature
+E. produce hormones including calcitriol and erythropoietin
+Explain: Body-temperature regulation is not a kidney function; the kidneys excrete wastes, balance ions and pH, and make calcitriol and erythropoietin.
+
+Q: The renal corpuscle, the initial blood-filtering component of a nephron, is composed of
+A. Bowman's capsule and a proximal tubule
+B. a glomerulus and a proximal tubule
+*C. a glomerulus and Bowman's capsule
+D. the descending and ascending limbs of the loop of Henle
+E. Bowman's capsule and a distal tubule
+Explain: The renal corpuscle is the glomerulus (capillary tuft) plus the surrounding Bowman's capsule, where filtration occurs.
+
+Q: Each nephron has one ____ that carries blood to the glomerulus and one ____ that carries blood away from the glomerulus.
+A. renal arteriole; renal venule
+B. efferent arteriole; afferent arteriole
+C. afferent capillary; efferent capillary
+*D. afferent arteriole; efferent arteriole
+E. afferent venule; efferent venule
+Explain: Afferent Arrives (blood in), Efferent Exits (blood out); both are arterioles, and the glomerulus sits between them. Note option B has the pair reversed.
+
+Q: Which is the correct pathway for filtrate to flow through the nephron? (1 distal tubule, 2 Bowman's capsule, 3 collecting duct, 4 proximal tubule, 5 descending limb, 6 ascending limb)
+*A. 2 to 4 to 5 to 6 to 1 to 3
+B. 2 to 1 to 6 to 5 to 4 to 3
+C. 5 to 4 to 6 to 1 to 3 to 2
+D. 2 to 4 to 1 to 6 to 3 to 5
+E. 3 to 1 to 6 to 5 to 4 to 2
+Explain: Filtrate flows Bowman's capsule to proximal tubule to descending limb to ascending limb to distal tubule to collecting duct.
+
+Q: Which of the following is NOT a basic function performed by nephrons?
+A. filtration at the glomerulus
+*B. filtration at the renal tubules
+C. secretion into the renal tubules
+D. reabsorption from the renal tubules
+Explain: Filtration happens only at the glomerulus, not at the tubules; the tubules perform reabsorption and secretion.
+
+Q: In what order do filtered substances cross the three barriers of the filtration membrane?
+*A. through fenestrations in glomerular endothelial cells, then the basement membrane, then filtration slits formed by pedicels
+B. through the basement membrane, then endothelial fenestrations, then filtration slits
+C. through filtration slits, then the basement membrane, then endothelial fenestrations
+D. None of the choices is correct.
+Explain: Order: fenestrated glomerular endothelium, then basement membrane, then the filtration slits between podocyte pedicels.
+
+Q: Which pressure that determines glomerular filtration has a value of 0 mmHg in a healthy kidney under normal conditions?
+A. glomerular capillary hydrostatic pressure (PGC)
+B. Bowman's space hydrostatic pressure (PBS)
+C. plasma colloid osmotic pressure (piGC)
+*D. Bowman's space colloid osmotic pressure (piBS)
+Explain: Normally almost no protein is filtered, so fluid in Bowman's space exerts essentially no colloid osmotic pressure (piBS is about 0).
+
+Q: Which pressure is due to proteins such as albumin, globulins, and fibrinogen in glomerular plasma and opposes filtration?
+A. glomerular capillary hydrostatic pressure (PGC)
+B. Bowman's space hydrostatic pressure (PBS)
+*C. plasma colloid osmotic pressure (piGC)
+D. Bowman's space colloid osmotic pressure (piBS)
+Explain: Plasma colloid osmotic pressure, created by blood proteins, pulls water back into the capillary and opposes filtration.
+
+Q: Which of the following statements about glomerular filtration rate (GFR) is FALSE?
+A. GFR is the amount of filtrate formed in all renal corpuscles of both kidneys each minute.
+B. GFR increases very little when systemic blood pressure rises above normal.
+C. GFR is regulated by adjusting blood flow into and out of the glomerulus.
+*D. GFR is increased by constriction of the afferent arteriole.
+E. GFR is regulated by angiotensin II and atrial natriuretic peptide (ANP).
+Explain: False — constricting the afferent arteriole reduces blood flow into the glomerulus and lowers GFR, not raises it.
+
+Q: Which statement about a substance X present in the urine is correct?
+A. It must be filterable in the glomerulus.
+B. It must not have been filtered in the glomerulus.
+C. It must have been secreted into the renal tubules.
+*D. It may either have been filtered in the glomerulus or secreted into the renal tubules.
+Explain: Anything appearing in urine got there by filtration and/or tubular secretion, so either route or both is possible.
+
+Q: Which of the following statements regarding antidiuretic hormone (ADH) is TRUE?
+A. ADH is released by the adrenal cortex.
+B. ADH inhibits reabsorption of water into the blood.
+C. ADH release is stimulated when the body is overhydrated.
+*D. ADH increases water permeability of principal cells in the late distal tubule and throughout the collecting duct.
+Explain: ADH from the posterior pituitary inserts aquaporins in principal cells to increase water reabsorption; it is released when the body is dehydrated.
+
+Q: Which of the following is NOT a hormone that acts on the renal tubules to regulate water and ion homeostasis?
+A. antidiuretic hormone (ADH)
+B. aldosterone
+*C. insulin
+D. atrial natriuretic peptide (ANP)
+E. parathyroid hormone
+Explain: Insulin regulates blood glucose, not renal water/ion handling; ADH, aldosterone, ANP, and PTH all act on the tubules.
+
+Q: A highly concentrated urine can form because the interstitial fluid surrounding the collecting ducts is ____ the filtrate within the collecting ducts.
+A. hypoosmotic relative to
+B. isosmotic with
+*C. hyperosmotic relative to
+D. in direct contact with
+Explain: The medullary interstitium is hyperosmotic to the collecting-duct filtrate, so with ADH water is drawn out and urine becomes concentrated.
+
+Q: Which of the following statements regarding the loop of Henle is TRUE?
+A. The ascending limb is highly permeable to water.
+B. The descending limb is impermeable to water.
+C. The ascending limb is impermeable to solutes.
+*D. The descending limb is impermeable to solutes.
+Explain: The descending limb is permeable to water but not solutes; the ascending limb is the opposite — impermeable to water while it moves solutes out.
+
+Q: Which of the following statements concerning the micturition reflex is FALSE? A full bladder
+A. stimulates parasympathetic activity to contract the detrusor muscle.
+B. inhibits sympathetic activity to the internal urethral sphincter, causing it to relax.
+C. inhibits somatic motor neurons to the external urethral sphincter, causing it to relax.
+D. causes a sensation of fullness that triggers a conscious desire to urinate before the reflex occurs.
+*E. All of the statements are true.
+Explain: All four statements are correct, so none is false — the reflex combines parasympathetic detrusor contraction with relaxation of both sphincters.
+
+Q: The long loop of Henle functions as a countercurrent multiplier.
+*A. True
+B. False
+Explain: True — the long loops of juxtamedullary nephrons actively establish the medullary osmotic gradient, the countercurrent multiplier.
+
+Q: Which of the following plays a role in promoting reabsorption of water from the tubular fluid of the collecting duct?
+A. renal autoregulation
+B. functional incontinence
+C. micturition reflex
+D. renal plasma clearance
+*E. urea recycling
+Explain: Urea recycling adds urea to the medullary interstitium, raising its osmolarity and pulling water out of the collecting duct.
+
+Q: If the renal plasma clearance of a substance equals the glomerular filtration rate, the substance is
+A. filtered and undergoes net secretion
+B. filtered and undergoes net reabsorption
+*C. filtered but neither secreted nor reabsorbed
+D. filtered, secreted, and reabsorbed
+E. not filtered
+Explain: Clearance equal to GFR (like inulin) means all filtered substance is excreted unchanged, with no net reabsorption or secretion.
+
+Q: An alternative to administering inulin to determine the glomerular filtration rate is measuring the
+*A. creatinine clearance
+B. level of serum creatinine
+C. level of blood urea nitrogen
+D. renal plasma flow
+E. level of insulin
+Explain: Creatinine is produced at a steady rate and largely filtered, so creatinine clearance approximates GFR without infused inulin.
+
+Q: During renal autoregulation, the glomerulus receives feedback from
+A. juxtaglomerular cells
+B. podocytes
+C. smooth muscle cells
+*D. macula densa
+E. mesangial cells
+Explain: The macula densa senses tubular NaCl and signals the afferent arteriole (tubuloglomerular feedback) to adjust GFR.
+
+Q: Angiotensin II increases the glomerular filtration rate by causing vasoconstriction of both the afferent and efferent arterioles.
+A. True
+*B. False
+Explain: False — angiotensin II preferentially constricts the efferent arteriole; strong constriction of the afferent would instead lower GFR.
+
+Q: In the late distal tubule, reabsorption of Na+ and secretion of K+ is done by these cells:
+A. intercalated cells
+*B. principal cells
+C. mesangial cells
+D. smooth muscle cells
+E. endothelial cells
+Explain: Principal cells reabsorb Na+ (and water via ADH) and secrete K+ under aldosterone control; intercalated cells handle acid-base balance.
+
+Q: Aquaporin-1 is the water channel protein present in the apical membranes of principal cells.
+A. True
+*B. False
+Explain: False — principal cells use aquaporin-2 (ADH-regulated) apically; aquaporin-1 is found in the proximal tubule and descending limb.
+
+Q: Juxtamedullary nephrons lie deep in the cortex close to the medulla and have a short loop of Henle.
+A. True
+*B. False
+Explain: False — juxtamedullary nephrons have long loops of Henle that dip deep into the medulla; cortical nephrons have short loops.
+
+Q: In a healthy kidney, very little of which substance is filtered by the glomerulus and ends up in the filtrate?
+A. glucose
+B. Na+, K+, Cl-
+C. vitamins
+D. amino acids
+*E. proteins
+Explain: The filtration membrane holds back plasma proteins, so almost none appear in the filtrate; small solutes filter freely.
+
+Q: What is the osmolarity of the filtrate in the cortex?
+*A. 300 mOsmol/L
+B. 600 mOsmol/L
+C. 900 mOsmol/L
+D. 1200 mOsmol/L
+E. 3000 mOsmol/L
+Explain: In the cortex the interstitium and filtrate are about 300 mOsmol/L, near plasma; osmolarity rises deeper in the medulla, up to about 1200.
+
+Q: Which of the following is NOT a feature of a countercurrent mechanism?
+A. helps maintain the concentration gradient
+B. helps make the passage of water easier
+C. helps concentrate the urine
+*D. helps dilute the urine
+Explain: The countercurrent mechanism builds a medullary gradient to concentrate the urine, not dilute it.
+
+Q: Countercurrent exchange is the passive exchange of solutes and water between the blood of the vasa recta and the medullary interstitial fluid as a result of countercurrent flow.
+*A. True
+B. False
+Explain: True — the vasa recta act as countercurrent exchangers, preserving the medullary gradient while carrying off reabsorbed water.
+
+Q: Countercurrent multiplication is the formation of a progressively increasing osmotic gradient in the medullary interstitial fluid as a result of countercurrent flow.
+*A. True
+B. False
+Explain: True — the loop of Henle actively multiplies a small transverse gradient into a large corticomedullary osmotic gradient.
+
+Q: At the end of meiosis I, ____ daughter cells are produced that are genetically ____ each other and the parent cell.
+*A. two; distinct from
+B. two; identical to
+C. four; distinct from
+D. four; identical to
+Explain: Meiosis I yields two haploid daughter cells that differ genetically due to crossing over and independent assortment.
+
+Q: Genetic variation results from crossing-over between ____ chromatids of a ____ pair of chromosomes.
+*A. nonsister; homologous
+B. sister; homologous
+C. nonsister; nonhomologous
+D. sister; nonhomologous
+Explain: Crossing over swaps segments between nonsister chromatids of homologous chromosomes, creating new allele combinations.
+
+Q: Normal sperm production requires a temperature about ____ core body temperature.
+A. 10 degrees below
+*B. 3 degrees C below
+C. equal to
+D. 3 degrees C above
+E. 10 degrees C above
+Explain: The scrotum keeps the testes about 2 to 3 degrees C below core temperature, which is required for normal spermatogenesis.
+
+Q: Within the seminiferous tubule, ____ are joined by tight junctions to form the blood-testis barrier.
+A. primary spermatocytes
+B. secondary spermatocytes
+*C. Sertoli cells
+D. spermatids
+E. sperm cells
+Explain: Sertoli cells are joined by tight junctions to form the blood-testis barrier, protecting developing sperm from the immune system.
+
+Q: The hormone inhibin is released from ____ to inhibit ____ secretion by the anterior pituitary, suppressing spermatogenesis.
+A. Sertoli cells; luteinizing hormone (LH)
+*B. Sertoli cells; follicle-stimulating hormone (FSH)
+C. Leydig cells; luteinizing hormone (LH)
+D. Leydig cells; follicle-stimulating hormone (FSH)
+Explain: Sertoli cells secrete inhibin, which selectively suppresses FSH from the anterior pituitary as negative feedback.
+
+Q: Primary oocytes enter ____ of meiosis I during ____ but do not complete that phase until after puberty.
+*A. prophase; fetal development
+B. prophase; early childhood
+C. metaphase; fetal development
+D. anaphase; early childhood
+E. anaphase; early puberty
+Explain: Oocytes arrest in prophase I during fetal development and stay arrested until stimulated, cycle by cycle, after puberty.
+
+Q: During oogenesis, meiosis II is completed upon ____, generating an ovum in the ____.
+A. puberty; ovary
+B. ovulation; ovary
+C. ovulation; fallopian tube
+*D. fertilization; fallopian tube
+E. fertilization; uterus
+Explain: The secondary oocyte only finishes meiosis II if fertilized, and this happens in the uterine (fallopian) tube.
+
+Q: Which hormone, secreted by which gland, triggers ovulation and promotes corpus luteum formation?
+A. gonadotropin-releasing hormone; anterior pituitary
+*B. luteinizing hormone; anterior pituitary
+C. follicle-stimulating hormone; hypothalamus
+D. luteinizing hormone; hypothalamus
+E. follicle-stimulating hormone; anterior pituitary
+Explain: A surge of luteinizing hormone from the anterior pituitary triggers ovulation and converts the follicle into the corpus luteum.
+
+Q: Which hormone stimulates endometrial glands to secrete glycogen and lipids for a fertilized egg and, at high levels, inhibits release of GnRH, FSH, and LH?
+*A. progesterone
+B. relaxin
+C. inhibin
+D. beta-estradiol
+Explain: Progesterone from the corpus luteum prepares the endometrium for implantation and gives negative feedback to the hypothalamic-pituitary axis.
+
+Q: Which phase of the human sexual response described by Masters and Johnson is unique to males?
+A. the excitement phase
+B. the plateau phase
+C. the orgasm phase
+D. the resolution phase
+*E. None of the choices is correct.
+Explain: All four phases occur in both sexes; the refractory period is typical of males but is not one of the listed phases, so none is unique.
+
+Q: A genetically male embryo develops testes because
+A. the default sexual differentiation pathway of human embryos is male.
+B. it has only one copy of a feminization gene on the X chromosome.
+C. it is exposed to high levels of maternal testicular androgens during pregnancy.
+*D. the protein product of the SRY gene on the Y chromosome causes the primitive gonads to differentiate into testes.
+Explain: The SRY gene on the Y chromosome directs the indifferent gonad to become a testis; the default pathway is actually female.
+
+Q: Which of the following statements regarding puberty is FALSE?
+A. Secondary sex characteristics develop during puberty.
+B. The potential for sexual reproduction is reached during puberty.
+C. Pulses of LH and FSH secretion are associated with the onset of puberty.
+*D. Pulses of GnRH released from the gonads trigger LH and FSH secretion.
+E. Leptin may signal that long-term energy stores are adequate for reproduction.
+Explain: False — GnRH is released from the hypothalamus, not the gonads; the gonads produce sex steroids, not GnRH.
+
+Q: Sperm can survive up to ____ in the female reproductive tract, while a secondary oocyte is viable for about ____ after ovulation.
+A. 30 minutes; 21 days
+B. 60 minutes; 14 days
+C. 24 hours; 5 days
+*D. 5 days; 24 hours
+E. 14 days; 60 minutes
+Explain: Sperm can live up to about 5 days in the female tract, while the oocyte is fertilizable for only about 24 hours. Note option C reverses these.
+
+Q: Which mechanisms act to prevent polyspermy? Fusion of a sperm cell with a secondary oocyte triggers
+A. depolarization of the oocyte plasma membrane.
+B. release of molecules that inactivate ZP3 and harden the zona pellucida.
+C. release of the enzyme lysozyme that lytically destroys sperm.
+*D. Two of the statements are correct.
+E. All of the statements are correct.
+Explain: The fast block (membrane depolarization) and the slow block (cortical reaction hardening the zona) both prevent polyspermy; lysozyme destruction is not a mechanism.
+
+Q: Which of the following statements regarding embryonic development is correct?
+A. Implantation of the blastocyst occurs about one month after fertilization.
+B. Blastocyst cells form three primary germ layers in the first week of development.
+C. The endoderm develops into the epidermis of the skin and the nervous system.
+*D. All major organs appear during the fourth through eighth weeks of development.
+Explain: Organogenesis occurs in weeks 4 to 8. Implantation is about 1 week, germ layers form about week 3, and ectoderm (not endoderm) forms skin and nervous tissue.
+
+Q: Which of the following statements regarding the placenta is correct?
+A. It develops around the third week of pregnancy.
+B. It develops entirely from maternal tissue.
+*C. It is the site of nutrient and waste exchange between the mother and the fetus.
+D. It is the site where maternal and fetal blood mix.
+E. It is the site where oxygen and nutrients in fetal blood diffuse into maternal blood.
+Explain: The placenta exchanges nutrients, gases, and wastes; maternal and fetal blood do not mix, and O2/nutrients move from mother to fetus.
+
+Q: Which of the following statements regarding the hormonal control of lactation is FALSE?
+*A. Progesterone promotes the milk-production effects of prolactin during pregnancy.
+B. Prolactin inhibition is removed when estrogen and progesterone fall after delivery.
+C. Suckling by the infant maintains prolactin secretion during lactation.
+D. Oxytocin secretion from the posterior pituitary increases in response to suckling.
+Explain: False — during pregnancy high estrogen and progesterone block prolactin's milk-making effect; production begins only after they fall postpartum.
+
+Q: Which of the following results from a vasectomy, in which a portion of each vas deferens is removed?
+A. Sperm production in the testes is inhibited.
+*B. Sperm can no longer reach the urethra.
+C. Blood testosterone levels are diminished.
+D. Sexual desire and performance are decreased.
+E. Ejaculation is prevented.
+Explain: Cutting the vas deferens blocks sperm from reaching the urethra; sperm production, testosterone, libido, and ejaculation are unaffected.
+
+Q: Which of the following statements regarding hormonal contraceptive methods is correct?
+A. Synthetic estrogens and progestin promote GnRH, FSH, and LH release.
+*B. Progestin thickens cervical mucus, making it difficult for sperm to reach the egg.
+C. High FSH and LH levels prevent development of a dominant follicle.
+D. Barrier methods are a more effective means of birth control than hormonal methods.
+Explain: Progestin thickens cervical mucus and thins the endometrium. Hormonal contraceptives suppress (not promote) GnRH/FSH/LH, and are generally more effective than barrier methods.
+
+Q: Which fertility-expanding technique fertilizes an egg in vitro by suctioning a sperm or spermatid from the testis and injecting it into the egg's cytoplasm?
+A. in vitro fertilization (IVF)
+*B. intracytoplasmic sperm injection (ICSI)
+C. embryo transfer
+D. gamete intrafallopian transfer (GIFT)
+Explain: ICSI injects a single sperm directly into the oocyte cytoplasm, used especially for male-factor infertility.
+
+Q: Which term describes the collapse of a lung or part of a lung due to loss of air in the alveoli?
+A. Pneumothorax
+B. Emphysema
+*C. Atelectasis
+D. Bronchitis
+Explain: Atelectasis is alveolar collapse; a pneumothorax (air in the pleural space) is one cause of it.
+
+Q: A pneumothorax is best defined as
+*A. air in the pleural cavity
+B. fluid in the alveoli
+C. destruction of alveolar walls
+D. narrowing of the bronchioles
+Explain: A pneumothorax is air in the pleural space, which breaks the seal that keeps the lung inflated and can collapse it.
+
+Q: Which condition is a chronic obstructive disease marked by destruction of alveolar walls and loss of elastic recoil?
+A. Asthma
+B. Tuberculosis
+C. Atelectasis
+*D. Emphysema
+Explain: Emphysema destroys alveolar walls, reducing surface area and elastic recoil, which increases compliance but traps air.
+
+Q: Asthma is characterized by
+A. permanent alveolar destruction
+*B. reversible bronchoconstriction and airway inflammation
+C. air in the pleural space
+D. thick mucus from a CFTR defect
+Explain: Asthma involves reversible airway narrowing from bronchospasm and inflammation, unlike the permanent damage of emphysema.
+
+Q: COPD most commonly refers to the combination of
+A. asthma and pneumonia
+B. tuberculosis and atelectasis
+*C. emphysema and chronic bronchitis
+D. cystic fibrosis and RDS
+Explain: Chronic obstructive pulmonary disease is typically emphysema plus chronic bronchitis, both causing airflow obstruction.
+
+Q: Chronic bronchitis is defined clinically by
+*A. a productive cough with excess mucus over an extended period
+B. alveolar wall destruction
+C. collapse of a lobe of the lung
+D. air in the pleural cavity
+Explain: Chronic bronchitis is chronic airway inflammation with mucus hypersecretion and a persistent productive cough.
+
+Q: Cystic fibrosis results from a defect that causes
+A. autoimmune destruction of Sertoli cells
+B. loss of alveolar elastin
+C. inadequate surfactant in a newborn
+*D. abnormally thick, sticky secretions that clog the airways
+Explain: A CFTR chloride-channel mutation produces thick mucus that obstructs airways and pancreatic ducts, promoting infection.
+
+Q: Respiratory distress syndrome of the newborn is caused primarily by
+A. a CFTR mutation
+*B. insufficient pulmonary surfactant
+C. air in the pleural space
+D. carbon monoxide exposure
+Explain: Premature infants lack adequate surfactant, so alveolar surface tension is high and the alveoli tend to collapse.
+
+Q: Carbon monoxide poisoning impairs oxygen delivery because CO acts by
+A. blocking the trachea
+B. destroying alveolar walls
+*C. binding hemoglobin far more tightly than oxygen
+D. dissolving surfactant
+Explain: CO binds hemoglobin with roughly 200 times the affinity of O2, forming carboxyhemoglobin and blocking O2 transport.
+
+Q: High-altitude sickness occurs mainly because of
+*A. reduced partial pressure of oxygen in inspired air
+B. increased barometric pressure
+C. excess surfactant
+D. carbon monoxide accumulation
+Explain: At altitude the lower atmospheric pressure lowers the partial pressure of inspired O2, causing hypoxia even though the percentage of oxygen is unchanged.
+
+Q: Which statement correctly contrasts obstructive and restrictive lung disease?
+A. Obstructive limits expansion; restrictive limits airflow out.
+B. Both limit only expiration.
+C. Both limit only inspiration.
+*D. Obstructive limits airflow out; restrictive limits lung expansion.
+Explain: Obstructive diseases (asthma, COPD) impede airflow, especially expiration; restrictive diseases (fibrosis, RDS) limit lung expansion and volume.
+
+Q: Tuberculosis is
+A. an obstructive airway disease
+*B. an infectious lung disease caused by a bacterium
+C. air in the pleural cavity
+D. a surfactant deficiency
+Explain: TB is caused by Mycobacterium tuberculosis and behaves as an infectious/restrictive process, not an obstructive one.
+
+Q: Azotemia refers to
+A. blood in the urine
+B. protein in the urine
+*C. elevated nitrogenous wastes such as urea in the blood
+D. yellowing of the skin
+Explain: Azotemia is a buildup of nitrogen-containing wastes (urea, creatinine) in the blood, usually from impaired kidney filtration.
+
+Q: Uremia is best described as
+*A. a toxic clinical syndrome from severe retention of nitrogenous wastes
+B. a mild rise in blood urea with no symptoms
+C. glucose in the urine
+D. inflammation of the bladder
+Explain: Uremia is the symptomatic, toxic state of advanced kidney failure with marked accumulation of wastes.
+
+Q: Hematuria means
+A. protein in the urine
+B. wastes in the blood
+C. pus in the urine
+*D. blood in the urine
+Explain: Hematuria is the presence of blood (red blood cells) in the urine; do not confuse it with proteinuria.
+
+Q: Proteinuria indicates
+A. blood in the urine
+*B. protein in the urine, often signaling glomerular damage
+C. nitrogen wastes in the blood
+D. bacteria in the bladder
+Explain: Proteinuria is abnormal protein in the urine, commonly reflecting a leaky glomerular filtration barrier.
+
+Q: Dialysis is a procedure that involves
+A. surgically removing a kidney
+B. dissolving kidney stones
+*C. artificially filtering wastes and excess fluid from the blood
+D. measuring the glomerular filtration rate
+Explain: Dialysis uses an artificial membrane to remove wastes and fluid when the kidneys can no longer do so adequately.
+
+Q: Which group are all inflammatory conditions of the urinary tract?
+*A. pyelonephritis, cystitis, nephritis
+B. emphysema, bronchitis, asthma
+C. menarche, thelarche, climacteric
+D. azotemia, uremia, jaundice
+Explain: Pyelonephritis (kidney and its pelvis), cystitis (bladder), and nephritis (kidney) are all urinary inflammations; pyelitis is inflammation of the renal pelvis.
+
+Q: Cystitis specifically refers to inflammation of
+A. the kidney
+B. the renal pelvis
+*C. the urinary bladder
+D. the urethra
+Explain: Cystitis is inflammation of the bladder, most often caused by a urinary tract infection.
+
+Q: Urinary stress incontinence is
+A. the inability to sense a full bladder
+B. a complete inability to urinate
+C. blood in the urine
+*D. leakage of urine when abdominal pressure rises, as in coughing or laughing
+Explain: Stress incontinence is involuntary urine loss when abdominal pressure increases (coughing, sneezing, lifting), often from weak pelvic-floor support.
+
+Q: Cryptorchidism is
+*A. failure of one or both testes to descend into the scrotum
+B. inflammation of the prostate
+C. endometrial tissue outside the uterus
+D. absence of menstruation
+Explain: Cryptorchidism is an undescended testis; because sperm need cooler scrotal temperatures, it can impair fertility.
+
+Q: Which of the following describes benign prostatic hyperplasia?
+A. a cancerous growth of prostate cells
+B. inflammation of the prostate from infection
+*C. a non-cancerous enlargement of the prostate that can obstruct urine flow
+D. failure of the prostate to develop
+Explain: BPH is a benign enlargement of the prostate common with aging; prostatitis is inflammation and prostate cancer is malignant.
+
+Q: Endometriosis is
+A. inflammation of the endometrium from infection
+*B. the presence of endometrial tissue outside the uterus
+C. absence of the endometrium
+D. cancer of the cervix
+Explain: Endometriosis is endometrial-like tissue growing outside the uterus, such as on the ovaries or peritoneum, causing pain and sometimes infertility.
+
+Q: Match these female reproductive milestones in order: menarche, thelarche, climacteric.
+A. onset of breast development; first menstruation; first ovulation
+B. the transition to menopause; first menstruation; onset of breast development
+C. first ovulation; the transition to menopause; first menstruation
+*D. first menstruation; onset of breast development; the transition to menopause
+Explain: Menarche is the first menstrual period, thelarche is the beginning of breast development, and climacteric is the years-long transition to menopause.
+
+Q: Jaundice is a yellowing of the skin and eyes caused by
+*A. accumulation of bilirubin
+B. excess urea in the blood
+C. blood in the urine
+D. low oxygen saturation
+Explain: Jaundice results from elevated bilirubin from red blood cell breakdown, often signaling a liver or bile-duct problem.
+
+Q: Regarding whether "Pap smear" is an acronym, the Pap smear is
+A. an acronym for "Papillary Analysis Procedure"
+B. an acronym for a "Pelvic and Perineal" exam
+*C. named after Dr. Papanicolaou; a test that screens for cervical cell changes
+D. a test that measures prostate antigens
+Explain: "Pap" is not an acronym; it is short for Papanicolaou, who developed the cervical cytology screening test.

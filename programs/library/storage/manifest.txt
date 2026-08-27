@@ -3,5 +3,21 @@
 # file. It only falls back to this list if that request fails (offline, or the
 # API's hourly limit hit). One filename per line; lines starting with # ignored.
 
-cell-biology-the-mitochondria.txt
-the-french-revolution.txt
+bioeng-1071_2026-spring_quiz_final-practice-exam-a.txt
+bioeng-1071_2026-spring_quiz_final-practice-exam-b.txt
+biosc-0350_2026-summer_deck_module1-mendelian-genetics-and-linkage.txt
+biosc-1250_2026-summer_deck_ch08-cranial-nerves.txt
+biosc-1250_2026-summer_deck_exam1-cell-signaling-and-senses.txt
+biosc-1250_2026-summer_deck_exam2-muscle-heart-vessels-blood.txt
+biosc-1250_2026-summer_deck_review3-respiratory-urinary-reproductive.txt
+biosc-1250_2026-summer_quiz_exam1-review.txt
+biosc-1250_2026-summer_quiz_exam2-review.txt
+biosc-1250_2026-summer_quiz_final-master.txt
+biosc-1250_2026-summer_quiz_review3-full-set.txt
+biosc-1250_2026-summer_quiz_review3-short-set.txt
+biosc-1820_2026-spring_deck_ho07-urea-cycle.txt
+biosc-1820_2026-spring_deck_ho08-oxidative-phosphorylation.txt
+biosc-1820_2026-spring_deck_ho09-carbohydrate-synthesis.txt
+biosc-1820_2026-spring_deck_ho10-lipid-biosynthesis.txt
+biosc-1820_2026-spring_deck_ho11-nitrogen-containing-compounds.txt
+biosc-1820_2026-spring_deck_special-lecture-ldl-receptor.txt

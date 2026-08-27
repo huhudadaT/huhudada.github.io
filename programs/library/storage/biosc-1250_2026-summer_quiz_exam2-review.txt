@@ -1,0 +1,703 @@
+Title: BIOSC 1250 Exam 2 Review
+Description: Exam-style questions on muscle tissue, the heart, blood vessels, and blood (Ch. 11, 14-16).
+Class: BIOSC 1250
+Semester: Summer 2026
+
+Q: Which of the following statements concerning muscle is true?
+A. The three types of muscle tissue in the body include skeletal, cardiac, and striated.
+B. Skeletal muscle works mainly in an involuntary manner.
+C. The different types of muscle tissue are all controlled by somatic motor neurons.
+D. Cardiac muscle works mainly in a voluntary manner.
+*E. None of the statements concerning muscle are true.
+Explain: 'Striated' is a description, not a muscle type; skeletal is voluntary; not all muscle is somatic-controlled; cardiac is involuntary — so none of the statements are true.
+
+Q: Which of the following is a function of muscle?
+A. producing body movements
+B. stabilizing body positions
+C. storing and moving substances within the body
+D. generating heat
+*E. All of these are functions of muscle.
+Explain: Muscle produces movement, stabilizes posture, moves substances within the body, and generates heat — all are functions.
+
+Q: Which of the following statements about skeletal muscle components is FALSE?
+*A. A mature skeletal muscle fiber has a single nucleus located just beneath the sarcolemma.
+B. Myofibrils extend throughout the sarcoplasm of a skeletal muscle fiber.
+C. The sarcoplasmic reticulum stores calcium ions (Ca2+) in skeletal muscle fibers.
+D. Transverse (T) tubules, invaginations of the sarcolemma, tunnel in from the surface toward the center of each muscle fiber.
+E. Sarcomeres, composed of thin and thick filaments, are the repeating units of a myofibril.
+Explain: FALSE question: mature skeletal muscle fibers are MULTInucleate, so 'a single nucleus' is the false statement.
+
+Q: Contractile proteins in muscle include
+A. actin
+B. myosin
+C. tropomyosin
+*D. actin and myosin
+E. actin, myosin, and tropomyosin
+Explain: Actin and myosin are the contractile proteins; tropomyosin and troponin are regulatory proteins.
+
+Q: Which of the following statements concerning muscle contraction is FALSE? During muscle contraction
+A. thick and thin filaments slide past one another
+B. Z discs come closer together
+*C. the I band and A band narrow and eventually disappear when the muscle is maximally contracted
+D. individual lengths of the thick and thin filaments remain unchanged
+E. thin filaments are pulled toward the M line by the myosin heads
+Explain: FALSE question: the A band width stays constant during contraction, so claiming the A band narrows/disappears is false. Anchor: A band = constant.
+
+Q: A mutation in the gene encoding the dihydropyridine (DHP) receptor reduces the ability of the protein to sense depolarization events (i.e. the voltage sensitivity of the receptor is reduced). Patients with this mutant form of the DHP receptor
+A. are paralyzed due to the inability of Ca2+ pump proteins to pump Ca2+ back into the sarcoplasmic reticulum
+*B. are paralyzed due to an inability to release Ca2+ from the sarcoplasmic reticulum in response to an action potential
+C. are paralyzed due to an inability of their skeletal muscle membranes to conduct action potentials
+D. exhibit tremors due to the hyper-excitable plasma membranes of their skeletal muscles
+Explain: The DHP receptor is the voltage sensor that triggers SR Ca²⁺ release; without it there is no Ca²⁺ release and the fiber is paralyzed.
+
+Q: Which of the following statements regarding ATP production in skeletal muscle is true? In skeletal muscle
+A. the ATP present is enough to power contraction for only a few seconds
+B. ATP can be produced from creatine phosphate, by anaerobic glycolysis, and by aerobic respiration
+C. excess ATP is used to synthesize creatine phosphate while muscle fibers are relaxed
+D. creatine phosphate is the first source of energy used to replenish ATP when muscle contraction begins
+*E. All of the statements are correct.
+Explain: ATP powers only a few seconds of contraction and is regenerated from creatine phosphate, anaerobic glycolysis, and aerobic respiration — all statements are correct.
+
+Q: Which of the following statements concerning fatigue is correct?
+A. Muscle fatigue is caused by changes in the CNS resulting in feelings of tiredness and the desire to cease activity.
+B. Central fatigue is the inability of a muscle to maintain force of contraction after prolonged activity.
+C. The precise mechanisms that cause muscle fatigue are well understood.
+*D. A number of factors contribute to muscle fatigue including the failure of motor neurons to release adequate acetylcholine.
+Explain: Muscle fatigue is multifactorial and its precise mechanisms are not fully understood; peripheral factors include failure of excitation–contraction coupling.
+
+Q: A motor unit consists of a
+A. collection of somatic motor neurons plus the single muscle fiber they innervate
+B. single somatic motor neuron plus all the interneurons it innervates
+*C. single somatic motor neuron plus all the muscle fibers it innervates
+D. collection of somatic motor neurons plus the single interneuron they innervate
+Explain: A motor unit is one somatic motor neuron plus all the muscle fibers it innervates.
+
+Q: Which of the following statements about a twitch is true? A twitch
+A. is the brief contraction of a group of muscle fibers in response to a series of action potentials
+*B. consists of three sequential phases: the latent period; the contraction period; and the relaxation period
+C. has a latent period when Ca2+ binds to troponin, myosin-binding sites on actin
+D. are exposed, and myosin crossbridges form
+E. has a relaxation period when the events of excitation– contraction coupling occur
+Explain: A twitch has three sequential phases: the latent period, the contraction period, and the relaxation period.
+
+Q: Which of the following skeletal muscle fiber types are MOST fatigue resistant?
+*A. slow oxidative (SO) fibers
+B. fast oxidative–glycolytic (FOG) fibers
+C. fast glycolytic (FG) fibers
+D. All of these muscle fibers types have similar fatigue resistance.
+Explain: Slow oxidative (SO) fibers rely on aerobic metabolism and are the most fatigue-resistant.
+
+Q: Which of the following skeletal muscle fiber types generate the MOST powerful contractions?
+A. slow oxidative (SO) fibers
+B. fast oxidative–glycolytic (FOG) fibers
+*C. fast glycolytic (FG) fibers
+D. All of these muscle fibers types generate similar contractile force.
+Explain: Fast glycolytic (FG) fibers are the largest and generate the most powerful (but briefest) contractions.
+
+Q: Which of the following statements concerning intercalated discs is true? Intercalated discs
+A. are unique to cardiac muscle cells
+B. connect the ends of cardiac muscle fibers to one another
+C. contain desmosomes that hold the fibers together
+D. contain gap junctions that allow muscle action potentials to spread from one cardiac muscle fiber to another
+*E. All of the statements concerning intercalated discs are true.
+Explain: Intercalated discs are unique to cardiac muscle, join fiber ends, and contain desmosomes (mechanical) and gap junctions (electrical) — all statements are true.
+
+Q: Which of the following statements regarding smooth muscle is true? Smooth muscle
+*A. is found mainly in the walls of hollow organs and tubes
+B. fibers are spindle-shaped and each have multiple nuclei
+C. contains both thick filaments and thin filaments arranged in orderly sarcomeres
+D. contraction is initiated by decreased Ca2+ concentration in the sarcoplasm
+E. contraction and relaxation occur more rapidly than in striated muscle
+Explain: Smooth muscle is found mainly in the walls of hollow organs and tubes; it is single-nucleate, lacks sarcomeres, and contracts as Ca²⁺ rises.
+
+Q: Which of the following statements about the regeneration of skeletal muscle is true?
+A. Mature skeletal muscle fibers retain the ability to undergo cell division.
+B. Growth of skeletal muscle after birth is due mainly to hyperplasia, an increase in the number of fibers.
+C. Satellite cells divide rapidly and fuse with existing fibers to fully replenish damaged skeletal muscle tissue.
+*D. Growth of skeletal muscle after birth is due mainly to hypertrophy, the enlargement of existing cells.
+Explain: Postnatal skeletal muscle growth is due mainly to hypertrophy (enlargement of existing fibers), since mature fibers cannot divide.
+
+Q: After a skeletal muscle has contracted, which process is most important for lowering Ca++ levels in the cytoplasm?
+A. closing of the Ca2+ release channels (ryanodine receptor)
+B. activity of the acetylcholine receptor
+C. closing of the dihydropyridine receptor
+*D. activity of the Ca2+-ATPase pump
+Explain: The SERCA (Ca²⁺-ATPase) pump actively transports Ca²⁺ back into the sarcoplasmic reticulum, lowering cytosolic Ca²⁺ so the fiber can relax.
+
+Q: Release of calcium from the sarcoplasmic reticulum in smooth muscle cells can be due to activation of which types of channels?
+A. IP3-gated channels and store-operated channels
+B. IP3-gated channels and mechanically-gated channels
+*C. Ca2+ induced Ca2+ channels and IP3-gated channels
+D. Ca2+ induced Ca2+ channels and store-operated channels
+Explain: In smooth muscle, SR Ca²⁺ release is triggered by IP₃-gated channels and by Ca²⁺-induced Ca²⁺ release (CICR).
+
+Q: Which best describes a role of L-type Ca2+ channels in cardiac muscle cells?
+A. They function exactly the same in cardiac muscle cells as they do in skeletal muscle.
+B. They cause the absolute refractory period to be very brief.
+C. They act as non-conducting voltage sensors that mediate excitation-contraction coupling.
+D. They are directly responsible for making cardiac muscle fatigue-resistant.
+*E. They are responsible for preventing tetanic contractions.
+Explain: Cardiac L-type Ca²⁺ channels sustain the plateau, prolonging the refractory period so cardiac muscle cannot be tetanized.
+
+Q: During an isotonic muscle contraction, what happens to the H zone?
+A. It gets longer and shorter, successively.
+B. It gets longer.
+C. It does not change.
+*D. It gets shorter.
+Explain: Sliding filaments pull the Z discs inward, so the H zone (and I band) shorten while the A band width stays constant. Anchor: H and I shrink, A stays.
+
+Q: The skeletal muscle action potential is MOST DIRECTLY important for which process?
+A. activating the ryanodine receptor
+B. triggering neurotransmitter release
+C. promoting cross-bridge formation
+*D. activating the DHP receptor
+Explain: The muscle action potential travels down the T-tubule and most directly activates the DHP receptor (voltage sensor), which then opens the SR ryanodine receptor.
+
+Q: Just like a neuronal action potential, a muscle action potential consists of a depolarizing phase caused by opening of voltage-gated sodium channels followed by a repolarizing phase due to opening of voltage-gated potassium channels and closing of voltage-gated sodium channels.
+*A. True
+B. False
+Explain: A skeletal muscle action potential has depolarizing and repolarizing phases driven by voltage-gated Na⁺ and K⁺ channels, just like a neuronal action potential.
+
+Q: In cardiac muscle cells, the release of Ca2+ through L-type Ca2+ channels depolarizes the sarcoplasmic reticulum and inhibits the release of any additional Ca2+ necessary for excitation-contraction coupling.
+A. True
+*B. False
+Explain: FALSE: L-type channels admit only a small trigger Ca²⁺; most Ca²⁺ for cardiac contraction comes from the SR via CICR, so they do not 'directly' cause contraction.
+
+Q: In skeletal muscle, which of the following is not found in a thin myofilament?
+A. Troponin
+B. Calcium receptors
+C. Tropomyosin
+D. F actin
+*E. Titin
+Explain: NOT question: the thin filament contains F-actin, troponin, and tropomyosin; titin is a separate elastic filament, not part of the thin filament.
+
+Q: Which incorrectly describes what happens during skeletal muscle contraction?
+A. The I bands narrow.
+B. The width of the A band remains constant.
+*C. The width of the A band decreases.
+D. The H zone gets smaller.
+E. The sarcomere narrows.
+Explain: NOT question: A band width stays constant during contraction, so 'the A band decreases' is incorrect. Anchor: A band = constant; I band and H zone shrink.
+
+Q: Which of the following contains overlapping thick and thin myofilaments?
+A. H band
+*B. A band
+C. Z discs
+D. M line
+E. I band
+Explain: The A band spans the full length of the thick filaments, where they overlap with thin filaments. Anchor: A band includes overlap; I band = thin only.
+
+Q: Where in a sarcomere do actin and myosin overlap?
+A. The M line
+B. The H band
+C. The I band
+D. The Z disc
+*E. The A band
+Explain: Actin (thin) and myosin (thick) overlap within the A band.
+
+Q: The ____ circulation consists of blood vessels that carry blood from the right side of the heart to the alveoli (air sacs) of the lungs and then back to the ____ side of the heart.
+A. pulmonary; right
+B. systemic; right
+*C. pulmonary; left
+D. systemic; left
+Explain: Pulmonary circulation carries blood from the right ventricle to the lungs and back to the LEFT atrium. Anchor: the pulmonary loop empties into the LEFT heart.
+
+Q: The systemic circulation consists of blood vessels that carry blood from the ____ side of the heart to all organs and tissues of the body except the alveoli and then back to the ____ side of the heart.
+*A. left; right
+B. right; right
+C. right; left
+D. left; left
+Explain: Systemic circulation carries blood from the LEFT ventricle to the body and back to the RIGHT atrium.
+
+Q: In ____ circuit(s), blood is carried away from the heart by large blood vessels called ____.
+A. the pulmonary; arteries
+B. the systemic; veins
+*C. both the pulmonary and the systemic; arteries
+D. the systemic; arteries
+E. both the pulmonary and the systemic; veins
+Explain: In both the pulmonary and systemic circuits, blood leaves the heart through arteries. Anchor: Arteries = Away from the heart.
+
+Q: You must dissect the heart in a human cadaver lab. In what order would your scalpel penetrate these layers upon cutting into the wall of the heart? The layers include: (1) endocardium; (2) epicardium; and (3) myocardium
+A. 1, 3, 2
+*B. 2, 3, 1
+C. 1, 2, 3
+D. 2, 1, 3
+E. 3, 2, 1
+Explain: Cutting from outside in, the scalpel passes epicardium (2) → myocardium (3) → endocardium (1).
+
+Q: Which of the following statements about heart valves is true?
+A. The atrioventricular valves open when pressure in the ventricles exceeds pressure in the atria.
+*B. The semilunar valves allow ejection of blood from the heart into arteries but prevent backflow of blood into the ventricles.
+C. Papillary muscles must contract and pull the chordae tendineae in order to open the atrioventricular valves.
+D. The left atrioventricular valve is called the tricuspid because it consists of three cusps or flaps.
+Explain: The semilunar valves open to eject blood from the ventricles into the arteries during ventricular systole.
+
+Q: Which of the following statements about the functional characteristics of cardiac muscle is FALSE?
+A. Cardiac muscle fibers act as a single, coordinated unit called a functional syncytium.
+*B. Cardiac muscle requires external stimulation to contract.
+C. Autorhythmic fibers of the heart act as a pacemaker.
+D. Gap junctions electrically couple cardiac muscle fibers to each other.
+Explain: FALSE question: cardiac muscle is autorhythmic and does NOT require external stimulation, so that statement is false.
+
+Q: In what order does a cardiac action potential propagate through the conduction system of the heart, starting with the SA node?
+*A. Atria -> AV node -> AV bundle (Bundle of His) -> Right and left bundle branches -> Purkinje fibers
+B. AV bundle (Bundle of His) -> AV node -> Atria -> Right and left bundle branches -> Purkinje fibers
+C. AV node -> AV bundle (Bundle of His) -> Atria -> Purkinje fibers -> Right and left bundle branches
+D. AV node -> Right and left bundle branches -> AV bundle (Bundle of His) -> Atria -> Purkinje fibers
+Explain: The impulse spreads across the atria to the AV node, then the AV bundle (of His), the bundle branches, and the Purkinje fibers.
+
+Q: The prolonged ____ phase of an action potential in a contractile cardiac muscle fiber serves to prevent summation of cardiac muscle contractions and prevent tetanus.
+A. depolarizing
+B. initial repolarizing
+*C. plateau
+D. final repolarizing
+Explain: The prolonged plateau phase (Ca²⁺ influx through L-type channels) lengthens the cardiac action potential and its refractory period.
+
+Q: Which of the following statements about an electrocardiogram (ECG) is true?
+A. An ECG is a recording of an SA node action potential.
+*B. The QRS complex represents ventricular depolarization that spreads through the ventricular contractile fibers.
+C. The T wave represents atrial depolarization that spreads from the SA node through contractile fibers in both atria.
+D. The P wave indicates ventricular repolarization and occurs just as the ventricles are starting to relax.
+Explain: The QRS complex represents ventricular depolarization. Anchor: P = atrial depol, QRS = ventricular depol, T = ventricular repol.
+
+Q: Which of the following statements regarding the cardiac cycle is true? During the isovolumetric ventricular relaxation phase
+A. the ventricles contract and eject blood into the arteries
+B. the semilunar (SL) valves are open
+C. the atria contract and pump blood into the arteries
+*D. both atria and ventricles are relaxed
+E. the atrioventricular (AV) valves are open
+Explain: During isovolumetric ventricular relaxation all valves are closed and both the atria and ventricles are relaxed.
+
+Q: The semilunar (SL) valves open during the cardiac cycle when the
+A. arterial pressure exceeds the ventricular pressure
+B. atrial pressure exceeds the ventricular pressure
+C. atrioventricular (AV) valves open
+D. ventricles relax
+*E. ventricular pressure exceeds the arterial pressure
+Explain: The semilunar valves open only when ventricular pressure rises above arterial pressure.
+
+Q: During which phase of the cardiac cycle are all four valves of the heart open?
+A. passive ventricular filling and atrial contraction
+B. isovolumetric ventricular contraction
+C. ventricular ejection
+D. isovolumetric ventricular relaxation
+*E. None of the choices is correct.
+Explain: All four heart valves are never open simultaneously, so none of the listed phases qualifies.
+
+Q: The second sound (S2) that can be described as a “dupp” sound is caused by vibrations associated with
+A. opening of the AV valves.
+B. closure of the AV valves.
+C. opening of the semilunar valves.
+*D. closure of the semilunar valves.
+E. atrial contraction.
+Explain: S2 ('dupp') is produced by closure of the semilunar valves at the start of ventricular diastole. Anchor: S1 = AV valves close, S2 = SL valves close.
+
+Q: Cardiac output (CO) is calculated by
+*A. multiplying the stroke volume (SV) by the heart rate (HR)
+B. dividing the cardiac reserve by the heart rate (HR)
+C. adding the stroke volume (SV) to the heart rate (HR)
+D. subtracting the stroke volume (SV) from the heart rate (HR)
+Explain: Cardiac output = stroke volume × heart rate.
+
+Q: Which of the following factors regulate stroke volume?
+A. Preload, the degree of stretch on the heart before it contracts.
+B. Contractility, the forcefulness of contraction of individual ventricular muscle fibers.
+C. Afterload, the pressure that must be exceeded before ejection of blood from the ventricles can occur.
+*D. All of these factors regulate stroke volume.
+Explain: Stroke volume is regulated by preload, contractility, and afterload — all three factors.
+
+Q: When are the semilunar valves closed?
+A. When the atria are relaxing
+*B. When the ventricles are relaxing
+C. When the atrioventricular valves are closed
+D. When the ventricles are contracting
+E. When the pressure is greatest in the ventricles
+Explain: The semilunar valves are closed during ventricular diastole (when the ventricles are relaxing) and open during ejection.
+
+Q: Which statement is not true?
+A. During ventricular systole, the tricuspid valve is closed.
+B. During ventricular systole, the pulmonary semilunar valve is open.
+C. During ventricular systole, the atria are filling with blood.
+D. During ventricular systole, the aortic semilunar valve is open.
+*E. During ventricular systole, the bicuspid valve is open.
+Explain: NOT question: the bicuspid (mitral) valve is an AV valve and is CLOSED during ventricular systole, so that statement is false.
+
+Q: What is happening in the heart when a P wave is recorded on an ECG?
+A. The ventricles are repolarizing.
+B. The ventricles are depolarizing.
+C. The ventricles are contracting.
+D. Ventricular systole is occurring.
+*E. The atria are depolarizing.
+Explain: The P wave represents atrial depolarization.
+
+Q: What is happening in the heart between the QRS and T waves?
+A. Ventricular repolarization
+B. Atrial systole
+C. Atrial repolarization
+*D. Ventricular systole
+E. Ventricular diastole
+Explain: The interval between the QRS and T waves is the plateau/ST segment, when the ventricles are depolarized and contracting (ventricular systole).
+
+Q: ____ are blood vessels that carry blood from tissues back to the heart.
+A. Arteries
+B. Arterioles
+C. Capillaries
+*D. Veins
+Explain: Veins carry blood from the tissues back to the heart.
+
+Q: An increase in ____ stimulation typically causes the smooth muscle of a blood vessel to contract, squeezing the vessel wall and narrowing the lumen in a process called ____.
+A. sympathetic; vasodilation
+*B. sympathetic; vasoconstriction
+C. parasympathetic; vasodilation
+D. parasympathetic; vasoconstriction
+Explain: Increased sympathetic stimulation contracts vascular smooth muscle, producing vasoconstriction.
+
+Q: Elastic arteries, such as the ____, serve as pressure reservoirs that maintain the driving force for blood flow during ventricular ____.
+*A. aorta and pulmonary trunk; relaxation
+B. vena cava and pulmonary vein; relaxation
+C. aorta and pulmonary trunk; contraction
+D. vena cava and pulmonary vein; contraction
+Explain: Elastic arteries (aorta and pulmonary trunk) recoil during ventricular relaxation to maintain pressure and forward flow.
+
+Q: Which of the following basic mechanisms allow substances to enter and leave capillaries?
+A. diffusion
+B. transcytosis
+C. bulk flow
+*D. All of the choices are correct.
+Explain: Substances cross capillary walls by diffusion, transcytosis, and bulk flow — all three.
+
+Q: ____ is the pressure that water in blood exerts against the inner surface of capillary walls.
+*A. Capillary hydrostatic pressure (PC)
+B. Interstitial fluid hydrostatic pressure (PIF)
+C. Plasma colloid osmotic pressure (πP)
+D. Interstitial fluid colloid osmotic pressure (πIF)
+Explain: Capillary hydrostatic pressure (P_C) is the blood's pressure pushing outward against the capillary wall, favoring filtration.
+
+Q: If the protein concentration in the interstitial fluid rose, the interstitial fluid colloid osmotic pressure (πIF) would
+A. decrease
+*B. increase
+C. remain unchanged
+D. slowly fall, then rise
+Explain: Higher interstitial protein raises interstitial fluid colloid osmotic pressure, drawing more fluid out of the capillary.
+
+Q: Which of the following is a function of the lymphatic system? The lymphatic system
+A. drains excess interstitial fluid
+B. returns filtered plasma proteins back to the blood
+C. carries out immune responses
+D. transports dietary lipids
+*E. All of the choices are correct.
+Explain: The lymphatic system drains excess interstitial fluid, returns plasma proteins, carries out immune responses, and transports dietary lipids — all are functions.
+
+Q: Which of the following statements regarding blood flow is FALSE? Blood flow is
+A. the volume of blood that flows through any tissue in a given time period
+B. directly proportional to the pressure gradient (ΔP) between two points in the vasculature
+*C. directly proportional to resistance in the vasculature
+D. All of the choices are correct.
+Explain: FALSE question: blood flow is INVERSELY proportional to resistance, so 'directly proportional to resistance' is the false statement.
+
+Q: Which of the following statements regarding resistance to blood flow is true? Resistance to blood flow is
+A. indirectly proportional to the viscosity (thickness) of blood
+*B. inversely proportional to the fourth power of the radius (r) of the blood vessel
+C. indirectly proportional to the length of the blood vessel
+D. All of the choices are correct.
+Explain: Resistance is inversely proportional to the fourth power of vessel radius, so small radius changes have large effects on flow.
+
+Q: When blood pressure is measured in the brachial artery, the first sound detected as pressure is released from the sphygmomanometer reveals the point of ____ blood pressure, which is the ____ pressure.
+*A. highest; systolic
+B. lowest; systolic
+C. highest; diastolic
+D. lowest; diastolic
+Explain: The first Korotkoff sound appears at the highest cuff pressure at which blood spurts through — the systolic pressure.
+
+Q: Which of the following statements regarding venous return of blood to the heart is true?
+A. Peristaltic contractions of smooth muscle surrounding veins is the primary mechanism of venous return.
+B. Subatmospheric pressure developed in the right atrium during atrial relaxation promotes venous return.
+*C. Valves in the veins of the limbs help promote venous return by preventing backflow of blood.
+D. Venodilation reduces the volume of blood in reservoirs allowing a greater blood volume to flow back to the heart.
+Explain: One-way valves in the limb veins keep blood moving toward the heart and prevent backflow.
+
+Q: Smooth muscle in arteriole walls contracts more forcefully when it is stretched. This is an example of
+*A. intrinsic (local) control of blood flow by physical changes
+B. intrinsic (local) control of blood flow by local mediators
+C. extrinsic control of blood flow by neuronal signaling
+D. extrinsic control of blood flow by endocrine signaling
+Explain: Stretch-triggered contraction of arteriolar smooth muscle is the myogenic response — intrinsic (local) autoregulation by a physical change.
+
+Q: Given CO is cardiac output, SV is stroke volume, HR is heart rate, and TPR is total peripheral resistance, which of the following equations correctly calculates the mean arterial pressure (MAP)?
+*A. MAP = SV x HR x TPR
+B. MAP = CO x SV x HR x TPR
+C. MAP = (SV x HR)/CO
+D. MAP = CO x SV
+Explain: MAP = CO × TPR, and CO = SV × HR, so MAP = SV × HR × TPR.
+
+Q: Moving from a prone (lying down) to an erect position decreases blood pressure and blood flow in the head and upper part of the body. This results in ____ stretch of the baroreceptors and the sensory (afferent) neurons associated with the baroreceptors send action potentials ____ to the cardiovascular center.
+A. greater; at a faster rate
+B. less; with lower amplitudes
+C. greater; with greater amplitudes
+*D. less; at a slower rate
+Explain: Lower pressure on standing means less stretch of the baroreceptors, so their afferent neurons fire at a slower rate to the cardiovascular center. Anchor: afferent = arriving sensory input.
+
+Q: Which of the following endocrine hormones acts to decrease mean arterial pressure by promoting vasodilation?
+A. angiotensin II
+B. antidiuretic hormone (vasopressin)
+C. oxytocin
+*D. atrial natriuretic peptide
+Explain: Atrial natriuretic peptide promotes salt and water loss and vasodilation, lowering mean arterial pressure.
+
+Q: Which of the following is a function of blood in the body?
+A. Transportation of gases, nutrients, hormones, and wastes.
+B. Regulation of pH, temperature, and movement of fluid across capillary walls.
+C. Protection including clotting and providing immune cells and proteins.
+*D. All of the choices are functions of blood.
+Explain: Blood transports gases/nutrients/wastes, regulates pH/temperature/fluid balance, and protects via clotting and immunity — all are functions.
+
+Q: The percentage of total blood volume occupied by erythrocytes is called the _____ that for women has a normal range of ____.
+A. buffy coat; 0.5–1.5%
+*B. hematocrit; 38–46%
+C. plasma; 52–57%
+D. hematocrit; 40–54%
+E. hematocrit; 52–57%
+Explain: Hematocrit is the percentage of total blood volume occupied by erythrocytes (about 38–46%).
+
+Q: Which of the following cellular elements lack a nucleus and release chemicals that promote blood clotting when blood vessels are damaged?
+A. erythrocytes (red blood cells)
+B. neutrophils
+C. leukocytes (white blood cells)
+*D. platelets
+E. lymphocytes
+Explain: Platelets are anucleate cell fragments that release chemicals involved in clotting.
+
+Q: Which of the following statements about erythrocytes is FALSE?
+A. have the shape of a biconcave disc
+B. have a strong and flexible plasma membrane
+C. have no nucleus
+*D. consume 35% of the oxygen they transport to generate ATP
+E. All of the statements about erythrocytes are true.
+Explain: FALSE question: mature RBCs lack mitochondria and consume none of the oxygen they carry, so this statement is false.
+
+Q: Which of the following molecules can bind to hemoglobin?
+A. only oxygen (O2)
+B. only carbon dioxide (CO2)
+C. only nitric oxide (NO)
+D. both O2 and CO2
+*E. O2, CO2, and NO can all bind to hemoglobin
+Explain: Hemoglobin binds oxygen (at heme), carbon dioxide (at globin), and nitric oxide.
+
+Q: Which of the following leukocytes are categorized as granulocytes?
+*A. eosinophils, basophils, and neutrophils
+B. eosinophils, monocytes, and lymphocytes
+C. monocytes and lymphocytes
+D. basophils and lymphocytes
+E. neutrophils, basophils, and monocytes
+Explain: The granulocytes are neutrophils, eosinophils, and basophils; monocytes and lymphocytes are agranulocytes.
+
+Q: A/an ____ is an agranulocyte that has a large, round nucleus surrounded by a thin ring of cytoplasm and is the second most abundant type of leukocyte.
+A. eosinophil
+B. basophil
+C. neutrophil
+D. monocyte
+*E. lymphocyte
+Explain: A lymphocyte is the agranulocyte with a large, round nucleus and a thin rim of cytoplasm.
+
+Q: ____ respond most quickly to tissue destruction by bacteria and serve as phagocytes that engulf and destroy microbes and their toxins.
+A. Eosinophils
+B. Basophils
+*C. Neutrophils
+D. Monocytes
+E. Lymphocytes
+Explain: Neutrophils are the fastest phagocytes to respond to bacterial tissue destruction.
+
+Q: ____ migrate to a site of infection and then enlarge and differentiate into huge phagocytes called macrophages.
+A. Eosinophils
+B. Basophils
+C. Neutrophils
+*D. Monocytes
+E. Lymphocytes
+Explain: Monocytes migrate to a site of infection and differentiate into macrophages.
+
+Q: ____ release chemicals such as histamine that promote inflammation when a tissue is damaged.
+A. Eosinophils
+*B. Basophils
+C. Neutrophils
+D. Monocytes
+E. Lymphocytes
+Explain: Basophils release histamine and other mediators that promote inflammation.
+
+Q: Which of the following is a mechanism that contributes to hemostasis?
+A. The immediate constriction of smooth muscle in the walls of damaged arteries or arterials.
+B. The accumulation and attachment of large numbers of platelets at a site of injury.
+C. The formation of a large quantity of the insoluble protein, fibrin, at the injured area.
+*D. All of these processes contribute to hemostasis.
+Explain: Hemostasis involves vascular spasm, platelet plug formation, and coagulation (fibrin) — all three.
+
+Q: Place the following stages of blood clotting in the correct order: 1) Thrombin converts soluble fibrinogen into insoluble fibrin that forms the threads of the clot. 2) Formation of prothrombinase by the intrinsic and extrinsic pathways. 3) Prothrombinase converts prothrombin into the enzyme thrombin.
+A. 1, 2, 3
+B. 3, 2, 1
+*C. 2, 3, 1
+D. 1, 3, 2
+E. 2, 1, 3
+Explain: Clotting order: prothrombinase forms (2) → converts prothrombin to thrombin (3) → thrombin converts fibrinogen to fibrin (1).
+
+Q: Which of the following statements about an individual who has type O blood is correct? Individuals who have type O blood
+A. have antigen A.
+B. can theoretically receive blood from donors of all four blood types.
+C. have antigen B.
+D. have antigen A and antigen B.
+*E. produce both anti-A and anti-B antibodies.
+Explain: Type O has neither A nor B antigens but produces both anti-A and anti-B antibodies — it is the universal DONOR, not universal recipient.
+
+Q: Which of the following events occurs if a person with type B blood receives a transfusion of type A blood?
+A. Donor anti-B antibodies bind to recipient anti-A antibodies and cause erythrocyte agglutination and hemolysis.
+B. The donor’s anti-A antibodies become diluted in the recipient’s plasma.
+C. Recipient anti-B antibodies bind to the B antigens on the donor’s erythrocytes causing erythrocyte agglutination and hemolysis.
+*D. Recipient anti-A antibodies bind to the A antigens on the donor’s erythrocytes causing erythrocyte agglutination and hemolysis.
+Explain: A type-B recipient carries anti-A antibodies, which attack the A antigens on transfused type-A cells and cause agglutination.
+
+Q: Which of the following statements about the Rh blood group is FALSE?
+A. People whose erythrocytes have Rh antigens are designated Rh+.
+*B. An Rh− mother cannot have an Rh+fetus.
+C. Hemolytic disease of the newborn occurs when maternal anti-Rh antibodies are passed through the placenta to an Rh+fetus.
+D. People whose erythrocytes lack Rh antigens are designated Rh–.
+Explain: FALSE question: an Rh⁻ mother CAN carry an Rh⁺ fetus (if the father is Rh⁺) — that mismatch is exactly what creates HDN risk.
+
+Q: How do practitioners prevent hemolytic disease of the newborn during the second Rh+ pregnancy for an Rh– mom?
+A. by giving a transfusion of Rh+ blood
+B. by giving anti-D immunoglobulin (RhoGAM) to the newborn
+C. by administering fetal hemoglobin intravenously
+*D. by administering anti-D immunoglobulin (RhoGAM) to the mom.
+E. by administering an intramuscular injection of heparin
+Explain: Anti-D immunoglobulin (RhoGAM) is given to the Rh⁻ mother to stop her from making anti-Rh antibodies. Anchor: RhoGAM → MOM, not the newborn.
+
+Q: The cardiac cycle proceeds in 5 phases. Which two phases make up the state "atrial diastole, ventricular systole"?
+A. passive ventricular filling and atrial contraction
+B. atrial contraction and isovolumetric ventricular contraction
+*C. isovolumetric ventricular contraction and ventricular ejection
+D. ventricular ejection and isovolumetric ventricular relaxation
+Explain: While the ventricles contract and the atria are relaxed, the heart passes through isovolumetric ventricular contraction and then ventricular ejection. (Original was "select all that apply" → C and D.)
+
+Q: The cardiac cycle proceeds in 5 phases. Which two phases make up the state "atrial diastole, ventricular diastole"?
+A. atrial contraction and passive ventricular filling
+*B. passive ventricular filling and isovolumetric ventricular relaxation
+C. isovolumetric ventricular contraction and ventricular ejection
+D. ventricular ejection and isovolumetric ventricular relaxation
+Explain: With both chambers relaxed, the heart is in isovolumetric ventricular relaxation and passive ventricular filling. (Original was "select all that apply" → A and E.)
+
+Q: Select the appropriate relationship between the valves opening/closing and pressure changes during the cardiac cycle.
+A. Atrioventricular valves begin to close when the pressure in the aorta or pulmonary artery exceeds the pressure in the ventricles.
+B. Semilunar valves begin to open when the pressure in the ventricles exceeds systolic pressure in the aorta or pulmonary artery.
+*C. Semilunar valves begin to open when the pressure in the ventricles exceeds diastolic blood pressure in the aorta or pulmonary artery.
+D. Atrioventricular valves begin to open when the pressure in the ventricles exceeds the pressure in the atria.
+Explain: The semilunar valves open once ventricular pressure rises just above the arterial diastolic pressure; "systolic" (B) is too high, and the AV valves open when atrial pressure exceeds ventricular (D is reversed).
+
+Q: Which statement is not true?
+*A. During ventricular systole, the bicuspid valve is open.
+B. During ventricular systole, the pulmonary semilunar valve is open.
+C. During ventricular systole, the tricuspid valve is closed.
+D. During ventricular systole, the aortic semilunar valve is open.
+E. During ventricular systole, the atria are filling with blood.
+Explain: NOT question: the bicuspid (mitral) valve is an AV valve and is closed during ventricular systole, so "the bicuspid valve is open" is the false statement.
+
+Q: The Frank-Starling mechanism of the heart states that an increased venous return will normally result in a higher heart rate.
+A. True
+*B. False
+Explain: False: the Frank-Starling mechanism links greater venous return (preload) to a stronger contraction and larger stroke volume, not to a higher heart rate.
+
+Q: Agents such as calcium channel blockers increase the strength of contraction of the heart muscle and thus have a positive inotropic effect.
+A. True
+*B. False
+Explain: False: calcium channel blockers reduce Ca²⁺ entry and weaken contraction — they are negative inotropes.
+
+Q: The hydrostatic pressure difference between the plasma inside the capillary beds and the interstitial fluid surrounding the cells favors filtration (not reabsorption) of fluid.
+*A. True
+B. False
+Explain: True: capillary hydrostatic pressure pushes fluid out of the capillary (filtration), most strongly at the arterial end.
+
+Q: Which of the following is NOT primarily a function of blood plasma?
+A. Transport of hormones
+B. Having plasma proteins that exert an osmotic pressure favoring fluid absorption into the capillaries
+C. Providing clotting factors that are ready to be activated
+*D. Transport of oxygen
+E. Being in osmotic balance with red blood cells
+Explain: NOT question: oxygen is carried mainly by hemoglobin inside red blood cells, so oxygen transport is not primarily a plasma function.
+
+Q: The smooth muscle in arteriole walls can be stimulated either to contract or to relax, thereby either decreasing or increasing the amount of blood flowing through arteriolar beds.
+*A. True
+B. False
+Explain: True: arteriolar vasoconstriction reduces flow through a bed while vasodilation increases it.
+
+Q: Hypertension is often treated with drugs that increase total peripheral resistance.
+A. True
+*B. False
+Explain: False: antihypertensive drugs lower total peripheral resistance (e.g., vasodilators), which lowers blood pressure.
+
+Q: Identify which of these does not apply to the myocardium.
+A. has extensive network of blood vessels
+B. made of cells that have many mitochondria
+*C. is a fibrous membrane that stabilizes the heart
+D. is a layer that contains cells connected by gap junctions
+E. is the excitable thick layer between the epicardium and endocardium
+Explain: NOT question: the fibrous stabilizing membrane is the fibrous pericardium, not the myocardium — the myocardium is the thick, vascular, gap-junction-coupled muscle layer.
+
+Q: In pericarditis, excessive fluid accumulates in the pericardial cavity, impairing the heart's pumping ability. A needle to drain the fluid would be inserted through which of these?
+A. myocardium
+*B. parietal layer of pericardium
+C. endocardium
+D. visceral layer of pericardium
+Explain: The fluid sits in the pericardial cavity between the visceral and parietal serous layers; the drainage needle enters from outside through the parietal pericardium.
+
+Q: Heart valves ensure one-way blood flow. Which accurately describes the role of pressure differences in valve function?
+A. AV valves open when pressure in the ventricles exceeds pressure in the atria.
+*B. SL valves open when pressure in the ventricles exceeds pressure in the arteries.
+C. SL valves open when pressure in the ventricles exceeds pressure in the atria.
+D. AV valves open when pressure in the ventricles exceeds pressure in the arteries.
+Explain: Semilunar valves open when ventricular pressure exceeds arterial pressure; AV valves open when atrial pressure exceeds ventricular pressure (option A is reversed).
+
+Q: Cardiac muscle fibers differ from skeletal muscle fibers in that cardiac fibers are
+*A. electrically coupled to one another
+B. lacking cell junctions called desmosomes
+C. multinucleated
+D. longer and greater in diameter
+Explain: Cardiac fibers are electrically coupled through gap junctions in their intercalated discs; they are uninucleate, shorter and narrower than skeletal fibers, and they do contain desmosomes.
+
+Q: Which autorhythmic fibers start the impulse responsible for the P wave in the ECG?
+A. Purkinje fibers
+*B. SA node
+C. AV bundle
+D. AV node
+Explain: The SA node fires the impulse that spreads across the atria, producing the P wave (atrial depolarization).
+
+Q: Which channel event is responsible for the depolarization phase of the action potential in contractile cardiac muscle fibers?
+A. closing of slow voltage-gated K+ channels
+B. closing of voltage-gated Na+ channels
+C. opening of fast voltage-gated K+ channels
+*D. opening of voltage-gated Na+ channels
+Explain: Rapid depolarization of contractile cardiac fibers is driven by the opening of fast voltage-gated Na⁺ channels.
+
+Q: On an electrocardiogram, which wave represents repolarization of the ventricular muscle cells?
+A. QRS complex
+B. R wave
+C. P wave
+*D. T wave
+Explain: The T wave represents ventricular repolarization. Anchor: QRS = ventricular depolarization, T = ventricular repolarization.
+
+Q: ACh secreted from the parasympathetic vagus nerve endings in the heart causes
+A. lower amplitude of action potential in the SA node
+B. an increase in the duration of the action potential in the SA node
+C. conduction to speed up between atria and ventricles
+*D. hyperpolarization of cells in the SA node
+Explain: Vagal ACh opens K⁺ channels and hyperpolarizes SA node cells, slowing the heart rate.
+
+Q: What type of receptor mediates the positive inotropic effect of epinephrine or norepinephrine on heart contractility?
+A. receptor tyrosine kinase
+B. intracellular receptor
+C. ion channel receptor
+*D. G protein-coupled receptor
+Explain: Epinephrine and norepinephrine act on β₁-adrenergic receptors, which are G protein-coupled receptors, to raise contractility.
+
+Q: A patient's blood work shows decreased resistance to blood flow. Considering viscosity, which condition is most likely?
+*A. anemia
+B. dehydration
+C. malaria
+D. polycythemia
+E. elevated albumin in plasma (hyperalbuminemia)
+Explain: Anemia lowers hematocrit and therefore blood viscosity, which decreases resistance; dehydration, polycythemia, and hyperalbuminemia all raise viscosity and resistance.

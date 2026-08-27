@@ -1,0 +1,558 @@
+Title: BIOENG 1071 Final Practice Exam B
+Description: Units 1-11 of cellular and developmental bioengineering, including simple, bonus, and complex multiple choice questions.
+Class: BIOENG 1071
+Semester: Spring 2026
+
+Q: Which of the following statements about morphogens or cellular responses to morphogens is FALSE?
+A. Morphogens establish a gradient of inducer activity.
+B. Cellular responses differ depending on levels of inducer activity.
+*C. The response to morphogens is an example of autonomous development.
+D. Morphogens play an important role in anterior-posterior patterning in Drosophila.
+E. Rate of morphogen synthesis, diffusion, and removal all contribute to patterning.
+Explain: Morphogen-dependent patterning is conditional (non-autonomous) development — cells read positional information from an external gradient rather than following a cell-autonomous program.
+
+Q: Which term describes the formation of new vessels from EXISTING vessels?
+*A. Angiogenesis.
+B. Vasculogenesis.
+C. Arteriogenesis.
+D. Capillarogenesis.
+Explain: Angiogenesis is the sprouting of new blood vessels from pre-existing ones, distinct from vasculogenesis which forms vessels de novo from progenitor cells.
+
+Q: Which one of the following statements about birth order in neuronal development is FALSE?
+*A. Birth order controls the cell identity of neurons from the head to the tail in the spine.
+B. Birth order regulates identity of daughter cells from a neuroblast that stays on the neural tube lumen.
+C. Birth order is responsible for creating layers of neurons in the brain.
+D. Birth order of a neuron regulates how far it will migrate.
+E. The statements a) through d) are ALL FALSE.
+Explain: Birth order governs the layered identity of neurons within a single region (e.g., cortical layers), not the positional identity of neurons along the head-to-tail spinal axis, which is controlled by Hox genes.
+
+Q: Which of the following protein families is NOT required to successfully form a vesicle?
+A. Initiator proteins.
+B. Coat proteins.
+C. Adapter proteins.
+D. Cargo proteins.
+*E. t-SNAREs.
+Explain: t-SNAREs reside on the target membrane and are required for vesicle fusion, not for vesicle budding/formation; initiator proteins, coat proteins, adapter proteins, and cargo all participate in vesicle formation.
+
+Q: A proto-oncogene can be converted to an oncogene by any of the following mechanisms EXCEPT:
+A. Point mutation.
+B. Deletion of an inhibitory protein domain.
+C. Gene amplification.
+*D. Hyper-methylation of the gene.
+E. Gene translocation.
+Explain: Hypermethylation silences gene expression and is a mechanism that inactivates tumor suppressors, not one that activates oncogenes.
+
+Q: Which is NOT a part of the innate immune system?
+A. Complement proteins.
+B. Toll-like receptors.
+*C. T Cells.
+D. Macrophages.
+E. ALL options a) through d) are part of the innate immune system.
+Explain: T Cells are lymphocytes of the adaptive immune system; complement proteins, TLRs, and macrophages are all components of innate immunity.
+
+Q: Which of the following statements regarding immunofluorescent microscopy is FALSE?
+A. The Stokes shift is the difference between the absorption and emission wavelengths.
+*B. Fluorophores absorb light at a specific wavelength and emit light at a shorter wavelength.
+C. Green Fluorescent proteins absorb blue light and emit green light.
+D. The Jablonski diagram explains absorption and emission spectra by mapping electron excitation and return to ground state.
+E. ALL options a) through d) are TRUE.
+Explain: Fluorophores emit light at a LONGER wavelength (lower energy) than they absorb, not shorter — this energy loss is the basis of the Stokes shift.
+
+Q: Which statement about phosphatidylinositols is FALSE?
+*A. Phosphatidylinositols are covalently attached to proteins.
+B. Phosphatidylinositols have a sugar moiety that can be phosphorylated at different positions.
+C. Dedicated cellular proteins carry out specific phosphorylation/dephosphorylation reactions.
+D. Binding proteins distinguish between different phosphorylated isoforms.
+E. Different isoforms mark different cellular compartments.
+Explain: Phosphatidylinositols are lipids anchored in the membrane, not covalently attached to proteins; they recruit proteins via non-covalent interactions with specific binding domains.
+
+Q: Which of the following statements about Rb protein is TRUE?
+A. Rb promotes G1-to-S phase progression of the cell cycle.
+*B. Rb undergoes loss-of-heterozygosity during tumorigenesis.
+C. Options a) and b) are BOTH TRUE.
+D. Options a) and b) are BOTH FALSE.
+Explain: Rb inhibits (not promotes) G1-to-S transition by blocking E2F; loss of heterozygosity at the Rb locus is the classic two-hit mechanism for this tumor suppressor.
+
+Q: Which option BEST captures the interaction between Protein A (activator) and promoter Px of Gene X?
+A. The binding of A to Px is not permanent, but transient and controlled by association and dissociation constants.
+B. The concentration of the complex A:Px depends on the initial concentrations of A and Px.
+C. The steady state concentration of the complex A:Px cannot be modelled mathematically.
+D. Options a) through c) are ALL TRUE.
+*E. Options a) and b) are BOTH TRUE; option c) is FALSE.
+Explain: Transcription factor binding is transient and concentration-dependent, and it can be modeled mathematically using equilibrium binding equations; option c) is false.
+
+Q: What is TRUE about the process of nuclear export?
+*A. Ran-GTP moves into the cytosol while bound to the export receptor/cargo complex.
+B. The GTP bound to Ran is directly hydrolyzed to GDP by Ran-GAP.
+C. Ran-GEF is highly concentrated in the cytosol.
+D. Options a) through d) are ALL FALSE.
+Explain: Export complexes (Ran-GTP + exportin + cargo) form in the nucleus and are released into the cytosol, where RanGAP hydrolyzes Ran-GTP to Ran-GDP, dissociating the complex; RanGEF is nuclear, not cytosolic.
+
+Q: Which is generally TRUE about development?
+A. As an embryo gets older, individual cells generally increase in potency.
+B. In fruit flies, oocytes are NOT polarized.
+C. Determined cells alter their developmental fate when transplanted.
+D. A fertilized fruit fly embryo begins transcription of its own RNA immediately after fertilization.
+*E. ALL options a) through d) are FALSE.
+Explain: Potency decreases with development; Drosophila oocytes are highly polarized; determined cells do NOT change fate when transplanted; and early Drosophila embryos rely on maternally deposited mRNAs before zygotic genome activation.
+
+Q: Which of the following statements about Notch-Delta signaling is FALSE?
+A. It controls the ratio of secretory cells to absorptive cells in the intestine.
+B. It determines the spacing of bristles on the back of fruit flies.
+*C. Notch-Delta signaling is active in the tip cell, but not in the stalk cell.
+D. Notch-Delta signaling downregulates VEGFR2 expression.
+Explain: In angiogenesis, Notch signaling is active in STALK cells (where Delta from tip cells activates Notch), not in the tip cell which expresses high Delta and low Notch.
+
+Q: Which of the following is FALSE about transport into the ER?
+A. Sec61 opens both into and across the membrane.
+*B. SRP is translocated with the emerging peptide into the ER.
+C. Chaperone proteins bind to the emerging peptide in the ER lumen.
+D. Options a) through c) are ALL TRUE.
+Explain: SRP (Signal Recognition Particle) guides the ribosome to the ER membrane and is then released; it is not translocated into the ER lumen with the peptide.
+
+Q: Which of the following statements about evolution is TRUE?
+A. Evolution has stopped in human populations.
+*B. Evolution occurs in response to changes in both the genome and the environment.
+C. The 'modern synthesis' emerged from a meeting between Charles Darwin and Gregor Mendel.
+D. Red hair in people and mammoths evolved through mutations in enhancers.
+E. Options a) through d) are ALL TRUE.
+Explain: Evolution requires both genetic variation (genomic changes) and environmental selection pressure acting on phenotype; Darwin and Mendel never met, and red hair mutations occur in coding regions of MC1R.
+
+Q: Which organ does NOT derive from the associated germ layer?
+A. Mammary gland from ectoderm.
+B. Skeletal muscle from mesoderm.
+C. Lungs from endoderm.
+*D. Liver from ectoderm.
+E. ALL organs in a) through d) derive from the associated germ layer.
+Explain: The liver derives from the endoderm, not the ectoderm; mammary gland is ectodermal, skeletal muscle is mesodermal, and lungs are endodermal.
+
+Q: Which type of vessel is characterized by a thick layer of smooth muscle cells forming the media layer?
+*A. Artery.
+B. Vein.
+C. Capillary.
+D. Nerve.
+E. Venule.
+Explain: Arteries have a thick tunica media composed of smooth muscle cells and elastic fibers to withstand high-pressure blood flow from the heart.
+
+Q: Which of the following cells are typically located underneath an epithelial barrier tissue even in the absence of infection?
+A. Macrophages.
+B. Dendritic Cells.
+C. T Cells.
+*D. Options a) and b) are TRUE; option c) is FALSE.
+E. Options a) through c) are ALL TRUE.
+Explain: Tissue-resident macrophages and dendritic cells patrol beneath epithelial barriers as sentinels; T Cells are generally not resident there under homeostatic conditions.
+
+Q: Which of the following statements regarding visual system development is TRUE?
+A. The superior colliculus is the site at which afferent and efferent information from each eye crosses to the opposite side.
+B. The integration of multiple forms of sensory information occurs in the visual cortex.
+*C. Monocular deprivation experiments demonstrate that the eyes compete to establish connections in the visual cortex.
+D. Fluorescence imaging using calcium-based dyes demonstrates refined connections prior to birth.
+E. Ocular dominance columns in the superior colliculus allow for the integration of binocular signals.
+Explain: Monocular deprivation causes the open eye's connections to expand at the expense of the deprived eye, directly demonstrating competitive synaptic refinement in the visual cortex.
+
+Q: Which one of the following cell surface receptors is the major receptor for extracellular matrix?
+A. Notch.
+B. Claudin.
+*C. Integrin.
+D. Cadherin.
+E. FGF Receptor.
+Explain: Integrins are the primary cell surface receptors that bind extracellular matrix components such as fibronectin, laminin, and collagen to mediate cell adhesion and signaling.
+
+Q: Which combination of structural and metabolic changes would be associated with a potentiated synapse?
+*A. Mushroom-shaped dendritic spine and a ratio of AMPAR to NMDAR of 2 to 1.
+B. Mushroom-shaped dendritic spine and a ratio of AMPAR to NMDAR of 1 to 2.
+C. Mushroom-shaped axonal growth cone and a ratio of AMPAR to NMDAR of 2 to 1.
+D. Stubby-shaped dendritic spine and a ratio of AMPAR to NMDAR of 2 to 1.
+E. Stubby-shaped dendritic spine and a ratio of AMPAR to NMDAR of 1 to 2.
+Explain: LTP-potentiated synapses develop enlarged mushroom-shaped dendritic spines and insert additional AMPA receptors, increasing the AMPAR:NMDAR ratio to favor fast excitatory transmission.
+
+Q: Which of the following statements about antibodies is FALSE?
+A. Each antibody is made up of four peptide chains: two heavy chains and two light chains.
+B. Each antibody can directly interact with two copies of the same epitope.
+C. Antibody genes are non-functional at first, but are made functional by V-Region Assembly and Junctional Diversity as the B Cell develops.
+D. One of the main functions of antibodies is to tag pathogens for elimination.
+*E. ALL options a) through d) are TRUE.
+Explain: All four statements accurately describe antibody structure, antigen-binding bivalency, gene rearrangement requirements, and function; the correct answer is that they are all true.
+
+Q: Which of the following statements about TCRs is TRUE?
+A. They exist in both secreted and transmembrane form.
+B. They recognize pathogenic peptides, carbohydrates, or sugars.
+C. Antigens can be recognized by TCRs even when NOT presented by MHC molecules.
+*D. The genes encoding TCRs need to undergo genomic recombination before they become functional.
+E. Options a) through d) are ALL FALSE.
+Explain: TCR genes require V(D)J recombination to assemble a functional receptor; TCRs are always membrane-bound, recognize only peptides on MHC, and cannot recognize carbohydrates.
+
+Q: Following pathogen infiltration of the host, which of the following is NOT expected within the first few moments of an immune response?
+A. Dendritic cells are activated and leave the infected tissue.
+B. Inflammatory cells migrate to the infected tissue.
+C. Short-range signaling molecules, such as cytokines, are released.
+*D. T Cell-dependent B Cell activation.
+E. The innate immune system is activated.
+Explain: T Cell-dependent B Cell activation requires antigen presentation by dendritic cells in lymph nodes and Helper T Cell priming — a process that takes days, not moments.
+
+Q: Which of the following statements about tumor angiogenesis is FALSE?
+A. VEGF is important for both angiogenesis and vasculogenesis in tumors.
+B. Hypoxia in the tumor is a trigger for tumor angiogenesis.
+*C. A HIF-stabilizing molecule will be an ideal candidate for inhibiting angiogenesis.
+D. Blocking VEGF signaling would have a negative impact on endothelial progenitor cell recruitment from bone marrow into the tumor bed.
+Explain: HIF stabilization would PROMOTE angiogenesis by increasing VEGF expression; a HIF inhibitor, not a HIF stabilizer, would be a candidate for anti-angiogenic therapy.
+
+Q: According to Hebb's Postulate, connectivity between A and B will be strengthened by which of the following? I. A is able to excite B. II. A and B are both excited by C. III. A repeatedly takes part in the firing of B with C.
+A. Only options I and II will strengthen connectivity; option III will not.
+*B. Only options I and III will strengthen connectivity; option II will not.
+C. Only options II and III will strengthen connectivity; option I will not.
+D. ALL of the options I–III will strengthen connectivity.
+Explain: Hebb's rule requires that cell A contributes to the firing of cell B; option II (both excited by C) does not require A to drive B's firing, so it does not meet the Hebbian criterion.
+
+Q: (Bonus) Which of these proteins is LEAST likely to be expressed in mesenchymal cells?
+A. Collagen.
+B. Integrins.
+C. Proteoglycans.
+*D. Claudins.
+Explain: Claudins are tight junction proteins characteristic of epithelial cells; mesenchymal cells lack tight junctions and would not typically express claudins.
+
+Q: (Bonus) Which of the following is TRUE about immune cell activation?
+A. Helper T Cells are maximally activated when the TCR engages with a peptide presented by MHC Class II molecules on a B Cell.
+B. Cytotoxic T Cells kill lung cells presenting a viral peptide on MHC Class II molecules.
+*C. Dendritic cells activate Helper T Cells when the TCR engages with a peptide presented by MHC Class II molecules on the dendritic cell.
+D. Strong binding of a TCR to a peptide presented by MHC Class II molecules is sufficient for full Helper T Cell activation.
+Explain: Dendritic cells are the primary antigen-presenting cells that activate naive Helper T Cells via MHC Class II; full activation also requires co-stimulation (e.g., CD80/86), so strong TCR binding alone is insufficient.
+
+Q: (Bonus) Which of the following represents a hallmark of cancer metastasis?
+A. Downregulation of ECM-degrading proteases.
+B. Inhibition of angiogenesis at primary tumor sites.
+C. Maintenance of tissue polarity and structure at primary tumor sites.
+*D. E-cadherin downregulation.
+Explain: E-cadherin downregulation is a key step in epithelial-to-mesenchymal transition (EMT), enabling cancer cells to detach and invade — a hallmark of metastatic progression.
+
+Q: (Bonus) What is the intima layer of an artery NOT composed of?
+A. Endothelial cells.
+B. Basement membrane.
+C. Elastic fibers.
+*D. Lumen.
+E. ALL of the options a) through d) make up the intima.
+Explain: The lumen is the open space inside the vessel through which blood flows — it is bounded by the intima but is not itself a structural component of the intimal wall. The intima is composed of endothelial cells, the basement membrane, and the internal elastic lamina (elastic fibers).
+
+Q: (CMC) You copy-paste cells from one image into another to create a more compact image. This image manipulation is:
+A. Ethically acceptable.
+*B. Ethically unacceptable.
+Explain: Copy-pasting cells between images fabricates data and misrepresents the biological sample, which is a form of image manipulation fraud.
+
+Q: (CMC) You adjust brightness/contrast of experimental images before applying an intensity threshold for quantification. This is:
+A. Ethically acceptable.
+*B. Ethically unacceptable.
+Explain: Adjusting image intensity before quantitative thresholding selectively alters experimental data relative to controls, introducing bias and compromising the integrity of the analysis.
+
+Q: (CMC) You apply an 'Unsharp Mask' filter to all your images uniformly for publication. This is:
+*A. Ethically acceptable.
+B. Ethically unacceptable.
+Explain: Applying a standard sharpening filter uniformly across all images (including controls) for presentation purposes is acceptable, as long as it does not selectively alter the data in one condition.
+
+Q: (CMC) You cut out dust/hair defects from collected images and fill with background before publication. This is:
+A. Ethically acceptable.
+*B. Ethically unacceptable.
+Explain: Removing image defects by filling with background alters the recorded data and is considered image manipulation, even if the intent is cosmetic.
+
+Q: (CMC) In the tumor transplant/bone marrow experiment, the observation that GFP+ CD34-expressing cells appear in the tumor bed is consistent with which statement?
+A. Expression of X by tumor cells is a critical factor for vascular mimicry.
+*B. X is a host factor that promotes vasculogenesis phenomenon.
+C. X is a cancer stem cell-related gene.
+D. Statements a) through c) are ALL FALSE.
+E. Statements a) through c) are ALL TRUE.
+Explain: CD34 marks endothelial progenitor cells (EPCs); the GFP+ EPCs in the tumor derive from transplanted bone marrow, demonstrating that gene X in host cells drives EPC-mediated vasculogenesis in tumors.
+
+Q: (CMC) John Gurdon paved the way for iPSCs by cloning sheep through somatic nuclear transfer. TRUE or FALSE?
+A. TRUE.
+*B. FALSE.
+Explain: John Gurdon cloned frogs by somatic nuclear transfer; it was Ian Wilmut who cloned Dolly the sheep. Gurdon's frog work demonstrated nuclear reprogramming, which informed iPSC development.
+
+Q: (CMC) Pluripotent stem cells can be generated from almost any somatic cell by simultaneous introduction and expression of 4 transcription factors. TRUE or FALSE?
+*A. TRUE.
+B. FALSE.
+Explain: Yamanaka's OSKM factors (Oct4, Sox2, Klf4, c-Myc) can reprogram somatic cells to iPSCs from diverse cell types across species, including humans.
+
+Q: (CMC) The process of differentiating iPSCs into any cell type is easy and inexpensive. TRUE or FALSE?
+A. TRUE.
+*B. FALSE.
+Explain: Directed differentiation of iPSCs is technically challenging, time-consuming, and expensive; protocols are often complex and cell type-specific, and efficiency varies considerably.
+
+Q: (CMC) Activation of Helper T Cells by Dendritic Cells represents which type of immune regulation?
+*A. Innate immunity regulating adaptive immunity.
+B. Innate immunity regulating innate immunity.
+C. Adaptive immunity regulating innate immunity.
+D. Adaptive immunity regulating adaptive immunity.
+Explain: Dendritic cells are innate immune cells that activate Helper T Cells — an adaptive immune cell — making this innate regulating adaptive immunity.
+
+Q: (CMC) Co-stimulation delivered by activated complement proteins during T Cell-independent B Cell activation represents which type of regulation?
+*A. Innate immunity regulating adaptive immunity.
+B. Innate immunity regulating innate immunity.
+C. Adaptive immunity regulating innate immunity.
+D. Adaptive immunity regulating adaptive immunity.
+Explain: Complement proteins are innate immune components; their co-stimulation of B Cells (an adaptive immune cell type) is innate regulating adaptive immunity.
+
+Q: (CMC) Co-stimulation delivered by Helper T Cells during T Cell-dependent B Cell activation represents which type of regulation?
+A. Innate immunity regulating adaptive immunity.
+B. Innate immunity regulating innate immunity.
+*C. Adaptive immunity regulating innate immunity.
+D. Adaptive immunity regulating adaptive immunity.
+Explain: Per the course's classification of this scenario, Helper T Cell co-stimulation of B Cells is categorized as adaptive (Helper T Cell) regulating innate immunity. (Note: B Cells are adaptive immune cells, but the course's specific framing of this regulatory relationship is c.)
+
+Q: (CMC) Mammalian gametes are diploid, while those of frog and Drosophila are haploid. TRUE or FALSE?
+A. TRUE.
+*B. FALSE.
+Explain: Gametes in all sexually reproducing organisms — including mammals, frogs, and Drosophila — are haploid; fertilization of two haploid gametes restores diploidy.
+
+Q: (CMC) Only mammalian embryos have a placenta to support growth within the mother. TRUE or FALSE?
+*A. TRUE.
+B. FALSE.
+Explain: The placenta is a defining mammalian feature; frogs and Drosophila are oviparous (egg-laying) and do not have a placenta for in utero support.
+
+Q: (CMC) Instructive cues for neuronal pathfinding (receptors and ligands) are commonly shared by mammals, Drosophila, and frog. TRUE or FALSE?
+*A. TRUE.
+B. FALSE.
+Explain: Key axon guidance molecules such as netrins, semaphorins, slits, and their receptors are evolutionarily conserved across vertebrates and invertebrates.
+
+Q: (CMC) Mammalian embryos develop at the same rate as frog. TRUE or FALSE?
+A. TRUE.
+*B. FALSE.
+Explain: Mammalian embryonic development is significantly slower than frog development; Xenopus embryos develop rapidly (days), whereas mouse development takes ~19 days and human ~9 months.
+
+Q: (CMC) A neural tube forms in the mouse, frog, AND Drosophila. TRUE or FALSE?
+A. TRUE.
+*B. FALSE.
+Explain: A neural tube forms in vertebrates (mouse and frog), but Drosophila forms a ventral nerve cord through a fundamentally different process — neuroblasts delaminate from the ectoderm.
+
+Q: (CMC) Many proteins regulating the cell cycle evolved independently in mammals, frog, and Drosophila. TRUE or FALSE?
+A. TRUE.
+*B. FALSE.
+Explain: Core cell cycle regulators (cyclins, CDKs, Rb, p53) are highly conserved and share common evolutionary origins across these species, not independently evolved.
+
+Q: (CMC) According to mythology, which organ was devoured from Prometheus each day as punishment for stealing fire from the gods?
+A. Intestine.
+*B. Liver.
+C. Both Liver and Intestine.
+D. Neither Liver nor Intestine.
+Explain: In Greek mythology, Zeus punished Prometheus by having an eagle eat his liver daily; the liver regenerated each night, reflecting the liver's remarkable regenerative capacity.
+
+Q: (CMC) Which of the following — Intestine, Liver, Both, or Neither — is derived from ectoderm?
+A. Intestine.
+B. Liver.
+C. Both Liver and Intestine.
+*D. Neither Liver nor Intestine.
+Explain: Both the intestine and liver derive from endoderm, not ectoderm.
+
+Q: (CMC) Which processes occur BEFORE a naïve B Cell is allowed to circulate through the body?
+A. V-Region Assembly.
+B. Junctional Diversity.
+C. Class Switching.
+D. Somatic Hypermutation.
+*E. Options a) and b) BOTH occur prior to naïve B Cells circulating.
+Explain: V-Region Assembly and Junctional Diversity occur during B Cell development in the bone marrow to create a functional BCR; class switching and somatic hypermutation occur later upon antigen encounter.
+
+Q: (CMC) "All B Cells that show evidence of rearrangement of a light chain gene also show evidence of rearrangement of a heavy chain gene." TRUE or FALSE?
+*A. TRUE.
+B. FALSE.
+Explain: Heavy chain rearrangement is a prerequisite for light chain rearrangement; a B Cell cannot proceed to light chain gene assembly without first completing a productive heavy chain rearrangement.
+
+Q: (CMC) Evaluate four statements about VEGF signaling. I. Hypoxia induces VEGF. II. Tip cells express Delta, binding Notch on stalk cells, upregulating VEGFR2 in stalk cells. III. VEGFR1 is a "signal sink" for VEGFA. IV. Hif1 is always expressed but degraded under hypoxic conditions. Which is BEST?
+A. Statements I, II, and III are TRUE; statement IV is FALSE.
+*B. Statements I and III are TRUE; statements II and IV are FALSE.
+C. Statements II and IV are TRUE; statements I and III are FALSE.
+D. Statement IV is TRUE; statements I, II, and III are FALSE.
+E. Statements I, II, III, and IV are TRUE.
+Explain: Statement II is FALSE — Notch signaling in stalk cells DOWNregulates (not upregulates) VEGFR2. Statement IV is FALSE — Hif1 is degraded under NORMOXIC conditions, not hypoxic; hypoxia stabilizes Hif1, leading to VEGF upregulation. Statements I and III are true, so the answer is B.
+
+Q: (CMC) After organs are specifically damaged, where do replacement cells come from? Which method best answers this?
+A. Flow sorting to determine DNA content.
+B. Culturing single cell clones and tracking numbers of cells.
+*C. Use tissue-specific expression of CRE-ER and a constitutively active floxed LacZ.
+D. Immunofluorescence detection of cell-specific markers.
+E. NONE of the methods are useful.
+Explain: CRE-ER lineage tracing specifically labels stem cells and tracks their progeny in vivo, allowing identification of the cellular source of replacement cells after organ damage.
+
+Q: (CMC) How many rounds of cell division are possible in the transit amplifying pool? Which method best answers this?
+A. Flow sorting to determine DNA content.
+*B. Culturing single cell clones and tracking numbers of cells.
+C. Use tissue-specific expression of CRE-ER and a constitutively active floxed LacZ.
+D. Immunofluorescence detection of cell-specific markers.
+E. NONE of the methods are useful.
+Explain: Culturing single-cell clones and counting cell divisions directly measures the proliferative capacity of transit amplifying cells.
+
+Q: (CMC) What is the arrangement of cells in the organ during homeostasis? Which method best answers this?
+A. Flow sorting to determine DNA content.
+B. Culturing single cell clones and tracking numbers of cells.
+*C. Use tissue-specific expression of CRE-ER and a constitutively active floxed LacZ.
+D. Immunofluorescence detection of cell-specific markers.
+E. NONE of the methods are useful.
+Explain: In vivo lineage tracing with CRE-ER and LacZ reporter reveals the spatial arrangement and movement of labeled cell clones within the organ during steady-state homeostasis.
+
+Q: (CMC) Regarding T Cell-dependent B Cell activation, which of the following is TRUE?
+A. Statements I and IV are TRUE; Statements II, III, and V are FALSE.
+B. Statements I, IV, and V are TRUE; Statements II and III are FALSE.
+*C. Statements II and III are TRUE; Statements I, IV, and V are FALSE.
+D. Statements II, III, and V are TRUE; Statements I and IV are FALSE.
+E. Statements II and IV are TRUE; Statements I, III, and V are FALSE.
+Explain: The co-stimulatory signal is delivered by the Helper T Cell (II, not dendritic cell); the cell presenting antigen on MHC II (the B Cell) receives the activation signal from the Helper T Cell (III); Statement V is false — MHC II presents peptides but does not mediate phagocytosis.
+
+Q: (CMC) Which of the following is NOT an example of controlling development by regulation of gene expression?
+A. Loss of pelvic spine in stickleback fish.
+B. Loss of limbs in snakes.
+C. Patterning the anterior-posterior axis in fruit flies.
+*D. Patterning the dorsal-ventral axis in frogs.
+E. ALL options a) through d) are examples of regulation of gene expression.
+Explain: Stickleback pelvic spine loss (Pitx1 enhancer change), snake limb loss (Hox enhancer change), and Drosophila A-P patterning (Bicoid morphogen → transcriptional response) all involve regulation of gene expression. Dorsal-ventral patterning in frogs is driven by a graded signaling response (BMP/Chordin antagonism) rather than transcriptional regulation per se, so it is not classified here as gene expression regulation.
+
+Q: (CMC) In the co-culture experiment with cancer cells and TAMs (Group 1: standard; Group 2: EGF-silenced TAMs; Group 3: CSF-overexpressing cancer cells + EGF-overexpressing TAMs), what is the most likely outcome for cancer cell invasiveness?
+A. Cancer cells in Group 1 will be most invasive.
+*B. Cancer cells in Group 1 will be more invasive than those in Group 2, but less invasive than those in Group 3.
+C. Cancer cell invasiveness will be comparable between Groups 1 and 2.
+D. Groups 2 and 3 will be as invasive as Group 1.
+Explain: The TAM-cancer cell paracrine loop (TAMs secrete EGF → cancer cells migrate; cancer cells secrete CSF → TAMs migrate) drives invasion; silencing EGF reduces invasion below normal, while overexpressing both signals amplifies invasiveness above normal.
+
+Q: (CMC) Which of the following statements about p53 is FALSE? (+ = wild type; – = deletion; * = oligomerization-capable but DNA-binding-deficient)
+A. It is a tumor-suppressor molecule.
+B. Cellular abundance of p53 is regulated by MDM2.
+C. It inhibits tumor angiogenesis.
+*D. p53+/- cells are more prone to become tumorigenic than p53+/* cells.
+Explain: The * allele is dominant-negative — it oligomerizes with wild-type p53 and inactivates it, making p53+/* cells functionally closer to p53–/– than p53+/– cells, which still have one functional copy; thus p53+/* is MORE tumorigenic than p53+/–.
+
+Q: (CMC) You removed Domain Sega (aa 237–245) from the transcription factor Tails and found it no longer enters the nucleus. Which of the following correctly describes your experiment?
+A. You carried out a 'Move It' experiment and showed Domain Sega is sufficient for nuclear import.
+B. You carried out a 'Move It' experiment and showed Domain Sega is necessary for nuclear import.
+C. You carried out a 'Lose It' experiment and showed Domain Sega is sufficient for nuclear import.
+*D. You carried out a 'Lose It' experiment and showed Domain Sega is necessary for nuclear import.
+E. You carried out a 'Find It' experiment and showed Domain Sega is essential for nuclear import.
+Explain: Deleting a domain to see what is lost is a "Lose It" experiment; showing that removal abolishes function demonstrates the domain is NECESSARY (not sufficient) for nuclear import.
+
+Q: (CMC) If a cell has no Ran protein, what do you expect to occur regarding nuclear import receptor/cargo complexes?
+A. They will accumulate in the cytoplasm.
+B. They will accumulate inside the nucleus.
+*C. They will be equally distributed between the cytoplasm and the nucleus.
+D. No nuclear import receptor/cargo complexes will form.
+Explain: Ran provides the directionality of nucleocytoplasmic transport (Ran-GTP in the nucleus releases cargo; Ran-GDP in the cytoplasm allows new complex formation). Without Ran, complexes can still form and pass through nuclear pores by diffusion, but no driving force biases their distribution — so they equilibrate equally between compartments.
+
+Q: (CMC) Local increases in calcium concentration after neurotransmitter binding correspond to which stage of neural plasticity?
+A. Expression.
+B. Selectivity.
+*C. Induction.
+D. Maintenance.
+Explain: Calcium influx following NMDA receptor activation is the initiating trigger for plasticity — corresponding to the induction phase that sets subsequent synaptic changes in motion.
+
+Q: (CMC) Dysfunction at one location in the neural network negatively impacting the entire network corresponds to which stage of neural plasticity?
+A. Expression.
+B. Selectivity.
+C. Induction.
+*D. Maintenance.
+Explain: Maintenance mechanisms sustain network-wide connectivity patterns; dysfunction in one node propagating through the network reflects the interdependence maintained by recurrent connectivity during the maintenance phase.
+
+Q: (CMC) Input patterns in time and space determining whether post-synaptic potentials combine to reach the depolarization threshold corresponds to which stage of neural plasticity?
+A. Expression.
+*B. Selectivity.
+C. Induction.
+D. Maintenance.
+Explain: Selectivity refers to the specificity of which inputs are potentiated based on their spatiotemporal patterns — determining which combinations of inputs successfully drive postsynaptic firing.
+
+Q: (CMC) Which ECM component supports the mechanical properties of skin and tendons?
+A. Fibronectin.
+*B. Collagen.
+C. Laminin.
+D. Proteoglycan.
+E. Glycosaminoglycans.
+Explain: Collagen fibrils provide tensile strength to load-bearing tissues like skin and tendons; it is the most abundant structural protein in the ECM.
+
+Q: (CMC) Which ECM component draws in the most water to form a hydrogel that resists compression?
+A. Fibronectin.
+B. Collagen.
+C. Laminin.
+D. Proteoglycan.
+*E. Glycosaminoglycans.
+Explain: Glycosaminoglycans (GAGs) are highly negatively charged and attract large amounts of water, forming a hydrogel that enables cartilage and other ECM to resist compressive forces.
+
+Q: (CMC) Which ECM component forms fibrils only when cells exert tension and open a cryptic site for polymerization?
+*A. Fibronectin.
+B. Collagen.
+C. Laminin.
+D. Proteoglycan.
+E. Glycosaminoglycans.
+Explain: Fibronectin is normally a soluble dimer; cell-generated cytoskeletal tension through integrin binding unfolds fibronectin, exposing cryptic self-assembly sites that allow fibril formation.
+
+Q: (CMC) Viral peptides presented by infected host cells — which component of the immune system most likely interacts?
+A. Antibodies.
+B. Helper T Cells.
+*C. Cytotoxic T Cells.
+D. Helper T Cells and antibodies.
+E. Complement proteins.
+Explain: Infected host cells present endogenous viral peptides on MHC Class I molecules, which are specifically recognized by Cytotoxic T Cells (CD8+) for targeted killing.
+
+Q: (CMC) Sugar molecules on the outside of extracellular bacterial pathogens — which immune component most likely interacts?
+*A. Antibodies.
+B. Helper T Cells.
+C. Cytotoxic T Cells.
+D. Helper T Cells and antibodies.
+E. Cytotoxic T Cells and antibodies.
+Explain: Carbohydrate/sugar antigens cannot be presented by MHC molecules and thus cannot activate T Cells; they are recognized directly by antibodies (T Cell-independent antigens).
+
+Q: (CMC) Proteins on the outside of extracellular bacterial pathogens — which immune component most likely interacts?
+A. Antibodies.
+B. Helper T Cells.
+C. Cytotoxic T Cells.
+*D. Helper T Cells and antibodies.
+E. Cytotoxic T Cells and antibodies.
+Explain: Surface proteins of extracellular bacteria can be recognized by antibodies directly and, after phagocytosis and processing, presented on MHC Class II to Helper T Cells.
+
+Q: (CMC) A protein with an N-terminal signal sequence but no other signal sequences — where does it end up?
+A. As soluble protein in the cytosol.
+B. As transmembrane protein in the plasma membrane.
+*C. As soluble protein in the extracellular space.
+D. As soluble protein in the lumen of the ER.
+E. As transmembrane protein in the ER membrane.
+Explain: An N-terminal signal sequence directs cotranslational insertion into the ER lumen; without a transmembrane domain or retention signal, the protein is secreted into the extracellular space.
+
+Q: (CMC) A protein with a single internal hydrophobic domain but NO N-terminal signal sequence — where does it end up?
+A. As soluble protein in the cytosol.
+*B. As transmembrane protein in the plasma membrane.
+C. As soluble protein in the extracellular space.
+D. As soluble protein in the lumen of the ER.
+E. As transmembrane protein in the ER membrane.
+Explain: An internal hydrophobic domain can function as a signal-anchor sequence — it is recognized by SRP, directs the protein to the ER membrane, and is inserted as a transmembrane segment. The protein then trafficks through the secretory pathway and is delivered to the plasma membrane.
+
+Q: (CMC) A specific location within the retinotopic coordinate system maps to a specific interaural time differential. This statement is:
+*A. ALWAYS TRUE.
+B. SOMETIMES TRUE.
+C. ALWAYS FALSE.
+Explain: The alignment between the visual retinotopic map and the auditory map (interaural time differences) is a fixed anatomical feature in the superior colliculus, making this always true.
+
+Q: (CMC) The centers of the visual and auditory receptive fields can realign after prism-rearing. This statement is:
+A. ALWAYS TRUE.
+*B. SOMETIMES TRUE.
+C. ALWAYS FALSE.
+Explain: Realignment is possible during a critical period of auditory-visual map plasticity, but it depends on the degree of prism displacement and the age/developmental window of the animal.
+
+Q: (CMC) Which of the following is TRUE of BOTH AMPA and NMDA receptors?
+A. TRUE of AMPA receptors only.
+B. TRUE of NMDA receptors only.
+*C. TRUE of BOTH AMPA and NMDA receptors.
+D. FALSE for BOTH AMPA and NMDA receptors.
+Explain: Both AMPA and NMDA receptors are ionotropic glutamate receptors that open upon neurotransmitter (glutamate) binding, though they differ in their kinetics, ion permeability, and voltage-dependence.
+
+Q: (CMC) Which of the following is TRUE about AMPA and NMDA receptor recruitment to the synapse in long-term depression?
+A. TRUE of AMPA receptors only.
+B. TRUE of NMDA receptors only.
+C. TRUE of BOTH AMPA and NMDA receptors.
+*D. FALSE for BOTH AMPA and NMDA receptors.
+Explain: In LTD, AMPA receptors are removed from the synapse (internalized), not recruited; NMDA receptors remain relatively stable at the synapse and are not specifically recruited during LTD.
+
+Q: (CMC) You introduce a temperature-sensitive vRas (stable at 37°C, degraded at 42°C) into normal fibroblasts and perform a soft-agar assay. Which statement is TRUE?
+A. At 37°C, fibroblasts will transform and maintain their transformed phenotype at 42°C.
+B. At 37°C, fibroblasts will transform, but lose their transformed phenotype permanently when raised to 42°C.
+*C. At 37°C, fibroblasts will transform, lose their transformed phenotype at 42°C, but regain it when the temperature is lowered to 37°C again.
+D. Transformation ability is not affected by temperature at all.
+Explain: Oncogenic Ras drives transformation only while it is present; when temperature is raised, TS-vRas is degraded and transformation is lost, but it is restored when the temperature is lowered and TS-vRas is re-expressed.
+
+Q: (CMC) In lateral inhibition, if a mutant Notch that can NEVER be activated (even when bound by Delta) is expressed in a single cell in the middle of the morphogenetic field, what outcome do you expect?
+*A. The cell expressing mutant Notch will become Type A, but all neighboring cells will become Type B.
+B. The cell expressing mutant Notch will become Type A and all neighboring cells will also become Type A.
+C. The cell expressing mutant Notch will become Type B, but all its neighboring cells will become Type A.
+D. The cell expressing mutant Notch will become Type B and all its neighboring cells will also become Type B.
+E. Expressing the mutant Notch will NOT alter the ratio or spacing of Type A to Type B cells.
+Explain: A cell unable to activate Notch cannot be inhibited by neighboring Delta signals; it will spontaneously specialize (become Type A) and its high Delta expression will suppress neighboring cells via their normal Notch, driving them to Type B.

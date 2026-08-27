@@ -1,0 +1,43 @@
+Name: BIOSC 1820 Special Lecture LDL Receptor
+Description: LDL receptor function and the five classes of LDLR mutation defects.
+Class: BIOSC 1820
+Semester: Spring 2026
+
+Q: What does LDL transport?
+A: Cholesterol from the liver to peripheral tissues.
+
+Q: What does LDLR stand for?
+A: Low density lipoprotein receptor.
+
+Q: What is the function of LDLR?
+A: Receives LDL and brings it into the cell by forming a vesicle (endocytosis).
+
+Q: What is the defect in Class 1 LDLR mutations?
+A: Failure to synthesize the protein.
+
+Q: What is the defect in Class 2 LDLR mutations?
+A: Failure to transport LDLR from the ER to the Golgi.
+
+Q: What is the defect in Class 3 LDLR mutations?
+A: LDLR has low binding to LDL.
+
+Q: What is the defect in Class 4 LDLR mutations?
+A: LDL-LDLR complex does not endocytose (no vesicle formation).
+
+Q: What is the defect in Class 5 LDLR mutations?
+A: LDLR is not recycled to the cell surface.
+
+Q: Which LDLR class fails at protein synthesis?
+A: Class 1.
+
+Q: Which LDLR class fails at ER-to-Golgi transport?
+A: Class 2.
+
+Q: Which LDLR class has poor LDL binding?
+A: Class 3.
+
+Q: Which LDLR class fails at endocytosis?
+A: Class 4.
+
+Q: Which LDLR class fails at receptor recycling?
+A: Class 5.

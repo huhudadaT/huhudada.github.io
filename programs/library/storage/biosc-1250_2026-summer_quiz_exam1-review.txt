@@ -1,0 +1,817 @@
+Title: BIOSC 1250 Exam 1 Review
+Description: Exam-style questions on cell signaling, neuronal excitability, the CNS, and the sensory systems (Ch. 6-9).
+Class: BIOSC 1250
+Semester: Summer 2026
+
+Q: Which of the following statements concerning gap junctions is false? Gap junctions
+*A. are exclusively found in cardiac muscle cells
+B. electrically couple cells to facilitate and synchronize cellular communication
+C. are composed of membrane proteins called connexions
+D. allow ions and small molecules to diffuse from the cytosol of one cell to another cell
+Explain: Gap junctions occur in many tissues (cardiac and smooth muscle, epithelia, etc.), so calling them exclusive to cardiac muscle is the false statement.
+
+Q: Which of the following statements regarding extracellular chemical messengers is correct? Extracellular chemical messengers
+A. bind exclusively to receptors located in the plasma membrane of target cells
+B. generate a response in any body cell reached by that messenger
+*C. can activate signal transduction pathways that culminate in a cellular response
+D. directly bind to effector proteins within target cells to trigger responses such as muscle contraction or cell growth
+Explain: Extracellular messengers act by triggering signal transduction pathways; they do not reach every cell, bind only membrane receptors, or bind effectors directly.
+
+Q: Which of the following correctly describes an example of a hormonal signal?
+A. Nitric oxide is released by endothelial cells lining blood vessels to trigger relaxation of neighboring smooth muscle cells.
+B. Dopamine is released into the synaptic cleft by a presynaptic neuron.
+C. The cytokine interleukin-2 is released by helper T immune cells to activate other nearby immune cells.
+*D. The thyroid gland makes and releases chemical signals that circulate in the blood to regulate metabolism of target cells throughout the body.
+Explain: Hormones are secreted into the bloodstream to act on distant target cells, unlike paracrine (NO), synaptic (dopamine), or local cytokine signaling.
+
+Q: Which of the following statements about the transport of extracellular signaling molecules in the bloodstream is correct?
+A. water-soluble hormones circulate in the bloodstream in “free” form lacking transport proteins
+B. lipid-soluble hormones circulate in the blood temporarily attached to transport proteins
+C. transport proteins make lipid-soluble hormones temporarily water-soluble, increasing their solubility in blood
+*D. All of the statements are correct.
+Explain: Water-soluble hormones travel free while lipid-soluble hormones bind carrier proteins that keep them soluble, so all three statements are true.
+
+Q: Which of the following statements about chemical messenger-receptor signal interaction is FALSE?
+A. Only a chemical messenger with a specific shape can bind to a given receptor.
+*B. A given cell can serve as the target cell for only a single type of chemical messenger.
+C. A given receptor may have different affinities for different chemical messengers with similar structures.
+D. Chemical messengers so similar in structure that they can bind to the same receptor may compete with one another for that receptor.
+Explain: A single cell typically expresses many receptor types and responds to numerous messengers, making that statement false.
+
+Q: Which of the following statements about signal transduction pathways is FALSE? Signal transduction pathways
+A. can differ in the number of relay proteins that they contain
+*B. involve relay and effector proteins that are located exclusively in the plasma membrane of the target cell
+C. are a specific sequence of events that occur between the binding of the extracellular messenger to the receptor and the cellular response
+D. can involve the generation of a second messenger, for example, cyclic AMP (cAMP)
+Explain: Relay and effector proteins can be cytosolic or nuclear, not confined to the plasma membrane, so that statement is false.
+
+Q: The cellular response of a signaling pathway requiring transcription of a gene for an effector protein is _______ the response of a pathway where an effector protein must be phosphorylated.
+A. identical in duration compared to
+B. faster than
+C. unpredictable in duration compared to
+*D. slower than
+Explain: Making a new protein through gene transcription takes far longer than modifying an existing protein by phosphorylation.
+
+Q: Which of the following extracellular chemical messengers activates a plasma membrane receptor?
+A. the steroid hormone, aldosterone
+B. the thyroid hormone, thyroxine (T4)
+C. the gas, nitric oxide (NO)
+*D. the peptide hormone, insulin
+Explain: Water-soluble peptide hormones like insulin cannot cross the membrane and bind surface receptors, whereas steroids, thyroid hormone, and NO act intracellularly.
+
+Q: The nitric oxide receptor contains
+A. a messenger-binding site for nitric oxide only
+B. a transmembrane segment only
+C. an enzymatic guanylyl cyclase component only
+*D. both a messenger-binding site and an enzymatic guanylyl cyclase component
+E. a messenger-binding site, a transmembrane segment, and an enzymatic guanylyl cyclase component
+Explain: The intracellular NO receptor is soluble guanylyl cyclase, combining an NO-binding site with catalytic activity but no transmembrane segment.
+
+Q: The drug Viagra works by inhibiting the enzyme
+*A. cGMP phosphodiesterase
+B. guanylyl cyclase
+C. protein kinase G
+D. myosin light chain kinase (MLCK)
+Explain: Sildenafil (Viagra) blocks the phosphodiesterase that degrades cGMP, prolonging smooth muscle relaxation.
+
+Q: Individuals possessing a mutation in the gene encoding the enzyme, Nitric Oxide Synthase (NOS) overproduce the signaling molecule, Nitric Oxide (NO) resulting in low blood pressure. On a cellular level, which of the following would be helpful in reducing the harmful effects of this NOS gene mutation?
+A. increasing the amount of cyclic guanosine monophosphate (cGMP) in target cells
+*B. increasing the activity of the enzyme cGMP phosphodiesterase in target cells
+C. increasing the activity of the enzyme protein kinase G in target cells
+D. increasing the activity of the enzyme myosin light chain kinase (MLCK) in target cells
+Explain: Boosting the enzyme that breaks down cGMP counteracts the excess NO signaling and helps restore vascular tone and blood pressure.
+
+Q: Which of the following cellular responses most likely results from the binding of a chemical messenger to an ion channel receptor? A change in
+*A. the electrical properties of the cell
+B. cytoskeletal organization resulting in movement
+C. gene transcription
+D. the metabolic rate of the cell
+Explain: Opening an ion-channel receptor changes ion flow and therefore the cell's membrane potential (its electrical properties).
+
+Q: Binding of a water soluble extracellular chemical messenger to a receptor tyrosine kinase causes
+A. the enzyme guanylyl cyclase to convert GTP to cyclic GMP (cGMP)
+*B. receptor dimerization
+C. a G protein to exchange GDP for GTP, thus inactivating the G-protein
+D. specific ions to move across the plasma membrane into the cell
+Explain: Ligand binding causes two receptor tyrosine kinases to pair up (dimerize) and cross-phosphorylate each other.
+
+Q: When the α subunit of a G-protein is GDP-bound, the G-protein is
+A. damaged
+*B. inactive
+C. active
+D. overactive
+Explain: G proteins are switched off when bound to GDP; they turn on only when GDP is exchanged for GTP.
+
+Q: The physical exchange of GDP for GTP by a G-protein results in G-protein ______, typically resulting in ______ of the G-protein alpha subunit and beta-gamma complex.
+*A. activation; separation
+B. inactivation; binding
+C. inactivation; separation
+D. activation; binding
+Explain: GTP binding activates the G protein and causes the alpha subunit to separate from the beta-gamma complex.
+
+Q: Tamoxifen functions as an antagonist for the steroid hormone estrogen in breast tissue, making it useful in treating breast cancer. Which of the following best explains tamoxifen's mechanism of action?
+A. Tamoxifen breaks down the estrogen cytoplasmic receptors, preventing estrogen from binding.
+*B. Tamoxifen competitively binds to estrogen receptors but does not cause gene transcription.
+C. Tamoxifen inhibits the enzymes that produce estrogen.
+D. Tamoxifen blocks estrogen receptors within the membrane of the target cell.
+E. Tamoxifen binds circulating estrogen molecules, preventing them from reaching breast tissue receptors.
+Explain: Tamoxifen is a competitive antagonist that occupies the intracellular estrogen receptor without activating gene transcription.
+
+Q: Which of the following is an example of an afferent pathway?
+A. A sympathetic neuron of the autonomic nervous system directs vascular smooth muscle to relax.
+*B. Pain information is conducted along axons toward the CNS.
+C. Motor commands are carried along motor axons to skeletal muscle in the leg.
+D. A parasympathetic neuron of the autonomic nervous system carries regulatory information toward the heart.
+Explain: Afferent (sensory) pathways carry information toward the CNS, as with incoming pain signals.
+
+Q: The three functional classes of neurons are
+A. Schwann cell, oligodendrocyte, astrocyte
+B. motor, efferent, somatic
+*C. sensory, interneuron, motor
+D. cardiac, skeletal, smooth
+Explain: Neurons are functionally classified as sensory (afferent), interneurons, and motor (efferent).
+
+Q: Which of the following is NOT a CNS neuroglial cell?
+*A. Schwann cell
+B. astrocyte
+C. oligodendrocyte
+D. microglia
+Explain: Schwann cells myelinate PNS axons; astrocytes, oligodendrocytes, and microglia are the CNS glia.
+
+Q: Which of the following is a function of an astrocyte? Astrocytes
+A. are responsible for forming and maintaining the myelin sheath around axons of CNS neurons
+B. phagocytize microbes and damaged nervous tissue
+C. produce and assist in the circulation of cerebrospinal fluid
+*D. help to maintain the appropriate chemical environment for the electrical signaling of neurons
+Explain: Astrocytes buffer ions and neurotransmitters to keep the extracellular environment suitable for neuronal signaling.
+
+Q: Nodes of Ranvier are found in the
+A. CNS only
+B. PNS only
+*C. both the CNS and PNS
+D. neither the CNS nor PNS
+Explain: Myelinated axons in both the CNS and PNS have nodes of Ranvier between myelin segments.
+
+Q: Which of the following is a correct difference between CNS and PNS myelin?
+A. Schwann cells produce myelin in the CNS while oligodendrocytes produce myelin in the PNS.
+*B. A CNS oligodendrocyte myelinates parts of several different axons while each PNS Schwann cell myelinates a single axon segment.
+C. Gaps in the myelin sheath called nodes of Ranvier are only formed by oligodendrocytes of the CNS.
+D. CNS myelin increases the speed of action potential conduction while PNS myelin decreases the speed of action potential conduction
+Explain: A single oligodendrocyte myelinates segments of many CNS axons, while each Schwann cell myelinates just one PNS axon segment.
+
+Q: The site of action potential generation known as the trigger zone is located in the axon hillock of
+A. sensory neurons
+B. interneurons
+C. motor neurons
+*D. both interneurons and motor neurons
+Explain: In interneurons and motor neurons the trigger zone lies at the axon hillock; sensory neurons differ in this respect.
+
+Q: Both action potentials and graded potentials
+A. begin at the trigger zone of a neuronal cell
+B. begin in dendrites and the cell body of a neuronal cell
+*C. are deviations in membrane potential in a neuronal cell
+D. are formed by the opening of voltage-gated sodium and potassium channels
+Explain: Both action potentials and graded potentials are deviations in membrane potential, though they differ in mechanism and location.
+
+Q: Which of the following channels is NOT involved in the formation of graded potentials triggered by extracellular cues?
+*A. voltage-gated channel
+B. ligand-gated channel
+C. mechanically-gated channel
+D. All of these channels are involved in graded potential formation.
+Explain: Graded potentials from external cues use ligand- and mechanically-gated channels; voltage-gated channels instead underlie action potentials.
+
+Q: Which of the following ion channels are highly concentrated in neuronal axons?
+A. ligand-gated channel
+*B. voltage-gated channel
+C. mechanically-gated channel
+D. All of these channels are located in neuronal axons.
+Explain: Voltage-gated channels densely populate axons to generate and propagate action potentials.
+
+Q: Given an extracellular Cl– concentration of 100 mM and an intracellular Cl– concentration of 10 mM, what is the equilibrium potential of a plasma membrane permeable only to Cl–?
+*A. –61mV
+B. –30.5 mV
+C. 0 mV
+D. +30.5 mV
+E. +61 mV
+Explain: For an anion, E = -61 x log([out]/[in]) = -61 x log(100/10) = -61 mV.
+
+Q: Given an extracellular Na+ concentration of 150 mM and an intracellular Na+ concentration of 15 mM, what is the equilibrium potential of a plasma membrane permeable only to Na+?
+A. –61mV
+B. –30.5 mV
+C. 0 mV
+D. +30.5 mV
+*E. +61 mV
+Explain: For this cation, E = +61 x log([out]/[in]) = +61 x log(150/15) = +61 mV.
+
+Q: Given an extracellular Cl– concentration of 100 mM and an intracellular Cl– concentration of 10 mM, what is the net direction of movement of Cl– across a membrane permeable only to Cl– when the membrane is at the equilibrium potential?
+A. there is a net outward flow of Cl– across the plasma membrane
+*B. there is no net direction of movement of Cl– across the plasma membrane
+C. there is a net inward flow of Cl– across the plasma membrane
+D. an initial net outward flow of Cl– is followed by a net inward flow of Cl–
+Explain: At the equilibrium potential the electrical and chemical driving forces balance, so there is no net movement of the ion.
+
+Q: Which of the following is FALSE concerning electrical synapses? Electrical synapses
+A. are formed by gap junctions composed of tubular protein complexes called connexons
+B. allow ions and small water-soluble molecules to move directly from the cytosol of one cell to another
+*C. involve passage of a neurotransmitter across a synaptic cleft
+D. are common in cardiac muscle cells and visceral smooth muscle
+Explain: Electrical synapses pass current directly through gap junctions and use no neurotransmitter, making that statement false.
+
+Q: Neurotransmitter can be removed from the synaptic cleft by
+A. diffusing away from the synaptic cleft
+B. degradation by enzymes located in the synaptic cleft
+C. active transport back into the neuron that released the neurotransmitter
+*D. All of the choices are correct.
+Explain: Neurotransmitter is cleared by diffusion, enzymatic degradation, and reuptake, so all choices apply.
+
+Q: Myosin light chain kinase is phosphorylated in smooth muscle cells in response to nitric oxide signaling, resulting in
+*A. smooth muscle relaxation and blood vessel dilation
+B. smooth muscle contraction and blood vessel constriction
+C. smooth muscle relaxation and blood vessel constriction
+D. smooth muscle contraction and blood vessel dilation
+Explain: NO signaling (via cGMP and PKG) inactivates MLCK, reducing myosin phosphorylation and causing smooth muscle relaxation and vasodilation.
+
+Q: cGMP is a second messenger in the nitric oxide signaling pathway. What enzyme is responsible for production of cGMP?
+A. protein kinase G
+B. adenylyl cyclase
+C. phosphodiesterase
+*D. guanylyl cyclase
+Explain: Guanylyl cyclase converts GTP into the second messenger cGMP.
+
+Q: The process whereby repeated exposure to a hormone can cause a decrease in the number of receptors for that hormone is called
+A. competition.
+B. antagonism.
+C. saturation.
+D. inhibition.
+*E. down-regulation.
+Explain: Down-regulation is the reduction in receptor number that follows prolonged hormone exposure.
+
+Q: Epinephrine activates the cyclic AMP pathway in liver cells. In this example, epinephrine is a(n) ________ and cAMP is a(n) ________.
+A. enzyme; second messenger
+B. ligand; receptor
+*C. first messenger; second messenger
+D. second messenger; ion channel
+E. first messenger; hydrophobic hormone
+Explain: The extracellular hormone epinephrine is the first messenger, and intracellular cAMP is the second messenger.
+
+Q: Some viruses can hide from the immune system by retrograde transport from axonal terminals in the skin to the cell body of a neuron. Which of the following might be an effective preventative therapy?
+*A. A dynein inhibitor
+B. A myosin inhibitor
+C. A kinesin inhibitor
+D. An actin polymerization inhibitor
+E. None of these would prevent this type of infection
+Explain: Retrograde transport toward the cell body uses the motor protein dynein, so a dynein inhibitor would block it.
+
+Q: According to the equation expressed as Ohm's law, which of these would cause the greatest increase in current?
+A. Doubling both voltage and resistance
+*B. Doubling voltage and reducing resistance by half
+C. Reducing voltage by half and doubling resistance
+D. Quadrupling both voltage and resistance
+E. Reducing both voltage and resistance by half
+Explain: Since I = V/R, doubling V and halving R multiplies current fourfold, the largest increase among the options.
+
+Q: Which is TRUE about typical, resting neurons?
+*A. The permeability of the plasma membrane to potassium ions is much greater than its permeability to sodium ions.
+B. The concentration of sodium ion is greater inside the cell than outside.
+C. The plasma membrane is completely impermeable to potassium ions.
+D. The plasma membrane is most permeable to sodium ions.
+E. The plasma membrane is completely impermeable to sodium ions.
+Explain: At rest the membrane's permeability to K+ greatly exceeds its permeability to Na+, which sets the negative resting potential.
+
+Q: What second messenger most directly causes calcium ions to be released from intracellular stores?
+A. Phospholipase A
+B. Adenylyl cyclase
+*C. Inositol trisphosphate
+D. Diacylglycerol
+E. Phospholipase C
+Explain: Inositol trisphosphate (IP3) triggers Ca2+ release from the endoplasmic reticulum.
+
+Q: Two neighboring neurons are at rest. Neuron A has a resting membrane potential of -80 mV; Neuron B has a resting membrane potential of -70 mV. Which is likely to be TRUE?
+A. Neuron A has more Na+ channels open than Neuron B.
+B. Neuron B has more K+ channels open than Neuron A.
+*C. Neuron A has more K+ channels open than Neuron B.
+D. Neuron B has more Na+ channels open than Neuron A.
+E. None of the answer choices are correct.
+Explain: More open K+ channels drive the potential toward EK, making Neuron A more hyperpolarized at -80 mV.
+
+Q: Which describes the response of the voltage-gated channels when an axon is stimulated to threshold?
+A. K+ influx causes Na+ channels to inactivate.
+B. K+ channels open before the Na+ channels.
+*C. Na+ channels are activated and then inactivated.
+D. K+ channels open at the same time as the Na+ channels.
+E. K+ channels are opened when Na+ binds to the channel.
+Explain: At threshold, voltage-gated Na+ channels first open (activate) and then close (inactivate) shortly after.
+
+Q: During the rising (depolarizing) phase of a neuronal action potential [P(X) = permeability to ion X],
+A. Na+ efflux (flow out of the cell) occurs.
+B. K+ flows rapidly into the cell.
+C. P(K+) becomes much greater than P(Na+).
+D. P(K+) is the same as P(Na+).
+*E. P(Na+) becomes much greater than P(K+).
+Explain: During depolarization, Na+ permeability rises sharply and exceeds K+ permeability, driving the potential upward.
+
+Q: The most common neurotransmitter in the brain is
+*A. GABA.
+B. glycine.
+C. serotonin.
+D. acetylcholine.
+Explain: Of the listed transmitters, GABA is the most widespread in the brain and its chief inhibitory transmitter.
+
+Q: Which type of neural circuit allows one motor neuron in the brain to cause thousands of muscle fibers to contract?
+A. Recruitment
+B. Converging
+C. Long-term potentiation
+*D. Diverging
+E. Parallel after-discharge
+Explain: A diverging circuit lets a single neuron's signal spread to many downstream neurons or fibers.
+
+Q: Temporal summation
+A. only involves inhibitory postsynaptic potentials.
+B. only involves excitatory postsynaptic potentials.
+C. occurs because of the convergence of many neurons on a single postsynaptic cell.
+*D. occurs when a single neuron releases neurotransmitter rapidly.
+Explain: Temporal summation occurs when one presynaptic neuron fires rapidly, so successive potentials add together in time.
+
+Q: Postsynaptic inhibition in the spinal cord is caused by ________, which cause Cl- channels to open and hyperpolarize the postsynaptic membrane.
+A. glycine
+*B. GABA and glycine
+C. acetylcholine
+D. GABA
+Explain: Both GABA and glycine open Cl- channels to hyperpolarize and inhibit spinal postsynaptic neurons.
+
+Q: The spinal cord is surrounded and protected by
+A. vertebrae only
+B. meninges only
+C. both dorsal and ventral horns
+*D. both vertebrae and meninges
+E. vertebrae, meninges, and dorsal and ventral horns
+Explain: The bony vertebrae and the meninges together enclose and protect the spinal cord.
+
+Q: ___ pairs of spinal nerves emerge from the spinal cord at regular intervals through the _____.
+A. 24; vertebral foramen
+B. 27; vertebral canals
+C. 28; spaces between adjacent vertebrae
+D. 29; vertebral foramen
+*E. 31; spaces between adjacent vertebrae
+Explain: Thirty-one pairs of spinal nerves exit through the intervertebral foramina in the spaces between adjacent vertebrae.
+
+Q: The dorsal root of a spinal nerve contains ____ while the ventral root of a spinal nerve contains _____.
+*A. only sensory axons; only motor axons
+B. both sensory and motor axons; only motor axons
+C. only motor axons; both sensory and motor axons
+D. only motor axons; only sensory axons
+E. only sensory axons; both sensory and motor axons
+Explain: Sensory (afferent) axons enter via the dorsal root; motor (efferent) axons leave via the ventral root.
+
+Q: The _____ region of the spinal cord contains white matter that consists of _____.
+A. interior; bundles of myelinated axons of neurons
+B. interior; dendrites and cell bodies of neurons, unmyelinated axons, and neuroglia
+*C. exterior; bundles of myelinated axons of neurons
+D. exterior; dendrites and cell bodies of neurons, unmyelinated axons, and neuroglia
+Explain: In the spinal cord, white matter lies on the outside (exterior) and consists of bundles of myelinated axons.
+
+Q: In a spinal reflex pathway, axons of _____ neurons enter the dorsal gray horn and synapse with interneurons that in turn synapse with _____ neurons.
+A. sensory; sensory
+*B. sensory; motor
+C. motor; sensory
+D. motor; motor
+Explain: In a spinal reflex arc, sensory input synapses onto interneurons that in turn drive motor neurons.
+
+Q: While weight training, you attempt to lift an excessive load and stimulate the Golgi tendon organ reflex, a reflex that stimulates an inhibitory interneuron in the spinal cord to inhibit a corresponding motor neuron, causing you to drop the load. This Golgi tendon organ reflex is an example of a _____ reflex.
+A. sensory; sensory
+B. sensory; motor
+*C. motor; sensory
+D. motor; motor
+Explain: The Golgi tendon organ senses muscle tension and reflexively inhibits the motor neuron to protect the muscle from excessive load.
+
+Q: Which of the following features serve to protect the brain?
+A. The cranium composed of the bones that house and surround the brain.
+B. The cranial meninges that are continuous with the three spinal meninges.
+C. The blood-brain barrier that prevents the passage of substances from blood into brain tissue.
+D. The cerebrospinal fluid that continuously circulates around the brain and spinal cord.
+*E. All of these features serve to protect the brain.
+Explain: The cranium, meninges, blood-brain barrier, and cerebrospinal fluid all contribute to protecting the brain.
+
+Q: Which of the following substances is permitted to cross the walls of brain capillaries by the structural component of the blood-brain barrier?
+*A. lipid-soluble substances
+B. cells
+C. proteins
+D. water-soluble substances
+Explain: The tight junctions of the blood-brain barrier let lipid-soluble molecules diffuse through while blocking water-soluble substances, cells, and proteins.
+
+Q: The _____ is continuous with the spinal cord and consists of the medulla oblongata, pons, and midbrain.
+A. cerebrum
+B. diencephalon
+C. cerebellum
+*D. brain stem
+Explain: The brain stem, continuous with the spinal cord, comprises the medulla oblongata, pons, and midbrain.
+
+Q: The lower portion of the brain stem that contains the cardiovascular center responsible for regulation of the rate and force of the heartbeat and the diameter of blood vessels is called the
+A. hindbrain
+*B. medulla oblongata
+C. pons
+D. midbrain
+Explain: The medulla oblongata houses the cardiovascular center that controls heart rate, force of contraction, and vessel diameter.
+
+Q: Which of the following statements about sleep is true?
+A. Stage 3 of NREM sleep is the first true stage of sleep.
+B. Heart rate, respiratory rate, and blood pressure are increased during NREM sleep.
+C. EEG readings taken during Stage 4 of NREM show high frequency, small amplitude waves.
+*D. Brain blood flow and oxygen use are higher during REM sleep than during intense mental or physical activity while awake.
+Explain: During REM sleep, cerebral blood flow and oxygen consumption exceed those of intense waking mental or physical activity.
+
+Q: An individual with a traumatic cortical injury that impedes normal language might have damage to
+A. the right cerebral hemisphere
+B. the prefrontal cortex
+C. the facial recognition area
+*D. Wernicke’s area
+E. the premotor cortex
+Explain: Damage to Wernicke's area disrupts the comprehension of language.
+
+Q: Which of the following statements regarding the limbic system is FALSE?
+*A. Sensory stimuli are transmitted directly to the limbic system.
+B. The limbic system plays a primary role in a range of emotions including pleasure, pain, and aggression.
+C. Stimulation of different areas of an animal’s limbic system elicits different emotional behaviors.
+D. The limbic system is a ring of structures that encircles the upper part of the brainstem and the corpus callosum
+Explain: Most sensory input is relayed through the thalamus (and cortex) before reaching the limbic system, so 'directly' makes that statement false.
+
+Q: Which of the following statements regarding short-term memory is FALSE? Short-term memory
+A. is disrupted by conditions that inhibit the electrical activity of the brain, such as anesthesia
+B. may involve a temporary increase in the activity of preexisting synapses
+C. is the temporary ability to recall a few pieces of information for seconds to minutes
+*D. involves structural changes at synapses
+Explain: Structural synaptic changes characterize long-term memory; short-term memory relies on transient functional changes, so that statement is false.
+
+Q: Which of the following statements regarding memory consolidation is true? Memory consolidation
+A. involves the temporary storage of new long-term declarative memories in the cerebral cortex
+*B. is the process by which a short-term memory is transformed into a long-term memory
+C. is inhibited by repetition
+D. involves the permanent storage of new long-term declarative memories in the hippocampus
+Explain: Memory consolidation is the process that converts a short-term memory into a stable long-term memory.
+
+Q: Axons descending from higher brain centers synapse onto somatic motor neurons in which part of the spinal cord?
+*A. ventral gray horns
+B. ventral white columns
+C. dorsal white columns
+D. dorsal gray horns
+Explain: Somatic motor neurons reside in the ventral (anterior) gray horns, where descending tracts synapse.
+
+Q: Lisa is watching a tennis match and has trouble tracking the ball across the court, but knows when it changes direction because she can hear the players hit it. Which part of her brain allows her to hear the details, and which part may not be functioning optimally?
+*A. inferior colliculi; superior colliculi
+B. reticular formation; mesencephalon
+C. mesencephalon; reticular formation
+D. superior colliculi; inferior colliculi
+Explain: The inferior colliculi process hearing while the superior colliculi coordinate visual tracking, which is impaired here.
+
+Q: Amy has an accident causing her not to be able to recognize different objects, such as a comb or apple. Which part of her cerebral cortex do you suspect she has damaged?
+*A. association areas
+B. sensory areas
+C. limbic system
+D. motor areas
+Explain: Association areas integrate sensory information for recognition; their damage causes agnosia.
+
+Q: A patient who, following a stroke, has impaired comprehension of language. The MRI is likely to reveal damage in which area?
+A. Hypothalamus
+B. Limbic system
+*C. Wernicke's area
+D. Broca's area
+E. Damage to any of these areas could cause this symptom
+Explain: Wernicke's area governs language comprehension.
+
+Q: Damage to the part of the brain known as Broca's area is likely to
+A. Both 'cause difficulty in recognizing faces' and 'be associated with paralysis on the left side of the body' are correct.
+B. Both 'be associated with paralysis on the left side of the body' and 'impair speech' are correct.
+C. cause difficulty in recognizing faces.
+D. be associated with paralysis on the left side of the body.
+*E. impair speech.
+Explain: Broca's area controls speech production, so its damage impairs speech.
+
+Q: Multiple sclerosis is a disease that primarily affects the somatic motor nervous system. Which of the following might be a symptom of multiple sclerosis?
+A. Inappropriate sensory sensation, such as hearing voices in a silent room
+*B. Difficulty controlling muscle movements, such as using a fork and knife to cut food
+C. Cognitive and memory decline
+D. Difficulty digesting foods due to inactivity of the muscles in the walls of abdominal organs
+E. Difficulty expressing appropriate emotional responses
+Explain: MS demyelinates somatic motor pathways, causing impaired control of voluntary muscle movement.
+
+Q: A patient has been experiencing difficulty with homeostatic regulation. An MRI scan reveals a brain tumor. Which brain region is the tumor likely in?
+A. The thalamus
+B. The cerebellum
+*C. The hypothalamus
+D. The cerebrum
+E. The hippocampus
+Explain: The hypothalamus is the master regulator of homeostasis, including temperature, hunger, and autonomic control.
+
+Q: Which of the following is the correct list of the lobes of the cerebrum?
+*A. frontal, parietal, temporal, insula, occipital
+B. insula, temporal, parietal, pons, occipital
+C. cerebrum, midbrain, thalamus, pons, medulla oblongata
+D. temporal, frontal, insula, cerebellum, occipital
+Explain: The five cerebral lobes are the frontal, parietal, temporal, occipital, and insula.
+
+Q: Damage to the temporal lobe of the cerebrum would limit
+A. voluntary skeletal muscle contraction.
+*B. hearing.
+C. integration of cerebral activities.
+D. vision.
+Explain: The temporal lobe contains the primary auditory cortex, so its damage impairs hearing.
+
+Q: MRI images of living amnesiac patients show a shrunken
+A. pineal gland.
+B. hypothalamus.
+C. epithalamus.
+*D. hippocampus.
+Explain: The hippocampus is essential for forming new memories and is shrunken in amnesia.
+
+Q: The majority of sensory information is relayed to the cerebrum by the
+*A. thalamus.
+B. hypothalamus.
+C. medulla oblongata.
+D. pons.
+Explain: The thalamus is the main relay routing sensory information to the cerebral cortex.
+
+Q: Which of the following is NOT a function of the hypothalamus?
+A. controls the autonomic nervous system
+B. controls hunger and thirst
+C. controls body temperature
+*D. controls reactions to odors
+Explain: Odor processing is olfactory/limbic; the hypothalamus controls autonomics, hunger and thirst, and temperature.
+
+Q: Which of the following is NOT a vital function of the medulla oblongata?
+A. cardiac control
+B. respiratory control
+C. vasomotor control
+*D. thirst control
+Explain: Thirst is regulated by the hypothalamus; the medulla controls cardiac, respiratory, and vasomotor functions.
+
+Q: Most corticospinal tracts decussate in the
+*A. medulla oblongata.
+B. midbrain.
+C. basal nuclei.
+D. spinal cord.
+Explain: Most corticospinal fibers cross at the pyramids of the medulla oblongata.
+
+Q: Which of the following cranial nerves is NOT purely sensory?
+*A. trochlear
+B. optic
+C. vestibulocochlear
+D. olfactory
+Explain: The trochlear nerve is motor (it moves the eye); the optic, vestibulocochlear, and olfactory nerves are purely sensory.
+
+Q: The blood-brain barrier prevents unwanted molecules from entering brain tissue by which of these mechanisms?
+*A. selectively allowing some water-soluble molecules to pass through with the help of proteins
+B. requiring lipid-soluble molecules to use either a carrier or transport protein
+C. selectively allowing some lipid-soluble molecules to pass through with the help of proteins
+D. requiring all molecules that pass through to use either a carrier or transport protein
+Explain: The BBB lets lipid-soluble substances diffuse freely but uses transport proteins to selectively admit specific water-soluble molecules such as glucose.
+
+Q: General anesthesia can result in patients having hypothermia (a lower than normal body temperature). Which brain area would you predict might be affected by anesthesia to produce hypothermia?
+A. brain stem
+*B. diencephalon
+C. basal nuclei
+D. cerebellum
+Explain: The hypothalamus, located in the diencephalon, is the thermoregulatory center, so affecting it produces hypothermia.
+
+Q: Place the following steps of the process of sensation in the correct order: (1) integration of sensory input; (2) transduction of the stimulus; (3) generation of action potentials; (4) stimulation of the sensory receptor.
+*A. 4; 2; 3; 1
+B. 2; 3; 1; 4
+C. 4; 3; 2; 1
+D. 1; 3; 2, 4
+E. 4; 1, 3, 2
+Explain: Sensation proceeds from receptor stimulation to transduction, then action potential generation, and finally CNS integration.
+
+Q: Which of the following sensory receptors is correctly paired with its adequate stimulus?
+A. Photoreceptors detect chemicals in the mouth, nose, and body fluids.
+B. Mechanoreceptors detect changes in temperature.
+*C. Nociceptors respond to painful stimuli resulting from physical or chemical damage to tissues.
+D. Thermoreceptors detect light that strikes the retina of the eye.
+E. Chemoreceptors are sensitive to mechanical stimuli such as the deformation, stretching, or bending of cells.
+Explain: Nociceptors detect tissue-damaging (painful) stimuli; the other pairings mismatch the receptor with its stimulus.
+
+Q: Which of the following is an example of a receptive field?
+A. the area of the body where stimulation causes a response in a somatic sensory neuron
+B. the area of visual space where stimulation by light causes a response in a visual neuron of the eye
+C. the select group of odorants to which an olfactory receptor cell of the nose can respond
+D. the particular set of sound frequencies that elicits a response in an auditory neuron
+*E. All of these are examples of a receptive field.
+Explain: A receptive field is the region or stimulus set that activates a given sensory neuron, so all of the listed cases qualify.
+
+Q: Stimulus _____ is encoded by which sensory receptor and neural pathway are activated when a stimulus is applied.
+*A. modality
+B. intensity
+C. duration
+D. None of the choices is correct.
+Explain: Stimulus modality (its type) is signaled by which specific receptors and labeled-line pathways are activated.
+
+Q: The neural pathways that convey information about modality from peripheral receptors to specific regions of the cerebral cortex are called
+A. lateral inhibition
+*B. labeled lines
+C. labeled pathways
+D. lateral lines
+E. longitudinal lines
+Explain: Labeled lines are the dedicated pathways that carry a specific modality to its destination in the cortex.
+
+Q: Stimulus _____ is encoded by the position of the activated receptive field.
+A. modality
+*B. location
+C. intensity
+D. duration
+Explain: Stimulus location is encoded by which receptive field (body position) is stimulated.
+
+Q: Which of the following factors affect acuity in the somatic sensory and visual systems?
+A. lateral inhibition only
+B. the size of the receptive field only
+*C. both lateral inhibition and the size of the receptive field
+D. neither lateral inhibition, nor the size of the receptive field
+Explain: Both lateral inhibition and smaller receptive fields sharpen sensory acuity.
+
+Q: Which of the following neurons in a sensory pathway is NOT an interneuron?
+*A. a first-order neuron
+B. a second-order neuron
+C. a third-order neuron
+D. a fourth-order neuron
+E. a higher-order neuron
+Explain: First-order (primary afferent) neurons are sensory neurons, not interneurons; the higher-order neurons are interneurons.
+
+Q: All of the following are examples of tactile receptors except one. Identify the exception.
+A. Meissner corpuscles
+*B. photoreceptors
+C. hair root plexuses
+D. Merkel discs
+E. Ruffini corpuscles
+Explain: Photoreceptors detect light, not touch; the others are all cutaneous tactile receptors.
+
+Q: When a pacinian corpuscle is stimulated by _____, ion channels open and allow _____ ions to enter the cytosol of the nerve ending.
+A. high-frequency vibration; K+ and Cl–
+B. steady pressure; Ca2+ and Cl–
+C. steady pressure; K+ and Cl–
+*D. high-frequency vibration; Na+ and Ca2+
+E. steady pressure; Na+ and Ca2+
+Explain: Pacinian corpuscles respond to high-frequency vibration, opening channels that admit Na+ and Ca2+.
+
+Q: Which of the following cell-types make up the olfactory epithelium?
+*A. olfactory receptor cells, supporting cells, and basal cells
+B. rod cells, cone cells, and pigment epithelial cells
+C. motor neurons, glial cells, and skeletal muscle fibers
+D. gustatory receptor cells, supporting cells, and basal cells
+Explain: The olfactory epithelium contains olfactory receptor cells, supporting cells, and basal (stem) cells.
+
+Q: Which of the following occurs when an odorant molecule binds to an olfactory receptor protein in the plasma membrane of an olfactory cilium?
+A. cAMP is rapidly converted to ATP by adenylyl cyclase
+B. a hyperpolarizing receptor potential is formed
+*C. the olfactory receptor protein stimulates a G protein known as Golf
+D. cAMP opens an ion channel that allows mainly Cl– ions to enter the cytosol
+E. the olfactory receptor protein inhibits a G protein known as Golf
+Explain: Odorant binding activates the olfactory G protein Golf, which triggers the cAMP cascade.
+
+Q: Which of the following statements concerning the gustatory system is correct?
+A. In the gustatory pathway, axons of second-order taste neurons are all bundled together in the vagus (X) nerve.
+*B. Each taste bud consists of three types of cells: supporting cells, gustatory receptor cells, and basal cells
+C. The nearly 10,000 taste buds of a young adult are located exclusively on the tongue.
+D. Only four primary tastes can be distinguished: salty, sour, sweet, and bitter.
+Explain: Each taste bud is built from supporting cells, gustatory receptor cells, and basal cells.
+
+Q: Which of the following statements concerning the components of the eye is FALSE?
+A. The cornea is a transparent structure that admits light into the eye.
+*B. The muscles of the iris are under the control of somatic motor neurons.
+C. The sclera is a tough coat of connective tissue that gives shape to the eye and protects its internal parts.
+D. The iris regulates the amount of light that enters the eye by adjusting the diameter of the pupil.
+E. The retina is responsible for converting light into action potentials.
+Explain: The iris muscles are smooth muscle controlled by the autonomic nervous system, not somatic motor neurons, so that statement is false.
+
+Q: Which of the following statements concerning the visual pathway is FALSE?
+*A. All of the axons from each eye cross over to the opposite side of the brain at the optic chiasm.
+B. Some of the optic tract fibers terminate in the superior colliculus that controls eye movements and movements of the head and trunk.
+C. The majority of optic tract fibers terminate in the lateral geniculate nucleus of the thalamus.
+D. Neurons project axons from the thalamus to the primary visual cortex in the occipital lobe.
+Explain: Only axons from the nasal retina cross at the chiasm; temporal-retina axons stay uncrossed, so 'all cross' is false.
+
+Q: Which of the following statements concerning the integration of auditory information is correct?
+A. Sound localization is achieved by differences in the timing of action potentials arriving from the two ears at the superior olivary nuclei.
+B. The primary auditory cortex contains an organizational map arranged by pitch.
+C. Auditory memories are stored in the auditory association area in the temporal lobe allowing for comparisons of present and past auditory experiences.
+D. Conscious awareness of sound occurs in the primary auditory cortex.
+*E. All of these are correct.
+Explain: Sound localization, tonotopic (pitch) mapping, auditory memory, and conscious awareness in the auditory cortex are all correct.
+
+Q: True or false: The response of a bipolar cell, that is whether it acts to bring about an 'ON pathway' or an 'OFF pathway,' depends on the amount of glutamate released by photoreceptor cells.
+A. True
+*B. False
+Explain: ON versus OFF responses depend on the type of glutamate receptor on the bipolar cell, not on the amount of glutamate released.
+
+Q: True or false: In both ON and OFF visual pathways, light stimulates the release of glutamate from a photoreceptor to bipolar cells.
+A. True
+*B. False
+Explain: Light reduces glutamate release, since photoreceptors are depolarized and release the most glutamate in darkness.
+
+Q: True or false: The greatest concentration of cones is in the fovea centralis of the retina.
+*A. True
+B. False
+Explain: The fovea centralis has the highest density of cones, giving the sharpest, most acute vision.
+
+Q: True or false: Bleaching induces conformational changes in both retinal and the associated opsin.
+A. True
+*B. False
+Explain: It is light-driven isomerization of retinal that changes the shape of retinal and then opsin; bleaching refers to the subsequent separation of retinal from opsin.
+
+Q: True or false: Axons of ganglion cells from the retina synapse in the medial geniculate nucleus of the thalamus on the way to the occipital lobes.
+A. True
+*B. False
+Explain: Retinal ganglion axons synapse in the lateral geniculate nucleus; the medial geniculate nucleus serves hearing.
+
+Q: True or false: The optic nerves from each eye cross at the optic chiasm, so all visual information from the right eye is received by the left side of the brain.
+A. True
+*B. False
+Explain: Only nasal-retina fibers cross at the chiasm, so each hemisphere processes the opposite visual field, not the entire opposite eye.
+
+Q: True or false: Some ganglion cells are stimulated by light at the center of their receptive field while others are stimulated by light at the periphery (surround) of their receptive field. This improves visual acuity.
+*A. True
+B. False
+Explain: Center-surround receptive fields, produced by lateral inhibition, enhance contrast detection and visual acuity.
+
+Q: True or false: Vitamin A deficiency can lead to blindness.
+*A. True
+B. False
+Explain: Vitamin A is required to make retinal; a deficiency impairs photopigment regeneration and can cause blindness.
+
+Q: Which of the following statements related to the 'ON pathway' of the visual system is correct?
+*A. Bipolar cells spontaneously depolarize in the absence of input from photoreceptor cells.
+B. Bipolar cells hyperpolarize in the absence of input from photoreceptor cells.
+C. Bipolar cells fire action potentials only when bright light strikes the photoreceptors linked to them.
+D. Only cones are associated with bipolar cells of the 'ON pathway'; rods are not.
+E. Glutamate receptors on bipolar cells are excitatory.
+Explain: In the ON pathway glutamate normally inhibits the bipolar cell, so without photoreceptor input (no glutamate) the ON bipolar cell depolarizes.
+
+Q: Axons from the nasal portions of the retina of both eyes will decussate in the
+A. superior colliculus.
+B. lateral geniculate nucleus.
+*C. optic chiasma.
+D. striate cortex.
+Explain: Axons from the nasal retina cross the midline at the optic chiasm.
+
+Q: In the absence of light, there is movement of Na+ in the photoreceptors causing a depolarization. This is called the
+A. visual cycle of retinal.
+*B. dark current.
+C. dark adaptation.
+D. bleaching reaction.
+Explain: The steady Na+ influx that keeps photoreceptors depolarized in darkness is called the dark current.
+
+Q: In the visual pathway providing sensory action potentials to the brain, the first cells capable of initiating action potentials (not graded) are
+A. lateral geniculate cells.
+B. cone cells.
+*C. ganglion cells.
+D. bipolar cells.
+E. rod cells.
+Explain: Photoreceptors and bipolar cells use graded potentials; ganglion cells are the first to fire true action potentials.
+
+Q: Which of these occurs when light strikes photoreceptors?
+A. There is an increase in neurotransmitter release from photoreceptor cells.
+B. The photoreceptor cells are stimulated and fire action potentials.
+*C. The chromophore called retinal undergoes a change of shape.
+D. The concentration of cyclic GMP inside cells increases.
+E. The photoreceptor cell membrane becomes depolarized.
+Explain: Light isomerizes the chromophore retinal from 11-cis to all-trans, changing its shape.
+
+Q: Ganglion cells are stimulated optimally by
+A. light striking the entire retinal surface.
+*B. light striking a spot on the retina.
+C. a bar of light striking a spot on the retina.
+D. a bar of light moving on the retina.
+Explain: Retinal ganglion cells respond best to a spot of light that matches their circular center-surround receptive field.
+
+Q: If a virus were to infect and destroy the cells of the spiral ganglion, which of the following would result?
+A. Loss of gustation
+B. Blindness
+*C. Deafness
+D. Loss of equilibrium
+E. Loss of olfaction
+Explain: The spiral ganglion holds the cochlear (auditory) sensory neurons, so its loss causes deafness.
+
+Q: If a virus were to infect and destroy the cells of the vestibular nucleus, which of the following would result?
+*A. Loss of equilibrium
+B. Loss of olfaction
+C. Loss of gustation
+D. Blindness
+E. Deafness
+Explain: The vestibular nucleus processes balance information, so its destruction causes loss of equilibrium.
+
+Q: Which of the following is NOT part of the organ of Corti?
+A. basilar membrane
+B. tectorial membrane
+C. hair cells with sensory fibers
+*D. vestibular membrane
+Explain: The vestibular (Reissner's) membrane bounds the cochlear duct but is not part of the organ of Corti.
+
+Q: What structure connects the scala vestibuli with the scala tympani?
+*A. helicotrema
+B. round window
+C. oval window
+D. cochlear duct
+Explain: The helicotrema is the opening at the cochlear apex that links the scala vestibuli and scala tympani.
+
+Q: Which of the following is the correct neural pathway for hearing?
+A. None apply.
+*B. vestibulocochlear nerve, medulla oblongata, inferior colliculus, thalamus, temporal lobe
+C. vestibulocochlear nerve, inferior colliculus, medulla oblongata, thalamus, temporal lobe
+D. vestibulocochlear nerve, thalamus, inferior colliculus, medulla oblongata, temporal lobe
+Explain: Auditory signals travel from the cochlear nerve through the medulla, inferior colliculus, and thalamus to the temporal lobe.

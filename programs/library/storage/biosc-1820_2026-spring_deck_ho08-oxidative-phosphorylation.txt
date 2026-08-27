@@ -1,0 +1,355 @@
+Name: BIOSC 1820 HO08 Oxidative Phosphorylation
+Description: Electron carriers, the respiratory chain complexes, ATP synthase, uncouplers, and photophosphorylation.
+Class: BIOSC 1820
+Semester: Spring 2026
+
+Q: Why must NADH and FADH2 be recycled?
+A: So catabolism can continue (the cell needs to regenerate oxidized carriers).
+
+Q: Where do reducing equivalents go in the absence of O2?
+A: To simple carbohydrates like acetaldehyde and pyruvate (fermentation).
+
+Q: Where do reducing equivalents go in the presence of O2?
+A: To O2 via the respiratory electron transport chain.
+
+Q: What is oxidative phosphorylation?
+A: ATP synthesis driven by H+ flowing back into the matrix after being pumped during electron transport.
+
+Q: What is photophosphorylation?
+A: ATP synthesis in chloroplasts driven by H+ gradients generated using photon energy.
+
+Q: What are the four classes of electron carriers?
+A: Quinones, metals, cytochromes, and iron-sulfur clusters.
+
+Q: What are two key properties of quinones?
+A: Freely diffusible and membrane-anchored; transfer one electron at a time.
+
+Q: What metals are loosely associated with proteins as electron carriers?
+A: Fe and Cu (Fe2+/Fe3+, Cu+/Cu2+).
+
+Q: What do cytochromes contain?
+A: Iron-containing heme prosthetic groups.
+
+Q: How can hemes be bound in cytochromes?
+A: Non-covalently (b-type) or covalently (c-type).
+
+Q: How are iron-sulfur clusters built?
+A: Fe coordinated by sulfur atoms; transfer one electron at a time.
+
+Q: What does NADH stand for?
+A: Nicotinamide adenine dinucleotide (reduced form).
+
+Q: What does FADH2 stand for?
+A: Flavin adenine dinucleotide (reduced form).
+
+Q: Does NADH want to donate or accept electrons?
+A: Donate.
+
+Q: Do cytochromes want to donate or accept electrons?
+A: Accept.
+
+Q: What is the order of electron flow through the ETC?
+A: NADH → FMN → CoQ → cyt-b → cyt-c1 → cyt-c → cyt-a → cyt-a3 → O2.
+
+Q: What inhibits cyt-a3?
+A: Cyanide (also azide, carbon monoxide).
+
+Q: What inhibits cyt-b?
+A: Antimycin A.
+
+Q: What inhibits Complex I?
+A: Rotenone and amytal.
+
+Q: What is the name of Complex I?
+A: NADH dehydrogenase (NADH-ubiquinone oxidoreductase).
+
+Q: What shape is Complex I?
+A: L-shaped (one arm in matrix, one in membrane).
+
+Q: How many protons does Complex I pump per pair of electrons (per NADH)?
+A: 4 H+.
+
+Q: How many iron-sulfur clusters does Complex I have?
+A: 6.
+
+Q: What flavin cofactor is in Complex I?
+A: FMN.
+
+Q: What is the name of Complex II?
+A: Succinate dehydrogenase (succinate-ubiquinone oxidoreductase).
+
+Q: How many electrons does Complex II receive from succinate?
+A: 2.
+
+Q: What cofactors does Complex II contain?
+A: FAD and Fe-S clusters.
+
+Q: Where do Complex II electrons go next?
+A: To Complex III (via CoQ).
+
+Q: How many H+ does Complex II pump?
+A: Zero — it does not pump protons.
+
+Q: What is Complex II's unique role in the TCA cycle?
+A: It is the only membrane-associated TCA cycle enzyme.
+
+Q: What other source of electrons feeds into Complex II / CoQ besides succinate?
+A: Fatty acid oxidation, via ETF-ubiquinone oxidoreductase.
+
+Q: What is the name of Complex III?
+A: Cytochrome bc1 complex (ubiquinone-cytochrome c oxidoreductase).
+
+Q: How many H+ does Complex III pump per pair of electrons?
+A: 4 H+ (2 pumped, 2 delivered via the Q cycle).
+
+Q: What mechanism does Complex III use to handle protons?
+A: The Q cycle.
+
+Q: What inhibits Complex III?
+A: Antimycin (A).
+
+Q: What is the name of Complex IV?
+A: Cytochrome oxidase.
+
+Q: How many H+ does Complex IV pump per pair of electrons?
+A: 2 H+.
+
+Q: What is the final reaction at Complex IV?
+A: ½ O2 + 2 e- + 2 H+ → H2O.
+
+Q: What inhibits Complex IV?
+A: Cyanide, azide, and carbon monoxide.
+
+Q: What special metal cofactors does Complex IV contain?
+A: Copper-bound hemes (CuA, CuB).
+
+Q: Which carrier is the mobile electron shuttle between Complexes I/II and Complex III?
+A: Coenzyme Q (ubiquinone, CoQ).
+
+Q: Which carrier is the mobile electron shuttle between Complex III and Complex IV?
+A: Cytochrome c.
+
+Q: Is cytochrome c part of any complex?
+A: No — it's a freely soluble mobile protein moving between Complexes III and IV.
+
+Q: How many H+ are pumped per pair of electrons from NADH?
+A: 10 H+.
+
+Q: How many H+ are pumped per pair of electrons from succinate (FADH2)?
+A: 6 H+.
+
+Q: How many H+ are needed to make one ATP?
+A: 4.
+
+Q: What is the proton motive force equation?
+A: Δp = -Δψ - Z(ΔpH).
+
+Q: What does Δψ represent in the PMF equation?
+A: The membrane electrical potential.
+
+Q: What does ΔpH represent in the PMF equation?
+A: The chemical (proton concentration) component.
+
+Q: What is the value of Z at 25°C?
+A: 0.059 V.
+
+Q: What does the glycerol 3-phosphate shuttle do?
+A: Transfers cytosolic electrons into the ETC at Complex III (via CoQ).
+
+Q: Where is the glycerol 3-phosphate shuttle most active?
+A: Skeletal muscle and brain.
+
+Q: What is the key reaction in the glycerol 3-phosphate shuttle?
+A: Dihydroxyacetone phosphate ↔ glycerol 3-phosphate.
+
+Q: What does the malate-aspartate shuttle do?
+A: Transfers cytosolic NADH electrons into the mitochondrial matrix.
+
+Q: Where is the malate-aspartate shuttle active?
+A: Liver, kidney, and heart.
+
+Q: What is the cycle of the malate-aspartate shuttle?
+A: Malate ↔ oxaloacetate ↔ aspartate, with glutamate ↔ α-ketoglutarate as the partner cycle.
+
+Q: Why are these shuttles needed?
+A: The inner mitochondrial membrane is impermeable to NADH.
+
+Q: What part of ATP synthase is membrane-embedded?
+A: F0 (the proton channel).
+
+Q: What part of ATP synthase projects into the matrix?
+A: F1 (the catalytic head).
+
+Q: How many αβ pairs does ATP synthase have?
+A: 3.
+
+Q: What rotates inside ATP synthase to drive conformational changes?
+A: The γ subunit.
+
+Q: What are the three conformational states of αβ pairs in ATP synthase?
+A: Open (O), Loose (L), and Tight (T).
+
+Q: What happens at the Open conformation?
+A: ATP is released and new ADP/Pi bind.
+
+Q: What happens at the Loose conformation?
+A: ADP and Pi are loosely bound together.
+
+Q: What happens at the Tight conformation?
+A: ADP and Pi form ATP.
+
+Q: Why is ATP synthase thermodynamically unusual?
+A: The energy barrier is releasing ATP, not forming it (ΔG ≈ 0 on the enzyme).
+
+Q: What inhibits ATP synthase?
+A: Oligomycin and venturicidin.
+
+Q: What happens to the ETC when ATP synthase is blocked?
+A: H+ gradient builds up and the ETC halts.
+
+Q: What is an uncoupler?
+A: A molecule that lets H+ leak through the membrane without going through ATP synthase.
+
+Q: What is the effect of an uncoupler on ATP and ETC?
+A: No ATP is produced; ETC speeds up.
+
+Q: What do uncouplers generate?
+A: Heat (biological importance: thermogenesis, e.g., in brown fat).
+
+Q: Name four uncouplers.
+A: DNP, FCCP, nigericin, and valinomycin.
+
+Q: What does nigericin do specifically?
+A: H+/K+ antiport (collapses the ΔpH).
+
+Q: What does valinomycin do specifically?
+A: Acts as a K+ ionophore (collapses the membrane potential).
+
+Q: What is the role of the translocase?
+A: Transports ADP and Pi across the inner mitochondrial membrane.
+
+Q: What drives the translocase?
+A: The membrane potential (Δψ).
+
+Q: Does the translocase require Mg2+?
+A: No.
+
+Q: Name three antioxidant scavengers.
+A: Vitamin E, vitamin C, and glutathione.
+
+Q: What reaction does glutathione peroxidase catalyze?
+A: 2 GSH + H2O2 → GSSG + 2 H2O.
+
+Q: What reaction does catalase catalyze?
+A: 2 H2O2 → 2 H2O + O2.
+
+Q: What reaction does superoxide dismutase catalyze?
+A: O2- + O2- + 2 H+ → H2O2 + O2.
+
+Q: Where are H+ pumped during photophosphorylation?
+A: From the stroma into the thylakoid lumen.
+
+Q: What is the Z scheme?
+A: The pathway of electron transfer from H2O through PSII and PSI to NADP+ in noncyclic photosynthesis.
+
+Q: What is the special pair (reaction center) of Photosystem II?
+A: P680.
+
+Q: What is the special pair (reaction center) of Photosystem I?
+A: P700.
+
+Q: What is P680*?
+A: The excited state of P680 after absorbing a photon.
+
+Q: What is P700*?
+A: The excited state of P700; the strongest reducing agent in the Z scheme.
+
+Q: What is the final reduction product of the Z scheme?
+A: NADPH (made by ferredoxin-NADP+ oxidoreductase).
+
+Q: What links Photosystems II and I?
+A: The cytochrome b6f complex.
+
+Q: What is special about cytochrome b6f?
+A: It contains a Rieske iron-sulfur cluster and pumps ~4 H+.
+
+Q: What is cyclic electron flow?
+A: When no NADP+ is available, electrons cycle PSI → ferredoxin → cyt b6f → PSI (generates H+ gradient but no NADPH).
+
+Q: What is the overall Z-scheme equation?
+A: 2 H2O + 2 NADP+ + 8 photons → O2 + 2 NADPH + 2 H+.
+
+Q: What does the oxygen-evolving complex (OEC) do?
+A: Splits water to supply electrons to PSII.
+
+Q: How many photons does the OEC need to split one water?
+A: 4.
+
+Q: What metal does the OEC require?
+A: Manganese (Mn).
+
+Q: What radical species is involved in water splitting?
+A: A tyrosine radical (Tyr•).
+
+Q: What is the key distinction of the thylakoid membrane vs. mitochondrial inner membrane?
+A: The thylakoid membrane is Mg2+-permeable, which affects how the PMF contributes to ATP synthesis.
+
+Q: Name four photosynthetic pigments.
+A: Chlorophyll a, phycoerythrobilin, β-carotene, and lutein.
+
+Q: Why does the plant use multiple pigments?
+A: They cover different wavelengths of visible light.
+
+Q: Draw: quinone (ubiquinone, oxidized)
+A: 6-membered benzoquinone ring with two C=O at positions 1 and 4, two methoxy (-OCH3) groups, one methyl, and a long isoprenoid hydrocarbon tail.
+
+Q: Draw: malate
+A: HOOC-CH(OH)-CH2-COOH (4C: carboxyl – CHOH – CH2 – carboxyl).
+
+Q: Draw: oxaloacetate
+A: HOOC-C(=O)-CH2-COOH (4C: carboxyl – ketone – CH2 – carboxyl).
+
+Q: Draw: aspartate
+A: HOOC-CH(NH2)-CH2-COOH (4C amino acid: amino acid backbone + CH2-COOH side chain).
+
+Q: Draw: glutamate
+A: HOOC-CH(NH2)-CH2-CH2-COOH (5C amino acid with two carboxyls — alpha and gamma).
+
+Q: Draw: α-ketoglutarate
+A: HOOC-C(=O)-CH2-CH2-COOH (5C: carboxyl – ketone – CH2 – CH2 – carboxyl).
+
+Q: Draw: DNP (2,4-dinitrophenol)
+A: Phenol (benzene with -OH) with two nitro (-NO2) groups at the 2 and 4 positions.
+
+Q: Draw: FCCP
+A: Carbonyl cyanide-p-trifluoromethoxyphenylhydrazone — phenyl ring with -OCF3, linked via hydrazone (-NH-N=) to a carbon bearing two CN groups.
+
+Q: Draw: dihydroxyacetone phosphate (DHAP)
+A: 3C ketose: CH2OH – C(=O) – CH2OPO3 (ketone at C2, phosphate on C3).
+
+Q: Draw: glycerol 3-phosphate
+A: 3C: CH2OH – CHOH – CH2OPO3 (hydroxymethyl – CHOH – phosphorylated CH2; DHAP reduced at C2).
+
+Q: Recognize: cytochrome
+A: A protein with an iron protoporphyrin IX heme group (4 pyrrole rings + Fe in center, with 2 vinyl, 2 methyl, 2 propionate substituents). c-type has thioether bonds to Cys; a-type has a long isoprenoid tail.
+
+Q: Recognize: iron-sulfur cluster
+A: Fe atoms coordinated by inorganic sulfur (S2-) and cysteine sulfurs from the protein, forming cubane-like (4Fe-4S), rhombic (2Fe-2S), or single-Fe geometries.
+
+Q: Recognize: vitamin E (α-tocopherol)
+A: A chromanol head group (fused 6-membered O-ring + phenol) with several methyl substituents and a long saturated isoprenoid tail.
+
+Q: Recognize: vitamin C (L-ascorbic acid)
+A: A 5-membered lactone ring (γ-lactone) with two enol -OH groups (C2 and C3) and a 2-carbon hydroxyl tail (CHOH-CH2OH).
+
+Q: Recognize: chlorophyll a
+A: Porphyrin-like ring (4 pyrroles around central Mg2+) with an extra fifth ring, a long phytol tail, a methyl group, and a vinyl group on the ring.
+
+Q: Recognize: phycoerythrobilin
+A: An open-chain (linear) tetrapyrrole (not a closed ring) bound to a protein; resembles a "stretched out" heme.
+
+Q: Recognize: β-carotene
+A: A long symmetric polyene (~40 carbons) with conjugated double bonds and a 6-membered ring (β-ionone) at each end.
+
+Q: Recognize: lutein
+A: Like β-carotene but with -OH groups on each end ring (a xanthophyll, oxygen-containing carotenoid).

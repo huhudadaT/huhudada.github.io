@@ -1,0 +1,616 @@
+Name: BIOSC 0350 Module 1 Mendelian Genetics and Linkage
+Description: Mendelian inheritance, gene interactions and epistasis, sex linkage, and linkage mapping with tetrad analysis.
+Class: BIOSC 0350
+Semester: Summer 2026
+
+Q: What is a gene?
+A: A unit of heredity that determines a trait.
+
+Q: What is an allele?
+A: An alternative version of a gene.
+
+Q: What is a locus?
+A: The specific physical location of a gene on a chromosome.
+
+Q: What is the difference between genotype and phenotype?
+A: Genotype is the genetic makeup (alleles); phenotype is the observable expression.
+
+Q: What does homozygous mean?
+A: Having two identical alleles at a locus.
+
+Q: What does heterozygous mean?
+A: Having two different alleles at a locus.
+
+Q: What does hemizygous mean?
+A: Having only one allele at a locus due to having a single copy of that chromosome.
+
+Q: Why are XY males hemizygous for X-linked genes?
+A: They have only one X chromosome, so only one allele of each X-linked gene.
+
+Q: What is a true-breeding line?
+A: A line whose offspring always display the same trait when selfed or intercrossed.
+
+Q: Are true-breeding organisms homozygous or heterozygous?
+A: Homozygous.
+
+Q: What is a wild-type allele?
+A: An allele present at greater than 1% frequency in a population.
+
+Q: What is a mutant allele?
+A: A rare allele arising from mutation, present at less than 1% in a population.
+
+Q: How do new alleles arise?
+A: Through mutations (insertions, substitutions, deletions) in DNA sequence.
+
+Q: What is a monohybrid cross?
+A: A cross between two heterozygotes at one gene (Aa × Aa).
+
+Q: What is a dihybrid cross?
+A: A cross between two heterozygotes at two genes (AaBb × AaBb).
+
+Q: What is a testcross?
+A: A cross of an individual showing the dominant phenotype to a homozygous recessive individual.
+
+Q: What is the purpose of a testcross?
+A: To determine the unknown genotype of an individual showing the dominant phenotype.
+
+Q: What is a reciprocal cross?
+A: A cross repeated with the sexes of the parents swapped relative to the alleles they carry.
+
+Q: What is a character?
+A: The type of trait being studied (e.g., seed color).
+
+Q: What is a trait?
+A: A specific form of a character (e.g., yellow or green).
+
+Q: What is a discrete trait?
+A: A trait that falls into clear either/or categories.
+
+Q: What is a continuous trait?
+A: A trait that varies over a range, usually controlled by many genes plus environment.
+
+Q: List Mendel's three main reasons for success.
+A: Careful experimental design, use of true-breeding lines, and choice of the right model organism and traits.
+
+Q: Why was Pisum sativum a good model organism?
+A: It is diploid (not polyploid) and has discrete, monogenic traits.
+
+Q: State Mendel's Law of Segregation.
+A: The two alleles of each gene separate during meiosis, so each gamete receives only one allele.
+
+Q: State Mendel's Law of Independent Assortment.
+A: Alleles of different genes assort into gametes independently of one another.
+
+Q: What is the chromosomal basis of segregation?
+A: Homologous chromosomes separate at anaphase I of meiosis.
+
+Q: What is the chromosomal basis of independent assortment?
+A: Random alignment of homologous pairs at metaphase I.
+
+Q: For genes on different chromosomes, how many possible combinations of maternal/paternal chromosomes are in gametes from n pairs?
+A: 2^n.
+
+Q: F2 phenotypic ratio of a monohybrid cross with complete dominance?
+A: 3:1.
+
+Q: F2 genotypic ratio of a monohybrid cross?
+A: 1:2:1.
+
+Q: F1 phenotype in a monohybrid cross with complete dominance?
+A: All dominant phenotype.
+
+Q: F2 phenotypic ratio of a monohybrid cross with incomplete dominance?
+A: 1:2:1.
+
+Q: F2 phenotypic ratio of a monohybrid cross with codominance?
+A: 1:2:1.
+
+Q: F2 phenotypic ratio when one allele is a recessive lethal?
+A: 2:1.
+
+Q: F2 phenotypic ratio of a dihybrid cross with no interaction?
+A: 9:3:3:1.
+
+Q: F2 phenotypic ratio for recessive epistasis?
+A: 9:3:4.
+
+Q: F2 phenotypic ratio for reciprocal recessive epistasis?
+A: 9:7.
+
+Q: F2 phenotypic ratio for dominant epistasis I?
+A: 12:3:1.
+
+Q: F2 phenotypic ratio for dominant epistasis II?
+A: 13:3.
+
+Q: F2 phenotypic ratio for redundant genes?
+A: 15:1.
+
+Q: Ratio of progeny from a testcross of a heterozygote × homozygous recessive?
+A: 1:1.
+
+Q: What is the product rule?
+A: P(1 AND 2) = P(1) × P(2) for independent events.
+
+Q: What is the sum rule?
+A: P(1 OR 2) = P(1) + P(2) for mutually exclusive events.
+
+Q: Probability that an unaffected child of two carriers is a carrier?
+A: 2/3.
+
+Q: Why is the answer 2/3 instead of 1/2 for the carrier probability?
+A: Because the affected (aa) class is excluded; of the three unaffected outcomes (AA, Aa, Aa), two are carriers.
+
+Q: What is incomplete dominance?
+A: Heterozygotes show an intermediate phenotype between the two homozygotes.
+
+Q: What is codominance?
+A: Heterozygotes display both parental phenotypes simultaneously.
+
+Q: Example of incomplete dominance?
+A: Red × white snapdragons producing pink F1.
+
+Q: Example of codominance?
+A: ABO blood types (I^A I^B individuals have both A and B antigens).
+
+Q: What is the dominance hierarchy of ABO alleles?
+A: I^A = I^B > i.
+
+Q: Blood type of I^A I^B individual?
+A: Type AB.
+
+Q: Blood type of ii individual?
+A: Type O.
+
+Q: What is an allelic series?
+A: Multiple alleles of the same gene ordered by dominance.
+
+Q: Allelic series for rabbit coat color?
+A: C > c^ch > c^h > c (full > chinchilla > himalayan > albino).
+
+Q: How many alleles of a gene does any single individual carry?
+A: Two (one on each homolog).
+
+Q: What is a recessive lethal allele?
+A: A loss-of-function allele of an essential gene; homozygotes die.
+
+Q: Example of a recessive lethal that is dominant for a visible phenotype?
+A: The A^Y (yellow) allele in mice.
+
+Q: What is a conditional lethal allele?
+A: An allele that is lethal only under specific environmental (restrictive) conditions.
+
+Q: Example of a conditional lethal?
+A: Shibire mutants in Drosophila — viable below 29°C, lethal above.
+
+Q: What are permissive vs. restrictive conditions?
+A: Permissive = mutant allele functions normally; restrictive = mutant allele is defective.
+
+Q: What is pleiotropy?
+A: One gene affecting multiple, apparently unrelated phenotypic traits.
+
+Q: Example of pleiotropy?
+A: The e4 allele of Apo-E increases risk of both cardiac disease and Alzheimer's.
+
+Q: How is pleiotropy distinguished from two independent genes?
+A: Pleiotropy is one locus affecting multiple traits; two genes are two separate loci.
+
+Q: What is penetrance?
+A: The proportion of individuals with a genotype who display the expected phenotype.
+
+Q: What is expressivity?
+A: The degree or intensity with which a phenotype is expressed.
+
+Q: What is incomplete penetrance?
+A: When some individuals with the genotype do not show the phenotype.
+
+Q: What is variable expressivity?
+A: When the phenotype varies in severity between affected individuals.
+
+Q: What are modifier genes?
+A: Other loci whose alleles influence the expressivity of the gene of interest.
+
+Q: What is a complex trait?
+A: A trait controlled by many genes plus the environment.
+
+Q: Define a necessary condition.
+A: X must be present for Y to occur.
+
+Q: Define a sufficient condition.
+A: X alone guarantees Y.
+
+Q: How do you prove a factor is necessary?
+A: Find a case where it is absent and the outcome fails.
+
+Q: How do you prove a factor is sufficient?
+A: Find a case where it is present and the outcome occurs.
+
+Q: Is SRY necessary for morphological maleness?
+A: Yes — XY individuals without functional SRY develop as female.
+
+Q: Is SRY sufficient for morphological maleness?
+A: Yes — XX individuals with translocated SRY develop as male.
+
+Q: What is additive gene interaction?
+A: Each combination of dominant/recessive alleles produces a distinct phenotype (9:3:3:1).
+
+Q: What is recessive epistasis?
+A: Homozygous recessive of one gene masks both alleles of the other gene.
+
+Q: Example of recessive epistasis?
+A: Labrador retriever coat color (ee masks B locus, giving yellow).
+
+Q: What is reciprocal recessive epistasis?
+A: Homozygous recessive of either gene masks the dominant allele of the other.
+
+Q: Example of reciprocal recessive epistasis?
+A: Sweet pea flower color (9 purple : 7 white).
+
+Q: What is dominant epistasis I?
+A: Dominant allele of one gene masks both alleles of the other gene.
+
+Q: Example of dominant epistasis I?
+A: Summer squash color (12:3:1).
+
+Q: What is dominant epistasis II?
+A: Dominant allele of one gene masks the dominant allele of the other.
+
+Q: Example of dominant epistasis II?
+A: Chicken feather color (13:3).
+
+Q: What are redundant genes?
+A: Two genes that perform the same function in parallel; only one dominant allele is needed.
+
+Q: Example of redundant genes?
+A: Maize leaf development (15:1).
+
+Q: What is a complementation test?
+A: A cross of two homozygous mutant strains to determine if mutations are in the same or different genes.
+
+Q: Complementation test result if progeny are wild-type?
+A: Mutations are in different genes (complementation).
+
+Q: Complementation test result if progeny are mutant?
+A: Mutations are in the same gene (no complementation).
+
+Q: What is locus heterogeneity?
+A: A phenotype caused by mutations in any one of multiple different genes.
+
+Q: How do you identify the gene interaction from F2 data?
+A: Divide total progeny by 16, then divide each class by that number to match a diagnostic ratio.
+
+Q: What is a sister chromatid?
+A: One of two identical copies of a replicated chromosome joined at the centromere.
+
+Q: What are homologous chromosomes?
+A: Chromosomes that match in size, shape, and gene content but may carry different alleles.
+
+Q: What are nonsister chromatids?
+A: Chromatids belonging to homologous chromosomes (not the same chromosome).
+
+Q: Which chromatids exchange material in crossing over?
+A: Nonsister chromatids of homologous chromosomes.
+
+Q: What are nonhomologous chromosomes?
+A: Chromosomes carrying different genes.
+
+Q: What is the centromere?
+A: The constricted region holding sister chromatids together.
+
+Q: What is the kinetochore?
+A: A protein complex at the centromere that attaches the chromosome to spindle microtubules.
+
+Q: What is a metacentric chromosome?
+A: A chromosome with the centromere near the middle.
+
+Q: What is an acrocentric chromosome?
+A: A chromosome with the centromere near (but not at) one end.
+
+Q: What is a karyotype?
+A: An organized display of chromosomes arranged in homologous pairs by size.
+
+Q: How many autosome pairs do humans have?
+A: 22.
+
+Q: How do you count chromosomes in a cell?
+A: Count centromeres.
+
+Q: Number of chromosomes in a human cell in G1?
+A: 46.
+
+Q: Number of chromatids per chromosome in G1?
+A: 1.
+
+Q: Number of chromatids per chromosome in G2?
+A: 2.
+
+Q: When during the cell cycle does DNA replication occur?
+A: S phase.
+
+Q: What happens during G0?
+A: The cell is quiescent (non-dividing).
+
+Q: Purpose of mitosis?
+A: Produce two genetically identical diploid daughter cells.
+
+Q: Purpose of meiosis?
+A: Produce four genetically distinct haploid gametes.
+
+Q: What separates during mitotic anaphase?
+A: Sister chromatids.
+
+Q: What separates during anaphase I?
+A: Homologous chromosomes.
+
+Q: What separates during anaphase II?
+A: Sister chromatids.
+
+Q: Which meiotic division reduces ploidy?
+A: Meiosis I.
+
+Q: Why is meiosis I the reduction division?
+A: Homologous chromosomes separate, dropping ploidy from 2n to n.
+
+Q: What is synapsis?
+A: Pairing of homologous chromosomes during prophase I.
+
+Q: What is the synaptonemal complex?
+A: The protein structure that mediates synapsis between homologs.
+
+Q: What is a bivalent (or tetrad)?
+A: A pair of synapsed homologous chromosomes.
+
+Q: What is a chiasma?
+A: The site where crossing over occurs between nonsister chromatids.
+
+Q: At what stage do homologous chromosomes pair?
+A: Prophase I.
+
+Q: At what stage does crossing over occur?
+A: Prophase I.
+
+Q: How many DNA replication events occur before meiosis?
+A: One (before meiosis I).
+
+Q: Does DNA replicate between meiosis I and meiosis II?
+A: No.
+
+Q: What protein holds sister chromatids together?
+A: Cohesin.
+
+Q: What protein cleaves cohesin at anaphase?
+A: Separase.
+
+Q: What is nondisjunction?
+A: Failure of chromosomes or chromatids to separate properly during cell division.
+
+Q: What is aneuploidy?
+A: An abnormal chromosome number (e.g., trisomy or monosomy).
+
+Q: What fails to separate in MI nondisjunction?
+A: Homologous chromosomes.
+
+Q: What fails to separate in MII nondisjunction?
+A: Sister chromatids.
+
+Q: Gamete outcomes from MI nondisjunction in a heterozygous Aa individual?
+A: 2 gametes are n+1 (with both A and a), 2 are n-1.
+
+Q: Gamete outcomes from MII nondisjunction in a heterozygous Aa individual?
+A: 2 normal n gametes, 1 n+1 with two identical alleles (AA or aa), 1 n-1.
+
+Q: How can you tell MI vs. MII nondisjunction from allele data?
+A: MI gives n+1 gametes with two different alleles; MII gives n+1 with two identical alleles.
+
+Q: Why is homologous recombination required for proper MI segregation?
+A: Chiasmata physically hold homologs together so they segregate to opposite poles.
+
+Q: What aneuploidy causes Down syndrome?
+A: Trisomy 21.
+
+Q: Karyotype of Turner syndrome?
+A: XO.
+
+Q: Karyotype of Klinefelter syndrome?
+A: XXY.
+
+Q: Sex of XXY individual?
+A: Male (has SRY).
+
+Q: Sex of XO individual?
+A: Female.
+
+Q: What does SRY stand for?
+A: Sex-determining Region of the Y chromosome.
+
+Q: Function of SRY?
+A: Directs the embryonic gonad to develop into testes.
+
+Q: How do X and Y chromosomes pair reliably in meiosis?
+A: They pair at pseudoautosomal regions (PARs).
+
+Q: Are X and Y fully homologous?
+A: No — they share only short pseudoautosomal regions.
+
+Q: Why are X-linked recessive traits more common in males?
+A: Males are hemizygous; one recessive allele on their single X is enough.
+
+Q: Surviving sex ratio when an X-linked recessive lethal is in play (X^A X^a × X^A Y)?
+A: 2 females : 1 male.
+
+Q: What is a sex-limited trait?
+A: A trait expressed in only one sex.
+
+Q: What is a sex-influenced trait?
+A: A trait that appears in both sexes but is expressed differently.
+
+Q: Sex determination in birds?
+A: ZW system (females ZW, males ZZ).
+
+Q: Sex determination in Drosophila?
+A: X-to-autosome ratio (not Y presence).
+
+Q: Pedigree symbol for affected female?
+A: Filled circle.
+
+Q: Pedigree symbol for unaffected male?
+A: Open square.
+
+Q: Inheritance pattern for vertical pedigree pattern?
+A: Autosomal dominant.
+
+Q: Inheritance pattern for horizontal pedigree pattern (skips generations)?
+A: Autosomal recessive.
+
+Q: Key feature of autosomal recessive pedigrees?
+A: Affected individuals often have unaffected (carrier) parents.
+
+Q: Key feature of autosomal dominant pedigrees?
+A: Every affected person has at least one affected parent.
+
+Q: Example of autosomal dominant disease?
+A: Huntington disease.
+
+Q: Example of autosomal recessive disease?
+A: Cystic fibrosis.
+
+Q: Key feature of X-linked recessive pedigrees?
+A: Males affected far more often than females.
+
+Q: Can an affected father pass X-linked recessive to his son?
+A: No — sons inherit Y from father.
+
+Q: Daughters of an affected X-linked recessive male are what?
+A: Obligate carriers.
+
+Q: Example of X-linked recessive disease?
+A: Hemophilia.
+
+Q: Key feature of X-linked dominant?
+A: Affected males pass it to all daughters but no sons.
+
+Q: Key feature of Y-linked inheritance?
+A: Only males affected; passed father to son.
+
+Q: Key feature of mitochondrial inheritance?
+A: Passed only from mother to all offspring.
+
+Q: What is linkage?
+A: Two genes on the same chromosome tending to be inherited together.
+
+Q: What are parental gametes?
+A: Gametes with allele combinations matching the parental chromosomes.
+
+Q: What are recombinant gametes?
+A: Gametes with allele combinations different from parental chromosomes (due to crossover).
+
+Q: What is cis configuration?
+A: Both dominant alleles on the same homolog (AB/ab).
+
+Q: What is trans configuration?
+A: Dominant alleles on different homologs (Ab/aB).
+
+Q: How do you identify parentals in a testcross?
+A: They are the two most frequent progeny classes.
+
+Q: Formula for recombination frequency?
+A: RF = (# recombinants / total progeny) × 100.
+
+Q: Maximum value of recombination frequency?
+A: 50%.
+
+Q: Why is the maximum RF 50%?
+A: Crossing over at the four-strand stage produces only 50% recombinant chromatids per meiosis.
+
+Q: What does 1% RF equal?
+A: 1 map unit (mu) or 1 centimorgan (cM).
+
+Q: RF below 50% indicates what?
+A: The genes are linked.
+
+Q: RF near 50% indicates what?
+A: Genes are unlinked (different chromosomes or very far apart).
+
+Q: In a three-point cross, which classes are most frequent?
+A: Parental (no crossover) classes.
+
+Q: In a three-point cross, which classes are least frequent?
+A: Double crossover (DCO) classes.
+
+Q: How do you find the middle gene in a three-point cross?
+A: Compare DCO to parental; the allele that "swaps" identifies the middle gene.
+
+Q: Formula for map distance in a three-point cross interval?
+A: (SCOs in interval + DCOs) / total × 100.
+
+Q: Why are DCOs counted in both adjacent intervals?
+A: A double crossover involves one crossover in each interval.
+
+Q: Formula for expected number of DCOs?
+A: RF1 × RF2 × total progeny.
+
+Q: Formula for coefficient of coincidence?
+A: coc = DCOs observed / DCOs expected.
+
+Q: Formula for interference?
+A: I = 1 − coc.
+
+Q: What does positive interference mean?
+A: A crossover in one region inhibits crossovers nearby.
+
+Q: At what stage does crossing over occur?
+A: The four-strand stage (after replication) of prophase I.
+
+Q: Why is genetic distance different from physical distance?
+A: Recombination frequency varies by region (hotspots and coldspots), not just nucleotide distance.
+
+Q: Null hypothesis for a chi-square test of linkage?
+A: The two genes assort independently.
+
+Q: Formula for chi-square?
+A: χ² = Σ[(O − E)² / E].
+
+Q: Formula for degrees of freedom?
+A: df = number of classes − 1.
+
+Q: P-value threshold for rejecting the null hypothesis?
+A: P < 0.05.
+
+Q: What does P < 0.05 mean in a linkage test?
+A: Reject the null; evidence supports linkage.
+
+Q: What does P ≥ 0.05 mean in a linkage test?
+A: Fail to reject the null; no evidence for linkage.
+
+Q: Can a chi-square test prove the null hypothesis?
+A: No — it can only fail to reject it.
+
+Q: Expected counts in a test cross of 200 progeny under independent assortment (2 classes)?
+A: 100 parental and 100 recombinant.
+
+Q: How do you count minimum crossovers needed to produce a gamete?
+A: Count the number of switches between homologs along the chromosome.
+
+Q: Minimum crossovers if a gamete matches a parental chromosome exactly?
+A: Zero.
+
+Q: What is a parental ditype (PD) tetrad?
+A: A tetrad with four parental-type spores.
+
+Q: What is a nonparental ditype (NPD) tetrad?
+A: A tetrad with four recombinant-type spores.
+
+Q: What is a tetratype (T) tetrad?
+A: A tetrad with all four different spore genotypes.
+
+Q: Rule for unlinked genes in tetrad analysis?
+A: PD ≈ NPD.
+
+Q: Rule for linked genes in tetrad analysis?
+A: PD >> NPD.
+
+Q: Formula for RF from tetrad data?
+A: RF = [(NPD + ½T) / total tetrads] × 100.
+
+Q: Formula for gene-to-centromere distance in ordered tetrads?
+A: [(½ × # MII tetrads) / total tetrads] × 100.

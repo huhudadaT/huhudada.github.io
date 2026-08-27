@@ -1,0 +1,478 @@
+Name: BIOSC 1250 Review 3 Respiratory, Urinary, Reproductive
+Description: The respiratory, urinary, and reproductive systems (Ch. 18, 19, 23).
+Class: BIOSC 1250
+Semester: Summer 2026
+
+Q: Which alveolar cell type carries out gas exchange?
+A: Type I
+
+Q: Which alveolar cell type secretes surfactant?
+A: Type II
+
+Q: In the pulmonary circuit, is blood flow high or low?
+A: High (receives the entire cardiac output)
+
+Q: In the pulmonary circuit, is blood pressure high or low?
+A: Low (~25/8 mmHg)
+
+Q: Which nerve carries sensory axons from the carotid bodies?
+A: Glossopharyngeal (IX)
+
+Q: Which nerve carries sensory axons from the aortic bodies?
+A: Vagus (X)
+
+Q: During inspiration, does alveolar pressure rise or fall?
+A: Falls (below atmospheric)
+
+Q: During expiration, does alveolar pressure rise or fall?
+A: Rises (above atmospheric)
+
+Q: Does the diaphragm contract or relax during inspiration?
+A: Contracts
+
+Q: Where does O2 bind on hemoglobin?
+A: The iron (Fe) in heme
+
+Q: Where does CO2 bind on hemoglobin?
+A: The amino chains of globin
+
+Q: Which gas is the main stimulus for the central respiratory centers?
+A: CO2 (not O2)
+
+Q: A right shift of the oxygen-hemoglobin curve does what to O2 affinity?
+A: Lowers it (promotes unloading)
+
+Q: The 5 steps of respiration in order?
+A: Ventilation, pulmonary gas exchange, gas transport, systemic gas exchange, cellular respiration
+
+Q: Gene mutated in cystic fibrosis?
+A: CFTR
+
+Q: In cystic fibrosis, which ion fails to leave the cell?
+A: Chloride (Cl-)
+
+Q: Path of air from nose to lungs?
+A: Nose, pharynx, larynx, trachea, bronchi
+
+Q: Which pleura covers the lung surface?
+A: Visceral pleura
+
+Q: Which pleura lines the chest wall?
+A: Parietal pleura
+
+Q: Function of the conducting zone?
+A: Moves and conditions air; no gas exchange
+
+Q: Where does the respiratory zone begin?
+A: Respiratory bronchioles
+
+Q: The three pressures ventilation depends on?
+A: Atmospheric, alveolar, intrapleural
+
+Q: Boyle's law relationship?
+A: Volume up, pressure down
+
+Q: Resting intrapleural pressure relative to atmospheric?
+A: About -4 mmHg (subatmospheric)
+
+Q: Two muscles of quiet inspiration?
+A: Diaphragm and external intercostals
+
+Q: What lets the lung spring back without muscle effort?
+A: Elastic recoil
+
+Q: In pneumothorax, what enters the pleural space?
+A: Air
+
+Q: Atelectasis is lung collapse due to what?
+A: Blockage
+
+Q: What reduces surface tension in the alveoli?
+A: Surfactant
+
+Q: Law of LaPlace equation?
+A: P = 2T/r
+
+Q: Deficient surfactant in premature infants causes what?
+A: Respiratory distress syndrome (RDS)
+
+Q: High lung compliance is typical of which disease?
+A: Emphysema
+
+Q: Low lung compliance is typical of which disease?
+A: Pulmonary fibrosis
+
+Q: Where is airway resistance greatest?
+A: Bronchioles
+
+Q: Purpose of ventilation-perfusion matching?
+A: Match airflow to blood flow to maximize gas exchange
+
+Q: In a low V/Q region, what is the problem?
+A: Poor ventilation (e.g. mucus plug) with adequate blood flow
+
+Q: The four lung volumes?
+A: Tidal, inspiratory reserve, expiratory reserve, residual
+
+Q: Air remaining after maximal exhalation?
+A: Residual volume
+
+Q: Minute ventilation formula?
+A: Tidal volume x respiratory rate
+
+Q: Dalton's law describes what?
+A: Partial pressures of gases in a mixture
+
+Q: Henry's law describes what?
+A: Solubility of a gas in a liquid
+
+Q: Roughly how much more soluble is CO2 than O2?
+A: About 24 times
+
+Q: Percent of O2 carried bound to hemoglobin?
+A: 98.5%
+
+Q: Percent of CO2 carried as bicarbonate?
+A: 70%
+
+Q: Why is the oxygen-hemoglobin curve S-shaped?
+A: Cooperative binding
+
+Q: Four factors that lower Hb affinity for O2?
+A: High acidity, high CO2, high temperature, high BPG
+
+Q: In the Bohr effect, low pH does what to O2 unloading?
+A: Promotes it
+
+Q: Why does fetal hemoglobin have higher O2 affinity?
+A: It binds BPG less
+
+Q: In the Haldane effect, deoxygenated hemoglobin carries more of what?
+A: CO2
+
+Q: The three forms CO2 is transported in?
+A: Dissolved in plasma, carbamino compounds, bicarbonate
+
+Q: Which nerves drive the diaphragm?
+A: Phrenic nerves
+
+Q: Spinal roots of the phrenic nerve?
+A: C3, C4, C5
+
+Q: What does the pre-Botzinger complex generate?
+A: The respiratory rhythm
+
+Q: Two locations of chemoreceptors?
+A: Central (CNS) and peripheral (carotid and aortic bodies)
+
+Q: Reflex that prevents lung overinflation?
+A: Inflation (Hering-Breuer) reflex
+
+Q: Carbon monoxide's affinity for hemoglobin compared to O2?
+A: About 200 times greater
+
+Q: In which limb of the loop of Henle is water reabsorbed?
+A: Descending limb
+
+Q: In which limb of the loop of Henle are ions reabsorbed?
+A: Thick ascending limb
+
+Q: In which limb is the Na-K-2Cl (NKCC) transporter located?
+A: Thick ascending limb
+
+Q: Reabsorption moves substances in which direction?
+A: Tubule to blood
+
+Q: Secretion moves substances in which direction?
+A: Blood to tubule
+
+Q: The afferent arteriole leads into what?
+A: The glomerulus
+
+Q: The efferent arteriole carries blood away from what?
+A: The glomerulus
+
+Q: Which ion do principal cells reabsorb?
+A: Na+
+
+Q: Which ion do principal cells secrete?
+A: K+
+
+Q: What do intercalated cells reabsorb?
+A: Bicarbonate (HCO3-)
+
+Q: What do intercalated cells secrete?
+A: H+
+
+Q: What do sympathetic alpha-1 receptors do to renal vessels?
+A: Cause vasoconstriction (lowering GFR)
+
+Q: What do sympathetic beta-1 receptors trigger?
+A: Renin release
+
+Q: Functional unit of the kidney?
+A: Nephron
+
+Q: Position of the kidneys relative to the peritoneum?
+A: Retroperitoneal
+
+Q: The two nephron types?
+A: Cortical (85%) and juxtamedullary
+
+Q: Which nephron type builds the medullary gradient?
+A: Juxtamedullary (long loop)
+
+Q: Percent of cardiac output the kidneys receive?
+A: About 20%
+
+Q: What two structures make up the juxtaglomerular apparatus?
+A: Macula densa and juxtaglomerular (JG) cells
+
+Q: What do macula densa cells sense?
+A: NaCl in the filtrate
+
+Q: What do JG cells secrete?
+A: Renin
+
+Q: The three processes that produce urine?
+A: Filtration, reabsorption, secretion
+
+Q: Where does glomerular filtration occur?
+A: The renal corpuscle
+
+Q: Two parts of the renal corpuscle?
+A: Glomerular capillaries and Bowman's capsule
+
+Q: Which cells form the filtration slits?
+A: Podocytes (with pedicels)
+
+Q: The one pressure that promotes filtration?
+A: Glomerular capillary hydrostatic pressure
+
+Q: Average GFR per day?
+A: About 180 L/day
+
+Q: Three ways GFR is regulated?
+A: Autoregulation, neural, hormonal
+
+Q: Angiotensin II's effect on renal vessels?
+A: Vasoconstriction
+
+Q: ANP's effect on filtration?
+A: Increases filtration surface area (relaxes mesangial cells)
+
+Q: Two routes of tubular reabsorption?
+A: Paracellular and transcellular
+
+Q: Where does obligatory water reabsorption occur?
+A: Proximal tubule and descending limb
+
+Q: What regulates facultative water reabsorption?
+A: ADH
+
+Q: Which tubule segment reabsorbs the most solute?
+A: Proximal tubule
+
+Q: Percent of filtered glucose and amino acids reabsorbed in the PCT?
+A: 100%
+
+Q: Which ion is reabsorbed in the DCT under PTH control?
+A: Ca2+
+
+Q: ADH is released from which gland?
+A: Posterior pituitary
+
+Q: Which channel does ADH insert into principal cells?
+A: Aquaporin-2
+
+Q: Aldosterone's main tubular action?
+A: Increases Na+ reabsorption (and K+ secretion)
+
+Q: ANP's action on sodium?
+A: Inhibits Na+ reabsorption
+
+Q: Alcohol causes diuresis by blocking what?
+A: ADH secretion
+
+Q: Two countercurrent systems in the medulla?
+A: Countercurrent multiplier and countercurrent exchange
+
+Q: Which structure acts as the countercurrent exchanger?
+A: Vasa recta
+
+Q: Maximum medullary osmolarity?
+A: About 1200 mOsm/L
+
+Q: Marker substance used to measure GFR?
+A: Inulin (not insulin)
+
+Q: Clearance greater than GFR means what?
+A: Net secretion
+
+Q: Clearance less than GFR means what?
+A: Net reabsorption
+
+Q: Inulin clearance value?
+A: About 125 mL/min
+
+Q: What does BUN measure?
+A: Blood nitrogen from urea (protein catabolism)
+
+Q: Plasma creatinine comes from breakdown of what?
+A: Creatine phosphate in skeletal muscle
+
+Q: Glucose in the urine suggests what?
+A: Diabetes mellitus
+
+Q: Albumin in the urine suggests what?
+A: Increased filtration-membrane permeability
+
+Q: Path of urine out of the body?
+A: Ureters, bladder, urethra
+
+Q: Micturition is controlled by centers in what?
+A: The spinal cord
+
+Q: What crystallizes out of urine to form kidney stones?
+A: Solutes (commonly calcium)
+
+Q: In which meiotic division do homologous pairs separate?
+A: Meiosis I (anaphase I)
+
+Q: In which meiotic division do sister chromatids separate?
+A: Meiosis II
+
+Q: In which division does crossing-over occur?
+A: Meiosis I (prophase I)
+
+Q: Which cells produce testosterone?
+A: Leydig cells
+
+Q: Which cells form the blood-testis barrier and secrete inhibin?
+A: Sertoli cells
+
+Q: Erection is driven by which division of the autonomic nervous system?
+A: Parasympathetic
+
+Q: Ejaculation is driven by which division of the autonomic nervous system?
+A: Sympathetic
+
+Q: Wolffian (mesonephric) ducts develop into what?
+A: Vas deferens (male)
+
+Q: Mullerian (paramesonephric) ducts develop into what?
+A: Fallopian tubes (female)
+
+Q: How many functional gametes does one cell produce in female meiosis?
+A: One
+
+Q: How many gametes does one cell produce in male meiosis?
+A: Four
+
+Q: In females, when does meiosis II complete?
+A: After fertilization
+
+Q: Chromosome number in somatic cells?
+A: 46 (2n)
+
+Q: Chromosome number in gametes?
+A: 23 (n)
+
+Q: Structure formed by paired homologs in prophase I?
+A: Tetrad
+
+Q: Function of the scrotum?
+A: Protect and temperature-regulate the testes
+
+Q: Where does spermatogenesis occur?
+A: Seminiferous tubules
+
+Q: Which cell becomes the primary spermatocyte?
+A: Type B spermatogonium
+
+Q: Meiosis I of a primary spermatocyte yields what?
+A: Two secondary spermatocytes
+
+Q: What is spermiogenesis?
+A: Spermatids maturing into sperm, gaining an acrosome and tail
+
+Q: Which sperm structure penetrates the ovum?
+A: Acrosome
+
+Q: What does the sperm midpiece contain?
+A: Mitochondria
+
+Q: Where do sperm mature?
+A: Epididymis
+
+Q: Which gland contributes 60-70% of semen volume?
+A: Seminal vesicles
+
+Q: Which sugar is in seminal vesicle fluid?
+A: Fructose
+
+Q: Which gland contributes about 25% of semen and is slightly acidic?
+A: Prostate
+
+Q: Which gland secretes alkaline pre-ejaculate to neutralize the urethra?
+A: Bulbourethral (Cowper's) gland
+
+Q: Which erectile body surrounds the urethra?
+A: Corpus spongiosum
+
+Q: Which signaling molecule causes erection?
+A: Nitric oxide (NO)
+
+Q: How does Viagra work?
+A: Inhibits phosphodiesterase, sustaining cGMP
+
+Q: ABP (androgen-binding protein) is secreted by which cells?
+A: Sertoli cells
+
+Q: Four hormones the ovaries secrete?
+A: Estrogens, progesterone, inhibin, relaxin
+
+Q: Primary oocytes arrest in which phase until puberty?
+A: Prophase I
+
+Q: The secondary oocyte arrests in which phase until fertilization?
+A: Metaphase II
+
+Q: Three regions of the uterus?
+A: Fundus, body, cervix
+
+Q: Uterine wall layers from outer to inner?
+A: Perimetrium, myometrium, endometrium
+
+Q: Five events of the first week of development?
+A: Fertilization, cleavage, morula, blastocyst, implantation
+
+Q: Why is the vagina acidic?
+A: Antimicrobial defense
+
+Q: Milk-secreting structures of the mammary gland?
+A: Alveoli
+
+Q: Before ovulation, high estrogen exerts what kind of feedback?
+A: Positive
+
+Q: Moderate estrogen exerts what kind of feedback?
+A: Negative (inhibits)
+
+Q: What does hCG rescue in early pregnancy?
+A: The corpus luteum
+
+Q: Which gene on the Y chromosome triggers male development?
+A: SRY
+
+Q: Which hormone determines external genitalia?
+A: Dihydrotestosterone (DHT)
+
+Q: The sperm's path through the egg coverings?
+A: Corona radiata, zona pellucida, plasma membrane
+
+Q: What hardens to block polyspermy?
+A: The zona pellucida
+
+Q: Which prenatal test uses a maternal blood draw?
+A: NIPT (non-invasive prenatal testing)

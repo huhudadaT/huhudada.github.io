@@ -1,0 +1,52 @@
+Name: BIOSC 1250 Ch08 Cranial Nerves
+Description: The twelve cranial nerves, their names, modalities, and functions.
+Class: BIOSC 1250
+Semester: Summer 2026
+
+Q: Cranial nerve I
+A: Olfactory
+Sensory. Carries smell from the nasal epithelium.
+
+Q: Cranial nerve II
+A: Optic
+Sensory. Carries vision from the retina.
+
+Q: Cranial nerve III
+A: Oculomotor
+Motor. Moves the eye, constricts the pupil, adjusts lens shape, and raises the eyelid.
+
+Q: Cranial nerve IV
+A: Trochlear
+Motor. Moves the eye via the superior oblique muscle (down and outward).
+
+Q: Cranial nerve V
+A: Trigeminal
+Mixed. Sensation from the face via three branches, and controls chewing.
+
+Q: Cranial nerve VI
+A: Abducens
+Motor. Moves the eye laterally via the lateral rectus muscle.
+
+Q: Cranial nerve VII
+A: Facial
+Mixed. Facial expression, taste on the anterior tongue, salivation, and tearing.
+
+Q: Cranial nerve VIII
+A: Vestibulocochlear
+Sensory. Hearing and balance.
+
+Q: Cranial nerve IX
+A: Glossopharyngeal
+Mixed. Taste on the posterior tongue, swallowing, and salivation.
+
+Q: Cranial nerve X
+A: Vagus
+Mixed. Parasympathetic control of the viscera, plus swallowing and speech.
+
+Q: Cranial nerve XI
+A: Accessory
+Motor. Controls the neck and shoulder muscles.
+
+Q: Cranial nerve XII
+A: Hypoglossal
+Motor. Controls tongue movement.

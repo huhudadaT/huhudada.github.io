@@ -1,0 +1,1387 @@
+Name: BIOSC 1250 Exam 2 Muscle, Heart, Vessels, Blood
+Description: Muscle tissue, the heart, blood vessels, and blood (Ch. 11, 14-16).
+Class: BIOSC 1250
+Semester: Summer 2026
+
+Q: What are the three types of muscle tissue?
+A: Skeletal, cardiac, and smooth.
+
+Q: Which muscle types are striated?
+A: Skeletal and cardiac.
+
+Q: Which muscle type is non-striated?
+A: Smooth.
+
+Q: Which muscle type is voluntary?
+A: Skeletal.
+
+Q: Which muscle types are involuntary?
+A: Cardiac and smooth.
+
+Q: Is skeletal muscle autorhythmic?
+A: No.
+
+Q: Is cardiac muscle autorhythmic?
+A: Yes.
+
+Q: What does skeletal muscle attach to?
+A: Bone.
+
+Q: How many nuclei does a skeletal muscle fiber have?
+A: Multiple.
+
+Q: Where is cardiac muscle found?
+A: The heart.
+
+Q: Where is smooth muscle found?
+A: Hollow organs.
+
+Q: In single-unit smooth muscle, how do the fibers contract?
+A: All at the same time.
+
+Q: What are the four functions of muscle?
+A: Body movement, stabilizing position, storing/moving substances, and generating heat.
+
+Q: What do postural muscles do while awake?
+A: Constantly contract.
+
+Q: What structures act like valves to store contents in the body?
+A: Sphincters.
+
+Q: Muscle property: ability to be controlled by neurons?
+A: Electrical excitability.
+
+Q: Muscle property: ability to contract and generate tension?
+A: Contractility.
+
+Q: Muscle property: ability to stretch without damage?
+A: Extensibility.
+
+Q: Muscle property: ability to return to original shape?
+A: Elasticity.
+
+Q: Order of skeletal muscle organization from cell to whole muscle?
+A: Muscle fiber → fascicle → muscle.
+
+Q: What is a bundle of muscle fibers called?
+A: A fascicle.
+
+Q: What connects skeletal muscle to bone?
+A: A tendon.
+
+Q: Another name for a muscle fiber?
+A: A muscle cell.
+
+Q: Muscle fibers form in the embryo by fusion of what?
+A: Myoblasts.
+
+Q: A large cell with many nuclei is called a what?
+A: A syncytium.
+
+Q: When is muscle fiber number set?
+A: Before birth.
+
+Q: What are the leftover myoblasts with limited repair function?
+A: Satellite cells.
+
+Q: Growth of a muscle cell to a larger size is called?
+A: Hypertrophy.
+
+Q: Plasma membrane of a muscle fiber?
+A: Sarcolemma.
+
+Q: Cytoplasm of a muscle fiber?
+A: Sarcoplasm.
+
+Q: What carries the action potential deep into the muscle fiber?
+A: Transverse tubules (T-tubules).
+
+Q: What stores Ca2+ inside the muscle fiber?
+A: Sarcoplasmic reticulum (SR).
+
+Q: The enlarged ends of the SR are called?
+A: Terminal cisternae.
+
+Q: What makes up a triad?
+A: One T-tubule flanked by two terminal cisternae.
+
+Q: Contractile part of the fiber made of thin and thick filaments?
+A: Myofibrils.
+
+Q: What repeating units make up a myofibril?
+A: Sarcomeres.
+
+Q: What structure sits in the center of the sarcomere?
+A: The M-line.
+
+Q: What passes through the M-line?
+A: Thick filaments.
+
+Q: What separates adjacent sarcomeres?
+A: Z-discs.
+
+Q: The A-band corresponds to the length of which filament?
+A: The thick filaments (their full length).
+
+Q: Which band contains only thin filaments (no overlap)?
+A: The I-band.
+
+Q: Which zone contains only thick filaments (no overlap)?
+A: The H-zone.
+
+Q: The thin filament contractile protein?
+A: Actin.
+
+Q: The thick filament contractile protein?
+A: Myosin.
+
+Q: What binding site does actin contain?
+A: The myosin-binding site.
+
+Q: What two binding sites does myosin have?
+A: An actin-binding site and an ATP-binding site.
+
+Q: Regulatory protein that covers the myosin-binding site on actin?
+A: Tropomyosin.
+
+Q: Regulatory protein that pulls tropomyosin off when it binds Ca2+?
+A: Troponin.
+
+Q: What ion does troponin bind to trigger contraction?
+A: Ca2+.
+
+Q: Structural protein responsible for muscle elasticity?
+A: Titin.
+
+Q: Titin spans from what to what?
+A: From the Z-disc to the M-line.
+
+Q: Which structural protein is NOT found in the myofilaments?
+A: Titin.
+
+Q: Structural protein in the Z-disc that binds actin to titin?
+A: α-actinin.
+
+Q: Structural protein in the M-line that binds titin and connects myosin?
+A: Myomesin.
+
+Q: Structural protein that links actin to other structures?
+A: Dystrophin.
+
+Q: During contraction, what happens to the I-band and H-zone?
+A: They shrink and can disappear.
+
+Q: During contraction, does filament length change?
+A: No.
+
+Q: During contraction, everything is pulled toward what?
+A: The M-line.
+
+Q: What happens to the sarcomere during contraction?
+A: It shortens.
+
+Q: Step 1 of the contraction cycle?
+A: ATP hydrolysis (myosin head is energized).
+
+Q: In step 1, myosin hydrolyzes ATP into what?
+A: ADP.
+
+Q: Step 2 of the contraction cycle?
+A: Myosin binds actin, forming a crossbridge.
+
+Q: The bond between the myosin head and actin is called?
+A: A crossbridge.
+
+Q: Step 3 of the contraction cycle?
+A: The power stroke.
+
+Q: What happens during the power stroke?
+A: The crossbridge pivots, pulling the thin filament toward the center.
+
+Q: Step 4 of the contraction cycle?
+A: Detachment of myosin from actin.
+
+Q: What must bind for myosin to detach from actin?
+A: A new ATP.
+
+Q: What is the neuromuscular junction?
+A: The synapse between a motor neuron and a skeletal muscle fiber.
+
+Q: What neurotransmitter is released at the neuromuscular junction?
+A: Acetylcholine.
+
+Q: What triggers acetylcholine release at the axon terminal?
+A: Ca2+ entry.
+
+Q: Acetylcholine binding to the postsynaptic receptor causes what?
+A: An end plate potential.
+
+Q: What enzyme breaks down acetylcholine?
+A: Acetylcholinesterase.
+
+Q: Resting membrane potential of a muscle fiber?
+A: -90 mV.
+
+Q: What kind of potential is the end plate potential?
+A: A graded potential.
+
+Q: What ion depolarizes the muscle fiber?
+A: Na+.
+
+Q: What ion repolarizes the muscle fiber?
+A: K+.
+
+Q: Voltage range of a skeletal muscle action potential?
+A: -90 to +30 mV.
+
+Q: What does excitation-contraction coupling link?
+A: The muscle action potential to muscle contraction.
+
+Q: Where does excitation-contraction coupling occur?
+A: At the triad.
+
+Q: The voltage-sensor Ca2+ channel in the T-tubules?
+A: The dihydropyridine (DHP / L-type) receptor.
+
+Q: The Ca2+ release channel in the SR terminal cisternae?
+A: The ryanodine receptor.
+
+Q: At rest, what blocks the ryanodine release channel?
+A: The DHP receptor.
+
+Q: With an action potential, what does the DHP receptor do?
+A: Changes shape and frees the release channel.
+
+Q: After release, Ca2+ binds to what protein?
+A: Troponin.
+
+Q: Binding of Ca2+ to troponin exposes what?
+A: The myosin-binding site on actin.
+
+Q: What restores Ca2+ levels by pumping it back into the SR?
+A: The Ca2+ ATPase pump.
+
+Q: What is rigor mortis?
+A: Sustained crossbridges after death due to lack of ATP.
+
+Q: Why can't crossbridges detach in rigor mortis?
+A: No ATP is being synthesized.
+
+Q: What eventually breaks down the crossbridges in rigor mortis?
+A: Lysosomes.
+
+Q: What is the first and fastest ATP source in skeletal muscle?
+A: Creatine phosphate.
+
+Q: What enzyme transfers phosphate from creatine phosphate to ADP?
+A: Creatine kinase.
+
+Q: What pathway produces ATP when oxygen is low?
+A: Anaerobic glycolysis.
+
+Q: In anaerobic glycolysis, glucose becomes pyruvic acid, then what?
+A: Lactic acid.
+
+Q: What molecule acts as the oxygen reservoir in muscle?
+A: Myoglobin.
+
+Q: What is the slowest ATP-producing pathway?
+A: Aerobic respiration.
+
+Q: Three stages of aerobic respiration?
+A: Glycolysis, the Krebs cycle, and the electron transport chain.
+
+Q: What is muscle fatigue?
+A: The inability to maintain contraction over time.
+
+Q: Type of fatigue where the CNS sends a protective STOP signal?
+A: Central fatigue.
+
+Q: Four causes of peripheral muscle fatigue?
+A: Insufficient ATP, Ca2+ depletion, creatine depletion, and lactic acid buildup.
+
+Q: What is oxygen debt?
+A: Increased oxygen consumption after exercise to resupply the body.
+
+Q: Where is lactic acid converted back to glycogen?
+A: The liver.
+
+Q: What is a motor unit?
+A: One motor neuron and all the muscle fibers it innervates.
+
+Q: How many motor neurons innervate a single muscle fiber?
+A: One.
+
+Q: Do all fibers within a motor unit contract together?
+A: Yes.
+
+Q: What is a muscle twitch?
+A: A brief contraction from a single action potential.
+
+Q: The three phases of a muscle twitch?
+A: Latent, contraction, and relaxation.
+
+Q: Twitch phase where the signal fires and EC coupling occurs?
+A: The latent period.
+
+Q: Twitch phase where Ca2+ binds troponin and crossbridges form?
+A: The contraction period.
+
+Q: Twitch phase where Ca2+ is pumped back and tension falls?
+A: The relaxation period.
+
+Q: What is graded contraction?
+A: Muscle tension controlled by many factors for smooth control.
+
+Q: Four factors that determine muscle tension?
+A: Stimulus frequency, fiber length, fiber diameter, and number/size of motor units.
+
+Q: What is muscle tone?
+A: A small, constant, involuntary contraction that maintains posture.
+
+Q: Does muscle tone cause movement?
+A: No.
+
+Q: Muscle attachment site at the stable position?
+A: The origin.
+
+Q: Muscle attachment site at the movable position?
+A: The insertion.
+
+Q: During movement, the insertion pulls toward what?
+A: The origin.
+
+Q: Muscle that produces a motion?
+A: The agonist.
+
+Q: Muscle that produces the opposite motion at the same joint?
+A: The antagonist.
+
+Q: Contraction where tension is constant and length changes?
+A: Isotonic.
+
+Q: Contraction where length is constant and tension changes?
+A: Isometric.
+
+Q: Which contraction type produces movement?
+A: Isotonic.
+
+Q: Which contraction type holds a weight in place?
+A: Isometric.
+
+Q: The three types of skeletal muscle fiber?
+A: Slow oxidative, fast oxidative-glycolytic, and fast glycolytic.
+
+Q: Which fiber type has the highest fatigue resistance?
+A: Slow oxidative.
+
+Q: Which fiber type has the lowest fatigue resistance?
+A: Fast glycolytic.
+
+Q: Which fiber type has the largest diameter?
+A: Fast glycolytic.
+
+Q: Which fiber type has the smallest diameter?
+A: Slow oxidative.
+
+Q: Which fiber type has the highest myoglobin?
+A: Slow oxidative.
+
+Q: Do fast glycolytic fibers rely on oxygen?
+A: No.
+
+Q: What color are fast glycolytic fibers?
+A: White.
+
+Q: Why are fast glycolytic fibers white?
+A: They lack myoglobin.
+
+Q: What structures connect cardiac muscle cells?
+A: Intercalated discs.
+
+Q: What allows electrical coupling within intercalated discs?
+A: Gap junctions.
+
+Q: What type of respiration does cardiac muscle rely on exclusively?
+A: Aerobic respiration.
+
+Q: Why does cardiac muscle contain many mitochondria?
+A: Because of its high oxygen demand.
+
+Q: Cardiac muscle acts as a functional what?
+A: A syncytium.
+
+Q: Cardiac muscle's ability to generate its own action potential?
+A: Autorhythmicity.
+
+Q: In cardiac EC coupling, Ca2+ first enters through which receptor?
+A: The L-type DHP receptor.
+
+Q: In cardiac muscle, what does extracellular Ca2+ open?
+A: The ryanodine receptor release channel.
+
+Q: Is the cardiac muscle action potential long or short?
+A: Long and slow.
+
+Q: Shape of smooth muscle cells?
+A: Spindle shaped.
+
+Q: What replaces troponin in smooth muscle?
+A: Calmodulin.
+
+Q: Is smooth muscle contraction faster or slower than striated muscle?
+A: Slower.
+
+Q: What enzyme phosphorylates myosin in smooth muscle?
+A: Myosin light chain kinase.
+
+Q: Where does the Ca2+ for smooth muscle contraction come from?
+A: The extracellular space.
+
+Q: Does smooth muscle need T-tubules?
+A: No.
+
+Q: What nervous system regulates smooth muscle?
+A: The autonomic nervous system.
+
+Q: What releases neurotransmitter in smooth muscle (no axon terminal)?
+A: Varicosities.
+
+Q: Where are receptors located on a smooth muscle cell?
+A: Over the entire cell surface.
+
+Q: Smooth muscle form where fibers contract as one via gap junctions?
+A: Single-unit.
+
+Q: Smooth muscle form where fibers act independently?
+A: Multi-unit.
+
+Q: Resting potential of single-unit autorhythmic smooth muscle?
+A: -50 mV.
+
+Q: Autorhythmic smooth muscle potential driven by K+ out, then Ca2+ in?
+A: The pacemaker potential.
+
+Q: Autorhythmic potential that cycles but doesn't always reach an AP?
+A: The slow-wave potential.
+
+Q: What drives slow-wave potentials?
+A: Na+/K+ pump activity.
+
+Q: How many channel types are involved in smooth muscle EC coupling?
+A: Six.
+
+Q: What do all smooth muscle EC-coupling channels ultimately cause?
+A: Ca2+ release from the SR.
+
+Q: Increase in cell size and myofibril number?
+A: Hypertrophy.
+
+Q: Increase in the number of cells through cell division?
+A: Hyperplasia.
+
+Q: Which muscle type can undergo limited hyperplasia?
+A: Smooth muscle.
+
+Q: The three components of the cardiovascular system?
+A: The pump (heart), the tubes (vessels), and the fluid (blood).
+
+Q: Circuit: right heart → lungs → left heart?
+A: Pulmonary circulation.
+
+Q: Circuit: left heart → organs → right heart?
+A: Systemic circulation.
+
+Q: Order of vessels from artery to vein?
+A: Arteries → arterioles → capillaries → venules → veins.
+
+Q: What is parallel flow?
+A: Vessels run in parallel and are regulated independently.
+
+Q: The outer covering of the heart?
+A: The pericardium.
+
+Q: Function of the pericardium?
+A: Protects and anchors the heart.
+
+Q: The two walls of the pericardium?
+A: Visceral and parietal.
+
+Q: How many chambers does the heart have?
+A: Four.
+
+Q: The two upper heart chambers?
+A: The atria.
+
+Q: The two lower heart chambers?
+A: The ventricles.
+
+Q: Which side of the heart handles pulmonary circulation?
+A: The right side.
+
+Q: Which side of the heart handles systemic circulation?
+A: The left side.
+
+Q: What do the atria do?
+A: Receive blood from the great vessels.
+
+Q: What do the ventricles do?
+A: Pump blood out to the great vessels.
+
+Q: Which ventricle is thicker?
+A: The left ventricle.
+
+Q: What do heart valves ensure?
+A: One-way blood flow.
+
+Q: Valves between the atria and ventricles?
+A: The AV valves.
+
+Q: What is another name for the left AV valve?
+A: The bicuspid valve.
+
+Q: What is another name for the right AV valve?
+A: The tricuspid valve.
+
+Q: The bicuspid valve is on which side of the heart?
+A: The left side.
+
+Q: The tricuspid valve is on which side of the heart?
+A: The right side.
+
+Q: Valves between the ventricles and major arteries?
+A: The semilunar valves.
+
+Q: The semilunar valve on the left side?
+A: The aortic valve.
+
+Q: The semilunar valve on the right side?
+A: The pulmonary valve.
+
+Q: What supports the heart valves?
+A: The fibrous skeleton.
+
+Q: How many rings make up the fibrous skeleton?
+A: Four.
+
+Q: What supplies blood to the heart itself?
+A: The coronary arteries.
+
+Q: Path of blood through the heart, starting at the right atrium?
+A: RA → RV → pulmonary vessels → LA → LV → systemic vessels → vena cava.
+
+Q: The two types of cardiac muscle fibers?
+A: Pacemaker and contractile fibers.
+
+Q: What does the cardiac conduction system do?
+A: Initiates the action potential and coordinates contraction.
+
+Q: Where does the conduction system start?
+A: In the superior wall of the right atrium.
+
+Q: Order of the cardiac conduction system?
+A: SA node → AV node → AV bundle → bundle branches → Purkinje fibers.
+
+Q: What does the AV bundle connect?
+A: The atria to the ventricles.
+
+Q: First node of the cardiac conduction system?
+A: The SA node.
+
+Q: Last component of the cardiac conduction system?
+A: The Purkinje fibers.
+
+Q: Threshold range of the pacemaker potential?
+A: -60 mV to -40 mV.
+
+Q: Ion sequence during the pacemaker potential?
+A: K+ leaves, then Na+ enters, then Ca2+ enters.
+
+Q: What sodium channel is involved in the cardiac pacemaker potential?
+A: The F-type sodium channel.
+
+Q: Do contractile cells depolarize on their own?
+A: No.
+
+Q: How many phases are in the contractile cell action potential?
+A: Four.
+
+Q: Contractile AP phase driven by Na+ entering?
+A: Depolarization.
+
+Q: Contractile AP phase driven by K+ exiting (early)?
+A: Initial repolarization.
+
+Q: Contractile AP phase where Ca2+ entry balances K+ exit?
+A: The plateau.
+
+Q: Contractile AP phase where Ca2+ closes and K+ exits?
+A: Final repolarization.
+
+Q: What ion causes the plateau in the cardiac action potential?
+A: Ca2+.
+
+Q: What causes the long refractory period in cardiac muscle?
+A: The plateau.
+
+Q: Does tetanic contraction occur in cardiac muscle?
+A: No.
+
+Q: Why can't the heart undergo tetanic contraction?
+A: Because of the long refractory period.
+
+Q: What kind of respiration is the heart entirely dependent on?
+A: Aerobic respiration.
+
+Q: What does an electrocardiogram record?
+A: Cardiac muscle action potentials.
+
+Q: What does the P-wave represent?
+A: Atrial depolarization.
+
+Q: What does the P-R interval represent?
+A: AV node delay.
+
+Q: What does the QRS complex represent?
+A: Ventricular depolarization.
+
+Q: What does the S-T segment represent?
+A: The ventricles staying depolarized.
+
+Q: What does the T-wave represent?
+A: Ventricular repolarization.
+
+Q: How many phases are in the cardiac cycle?
+A: Five.
+
+Q: Cardiac cycle phase 1?
+A: Passive ventricular filling.
+
+Q: Cardiac cycle phase 2?
+A: Atrial contraction.
+
+Q: Cardiac cycle phase 3?
+A: Isovolumetric ventricular contraction.
+
+Q: Cardiac cycle phase 4?
+A: Ventricular ejection.
+
+Q: Cardiac cycle phase 5?
+A: Isovolumetric ventricular relaxation.
+
+Q: During passive ventricular filling, which valves are open?
+A: The AV valves (semilunar closed).
+
+Q: During isovolumetric ventricular contraction, which valves are open?
+A: None; all valves are closed.
+
+Q: During ventricular ejection, which valves are open?
+A: The semilunar valves (AV closed).
+
+Q: During isovolumetric ventricular relaxation, which valves are open?
+A: None; all valves are closed.
+
+Q: What causes the first heart sound (S1)?
+A: Closure of the AV valves.
+
+Q: What causes the second heart sound (S2)?
+A: Closure of the semilunar valves.
+
+Q: Which ECG wave coincides with the second heart sound (S2)?
+A: The T-wave.
+
+Q: Which heart sound is louder and longer?
+A: S1.
+
+Q: Which heart sound is shorter and quieter?
+A: S2.
+
+Q: What is cardiac output?
+A: The amount of blood ejected per minute.
+
+Q: Equation for cardiac output?
+A: CO = stroke volume × heart rate.
+
+Q: The three factors of stroke volume?
+A: Preload, contractility, and afterload.
+
+Q: What is preload?
+A: The stretch on the heart from blood filling it.
+
+Q: Law stating that more filling before contraction gives more force?
+A: The Frank-Starling law.
+
+Q: What is contractility?
+A: The force of contraction.
+
+Q: Drugs that shift contractility?
+A: Inotropic agents.
+
+Q: How does a positive inotropic agent affect contraction and Ca2+?
+A: It increases both.
+
+Q: How does a negative inotropic agent work?
+A: It decreases contraction by raising K+ or blocking Ca2+.
+
+Q: What is afterload?
+A: The pressure that must be overcome before the valve can open.
+
+Q: High afterload means how much blood is pumped?
+A: Less.
+
+Q: What controls heart rate?
+A: The autonomic nervous system.
+
+Q: Which node do sympathetic and parasympathetic regulation act on?
+A: The SA node.
+
+Q: What is an arrhythmia?
+A: A deviation from normal heart rhythm.
+
+Q: What is a STEMI?
+A: A complete blockage of a coronary artery.
+
+Q: What drug limits clot growth during a STEMI?
+A: Aspirin.
+
+Q: What drug dilates coronary arteries and veins during a STEMI?
+A: Nitroglycerin.
+
+Q: What drug is used for cardiac arrest?
+A: Epinephrine.
+
+Q: What does epinephrine do to blood vessels?
+A: Causes vasoconstriction, raising blood pressure.
+
+Q: The five types of blood vessels?
+A: Arteries, arterioles, capillaries, venules, and veins.
+
+Q: The innermost vessel layer?
+A: The intima.
+
+Q: What lines the intima?
+A: Endothelium (a thin layer of epithelial cells).
+
+Q: The middle vessel layer?
+A: The media.
+
+Q: What tissue makes up the media?
+A: Smooth muscle.
+
+Q: What does the media regulate?
+A: Vessel diameter.
+
+Q: The outermost vessel layer?
+A: The externa.
+
+Q: What tissue makes up the externa?
+A: Connective tissue.
+
+Q: Which is more flexible, veins or arteries?
+A: Veins.
+
+Q: Which withstand more pressure, veins or arteries?
+A: Arteries.
+
+Q: The largest arteries, which act as a pressure reservoir?
+A: Elastic arteries.
+
+Q: What type of artery is the aorta?
+A: An elastic artery.
+
+Q: What is the main resistance vessel?
+A: The arterioles.
+
+Q: How do arterioles change resistance?
+A: By changing their diameter.
+
+Q: What does vasoconstriction do to resistance and blood pressure?
+A: Increases both.
+
+Q: What does vasodilation do to resistance and blood pressure?
+A: Decreases both.
+
+Q: Function of capillaries?
+A: Nutrient and waste exchange.
+
+Q: How thick is a capillary wall?
+A: One epithelial cell layer.
+
+Q: Groups of capillaries within a tissue are called?
+A: Capillary beds.
+
+Q: What directly channels flow through a capillary bed?
+A: The metarteriole.
+
+Q: Smooth muscle rings that act as valves at capillaries?
+A: Precapillary sphincters.
+
+Q: Contraction and relaxation of precapillary sphincters?
+A: Vasomotion.
+
+Q: The three types of capillaries?
+A: Continuous, fenestrated, and sinusoids.
+
+Q: The most common and abundant capillary type?
+A: Continuous.
+
+Q: Capillary type with pores (fenestrations)?
+A: Fenestrated.
+
+Q: Where are fenestrated capillaries found?
+A: The kidney, small intestine, and endocrine organs.
+
+Q: Capillary type with the highest permeability?
+A: Sinusoids.
+
+Q: Where are sinusoids found?
+A: Bone marrow, liver, and spleen.
+
+Q: What takes blood from the capillaries?
+A: Venules.
+
+Q: What carries blood back to the heart?
+A: Veins.
+
+Q: How does a vein's wall compare to an artery's?
+A: It is thinner.
+
+Q: What do mid-size veins contain to prevent backflow?
+A: Valves.
+
+Q: Two pumps that aid venous return?
+A: The skeletal muscle pump and the respiratory pump.
+
+Q: What causes varicose veins?
+A: Faulty vein valves that let blood pool.
+
+Q: Besides faulty valves, what contributes to varicose veins?
+A: Decreased skeletal muscle pump function.
+
+Q: Where is most of the body's blood held (reservoir)?
+A: Veins and venules (64%).
+
+Q: Which structures hold the least blood?
+A: The heart and capillaries.
+
+Q: The three mechanisms of capillary exchange?
+A: Diffusion, transcytosis, and bulk flow.
+
+Q: How do proteins and large hormones cross the capillary wall?
+A: By transcytosis (vesicle transport).
+
+Q: What is bulk flow?
+A: Passive, pressure-driven fluid movement.
+
+Q: Bulk flow out of capillaries into interstitial fluid?
+A: Filtration.
+
+Q: Bulk flow from interstitial fluid into capillaries?
+A: Absorption.
+
+Q: What do the Starling forces determine?
+A: The direction of fluid flow (the net pressure).
+
+Q: How many pressures make up the Starling forces?
+A: Four.
+
+Q: Which way does capillary hydrostatic pressure push fluid?
+A: Out of the capillary.
+
+Q: Which way does interstitial fluid hydrostatic pressure push fluid?
+A: Into the capillary.
+
+Q: Which way does plasma colloid osmotic pressure pull fluid?
+A: Into the capillary.
+
+Q: Which way does interstitial fluid colloid osmotic pressure pull fluid?
+A: Out of the capillary.
+
+Q: Formula for net pressure across a capillary?
+A: Net pressure = (sum out) - (sum in).
+
+Q: The four functions of the lymphatic system?
+A: Drain excess fluid, return plasma protein, carry out immune response, and transport dietary protein.
+
+Q: What is the fluid inside lymphatic vessels called?
+A: Lymph.
+
+Q: What is unusual about the end of a lymphatic capillary?
+A: One end is closed (a blind end).
+
+Q: Are lymphatic capillaries more or less permeable than blood capillaries?
+A: More permeable.
+
+Q: What is hemodynamics?
+A: The study of how blood flows.
+
+Q: The blood flow equation?
+A: F = ΔP / R.
+
+Q: In F = ΔP/R, what is ΔP?
+A: The pressure gradient.
+
+Q: In F = ΔP/R, what is R?
+A: Peripheral resistance to blood flow.
+
+Q: What electrical equation is the blood flow equation similar to?
+A: Ohm's law, I = V/R.
+
+Q: The peripheral resistance equation?
+A: R = ηL / r⁴.
+
+Q: In R = ηL/r⁴, what does η represent?
+A: Blood viscosity.
+
+Q: In R = ηL/r⁴, what does L represent?
+A: Vessel length.
+
+Q: In R = ηL/r⁴, what does r represent?
+A: Vessel radius.
+
+Q: Which variable has the greatest effect on resistance?
+A: Radius (it is raised to the fourth power).
+
+Q: Blood flow that moves in smooth layers?
+A: Laminar flow.
+
+Q: In laminar flow, which layer moves fastest?
+A: The innermost layer.
+
+Q: In laminar flow, which layer moves slowest?
+A: The outermost layer.
+
+Q: Abnormal flow with greater resistance?
+A: Turbulent flow.
+
+Q: Sounds heard when measuring blood pressure?
+A: Korotkoff sounds.
+
+Q: Instrument used to measure blood pressure?
+A: A sphygmomanometer.
+
+Q: The first Korotkoff sound indicates what pressure?
+A: Systolic pressure.
+
+Q: The second Korotkoff sound indicates what pressure?
+A: Diastolic pressure.
+
+Q: Highest blood pressure, measured during ventricular systole?
+A: Systolic pressure.
+
+Q: Systolic pressure is associated with which ventricle?
+A: The left ventricle.
+
+Q: Lowest blood pressure, measured during diastole?
+A: Diastolic pressure.
+
+Q: Diastolic pressure is associated with which ventricle?
+A: The right ventricle.
+
+Q: Formula for pulse pressure?
+A: PP = SP - DP.
+
+Q: What does mean arterial pressure represent?
+A: The driving pressure of the cardiovascular system.
+
+Q: MAP formula using DP and PP?
+A: MAP = DP + (1/3)(PP).
+
+Q: MAP formula using CO and TPR?
+A: MAP = CO × TPR.
+
+Q: What does TPR stand for?
+A: Total peripheral resistance.
+
+Q: The ability of vessels to stretch?
+A: Vascular compliance.
+
+Q: Formula for compliance?
+A: C = ΔV / ΔP.
+
+Q: Which vessels have high compliance?
+A: Veins.
+
+Q: Which vessels have low compliance?
+A: Arteries.
+
+Q: Velocity of blood flow is inversely proportional to what?
+A: Total cross-sectional area.
+
+Q: In which vessels is blood flow the slowest?
+A: Capillaries.
+
+Q: Why is flow slowest in the capillaries?
+A: They have the largest total cross-sectional area.
+
+Q: In a single vessel, what happens to velocity as diameter increases?
+A: Velocity increases.
+
+Q: What brings blood back to the heart?
+A: Venous return.
+
+Q: What drives venous return?
+A: The venous pressure gradient.
+
+Q: Partial contraction of arteriolar smooth muscle?
+A: Vascular tone.
+
+Q: Two ways vascular tone can be changed?
+A: Intrinsic and extrinsic factors.
+
+Q: Where do intrinsic factors act?
+A: Locally within the organ.
+
+Q: Local chemicals that change vessel diameter?
+A: Local mediators.
+
+Q: What is released by metabolically active tissue to dilate vessels?
+A: Vasodilating chemicals such as adenosine.
+
+Q: Vasoconstricting chemicals released to form a blood clot?
+A: Thromboxane A2 and serotonin.
+
+Q: Increased blood flow due to increased metabolism?
+A: Hyperemia.
+
+Q: What do extrinsic factors include?
+A: Nerves and hormones.
+
+Q: Why should aspirin be stopped before surgery?
+A: It inhibits platelets, causing poor clotting.
+
+Q: Pressure sensors that help regulate MAP?
+A: Baroreceptors.
+
+Q: Sensors that monitor chemicals dissolved in the blood?
+A: Chemoreceptors.
+
+Q: The four hormone systems that regulate MAP?
+A: RAAS, epinephrine/norepinephrine, ADH, and ANP.
+
+Q: When is ADH released?
+A: When the body needs to save water.
+
+Q: What effect does ADH have on blood vessels?
+A: Vasoconstriction.
+
+Q: When is ANP released?
+A: When you drink too much water.
+
+Q: What effect does ANP have on blood vessels?
+A: Vasodilation.
+
+Q: What is shock?
+A: Failure to deliver enough O2 and nutrients for metabolic needs.
+
+Q: The four types of shock?
+A: Hypovolemic, cardiogenic, vascular, and obstructive.
+
+Q: Shock from a decrease in blood volume?
+A: Hypovolemic shock.
+
+Q: Shock from poor heart function?
+A: Cardiogenic shock.
+
+Q: Shock from inappropriate vasodilation?
+A: Vascular shock.
+
+Q: Shock from obstruction or blockage of flow?
+A: Obstructive shock.
+
+Q: The three functions of blood?
+A: Transportation, regulation, and protection.
+
+Q: The two main components of blood?
+A: Plasma and cellular elements.
+
+Q: After centrifugation, the three layers from top to bottom?
+A: Plasma, buffy coat, and red blood cells.
+
+Q: What percentage of plasma is water?
+A: 92%.
+
+Q: What percentage of plasma is protein?
+A: 7%.
+
+Q: What do plasma proteins help maintain?
+A: Colloid osmotic pressure.
+
+Q: The most abundant plasma protein?
+A: Albumin.
+
+Q: What does albumin transport?
+A: Steroids and fatty acids.
+
+Q: The second most abundant plasma protein?
+A: Globulins.
+
+Q: What do globulins transport and function as?
+A: Iron, lipids, and vitamins; and antibodies.
+
+Q: Plasma without clotting proteins is called?
+A: Serum.
+
+Q: The three cellular elements of blood?
+A: Erythrocytes, leukocytes, and platelets.
+
+Q: Another name for erythrocytes?
+A: Red blood cells.
+
+Q: What protein do red blood cells contain?
+A: Hemoglobin.
+
+Q: Structure of hemoglobin?
+A: Two alpha and two beta subunits, each with a heme group.
+
+Q: How many O2 molecules can one hemoglobin carry?
+A: Four.
+
+Q: What percentage of oxygen rides on hemoglobin?
+A: 99%.
+
+Q: What percentage of CO2 rides on hemoglobin?
+A: 23%.
+
+Q: What percentage of CO2 dissolves in the blood?
+A: 77%.
+
+Q: Do red blood cells have a nucleus?
+A: No.
+
+Q: What shape enhances diffusion in red blood cells?
+A: Biconcave.
+
+Q: What type of metabolism do red blood cells use?
+A: Anaerobic metabolism (glycolysis with BPG).
+
+Q: Where are red blood cells produced?
+A: In bone marrow.
+
+Q: The process of making red blood cells?
+A: Erythropoiesis.
+
+Q: What vitamin assists with erythropoiesis?
+A: Vitamin B12.
+
+Q: Too many red blood cells in the blood?
+A: Polycythemia.
+
+Q: Reduced ability to deliver oxygen?
+A: Anemia.
+
+Q: What hormone triggers erythropoiesis?
+A: Erythropoietin.
+
+Q: Where is erythropoietin released?
+A: In the kidney.
+
+Q: Lifespan of a red blood cell?
+A: 120 days.
+
+Q: Where is iron from heme recovered?
+A: In the liver.
+
+Q: Heme breakdown product excreted in urine?
+A: Urobilin.
+
+Q: Heme breakdown product excreted in feces?
+A: Stercobilin.
+
+Q: Another name for leukocytes?
+A: White blood cells.
+
+Q: Do leukocytes contain hemoglobin?
+A: No.
+
+Q: Do leukocytes have a nucleus and organelles?
+A: Yes.
+
+Q: In which layer do leukocytes sit?
+A: The buffy coat.
+
+Q: The five types of leukocytes?
+A: Neutrophils, lymphocytes, monocytes, eosinophils, and basophils.
+
+Q: Mnemonic for the five leukocyte types?
+A: Never Let Monkeys Eat Bananas.
+
+Q: The two categories of leukocytes?
+A: Granulocytes and agranulocytes.
+
+Q: Which leukocytes are granulocytes?
+A: Neutrophils, eosinophils, and basophils.
+
+Q: Which leukocytes are agranulocytes?
+A: Lymphocytes and monocytes.
+
+Q: What do neutrophils kill?
+A: Bacteria.
+
+Q: What is the most common leukocyte?
+A: Neutrophils.
+
+Q: Which leukocyte is described as polymorphonuclear?
+A: Neutrophils.
+
+Q: What do eosinophils kill?
+A: Parasites.
+
+Q: Are eosinophils acidic or basic?
+A: Acidic.
+
+Q: Are basophils acidic or basic?
+A: Basic.
+
+Q: Which granulocyte is associated with inflammation?
+A: Basophils.
+
+Q: What do lymphocytes provide?
+A: Long-term immunity.
+
+Q: What do monocytes develop into?
+A: Macrophages.
+
+Q: What shape of nucleus do monocytes have?
+A: Horseshoe.
+
+Q: Main function of leukocytes?
+A: Defending the body against pathogens.
+
+Q: The process of making leukocytes?
+A: Leukopoiesis.
+
+Q: Another name for platelets?
+A: Thrombocytes.
+
+Q: Are platelets whole cells?
+A: No, they are cell fragments.
+
+Q: The process of making platelets?
+A: Thrombopoiesis.
+
+Q: Where is thrombopoietin produced?
+A: The liver.
+
+Q: Megakaryoblasts mature into what?
+A: Megakaryocytes.
+
+Q: How many platelets does one megakaryocyte produce?
+A: 2,000 to 3,000.
+
+Q: Function of platelets?
+A: To stop blood loss from a damaged vessel.
+
+Q: Lifespan of a platelet?
+A: 5 to 9 days.
+
+Q: What is hemostasis?
+A: The stopping of bleeding.
+
+Q: The three mechanisms of hemostasis?
+A: Vascular spasm, platelet plug formation, and blood clotting.
+
+Q: The first hemostasis mechanism?
+A: Vascular spasm.
+
+Q: What happens during vascular spasm?
+A: Blood vessel smooth muscle contracts.
+
+Q: The second hemostasis mechanism?
+A: Platelet plug formation.
+
+Q: What factor helps platelets adhere to a damaged vessel?
+A: Von Willebrand factor.
+
+Q: What do activated platelets release?
+A: ADP, thromboxane A2, PDGF, and serotonin.
+
+Q: What makes other platelets sticky during aggregation?
+A: ADP.
+
+Q: The third hemostasis mechanism?
+A: Blood clotting.
+
+Q: What converts prothrombin to thrombin?
+A: Prothrombinase.
+
+Q: What does thrombin cause to form?
+A: Fibrin.
+
+Q: Where is prothrombin produced?
+A: The liver.
+
+Q: What vitamin is required for blood clotting?
+A: Vitamin K.
+
+Q: What determines blood type?
+A: Antigens on the red blood cell surface.
+
+Q: Where are blood antibodies located?
+A: In the plasma.
+
+Q: What is another name for a blood antibody?
+A: An agglutinin.
+
+Q: An antibody matches which antigen?
+A: Not its own antigen.
+
+Q: Which blood type has both A and B antigens?
+A: Type AB.
+
+Q: Which blood type has no antigens?
+A: Type O.
+
+Q: When is the Rh antibody made?
+A: Only after exposure to the Rh antigen.
+
+Q: What does a wrong blood transfusion cause?
+A: Agglutination.
+
+Q: What is agglutination?
+A: Clumping and rupture of red blood cells.
+
+Q: What causes hemolytic disease of the newborn?
+A: An Rh mismatch between mother and fetus.
+
+Q: Which Rh-type mother is at risk in hemolytic disease of the newborn?
+A: An Rh-negative mother.
+
+Q: What does RhoGAM do?
+A: Inactivates fetal Rh antigen so the mother won't make Rh antibody.
+
+Q: How does RhoGAM work?
+A: By coating the red blood cells.
+
+Q: What does aspirin block the synthesis of?
+A: Thromboxane A2.
+
+Q: Two things aspirin inhibits?
+A: Vasoconstriction and platelet aggregation.
+
+Q: What do thrombolytic agents activate?
+A: Plasminogen.
+
+Q: The first thrombolytic agent ever used?
+A: Streptokinase.
+
+Q: What does tPA do?
+A: Dissolves blood clots.
+
+Q: What does tPA stand for?
+A: Human tissue plasminogen activator.
+
+Q: What is a thrombus?
+A: A blood clot in the bloodstream.
+
+Q: Where is plasminogen produced?
+A: The liver.
+
+Q: What does plasminogen do?
+A: Breaks down blood clots.
+
+Q: What is another term for anti-clotting agents?
+A: Anticoagulants.
+
+Q: What does antithrombin do?
+A: Blocks clotting factors.

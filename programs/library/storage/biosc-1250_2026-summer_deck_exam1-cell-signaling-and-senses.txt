@@ -1,0 +1,772 @@
+Name: BIOSC 1250 Exam 1 Cell Signaling and Senses
+Description: Cell signaling, neuronal excitability, the CNS, and the sensory systems (Ch. 6-9).
+Class: BIOSC 1250
+Semester: Summer 2026
+
+Q: What are the three methods of cell-to-cell communication?
+A: Gap junctions, cell-to-cell binding, and extracellular chemical messengers.
+
+Q: What membrane proteins form gap junctions?
+A: Connexins.
+
+Q: What are the tunnels formed by connexins called?
+A: Connexons.
+
+Q: What is the function of gap junctions?
+A: Allow rapid diffusion and communication between neighboring cells.
+
+Q: What are the three main types of extracellular chemical messengers?
+A: Hormones, neurotransmitters, and local mediators.
+
+Q: What are hormones?
+A: Chemical messengers carried by the blood to distant target cells.
+
+Q: What are neurotransmitters?
+A: Chemical messengers released from a neuron into a synapse to reach a nearby target cell.
+
+Q: What are local mediators?
+A: Extracellular messengers that act locally without entering the bloodstream.
+
+Q: What is autocrine signaling?
+A: A cell secretes a messenger that acts on itself.
+
+Q: What is paracrine signaling?
+A: A cell secretes a messenger that acts on nearby cells.
+
+Q: Which local mediators are important in cellular growth and development?
+A: Cytokines.
+
+Q: Which local mediator causes blood vessel dilation?
+A: Nitric oxide.
+
+Q: What are eicosanoids made from?
+A: Arachidonic acid.
+
+Q: What two enzymes process arachidonic acid into eicosanoids?
+A: Cyclooxygenase and lipoxygenase.
+
+Q: What are the three main types of eicosanoids?
+A: Prostaglandins, leukotrienes, and thromboxanes.
+
+Q: What do leukotrienes do?
+A: Stimulate chemotaxis of leukocytes and mediate inflammation.
+
+Q: What do thromboxanes do?
+A: Constrict blood vessels and promote platelet activation.
+
+Q: What enzyme do NSAIDs block?
+A: Cyclooxygenase.
+
+Q: What enzyme do glucocorticoids inhibit?
+A: Phospholipase A2.
+
+Q: What enzyme does aspirin inhibit?
+A: Cyclooxygenase.
+
+Q: How many hydrocarbon rings do steroids contain?
+A: Four.
+
+Q: What are the four properties of messenger-receptor binding?
+A: Specificity, affinity, saturation, and competition.
+
+Q: What is affinity?
+A: The strength at which a ligand binds to its receptor.
+
+Q: What is receptor saturation?
+A: The degree to which receptors are bound by messengers.
+
+Q: What is an agonist?
+A: A drug that binds and activates a receptor, mimicking the natural messenger.
+
+Q: What is an antagonist?
+A: A substance that binds and blocks a receptor.
+
+Q: An antagonist has affinity but lacks what?
+A: Efficacy.
+
+Q: What is receptor down-regulation?
+A: A decrease in receptor number when a messenger is in excess.
+
+Q: What is receptor up-regulation?
+A: An increase in receptor number when a messenger is deficient.
+
+Q: What is signal transduction?
+A: The process by which a signal molecule is converted into a cellular response.
+
+Q: What is a first messenger?
+A: The extracellular messenger that binds the receptor.
+
+Q: What is a second messenger?
+A: The intracellular messenger that relays the signal.
+
+Q: What does a protein kinase do?
+A: Adds a phosphate group to a target protein.
+
+Q: Where are steroid hormone receptors located?
+A: Inside the cell, in the cytosol or nucleus.
+
+Q: What is the second messenger in the nitric oxide pathway?
+A: cGMP.
+
+Q: What activates a receptor tyrosine kinase?
+A: Receptor dimerization.
+
+Q: Janus kinase is an example of what receptor type?
+A: Enzyme-coupled receptor.
+
+Q: What does STAT stand for?
+A: Signal transducer and activator of transcription.
+
+Q: What enzyme converts ATP to cAMP?
+A: Adenylyl cyclase.
+
+Q: What enzyme breaks down cAMP?
+A: Phosphodiesterase.
+
+Q: What enzyme produces IP3 and DAG?
+A: Phospholipase C.
+
+Q: What molecule does phospholipase C break down to make IP3 and DAG?
+A: PIP2 (phosphatidylinositol bisphosphate).
+
+Q: What does IP3 do?
+A: Releases Ca2+ from intracellular stores.
+
+Q: What three second messengers work together in the phospholipase C pathway?
+A: IP3, DAG, and Ca2+.
+
+Q: What G protein transduces smell signals from odorants?
+A: Golf protein.
+
+Q: What bacterium produces cholera toxin?
+A: Vibrio cholerae.
+
+Q: What G protein does cholera toxin permanently activate?
+A: Gs.
+
+Q: What G protein does pertussis toxin permanently inactivate?
+A: Gi.
+
+Q: What is signal amplification?
+A: A cascade that lets a messenger produce large effects at low concentrations.
+
+Q: What two structures make up the central nervous system?
+A: The brain and spinal cord.
+
+Q: What do afferent (sensory) neurons do?
+A: Carry information to the CNS.
+
+Q: What do efferent (motor) neurons do?
+A: Carry commands away from the CNS.
+
+Q: What is the basic functional unit of the nervous system?
+A: The neuron.
+
+Q: What are the three main parts of a neuron?
+A: Cell body, dendrites, and axon.
+
+Q: What two motor proteins drive axonal transport?
+A: Kinesin and dynein.
+
+Q: What type of neuron makes up about 99% of neurons in the body?
+A: Interneurons.
+
+Q: What is the most numerous type of neuroglia?
+A: Astrocytes.
+
+Q: Which glia help maintain the blood-brain barrier?
+A: Astrocytes.
+
+Q: Which CNS glia form the myelin sheath?
+A: Oligodendrocytes.
+
+Q: Which glia are the phagocytes of the CNS?
+A: Microglia.
+
+Q: Which glia produce and circulate cerebrospinal fluid?
+A: Ependymal cells.
+
+Q: Which glia form the myelin sheath in the PNS?
+A: Schwann cells.
+
+Q: What is another name for Schwann cells?
+A: Neurolemmocytes.
+
+Q: What is the function of the myelin sheath?
+A: Insulates axons and increases the speed of action potential conduction.
+
+Q: What are the gaps in the myelin sheath called?
+A: Nodes of Ranvier.
+
+Q: What makes up white matter?
+A: Myelinated axons.
+
+Q: What makes up gray matter?
+A: Neuron cell bodies.
+
+Q: What is neuroplasticity?
+A: The nervous system's ability to change and rewire throughout life.
+
+Q: In which part of the nervous system can axons regenerate?
+A: The PNS.
+
+Q: What structure do Schwann cells form to guide axon regrowth?
+A: A regeneration tube.
+
+Q: Why can't axons regenerate in the CNS?
+A: Astrocytes form scar tissue that blocks axonal repair.
+
+Q: What are the four types of ion channels in neurons?
+A: Leak, ligand-gated, mechanically-gated, and voltage-gated.
+
+Q: What opens a ligand-gated ion channel?
+A: A specific chemical (ligand) stimulus.
+
+Q: What opens a mechanically-gated ion channel?
+A: Mechanical stimulation such as touch, pressure, or stretch.
+
+Q: What opens a voltage-gated ion channel?
+A: A change in membrane potential.
+
+Q: Where are voltage-gated channels found?
+A: On the axons of neurons.
+
+Q: What is membrane potential?
+A: The voltage that exists across the plasma membrane.
+
+Q: What is the resting membrane potential of a neuron?
+A: -70 mV.
+
+Q: Which ion has the greatest influence on the resting membrane potential?
+A: K+ (potassium).
+
+Q: Why does K+ most influence the resting potential?
+A: Neurons at rest are most permeable to K+.
+
+Q: State Ohm's law.
+A: I = V/R.
+
+Q: What is an equilibrium potential?
+A: The point at which chemical and electrical gradients are equal and opposite, so there is no net ion flow.
+
+Q: What equation calculates the equilibrium potential for a single ion?
+A: The Nernst equation.
+
+Q: What is the equilibrium potential for K+?
+A: -90 mV.
+
+Q: What is the equilibrium potential for Na+?
+A: +60 mV.
+
+Q: What equation calculates membrane potential using multiple ion permeabilities?
+A: The Goldman-Hodgkin-Katz equation.
+
+Q: What is a graded potential?
+A: A small deviation from the resting membrane potential.
+
+Q: What does depolarization mean?
+A: The membrane potential becomes less polarized (more positive).
+
+Q: What does hyperpolarization mean?
+A: The membrane potential becomes more polarized (more negative).
+
+Q: What is the typical threshold potential for an action potential?
+A: -55 mV.
+
+Q: What is a subthreshold stimulus?
+A: A stimulus not strong enough to reach threshold.
+
+Q: What does the all-or-none principle state?
+A: Once threshold is reached, the action potential fires fully regardless of stimulus strength.
+
+Q: Where is the trigger zone for the action potential?
+A: The axon hillock.
+
+Q: What are the three phases of an action potential?
+A: Depolarizing, repolarizing, and after-hyperpolarizing.
+
+Q: To what value does the membrane rise during the depolarizing phase?
+A: About +30 mV.
+
+Q: What happens during the after-hyperpolarizing phase?
+A: The membrane potential undershoots to about -90 mV.
+
+Q: What is a synapse?
+A: The point where a neuron communicates with another neuron or target tissue.
+
+Q: What ion triggers neurotransmitter release at a synapse?
+A: Ca2+.
+
+Q: What is the Ca2+ sensor for neurotransmitter release?
+A: Synaptotagmin.
+
+Q: Which synapse type is faster, electrical or chemical?
+A: Electrical.
+
+Q: What connects cells at an electrical synapse?
+A: Gap junctions.
+
+Q: What is an EPSP?
+A: An excitatory postsynaptic potential, a depolarization of the postsynaptic membrane.
+
+Q: What is an IPSP?
+A: An inhibitory postsynaptic potential, a hyperpolarization of the postsynaptic membrane.
+
+Q: What are ionotropic receptors?
+A: Receptors that function as ligand-gated ion channels.
+
+Q: What are metabotropic receptors?
+A: Receptors that function through a G-protein.
+
+Q: What type of receptor is the nicotinic ACh receptor?
+A: Ionotropic (ligand-gated ion channel).
+
+Q: What type of receptor is the muscarinic ACh receptor?
+A: Metabotropic (G-protein coupled).
+
+Q: What enzyme degrades acetylcholine?
+A: Acetylcholinesterase.
+
+Q: What is temporal summation?
+A: Summation of graded potentials arriving in rapid succession from one source.
+
+Q: What is spatial summation?
+A: Summation of graded potentials arriving at the same time from different sources.
+
+Q: What amino acid are catecholamines synthesized from?
+A: Tyrosine.
+
+Q: What neurotransmitter is GABA derived from?
+A: Glutamate.
+
+Q: Which neurotransmitter is typically excitatory?
+A: Glutamate.
+
+Q: Which two neurotransmitters are typically inhibitory?
+A: GABA and glycine.
+
+Q: What are the four types of neural circuits?
+A: Diverging, converging, reverberating, and parallel after-discharge.
+
+Q: What is a diverging circuit?
+A: One presynaptic neuron synapses with several postsynaptic neurons.
+
+Q: What is a converging circuit?
+A: One postsynaptic neuron receives input from several sources.
+
+Q: What is a reverberating circuit?
+A: Later neurons feed back to stimulate earlier ones, repeating the signal.
+
+Q: What are the three connective tissue membranes protecting the brain?
+A: The meninges.
+
+Q: Name the three meninges from outer to inner.
+A: Dura mater, arachnoid mater, pia mater.
+
+Q: Which meninx is the toughest and outermost?
+A: Dura mater.
+
+Q: Which meninx is cobweb-like and in the middle?
+A: Arachnoid mater.
+
+Q: Which meninx adheres directly to the brain surface?
+A: Pia mater.
+
+Q: What is the blood-brain barrier?
+A: A selective barrier of specialized capillaries controlling what enters the brain.
+
+Q: What two structural components form the blood-brain barrier?
+A: Tight junctions and astrocytes.
+
+Q: How does glucose cross the blood-brain barrier?
+A: By facilitated transport.
+
+Q: What are circumventricular organs?
+A: Brain regions that lack a blood-brain barrier and monitor blood chemistry.
+
+Q: What produces cerebrospinal fluid?
+A: The choroid plexus.
+
+Q: What cells within the choroid plexus produce CSF?
+A: Tufts of ependymal cells.
+
+Q: How many ventricles does the brain have?
+A: Four.
+
+Q: What are the two protective functions of CSF?
+A: Mechanical protection and chemical protection.
+
+Q: What condition is caused by excess CSF on the brain?
+A: Hydrocephalus.
+
+Q: How many pairs of cranial nerves are there?
+A: Twelve.
+
+Q: What is cranial nerve I?
+A: Olfactory.
+
+Q: What is cranial nerve II?
+A: Optic.
+
+Q: What is cranial nerve III?
+A: Oculomotor.
+
+Q: What is cranial nerve IV?
+A: Trochlear.
+
+Q: What is cranial nerve V?
+A: Trigeminal.
+
+Q: What is cranial nerve VI?
+A: Abducens.
+
+Q: What is cranial nerve VII?
+A: Facial.
+
+Q: What is cranial nerve VIII?
+A: Vestibulocochlear.
+
+Q: What is cranial nerve IX?
+A: Glossopharyngeal.
+
+Q: What is cranial nerve X?
+A: Vagus.
+
+Q: What is cranial nerve XI?
+A: Accessory.
+
+Q: What is cranial nerve XII?
+A: Hypoglossal.
+
+Q: Which cranial nerve controls tongue movement?
+A: Hypoglossal (XII).
+
+Q: Which cranial nerve is responsible for balance?
+A: Vestibulocochlear (VIII).
+
+Q: Which cranial nerve provides parasympathetic control of the viscera?
+A: Vagus (X).
+
+Q: What are the three parts of the brain stem?
+A: Midbrain, pons, and medulla oblongata.
+
+Q: What are the three parts of the diencephalon?
+A: Thalamus, hypothalamus, and pineal gland.
+
+Q: What midbrain nucleus produces dopamine and is linked to Parkinson's?
+A: Substantia nigra.
+
+Q: What are the four colliculi collectively called?
+A: Corpora quadrigemina.
+
+Q: What is the function of the superior colliculi?
+A: Vision and tracking movement.
+
+Q: What is the function of the inferior colliculi?
+A: Auditory startle reflexes.
+
+Q: What two vital centers are located in the medulla oblongata?
+A: Cardiovascular center and respiratory center.
+
+Q: What does the cerebellum regulate?
+A: Posture, balance, and coordination of movement.
+
+Q: What is the main function of the thalamus?
+A: Relays most sensory input to the cerebral cortex.
+
+Q: Which sensory input does NOT pass through the thalamus?
+A: Olfactory (smell).
+
+Q: What gland secretes melatonin?
+A: The pineal gland.
+
+Q: What does melatonin control?
+A: Sleep/wake cycles.
+
+Q: What is the body's internal clock nucleus in the hypothalamus?
+A: The suprachiasmatic nucleus.
+
+Q: What is the largest part of the brain?
+A: The cerebrum.
+
+Q: How thick is the cerebral cortex?
+A: 2-4 mm.
+
+Q: How many layers does the cerebral cortex have?
+A: Six.
+
+Q: What are the main input cells of the cerebral cortex?
+A: Stellate (granule) cells.
+
+Q: What are the main output cells of the cerebral cortex?
+A: Pyramidal cells.
+
+Q: What are the ridges of the cerebrum called?
+A: Gyri.
+
+Q: What are the grooves of the cerebrum called?
+A: Sulci.
+
+Q: What dural fold separates the two cerebral hemispheres?
+A: Falx cerebri.
+
+Q: What dural fold separates the cerebellum from the cerebrum?
+A: Tentorium cerebelli.
+
+Q: Where is the primary somatosensory cortex located?
+A: Postcentral gyrus of the parietal lobe.
+
+Q: Where is the primary visual cortex located?
+A: The occipital lobe.
+
+Q: Where is the primary auditory cortex located?
+A: The temporal lobe.
+
+Q: Where is the gustatory cortex located?
+A: The insula.
+
+Q: Where is the primary motor cortex located?
+A: Precentral gyrus of the frontal lobe.
+
+Q: What does contralateral control mean?
+A: Each side of the brain controls the opposite side of the body.
+
+Q: What is Broca's area responsible for?
+A: The articulation (production) of speech.
+
+Q: What is Wernicke's area responsible for?
+A: Interpreting the meaning of words.
+
+Q: What does the prefrontal cortex control?
+A: Personality, intellect, and complex learning.
+
+Q: What are the three basal nuclei?
+A: Globus pallidus, putamen, and caudate nucleus.
+
+Q: What brain system is involved in emotions?
+A: The limbic system.
+
+Q: What system maintains wakefulness?
+A: The reticular activating system.
+
+Q: What is long-term potentiation?
+A: A long-lasting strengthening of synapses underlying learning and memory.
+
+Q: What two glutamate receptors mediate long-term potentiation?
+A: AMPA and NMDA receptors.
+
+Q: What are the four steps in the process of sensation?
+A: Stimulation, transduction, generation of action potentials, and integration.
+
+Q: What type of potential is generated when a sensory receptor is stimulated?
+A: A receptor (graded) potential.
+
+Q: What do mechanoreceptors detect?
+A: Mechanical stimuli like deformation, stretch, or bending.
+
+Q: What do thermoreceptors detect?
+A: Changes in temperature.
+
+Q: What do photoreceptors detect?
+A: Light striking the retina.
+
+Q: What do chemoreceptors detect?
+A: Chemicals (taste, smell, and body fluids).
+
+Q: What do nociceptors detect?
+A: Painful stimuli from tissue damage.
+
+Q: What is a receptive field?
+A: The physical area that, when stimulated, activates a sensory neuron.
+
+Q: What are the four attributes of a stimulus that get encoded?
+A: Modality, location, intensity, and duration.
+
+Q: What is stimulus modality?
+A: The unique type of sensation, such as pain, touch, vision, taste, or hearing.
+
+Q: What are labeled lines?
+A: Neural pathways that carry a specific modality to a specific cortical region.
+
+Q: How is stimulus intensity encoded?
+A: By action potential frequency and the number of receptors activated.
+
+Q: How is stimulus duration encoded?
+A: By the duration of action potentials in the sensory neuron.
+
+Q: What is lateral inhibition?
+A: Inhibition of receptors at a stimulus border relative to those at the center.
+
+Q: What is two-point discrimination?
+A: The ability to perceive two separate points of touch.
+
+Q: What do slowly adapting receptors do?
+A: Respond continuously as long as the stimulus persists.
+
+Q: What do rapidly adapting receptors do?
+A: Respond at stimulus onset and removal, then stop.
+
+Q: Which spinal tract carries touch, pressure, vibration, and proprioception?
+A: The dorsal columns.
+
+Q: Which spinal tract carries pain, itch, temperature, and tickle?
+A: The spinothalamic tract.
+
+Q: What does it mean for a sensory pathway to decussate?
+A: It crosses to the opposite side of the body.
+
+Q: Which corpuscle is a rapidly adapting receptor for flutter and stroking?
+A: Meissner's corpuscle.
+
+Q: Which corpuscle is a slowly adapting receptor for steady pressure and texture?
+A: Merkel's corpuscle.
+
+Q: Which corpuscle detects vibration and deep pressure?
+A: Pacinian (lamellated) corpuscle.
+
+Q: Which corpuscle is a slowly adapting receptor for skin stretch?
+A: Ruffini corpuscle.
+
+Q: What is another name for the Pacinian corpuscle?
+A: Lamellated corpuscle.
+
+Q: What are the three types of nociceptors?
+A: Mechanical, thermal, and polymodal.
+
+Q: What fibers carry fast pain?
+A: Myelinated A-delta fibers.
+
+Q: What fibers carry slow pain?
+A: Unmyelinated C fibers.
+
+Q: What channels transduce temperature and painful stimuli?
+A: TRP (transient receptor potential) channels.
+
+Q: What is referred pain?
+A: Pain from an internal organ felt at a different surface location.
+
+Q: What does the gate control theory of pain state?
+A: A mechanical stimulus like touch or pressure can suppress pain.
+
+Q: What are the three endogenous opioids?
+A: Enkephalins, endorphins, and dynorphins.
+
+Q: What neuropeptide do endogenous opioids block the release of?
+A: Substance P.
+
+Q: What are the two main neurotransmitters of first-order pain neurons?
+A: Glutamate and substance P.
+
+Q: What are the three types of proprioceptors?
+A: Golgi tendon organs, muscle spindles, and joint kinesthetic receptors.
+
+Q: What is kinesthesia?
+A: The perception of body movement.
+
+Q: What do muscle spindles detect?
+A: Muscle length (stretch).
+
+Q: What cells in the olfactory epithelium are stem cells?
+A: Basal cells.
+
+Q: How long do olfactory receptor cells live?
+A: About two months.
+
+Q: Which sensation reaches the cortex without synapsing in the thalamus?
+A: Smell (olfaction).
+
+Q: Where do olfactory tract axons project to produce emotional responses to odors?
+A: The limbic system.
+
+Q: What is the loss of smell called?
+A: Anosmia.
+
+Q: What are chemicals that stimulate taste receptors called?
+A: Tastants.
+
+Q: What are the five primary tastes?
+A: Sweet, sour, salty, bitter, and umami.
+
+Q: What are the three cell types in a taste bud?
+A: Supporting cells, gustatory receptor cells, and basal cells.
+
+Q: What opening lets tastants reach gustatory receptor cells?
+A: The taste pore.
+
+Q: Which tongue papillae lack taste buds in humans?
+A: Filiform papillae.
+
+Q: What G protein is involved in taste transduction?
+A: Gustducin.
+
+Q: What are the two types of photoreceptors?
+A: Rods and cones.
+
+Q: What are rods responsible for?
+A: High-sensitivity vision in dim light.
+
+Q: What are cones responsible for?
+A: Color vision.
+
+Q: What are the three types of cones?
+A: Blue, green, and red.
+
+Q: What photopigment is found in rods?
+A: Rhodopsin.
+
+Q: What vitamin deficiency causes night blindness?
+A: Vitamin A.
+
+Q: What test screens for red-green color blindness?
+A: The Ishihara test.
+
+Q: What part of the retina has no rods and the sharpest vision?
+A: The fovea centralis.
+
+Q: What is accommodation?
+A: An increase in the curvature of the lens to focus on near objects.
+
+Q: What is the correct sequence of visual signal flow in the retina?
+A: Photoreceptors to bipolar cells to ganglion cells.
+
+Q: What cells form the optic nerve?
+A: Ganglion cells.
+
+Q: What is the function of the optic chiasm?
+A: Allows binocular vision and depth perception by crossing fibers.
+
+Q: Which ear hair cells are responsible for sound transduction?
+A: Inner hair cells.
+
+Q: What do outer hair cells do?
+A: Enhance the sensitivity of inner hair cells.
+
+Q: What determines the pitch of a sound?
+A: Its frequency.
+
+Q: In what units is sound intensity measured?
+A: Decibels.
+
+Q: What membrane discriminates pitch in the cochlea?
+A: The basilar membrane.
+
+Q: Along which nerve does auditory information travel to the brain?
+A: The vestibulocochlear (VIII) nerve.
+
+Q: What are the two otolithic organs?
+A: The utricle and saccule.
+
+Q: What do the utricle and saccule detect?
+A: Linear acceleration and head tilt.
+
+Q: What do the semicircular ducts detect?
+A: Rotational acceleration.
+
+Q: What are the calcium carbonate crystals in the otolithic organs called?
+A: Otoliths.
+
+Q: What disease results from excess endolymph in the membranous labyrinth?
+A: Ménière's disease.
+
+Q: What maneuver repositions dislodged otoliths to treat vertigo?
+A: The Epley maneuver.

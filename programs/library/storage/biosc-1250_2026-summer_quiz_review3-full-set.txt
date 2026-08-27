@@ -1,0 +1,718 @@
+Title: BIOSC 1250 Review 3 Full Set
+Description: Full set of exam-style questions on the respiratory, urinary, and reproductive systems (Ch. 18, 19, 23).
+Class: BIOSC 1250
+Semester: Summer 2026
+
+Q: Which alveolar cell type secretes surfactant?
+A. Type I alveolar cells
+B. Alveolar macrophages
+*C. Type II alveolar cells
+D. Goblet cells
+Explain: Type II cells secrete surfactant to lower surface tension; Type I cells are the thin cells where gas exchange occurs.
+
+Q: Compared with the systemic circuit, the pulmonary circuit is characterized by:
+*A. High flow and low pressure
+B. High flow and high pressure
+C. Low flow and high pressure
+D. Low flow and low pressure
+Explain: The pulmonary circuit receives the entire cardiac output (high flow) but runs at low pressure (~25/8 mmHg).
+
+Q: Sensory axons from the carotid bodies reach the brainstem via which cranial nerve?
+A. Vagus (X)
+B. Phrenic
+C. Facial (VII)
+*D. Glossopharyngeal (IX)
+Explain: The carotid bodies are innervated by the glossopharyngeal nerve (IX); the aortic bodies use the vagus (X).
+
+Q: The aortic bodies send their sensory information to the brainstem through the:
+A. Glossopharyngeal nerve (IX)
+*B. Vagus nerve (X)
+C. Intercostal nerves
+D. Hypoglossal nerve (XII)
+Explain: Aortic body afferents run in the vagus (X); carotid body afferents run in the glossopharyngeal (IX).
+
+Q: During inspiration the diaphragm contracts and thoracic volume increases. Alveolar pressure therefore:
+A. Rises above atmospheric pressure
+B. Stays equal to atmospheric pressure
+*C. Falls below atmospheric pressure
+D. Becomes equal to intrapleural pressure
+Explain: By Boyle's law, increased volume lowers alveolar pressure below atmospheric, drawing air in.
+
+Q: All of the following are true of cystic fibrosis EXCEPT:
+*A. It primarily impairs cardiac muscle contraction
+B. It results from a mutation in the CFTR gene
+C. Chloride fails to exit the cell
+D. It produces abnormally thick mucus
+Explain: CF affects secretory epithelia (lung, pancreas, etc.) through defective Cl- transport; it is not a primary cardiac muscle disorder.
+
+Q: A patient with emphysema has lost lung elastic recoil. This corresponds to:
+A. Low compliance
+B. High airway resistance
+C. Increased alveolar surface tension
+*D. High compliance
+Explain: Emphysema raises compliance (easy to inflate, poor recoil); fibrosis instead lowers compliance.
+
+Q: By the Law of LaPlace (P = 2T/r), why would small alveoli tend to empty into larger ones without surfactant?
+A. A smaller radius produces a lower collapsing pressure
+*B. A smaller radius produces a higher collapsing pressure
+C. Surface tension is zero in small alveoli
+D. Large alveoli have higher surface tension
+Explain: Smaller radius means higher pressure, so small alveoli would empty into large ones; surfactant lowers surface tension most in small alveoli to offset this.
+
+Q: Which lung volume cannot be measured directly by spirometry?
+A. Tidal volume
+B. Inspiratory reserve volume
+*C. Residual volume
+D. Expiratory reserve volume
+Explain: Residual volume is the air left after maximal exhalation and cannot be exhaled, so spirometry cannot capture it.
+
+Q: Oxygen is carried on hemoglobin bound to which component?
+*A. The iron in heme
+B. The globin amino chains
+C. Plasma albumin
+D. The 2,3-BPG binding site
+Explain: O2 binds the Fe in heme, whereas CO2 binds the amino (globin) chains, a separate site.
+
+Q: In metabolically active tissue, rising CO2 and H+ shift the oxygen-hemoglobin curve to the right. This indicates hemoglobin's affinity for O2:
+A. Increases, loading more O2
+B. Is unchanged
+C. Increases only at high altitude
+*D. Decreases, unloading more O2
+Explain: The Bohr effect: greater acidity/CO2 lowers O2 affinity, promoting unloading where tissues need oxygen.
+
+Q: Fetal hemoglobin has a higher O2 affinity than adult hemoglobin because it:
+A. Binds more 2,3-BPG
+*B. Binds less 2,3-BPG
+C. Contains more iron atoms per molecule
+D. Has a higher P50
+Explain: BPG lowers O2 affinity; because fetal Hb binds BPG poorly, its affinity is higher, favoring O2 transfer across the placenta.
+
+Q: The largest fraction of CO2 in blood is transported as:
+A. CO2 dissolved in plasma
+B. Carbaminohemoglobin
+*C. Bicarbonate ions
+D. CO2 bound to plasma albumin
+Explain: About 70% of CO2 travels as bicarbonate (HCO3-); the rest is carbamino compounds and dissolved gas.
+
+Q: The central chemoreceptors of the medullary respiratory center respond primarily to:
+*A. A rise in CO2 and H+
+B. A fall in arterial O2
+C. A rise in arterial O2
+D. A fall in blood pressure
+Explain: Central chemoreceptors track CO2/H+; sensing low O2 is the role of the peripheral (carotid and aortic) chemoreceptors.
+
+Q: The dorsal respiratory group drives the diaphragm through the phrenic nerve, which arises from which spinal levels?
+A. C1-C2
+B. T1-T4
+C. L1-L3
+*D. C3-C5
+Explain: "C3, 4, 5 keep the diaphragm alive" - the phrenic nerve originates from C3 through C5.
+
+Q: Carbon monoxide is dangerous largely because its affinity for hemoglobin is roughly:
+A. Equal to that of O2
+*B. 200 times that of O2
+C. 20 times that of O2
+D. One-tenth that of O2
+Explain: CO binds hemoglobin about 200x more tightly than O2, blocking oxygen transport even at low concentrations.
+
+Q: Which statement about gas exchange is NOT correct?
+A. Dalton's law concerns the partial pressures of gases in a mixture
+B. Henry's law concerns how much gas dissolves in a liquid
+*C. During pulmonary gas exchange, O2 diffuses from the blood into the alveoli
+D. CO2 is more soluble in plasma than O2
+Explain: In pulmonary gas exchange O2 moves FROM the alveoli INTO the blood (and CO2 the reverse); the direction stated is backwards.
+
+Q: Tubular secretion moves substances in which direction?
+A. From the tubule into the blood
+*B. From the blood into the tubule
+C. From Bowman's capsule into the glomerulus
+D. From the collecting duct into the renal artery
+Explain: Secretion adds substances from blood into the tubular fluid; reabsorption is the opposite (tubule to blood).
+
+Q: Blood enters the glomerulus through the afferent arteriole and exits through the:
+A. Afferent arteriole
+B. Renal vein directly
+C. Vasa recta
+*D. Efferent arteriole
+Explain: The efferent arteriole carries blood away from the glomerulus - an unusual arteriole-to-arteriole arrangement.
+
+Q: The Na+/K+/2Cl- (NKCC) cotransporter is located in which nephron segment?
+A. Thin descending limb of the loop
+*B. Thick ascending limb of the loop
+C. Proximal convoluted tubule
+D. Collecting duct
+Explain: NKCC reabsorbs ions in the thick ascending limb, which is impermeable to water; the descending limb reabsorbs water, not ions.
+
+Q: Regarding the loop of Henle, which statement is FALSE?
+A. The descending limb is permeable to water
+B. The ascending limb reabsorbs ions but not water
+C. The descending limb does not reabsorb ions
+*D. The ascending limb is freely permeable to water
+Explain: The ascending limb is impermeable to water and reabsorbs ions only - "water falls" out of the descending limb.
+
+Q: Principal cells of the collecting duct reabsorb ___ and secrete ___.
+*A. Na+ ; K+
+B. K+ ; Na+
+C. H+ ; HCO3-
+D. HCO3- ; H+
+Explain: Principal cells reabsorb Na+ and secrete K+; intercalated cells handle the H+/HCO3- exchange.
+
+Q: Intercalated cells help acidify the urine by:
+A. Reabsorbing H+
+B. Reabsorbing K+
+*C. Secreting H+
+D. Secreting HCO3-
+Explain: Intercalated cells secrete H+ (and reabsorb HCO3-), which is why urine can be up to ~1000x more acidic than blood.
+
+Q: The principal renal action of aldosterone is to:
+A. Decrease Na+ reabsorption and increase K+ reabsorption
+*B. Increase Na+ reabsorption and increase K+ secretion
+C. Increase water reabsorption by inserting aquaporins
+D. Increase the glomerular filtration rate
+Explain: Aldosterone drives Na+ reabsorption and K+ secretion in the principal cells; water follows the Na+, raising blood volume and pressure.
+
+Q: Antidiuretic hormone (ADH) concentrates the urine by:
+A. Increasing Na+ reabsorption in the loop of Henle
+B. Inhibiting renin release
+*C. Inserting aquaporin-2 channels into principal cells
+D. Dilating the afferent arteriole
+Explain: ADH inserts aquaporin-2 into the principal-cell apical membrane, increasing facultative water reabsorption.
+
+Q: Sympathetic stimulation of alpha-1 receptors on the renal arterioles produces:
+*A. Vasoconstriction and a fall in GFR
+B. Vasodilation and a rise in GFR
+C. Renin release with no vascular effect
+D. Increased aquaporin insertion
+Explain: Alpha-1 activation constricts the arterioles and lowers GFR, while beta-1 activation triggers renin release.
+
+Q: Which pressure is the primary force PROMOTING glomerular filtration?
+A. Plasma colloid osmotic pressure
+*B. Glomerular capillary hydrostatic pressure
+C. Bowman's space hydrostatic pressure
+D. Blood urea nitrogen
+Explain: Glomerular capillary hydrostatic pressure pushes fluid into Bowman's capsule; the other two pressures oppose filtration.
+
+Q: A substance that is freely filtered but neither reabsorbed nor secreted, so that its clearance equals GFR, is:
+A. Urea
+B. PAH
+C. Glucose
+*D. Inulin
+Explain: Inulin (not insulin) is the classic GFR marker; PAH is secreted (clearance greater than GFR) and urea is partly reabsorbed (clearance less than GFR).
+
+Q: If a substance has a renal clearance greater than its GFR, it must be:
+A. Reabsorbed on net
+*B. Secreted on net
+C. Neither reabsorbed nor secreted
+D. Not filtered at all
+Explain: Clearance above GFR means the tubules add the substance to the filtrate (net secretion), as with PAH.
+
+Q: Which structure acts as the countercurrent exchanger that preserves the medullary osmotic gradient?
+A. Loop of Henle
+B. Collecting duct
+*C. Vasa recta
+D. Glomerulus
+Explain: The vasa recta passively exchange water and solutes to maintain the gradient built by the loop's countercurrent multiplier.
+
+Q: The presence of which substance in the urine is considered NORMAL?
+A. Glucose
+B. Albumin
+C. Ketone bodies
+*D. Small amounts of urea
+Explain: Urea is a normal urinary waste product; urinary glucose, albumin, or ketones each indicate a pathology.
+
+Q: Crossing over between non-sister chromatids occurs during:
+*A. Prophase I
+B. Prophase II
+C. Anaphase I
+D. Metaphase II
+Explain: Crossing over (tetrad formation and recombination) happens in prophase I of meiosis I.
+
+Q: According to the textbook, homologous chromosome pairs and sister chromatids separate during which divisions, respectively?
+A. Homologs in meiosis II; sister chromatids in meiosis I
+B. Both separate in meiosis I
+*C. Homologs in meiosis I; sister chromatids in meiosis II
+D. Both separate in meiosis II
+Explain: Textbook 23.1 states homologs separate in anaphase I and sister chromatids separate in meiosis II. (Your lecture slide 7 says meiosis II for the homologs, so confirm which version your professor grades.)
+
+Q: Which testicular cells produce testosterone?
+A. Sertoli cells
+*B. Leydig (interstitial) cells
+C. Spermatogonia
+D. Primary spermatocytes
+Explain: Leydig cells make testosterone; Sertoli cells support sperm, form the blood-testis barrier, and secrete inhibin.
+
+Q: All of the following are functions of Sertoli cells EXCEPT:
+A. Forming the blood-testis barrier
+B. Secreting inhibin
+C. Secreting androgen-binding protein
+*D. Producing testosterone
+Explain: Testosterone is produced by Leydig cells; Sertoli cells nourish developing sperm and form the barrier.
+
+Q: Erection and ejaculation are mediated, respectively, by which autonomic divisions?
+*A. Erection = parasympathetic; ejaculation = sympathetic
+B. Erection = sympathetic; ejaculation = parasympathetic
+C. Both parasympathetic
+D. Both sympathetic
+Explain: "Point and shoot" - parasympathetic drives erection (via nitric oxide), sympathetic drives ejaculation.
+
+Q: Which accessory gland contributes the largest share (~60-70%) of semen volume?
+A. Prostate gland
+*B. Seminal vesicles
+C. Bulbourethral glands
+D. Epididymis
+Explain: The seminal vesicles supply ~60-70% (fructose-rich, alkaline); the prostate adds ~25% and the bulbourethral glands ~5%.
+
+Q: The prostate gland secretes a fluid that is:
+A. Alkaline and rich in fructose
+B. Alkaline and released before ejaculation to lubricate the urethra
+*C. Slightly acidic, containing citric acid and clot-breaking enzymes
+D. The main source of clotting fibrinogen
+Explain: Prostatic fluid is milky and slightly acidic with citric acid and enzymes (e.g., PSA) that liquefy the semen clot; fructose and fibrinogen come from the seminal vesicles.
+
+Q: In human oogenesis, the secondary oocyte is released at ovulation while arrested in:
+A. Prophase I
+B. Metaphase I
+C. Anaphase II
+*D. Metaphase II
+Explain: The primary oocyte is arrested in prophase I until puberty; the secondary oocyte arrests in metaphase II and completes meiosis only if fertilized.
+
+Q: How many functional gametes result from one primary oocyte completing meiosis?
+*A. One
+B. Two
+C. Three
+D. Four
+Explain: Female meiosis yields a single ovum plus polar bodies that degenerate; male meiosis yields four sperm.
+
+Q: From outermost to innermost, the layers of the uterine wall are:
+A. Endometrium, myometrium, perimetrium
+*B. Perimetrium, myometrium, endometrium
+C. Myometrium, perimetrium, endometrium
+D. Perimetrium, endometrium, myometrium
+Explain: Perimetrium (outer serosa), myometrium (middle muscle), endometrium (inner lining).
+
+Q: Just before ovulation, a sustained high level of estrogen exerts what kind of feedback on the anterior pituitary?
+A. Negative feedback, suppressing LH
+B. No feedback effect
+*C. Positive feedback, triggering the LH surge
+D. Positive feedback acting on the ovary only
+Explain: Sustained high estrogen switches to positive feedback and triggers the LH surge; at moderate levels estrogen is inhibitory.
+
+Q: The main role of human chorionic gonadotropin (hCG) in early pregnancy is to:
+A. Trigger ovulation
+*B. Rescue the corpus luteum so it keeps producing progesterone
+C. Initiate menstruation
+D. Stimulate spermatogenesis
+Explain: hCG from the early placenta maintains the corpus luteum until the placenta itself makes enough progesterone.
+
+Q: In a genetic male, the Wolffian (mesonephric) ducts and Müllerian ducts do what, respectively?
+*A. Wolffian ducts form the vas deferens; Müllerian ducts regress
+B. Wolffian ducts form the fallopian tubes; Müllerian ducts regress
+C. Wolffian ducts form the vas deferens; Müllerian ducts form the uterus
+D. Wolffian ducts regress; Müllerian ducts form the vas deferens
+Explain: Under testosterone the Wolffian ducts become male ducts (vas deferens), while the Müllerian ducts regress in males.
+
+Q: Which gene on the Y chromosome initiates development of the testes?
+A. DHT
+B. hCG
+*C. SRY
+D. CFTR
+Explain: The SRY gene directs the indifferent gonad to become a testis; without it, ovaries develop.
+
+Q: Immediately after a sperm penetrates the oocyte, what blocks additional sperm from entering?
+A. The corona radiata thickens
+*B. The zona pellucida hardens (zona reaction)
+C. The acrosome reseals
+D. The oocyte completes meiosis I
+Explain: Cortical granule release hardens the zona pellucida to block polyspermy.
+
+Q: In what order does a sperm penetrate the coverings of the oocyte?
+*A. Corona radiata, then zona pellucida, then plasma membrane
+B. Zona pellucida, then corona radiata, then plasma membrane
+C. Plasma membrane, then zona pellucida, then corona radiata
+D. Corona radiata, then plasma membrane, then zona pellucida
+Explain: The sperm crosses the outer corona radiata, then the zona pellucida, then fuses with the oocyte plasma membrane.
+
+Q: Which sequence correctly traces air from outside the body to the alveoli?
+A. Nose, larynx, pharynx, trachea, bronchi, alveoli
+*B. Nose, pharynx, larynx, trachea, bronchi, alveoli
+C. Nose, pharynx, trachea, larynx, bronchi, alveoli
+D. Nose, larynx, trachea, pharynx, bronchi, alveoli
+Explain: Air passes nose to pharynx (shared with food) to larynx to trachea to bronchi to alveoli.
+
+Q: The serous membrane directly covering the surface of the lung is the:
+A. Parietal pleura
+B. Pericardium
+*C. Visceral pleura
+D. Mediastinum
+Explain: The visceral pleura clings to the lung surface; the parietal pleura lines the chest wall.
+
+Q: The respiratory epithelium of the conducting zone protects the lungs mainly by:
+*A. Trapping particles in mucus and sweeping them up with cilia
+B. Carrying out gas exchange
+C. Secreting surfactant
+D. Producing red blood cells
+Explain: The mucociliary escalator traps inhaled debris in mucus and cilia move it upward; the conducting zone itself does not exchange gas.
+
+Q: During quiet breathing, expiration occurs mainly because:
+A. The diaphragm actively contracts
+B. The external intercostals contract
+C. Intrapleural pressure becomes positive
+*D. The stretched lungs passively recoil
+Explain: Quiet expiration is passive - elastic recoil of the lungs and chest wall drives air out without muscle effort.
+
+Q: The primary muscle responsible for quiet inspiration is the:
+*A. Diaphragm
+B. Internal intercostals
+C. Rectus abdominis
+D. Sternocleidomastoid
+Explain: The diaphragm (with the external intercostals) produces quiet inspiration; the others are accessory or expiratory muscles.
+
+Q: Which pairing is correct?
+A. Pneumothorax = lung collapse from a mucus plug
+*B. Pneumothorax = air in the pleural space; atelectasis = collapse from blockage or failure to expand
+C. Atelectasis = air entering the pleural space
+D. The two terms mean exactly the same thing
+Explain: Pneumothorax is air entering the pleural space (breaking the seal); atelectasis is collapse from an airway blockage or inability to expand.
+
+Q: Under normal conditions, airway resistance is greatest at the:
+A. Trachea
+B. Primary bronchi
+*C. Bronchioles
+D. Alveoli
+Explain: The small-diameter bronchioles are the main site of airway resistance and are regulated by smooth muscle.
+
+Q: A normal overall ventilation-perfusion (V/Q) ratio in the lung is approximately:
+A. 0.2
+*B. 0.8
+C. 1.5
+D. 3.0
+Explain: The ideal ratio is 1.0, but gravity makes the realistic whole-lung average about 0.8.
+
+Q: The maximum volume of air that can be exhaled after a maximum inspiration is the:
+A. Tidal volume
+B. Functional residual capacity
+*C. Vital capacity
+D. Residual volume
+Explain: Vital capacity is the largest voluntary exhalation after a full inspiration; residual volume remains behind and is not part of it.
+
+Q: Minute ventilation equals:
+A. Tidal volume divided by respiratory rate
+B. Vital capacity times respiratory rate
+C. Residual volume plus tidal volume
+*D. Tidal volume times respiratory rate
+Explain: Minute ventilation is the tidal volume multiplied by the number of breaths per minute.
+
+Q: The Haldane effect states that:
+*A. Deoxygenated hemoglobin carries CO2 more readily than oxygenated hemoglobin
+B. Oxygenated hemoglobin carries CO2 more readily
+C. Low pH increases O2 affinity
+D. CO2 cannot be carried by hemoglobin
+Explain: When hemoglobin releases O2 it binds CO2 and buffers H+ more effectively, boosting CO2 pickup in the tissues.
+
+Q: The pneumotaxic center affects the dorsal respiratory group by:
+A. Exciting it so the lungs fill completely
+*B. Inhibiting it so the lungs do not overfill
+C. Generating the basic respiratory rhythm
+D. Sensing arterial oxygen
+Explain: The pneumotaxic center inhibits the DRG (limiting inspiration), whereas the apneustic center excites it.
+
+Q: The inflation (Hering-Breuer) reflex functions to:
+A. Increase heart rate during exercise
+B. Trigger coughing
+*C. Prevent overinflation of the lungs
+D. Stimulate surfactant release
+Explain: Airway stretch receptors inhibit inspiration once the lungs are sufficiently inflated, protecting against overinflation.
+
+Q: An obstructive lung disease (such as emphysema) primarily impairs the ability to:
+*A. Move air out of the lungs
+B. Move air into the lungs
+C. Diffuse gases across the alveolar membrane
+D. Produce surfactant
+Explain: Obstructive disease blocks airflow out (expiratory limitation); restrictive disease limits airflow in (reduced expansion).
+
+Q: Which of the following is NOT a function of the kidneys?
+A. Regulating blood pH
+B. Regulating blood volume and pressure
+C. Producing hormones
+*D. Producing bile for digestion
+Explain: Bile is made by the liver; the kidneys excrete wastes and regulate ions, pH, volume, pressure, osmolarity, and secrete hormones.
+
+Q: Which nephron type has long loops reaching deep into the medulla and is responsible for concentrating urine?
+A. Cortical nephron
+*B. Juxtamedullary nephron
+C. Both types equally
+D. Neither type
+Explain: Juxtamedullary nephrons (~20%) have long loops that build the medullary gradient; the more numerous cortical nephrons have short loops.
+
+Q: In the juxtaglomerular apparatus, renin is released by the:
+A. Macula densa cells
+B. Podocytes
+*C. Juxtaglomerular (granular) cells
+D. Mesangial cells
+Explain: JG cells are modified smooth muscle that secrete renin; the macula densa senses NaCl in the tubular fluid.
+
+Q: Reabsorption in which substances pass BETWEEN adjacent tubule cells through tight junctions is called:
+*A. Paracellular reabsorption
+B. Transcellular reabsorption
+C. Facultative reabsorption
+D. Secretion
+Explain: Paracellular movement goes between cells; transcellular movement passes through the cells via membrane transporters.
+
+Q: Water reabsorption that is regulated by ADH in the late distal tubule and collecting duct is described as:
+A. Obligatory
+*B. Facultative
+C. Paracellular
+D. Countercurrent
+Explain: Facultative (optional, hormone-controlled) water reabsorption depends on ADH; obligatory reabsorption occurs automatically in the proximal tubule and descending limb.
+
+Q: What fraction of filtered glucose and amino acids is normally reabsorbed in the proximal tubule?
+A. About 25%
+B. About 65%
+*C. 100%
+D. 0%
+Explain: The proximal tubule reabsorbs essentially all filtered glucose and amino acids using Na+-coupled symporters.
+
+Q: Atrial natriuretic peptide (ANP) affects the kidney by:
+A. Increasing Na+ reabsorption
+B. Inserting aquaporins
+C. Releasing renin
+*D. Inhibiting Na+ reabsorption and raising filtration surface area
+Explain: ANP promotes Na+ (and water) loss and relaxes mesangial cells to increase filtration surface area, lowering blood volume.
+
+Q: Parathyroid hormone (PTH) acts on the distal tubule to:
+*A. Increase Ca2+ reabsorption
+B. Decrease Ca2+ reabsorption
+C. Increase K+ secretion
+D. Insert aquaporin-2 channels
+Explain: PTH raises blood calcium partly by increasing Ca2+ reabsorption in the early distal tubule.
+
+Q: The countercurrent multiplier of the loop of Henle establishes:
+A. An acidic tubular fluid
+*B. A high osmotic gradient in the medulla
+C. The glomerular filtration barrier
+D. Renin release
+Explain: The loop's opposing water and ion movements build the medullary osmotic gradient (up to ~1200 mOsm) needed to concentrate urine.
+
+Q: Urea contributes to urine concentration by:
+A. Being fully excreted with no reabsorption
+B. Blocking aquaporins
+*C. Diffusing from the collecting duct into the medullary interstitium
+D. Being secreted in the proximal tubule
+Explain: Urea recycles from the inner medullary collecting duct into the interstitium, reinforcing medullary hypertonicity.
+
+Q: Alcohol increases urine output primarily by:
+A. Inhibiting Na+ reabsorption
+B. Increasing GFR directly
+C. Blocking aldosterone
+*D. Suppressing ADH secretion
+Explain: Alcohol inhibits ADH release, reducing water reabsorption; caffeine instead inhibits Na+ reabsorption.
+
+Q: Plasma creatinine is a useful marker of kidney function because it is produced at a steady rate from:
+A. Dietary protein in the gut
+*B. Creatine phosphate breakdown in skeletal muscle
+C. Hemoglobin degradation
+D. Bile pigments
+Explain: Creatinine comes from muscle creatine phosphate at a constant rate, so rising plasma levels signal reduced filtration.
+
+Q: Urine formed in the kidney reaches the exterior by traveling through which sequence?
+*A. Ureters, urinary bladder, urethra
+B. Urethra, bladder, ureters
+C. Bladder, ureters, urethra
+D. Ureters, urethra, bladder
+Explain: Urine drains from kidney to ureters to the bladder (storage) to the urethra; micturition is the reflex emptying of the bladder.
+
+Q: Kidney stones most commonly form when which substance crystallizes out of the urine?
+A. Glucose
+B. Urea
+*C. Calcium
+D. Albumin
+Explain: Excess solutes - most often calcium salts - can crystallize in the urinary tract to form stones.
+
+Q: Hemodialysis is used in renal failure to:
+A. Stimulate the kidneys to make more urine
+*B. Filter wastes from the blood across an artificial membrane
+C. Replace lost red blood cells
+D. Increase renin secretion
+Explain: When the kidneys fail (acute or chronic), hemodialysis clears wastes and excess fluid from the blood externally.
+
+Q: The filtration slits of the renal corpuscle are formed by the foot processes (pedicels) of which cells?
+A. Mesangial cells
+B. Endothelial cells
+*C. Podocytes
+D. Juxtaglomerular cells
+Explain: Podocytes wrap the glomerular capillaries; their interdigitating pedicels leave slits that restrict large molecules.
+
+Q: Besides the kidneys, which organ also excretes metabolic waste (removing CO2)?
+A. Pancreas
+B. Spleen
+C. Thyroid
+*D. Lungs
+Explain: Wastes leave the body by several routes - lungs (CO2), liver/GI tract, and sweat glands - not only the kidneys.
+
+Q: A human somatic cell contains ___ chromosomes, while a gamete contains ___.
+A. 23 (n); 46 (2n)
+*B. 46 (2n); 23 (n)
+C. 46 (2n); 46 (2n)
+D. 23 (n); 23 (n)
+Explain: Somatic cells are diploid (46, 2n); gametes are haploid (23, n) after meiosis.
+
+Q: The scrotum holds the testes outside the body cavity because spermatogenesis requires a temperature:
+A. Equal to core body temperature
+B. About 3 degrees above core temperature
+*C. About 3 degrees below core temperature
+D. Independent of temperature
+Explain: Sperm production needs a temperature roughly 3 C below core body temperature, which the scrotum maintains.
+
+Q: Meiosis of one primary spermatocyte ultimately produces how many spermatids?
+A. One
+B. Two
+C. Three
+*D. Four
+Explain: A primary spermatocyte completes meiosis I and II to yield four haploid spermatids (versus one ovum in females).
+
+Q: Spermiogenesis is the process in which:
+*A. Spermatids mature into motile sperm, gaining an acrosome and flagellum
+B. Spermatogonia divide by mitosis
+C. Primary spermatocytes undergo meiosis I
+D. Sperm are stored in the epididymis
+Explain: Spermiogenesis is the final remodeling of round spermatids into streamlined, tailed sperm cells.
+
+Q: The acrosome of a sperm functions to:
+A. Provide ATP for movement
+*B. Release enzymes that penetrate the oocyte's coverings
+C. Propel the sperm forward
+D. Store maternal mitochondria
+Explain: The acrosome caps the sperm head and releases enzymes to digest through the corona radiata and zona pellucida; the midpiece holds mitochondria and the tail provides motility.
+
+Q: Where do sperm complete maturation and gain motility before ejaculation?
+A. Seminiferous tubules
+B. Vas deferens
+*C. Epididymis
+D. Prostatic urethra
+Explain: Sperm leaving the testis are immotile and finish maturing (and are stored) in the epididymis.
+
+Q: Which erectile body of the penis surrounds the urethra?
+*A. Corpus spongiosum
+B. Corpus cavernosum
+C. Tunica albuginea
+D. Glans epididymis
+Explain: The single corpus spongiosum encloses the urethra; the two corpora cavernosa are the main erectile columns.
+
+Q: During erection, parasympathetic nerves cause vasodilation of the penile arteries chiefly by releasing:
+A. Norepinephrine
+B. Acetylcholine acting directly on the muscle
+*C. Nitric oxide, which raises cGMP
+D. Testosterone
+Explain: Nitric oxide raises cGMP, relaxing arterial smooth muscle so blood fills the erectile tissue; Viagra blocks the enzyme that degrades cGMP.
+
+Q: In the male, luteinizing hormone (LH) primarily stimulates which cells to produce testosterone?
+A. Sertoli cells
+*B. Leydig cells
+C. Spermatogonia
+D. Anterior pituitary cells
+Explain: LH targets Leydig cells (testosterone); FSH and testosterone act on Sertoli cells, which make androgen-binding protein and inhibin.
+
+Q: Which of the following is NOT a normal effect of testosterone?
+A. Development of male sex characteristics
+B. Support of spermatogenesis
+C. Anabolic, tissue-building effects
+*D. Suppression of protein synthesis
+Explain: Testosterone is anabolic and drives male characteristics and spermatogenesis; it does not suppress protein synthesis.
+
+Q: Which set of hormones is secreted by the ovaries?
+*A. Estrogens, progesterone, inhibin, and relaxin
+B. Testosterone and LH
+C. FSH and LH
+D. ADH and oxytocin
+Explain: The ovaries produce estrogens, progesterone, inhibin, and relaxin; FSH and LH come from the anterior pituitary.
+
+Q: The blood-testis barrier, formed by Sertoli cells, functions to:
+A. Produce testosterone
+*B. Shield developing sperm from the immune system
+C. Store mature sperm
+D. Secrete seminal fluid
+Explain: Because sperm form after immune tolerance is set, the Sertoli-cell barrier keeps them from being attacked as foreign.
+
+Q: Place the earliest events of development in the correct order:
+A. Cleavage, fertilization, blastocyst, morula, implantation
+B. Fertilization, morula, cleavage, blastocyst, implantation
+*C. Fertilization, cleavage, morula, blastocyst, implantation
+D. Fertilization, blastocyst, morula, cleavage, implantation
+Explain: A fertilized egg cleaves into a solid morula, cavitates into a blastocyst, then implants in the uterine wall.
+
+Q: After ovulation, the ruptured follicle becomes the ___, which secretes progesterone.
+A. Primary follicle
+B. Dominant follicle
+C. Zona pellucida
+*D. Corpus luteum
+Explain: The LH-driven corpus luteum forms from the ruptured follicle and secretes progesterone to maintain the endometrium.
+
+Q: During the uterine (menstrual) cycle, estrogen is chiefly responsible for:
+*A. Rebuilding the functional layer of the endometrium after menstruation
+B. Triggering menstruation
+C. Preventing ovulation
+D. Breaking down the corpus luteum
+Explain: Rising estrogen in the proliferative phase rebuilds the endometrial functionalis shed during menstruation.
+
+Q: During fetal development, the gonads first form in the:
+A. Scrotum
+B. Pelvic floor
+*C. Abdominal cavity, then descend
+D. Inguinal lymph nodes
+Explain: Both ovaries and testes develop high in the abdomen and descend; the testes continue into the scrotum.
+
+Q: Development of male external genitalia depends on which hormone?
+*A. Dihydrotestosterone (DHT)
+B. Estrogen
+C. hCG
+D. Inhibin
+Explain: DHT drives formation of the male external genitalia from the undifferentiated homologous structures.
+
+Q: The normally acidic vaginal environment is transiently neutralized by:
+A. Acidic urine
+B. Cervical mucus
+C. Menstrual blood
+*D. Alkaline semen
+Explain: Semen is alkaline, briefly raising vaginal pH so sperm can survive the otherwise acidic environment.
+
+Q: Which structure is part of the vulva (external female genitalia)?
+A. Ovary
+B. Uterus
+C. Fallopian tube
+*D. Labia majora
+Explain: The vulva includes the mons pubis, labia majora and minora, clitoris, and vestibule; the ovary, uterus, and tubes are internal.
+
+Q: Milk is produced in which structures of the mammary gland?
+A. The nipple
+*B. The alveoli of the lobules
+C. The surrounding adipose tissue
+D. The lactiferous sinus
+Explain: Secretory alveoli within the lobules produce milk, which drains through ducts to the nipple during lactation.
+
+Q: Which prenatal assessment can be performed from a sample of the mother's blood?
+A. Amniocentesis
+*B. Non-invasive prenatal testing (NIPT)
+C. Chorionic villus sampling
+D. Fetal surgery
+Explain: NIPT analyzes fetal DNA circulating in maternal blood; amniocentesis and CVS instead sample amniotic fluid or placental tissue.
+
+Q: According to your notes, the placenta becomes fully established at approximately:
+A. Week 1-2
+B. Week 4-6
+*C. Week 10-12
+D. Week 20
+Explain: The placenta begins developing early but is not fully functional until roughly weeks 10-12, when it takes over hormone production.
+
+Q: The major organs first appear during development at approximately:
+A. Weeks 1 to 2
+*B. Weeks 4 to 8
+C. Weeks 20 to 24
+D. Weeks 36 to 40
+Explain: Most major organ systems begin forming during weeks 4-8 (the embryonic period), a time of high sensitivity to teratogens.
+
+Q: In vitro fertilization (IVF) involves:
+A. Implanting a donor uterus
+B. Blocking the fallopian tubes
+C. Stimulating natural ovulation only
+*D. Combining sperm and egg outside the body
+Explain: IVF fertilizes the egg with sperm in the lab, then transfers the resulting embryo into the uterus.

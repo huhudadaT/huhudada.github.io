@@ -449,9 +449,9 @@
                         </span>
                     </label>
                     <label class="field">
-                        <span class="field-label">Subject</span>
+                        <span class="field-label">Class</span>
                         <span class="select-wrap">
-                            <select id="f-subject"><option value="">All subjects</option></select>
+                            <select id="f-class"><option value="">All classes</option></select>
                         </span>
                     </label>
                     <label class="field">
@@ -544,11 +544,11 @@
    File listing:  GitHub contents API and storage/manifest.txt, merged —
                   either one alone is enough to fill the shelf.
    Row contents:  parsed out of each .txt header —
-                  Name:/Title:, Description:, Subject:, Semester:
+                  Name:/Title:, Description:, Class:, Semester:
                   Kind and item count are inferred from the body.
-   Tag fallback:  if a file has no Subject:/Semester: line, the page will
+   Tag fallback:  if a file has no Class:/Semester: line, the page will
                   read them from a filename shaped
-                  subject__semester__title.txt
+                  bioeng-1085__fall-2026__title.txt
    ══════════════════════════════════════════════════════════════════ */
 
 const REPO = 'huhudadaT/huhudada.github.io';
@@ -602,22 +602,22 @@ function parseSet(filename, text) {
     const header = (firstQ === -1 ? lines : lines.slice(0, firstQ));
     const body   = (firstQ === -1 ? [] : lines.slice(firstQ));
 
-    const set = { file: filename, title: '', description: '', subject: '', semester: '' };
+    const set = { file: filename, title: '', description: '', classCode: '', semester: '' };
     header.forEach(line => {
         const m = /^\s*([A-Za-z]+)\s*:\s*(.+?)\s*$/.exec(line);
         if (!m) return;
         const key = m[1].toLowerCase(), val = m[2];
         if (key === 'name' || key === 'title') set.title = val;
         else if (key === 'description') set.description = val;
-        else if (key === 'subject') set.subject = val;
+        else if (key === 'class' || key === 'subject') set.classCode = val;  // Subject: read too, for older files
         else if (key === 'semester') set.semester = val;
     });
 
     // tags from the filename, if the header didn't carry them
-    if (!set.subject || !set.semester) {
+    if (!set.classCode || !set.semester) {
         const parts = filename.replace(/\.txt$/i, '').split('__');
         if (parts.length >= 2) {
-            if (!set.subject)  set.subject  = titleCase(parts[0].replace(/[-_]+/g, ' '));
+            if (!set.classCode) set.classCode = parts[0].replace(/[-_]+/g, ' ').toUpperCase();
             if (!set.semester) set.semester = titleCase(parts[1].replace(/[-_]+/g, ' '));
         }
     }
@@ -695,7 +695,7 @@ function renderRow(set) {
     const id = `set-panel-${++rowId}`;
     const li = document.createElement('li');
     li.dataset.type = set.type;
-    li.dataset.subject = set.subject || '';
+    li.dataset.class = set.classCode || '';
     li.dataset.semester = set.semester || '';
     li.dataset.count = set.count;
 
@@ -704,7 +704,7 @@ function renderRow(set) {
             <div class="set-head">
                 <div class="set-tags">
                     <span class="tag">${set.type === 'quiz' ? 'Quiz' : 'Flashcards'}</span>
-                    ${set.subject ? `<span class="tag">${esc(set.subject)}</span>` : ''}
+                    ${set.classCode ? `<span class="tag">${esc(set.classCode)}</span>` : ''}
                     <span class="tag tag-count">${set.count} ${set.unit}</span>
                 </div>
                 <h3 class="set-title">${esc(set.title)}</h3>
@@ -883,7 +883,7 @@ async function build() {
 
 /* ── filters ──────────────────────────────────────────────────── */
 const fType = document.getElementById('f-type');
-const fSubject = document.getElementById('f-subject');
+const fClass = document.getElementById('f-class');
 const fSemester = document.getElementById('f-semester');
 const rangeEl = document.getElementById('range');
 const rFill = document.getElementById('range-fill');
@@ -897,8 +897,10 @@ let bounds = { lo: 0, hi: 0 };
 let rangeReady = false;
 
 function buildFilterOptions(sets) {
-    const subjects = [...new Set(sets.map(s => s.subject).filter(Boolean))].sort();
-    subjects.forEach(s => fSubject.add(new Option(s, s)));
+    // numeric-aware sort so BIOENG 220 lands before BIOENG 1085
+    const classes = [...new Set(sets.map(s => s.classCode).filter(Boolean))]
+        .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+    classes.forEach(c => fClass.add(new Option(c, c)));
 
     const semesters = [...new Set(sets.map(s => s.semester).filter(Boolean))]
         .sort((a, b) => semesterKey(b) - semesterKey(a));
@@ -952,14 +954,14 @@ function placeValue(el, x) {
 }
 
 function applyFilters() {
-    const type = fType.value, subject = fSubject.value, semester = fSemester.value;
+    const type = fType.value, classCode = fClass.value, semester = fSemester.value;
     const min = Number(rMin.value), max = Number(rMax.value);
 
     let shown = 0;
     listEl.querySelectorAll('li').forEach(li => {
         const n = Number(li.dataset.count);
         const ok = (!type || li.dataset.type === type)
-            && (!subject || li.dataset.subject === subject)
+            && (!classCode || li.dataset.class === classCode)
             && (!semester || li.dataset.semester === semester)
             && (n >= min && n <= max);
         li.hidden = !ok;
@@ -974,7 +976,7 @@ function applyFilters() {
     }
 }
 
-[fType, fSubject, fSemester].forEach(el => el.addEventListener('change', applyFilters));
+[fType, fClass, fSemester].forEach(el => el.addEventListener('change', applyFilters));
 
 rMin.addEventListener('input', () => {
     if (Number(rMin.value) > Number(rMax.value)) rMin.value = rMax.value;
@@ -988,7 +990,7 @@ window.addEventListener('resize', paintRange);
 window.addEventListener('load', paintRange);
 
 document.getElementById('f-reset').addEventListener('click', () => {
-    [fType, fSubject, fSemester].forEach(el => { el.value = ''; });
+    [fType, fClass, fSemester].forEach(el => { el.value = ''; });
     rMin.value = bounds.lo;
     rMax.value = bounds.hi;
     paintRange();

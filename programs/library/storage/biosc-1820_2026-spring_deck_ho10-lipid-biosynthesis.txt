@@ -1,0 +1,241 @@
+Name: BIOSC 1820 HO10 Lipid Biosynthesis
+Description: Fatty acid, phospholipid, sphingolipid, and cholesterol synthesis and their regulation.
+Class: BIOSC 1820
+Semester: Spring 2026
+
+Q: What are the four main classes of lipids covered in HO10?
+A: Fatty acids, phospholipids, sphingolipids, and cholesterol.
+
+Q: What building block tag is attached before fatty acid synthesis?
+A: ACP (acyl carrier protein).
+
+Q: What enzyme converts acetyl CoA + HCO3- + ATP into malonyl CoA?
+A: Acetyl CoA carboxylase (ACC).
+
+Q: What are the substrates for acetyl CoA carboxylase?
+A: Acetyl CoA, HCO3-, and ATP.
+
+Q: What is the product of acetyl CoA carboxylase?
+A: Malonyl CoA.
+
+Q: What enzyme converts malonyl CoA to malonyl ACP?
+A: Malonyl CoA-ACP transacylase.
+
+Q: What cofactor/prosthetic group does acetyl CoA carboxylase carry?
+A: Biotin (via biotin carrier protein, BCP).
+
+Q: What are the two catalytic arms of acetyl CoA carboxylase?
+A: Biotin carboxylase and transcarboxylase.
+
+Q: What does biotin carboxylase do?
+A: Attaches HCO3- as CO2 onto biotin, forming carboxybiotin.
+
+Q: What does transcarboxylase do?
+A: Transfers CO2 from carboxybiotin onto acetyl CoA.
+
+Q: What does carboxybiotin refer to?
+A: Biotin with CO2 attached.
+
+Q: What does malonyl CoA inhibit, and why?
+A: Carnitine acyltransferase, to prevent simultaneous fatty acid synthesis and breakdown.
+
+Q: How does ACP structurally differ from CoA?
+A: ACP is CoA without the AMP portion.
+
+Q: Which phosphorylation state of ACC is active?
+A: Dephosphorylated (active without P).
+
+Q: Which phosphorylation state of ACC is inactive?
+A: Phosphorylated (inactive with P).
+
+Q: Where is fatty acid synthase located in animals?
+A: In the cytosol.
+
+Q: Where is fatty acid synthase located in plants?
+A: In the chloroplast.
+
+Q: How many active site thiols (SH) does fatty acid synthase have?
+A: Two.
+
+Q: How many carbons are added per cycle in fatty acid synthesis?
+A: 2 carbons.
+
+Q: How many cycles does it take to make palmitate (16C)?
+A: 8 cycles.
+
+Q: How many steps are in one fatty acid elongation cycle?
+A: 4 steps.
+
+Q: What is the final 16-carbon product of fatty acid synthase?
+A: Palmitoyl CoA (then palmitic acid).
+
+Q: Why does adding CO2 (malonyl group) make fatty acid synthesis favorable?
+A: Decarboxylation provides the thermodynamic driving force.
+
+Q: Where do the first 2 carbons of a fatty acid chain come from?
+A: Acetyl CoA.
+
+Q: In palmitate, which carbon positions are the first 2 carbons (from acetyl CoA)?
+A: C15 and C16.
+
+Q: Where do the other 14 carbons of palmitate come from?
+A: 7 malonyl ACP units.
+
+Q: What is the role of ACP in fatty acid synthesis?
+A: It holds substrates firmly attached to the enzyme.
+
+Q: What does malonyl ACP produce to prepare it for fatty acid chain extension?
+A: An activated acyl group ready to be added to the chain.
+
+Q: How many ATP are used to make 7 malonyl ACP?
+A: 7 ATP.
+
+Q: How many NADPH are used to make palmitate from 7 malonyl ACP?
+A: 14 NADPH.
+
+Q: Why must acetyl CoA be exported from the mitochondria for fatty acid synthesis?
+A: Fatty acid synthesis occurs in the cytosol.
+
+Q: What enzyme combines oxaloacetate + acetyl CoA into citrate?
+A: Citrate synthase.
+
+Q: How is citrate exported from the mitochondria?
+A: Via the citrate transporter.
+
+Q: What enzyme cleaves citrate into oxaloacetate + acetyl CoA in the cytosol?
+A: Citrate lyase.
+
+Q: What is oxaloacetate converted to for return to the mitochondria?
+A: Malate.
+
+Q: What transporter returns malate to the mitochondria?
+A: The malate transporter.
+
+Q: In the alternate shuttle pathway, what is malate converted to?
+A: Pyruvate.
+
+Q: What does the malate-to-pyruvate conversion provide for fatty acid synthesis?
+A: NADPH.
+
+Q: How does pyruvate return to the mitochondria?
+A: Via the pyruvate transporter, where it forms oxaloacetate.
+
+Q: What activates acetyl CoA carboxylase allosterically?
+A: Citrate.
+
+Q: What inhibits acetyl CoA carboxylase allosterically?
+A: Palmitoyl CoA.
+
+Q: Which hormone activates fatty acid synthesis?
+A: Insulin.
+
+Q: Which hormones inhibit fatty acid synthesis?
+A: Glucagon and epinephrine.
+
+Q: What combines with glycerol-3-phosphate and another fatty acid to form phosphatidic acid?
+A: Palmitoyl CoA.
+
+Q: What is the precursor to most phospholipids?
+A: Phosphatidic acid.
+
+Q: What activates phosphatidic acid for phospholipid synthesis?
+A: CTP (forming CDP-diacylglycerol).
+
+Q: What head groups can be added to CDP-diacylglycerol to form phospholipids?
+A: G3P, serine, or inositol.
+
+Q: What are the three precursors of sphingolipids?
+A: Palmitoyl CoA, serine, and acetyl CoA.
+
+Q: What molecule is formed from 3 acetyl CoA in cholesterol synthesis?
+A: Mevalonate.
+
+Q: What enzyme regulates mevalonate synthesis?
+A: HMG-CoA reductase.
+
+Q: What does mevalonate get converted to?
+A: Isopentenyl pyrophosphate (IPP).
+
+Q: Where does IPP formation occur?
+A: In the cytosol.
+
+Q: What does IPP form on the way to cholesterol?
+A: Squalene.
+
+Q: What two enzyme types convert squalene to cholesterol?
+A: Oxygenase and cyclase.
+
+Q: How many rings do sterols have?
+A: Four.
+
+Q: In what form is cholesterol stored?
+A: As a cholesterol ester.
+
+Q: How is cholesterol transported in the body?
+A: Through the blood via lipoproteins.
+
+Q: Which lipoprotein transports lipids from the intestine?
+A: Chylomicrons.
+
+Q: Where are LDL and HDL produced?
+A: The liver.
+
+Q: Why is LDL considered "bad"?
+A: It causes artery damage.
+
+Q: Why is HDL considered "good"?
+A: It repairs artery damage.
+
+Q: Name the key molecules to memorize for HO10.
+A: Glycerol, acetate, acetyl group, acetyl CoA, malonyl CoA, malonyl ACP, HCO3-, palmitic acid, oxaloacetate, citrate, malate, pyruvate, glycerol-3-phosphate, CDP-diacylglycerol, cholesterol.
+
+Q: What is the committed step of fatty acid synthesis?
+A: Acetyl CoA → malonyl CoA (by ACC).
+
+Q: What is the end product of one full round of fatty acid synthase?
+A: Palmitate (16C).
+
+Q: Draw: glycerol
+A: 3-carbon chain with an -OH on each carbon (HOCH2-CHOH-CH2OH).
+
+Q: Draw: acetate
+A: CH3-COO- (2-carbon carboxylate: methyl group + deprotonated carboxyl).
+
+Q: Draw: acetyl group
+A: CH3-C(=O)- (2-carbon: methyl bonded to a carbonyl carbon).
+
+Q: Draw: acetyl CoA
+A: CH3-C(=O)-S-CoA (acetyl group joined to CoA through a thioester bond).
+
+Q: Draw: malonyl CoA
+A: HOOC-CH2-C(=O)-S-CoA (3C: carboxyl + CH2 + thioester to CoA).
+
+Q: Draw: malonyl ACP
+A: HOOC-CH2-C(=O)-S-ACP (malonyl group thioester-linked to ACP instead of CoA).
+
+Q: Draw: bicarbonate (HCO3-)
+A: Central C double-bonded to one O, single-bonded to two O's (one with H, one negative). Trigonal planar.
+
+Q: Draw: palmitic acid
+A: CH3-(CH2)14-COOH (straight 16-carbon saturated fatty acid with a terminal carboxyl).
+
+Q: Draw: oxaloacetate
+A: HOOC-C(=O)-CH2-COOH (4C: carboxyl – ketone – CH2 – carboxyl).
+
+Q: Draw: citrate
+A: 6C tricarboxylate: central C with -OH and -COO-, flanked by two CH2-COO- arms (HOOC-CH2-C(OH)(COOH)-CH2-COOH).
+
+Q: Draw: malate
+A: HOOC-CH(OH)-CH2-COOH (4C: carboxyl – CHOH – CH2 – carboxyl).
+
+Q: Draw: pyruvate
+A: CH3-C(=O)-COO- (3C: methyl – ketone – carboxylate).
+
+Q: Draw: glycerol-3-phosphate
+A: Glycerol backbone (HOCH2-CHOH-CH2-) with a phosphate group (-O-PO3^2-) on C3.
+
+Q: Draw: CDP-diacylglycerol
+A: Glycerol with two fatty acyl chains (ester-linked at C1 and C2) and CDP (cytidine diphosphate) linked through a phosphate at C3.
+
+Q: Draw: cholesterol
+A: Four fused rings (3 six-membered + 1 five-membered = steroid nucleus), -OH on ring A (C3), methyl groups at C10 and C13, and an 8-carbon isooctyl side chain off C17.

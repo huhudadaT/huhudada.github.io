@@ -1,0 +1,301 @@
+Name: BIOSC 1820 HO09 Carbohydrate Synthesis
+Description: The Calvin cycle, photorespiration, C4 metabolism, and sucrose and starch synthesis.
+Class: BIOSC 1820
+Semester: Spring 2026
+
+Q: What process is the ultimate source of all carbohydrates in human metabolism?
+A: Plant and bacterial anabolic processes (largely reductive, NAD(P)H-requiring, ATP-burning).
+
+Q: How does anabolism differ from catabolism in terms of redox and energy?
+A: Anabolism is reductive and burns ATP; catabolism is oxidative and produces ATP.
+
+Q: What are the three plastid types and their functions?
+A: Chloroplasts (carbon assimilation), amyloplasts (starch storage), proplastids (loss of internal membranes/chlorophyll).
+
+Q: Are plastids interconvertible?
+A: Yes — depends on sunlight, location, and energy needs.
+
+Q: Where in the chloroplast does carbon fixation occur?
+A: The stroma.
+
+Q: What are three other names for the Calvin Cycle?
+A: Carbon assimilation, carbon fixation, or the "Dark Reactions."
+
+Q: Why is "Dark Reactions" a misleading name for the Calvin Cycle?
+A: The reactions can occur in sunlight.
+
+Q: What are the three stages of the Calvin Cycle?
+A: Stage 1: fixation. Stage 2: reduction. Stage 3: regeneration of acceptor.
+
+Q: What enzyme catalyzes the first committed step of the Calvin Cycle?
+A: RuBisCO (ribulose-1,5-bisphosphate carboxylase/oxygenase).
+
+Q: What percentage of soluble chloroplast protein is RuBisCO?
+A: ~50%.
+
+Q: What is the subunit composition of RuBisCO?
+A: 8 × 53 kDa subunits and 8 × 14 kDa subunits.
+
+Q: What does RuBisCO need to assemble?
+A: A chaperone.
+
+Q: What two conditions activate RuBisCO?
+A: High pH and Mg2+.
+
+Q: What does high pH and Mg2+ signal to RuBisCO?
+A: That the light reactions are ongoing.
+
+Q: What is the ΔG of the RuBisCO reaction?
+A: -52 kJ/mol (favorable).
+
+Q: What residues/cofactors are at the RuBisCO active site?
+A: A carbamoylated lysine and a Mg2+ ion.
+
+Q: What are the 5 steps of the RuBisCO carboxylation mechanism?
+A: Ribulose-1,5-bisphosphate → enediol → 2-carboxy-3-keto intermediate → hydrated intermediate → 2x 3-phosphoglycerate.
+
+Q: What does 3 ribulose-1,5-bisphosphate yield in the carboxylation step?
+A: 6 molecules of 3-phosphoglycerate.
+
+Q: What enzyme converts 3-phosphoglycerate to 1,3-bisphosphoglycerate?
+A: Phosphoglycerate kinase.
+
+Q: What enzyme converts 1,3-bisphosphoglycerate to glyceraldehyde-3-phosphate?
+A: Glyceraldehyde-3-phosphate dehydrogenase.
+
+Q: How is Calvin cycle Stage 2 different from gluconeogenesis?
+A: It uses NADPH instead of NADH.
+
+Q: How many G3P molecules are produced per turn of the Calvin cycle (from 3 RuBP)?
+A: 6 G3P.
+
+Q: How many G3P molecules are recycled to regenerate RuBP?
+A: 5 of 6 (5/6 are recycled).
+
+Q: How many G3P molecules are exported per turn for sugar synthesis?
+A: 1 of 6.
+
+Q: How many ATP and NADPH are needed to fix one carbon at the G3P stage?
+A: 2 ATP and 2 NADPH.
+
+Q: What enzyme converts G3P to dihydroxyacetone phosphate?
+A: Triose phosphate isomerase.
+
+Q: What does transaldolase do?
+A: Transfers a 3-carbon unit (acts on aldoses).
+
+Q: What does transketolase do?
+A: Transfers a 2-carbon unit (acts on ketoses).
+
+Q: What is the final ATP-requiring step that drives Stage 3?
+A: Ribulose-5-phosphate kinase (Ru5P → RuBP).
+
+Q: How many NADPH and ATP are needed per triose phosphate produced?
+A: 6 NADPH and 9 ATP.
+
+Q: How many NADPH and ATP are needed per hexose produced?
+A: 12 NADPH and 18 ATP.
+
+Q: What is the overall net equation for hexose synthesis in the Calvin cycle?
+A: 6 CO2 + 18 ATP + 12 NADPH → C6H12O6 + 18 ADP + 18 Pi + 12 NADP+.
+
+Q: Why must triose phosphates be exported from the stroma?
+A: Sucrose synthesis occurs in the cytosol; the chloroplast membrane is impermeable to hexoses.
+
+Q: What transporter exchanges triose phosphates and Pi across the chloroplast membrane?
+A: The Pi-triose phosphate antiporter.
+
+Q: What is thioredoxin?
+A: A small disulfide-containing protein that regulates Calvin cycle enzymes.
+
+Q: What reduces thioredoxin?
+A: Reduced ferredoxin (which has escaped from the electron transport chain).
+
+Q: Which protein actually contains iron — thioredoxin or ferredoxin?
+A: Ferredoxin (thioredoxin contains a disulfide, S-S).
+
+Q: What four Calvin cycle enzymes are regulated by thioredoxin?
+A: Ribulose-5-phosphate kinase, fructose-1,6-bisphosphatase, sedoheptulose-1,7-bisphosphatase, and glyceraldehyde-3-phosphate dehydrogenase.
+
+Q: What does thioredoxin signal to the plant?
+A: That light reactions are running — make starch/sucrose by day, eat sugars at night.
+
+Q: What does the oxygenase activity of RuBisCO produce?
+A: 3-phosphoglycerate + phosphoglycolate.
+
+Q: How much higher is RuBisCO's Km for O2 than for CO2?
+A: ~40-fold higher.
+
+Q: Why does the oxygenase reaction occur despite the high Km for O2?
+A: When O2 concentration is high enough, the reaction proceeds.
+
+Q: What are the three downsides of photorespiration?
+A: Wasted RuBisCO, loss of ATP, and loss of previously fixed CO2.
+
+Q: How do cyanobacteria avoid photorespiration?
+A: They concentrate CO2 in carboxysomes.
+
+Q: What is the 8-step glycolate pathway from phosphoglycolate to 3-phosphoglycerate?
+A: Phosphoglycolate → glycolate → glyoxylate → glycine → serine → hydroxypyruvate → glycerate → 3-phosphoglycerate.
+
+Q: What three organelles are involved in the glycolate pathway?
+A: Chloroplast, peroxisome, and mitochondrion.
+
+Q: What two peroxisomal enzymes act in the glycolate pathway?
+A: Glycolic acid oxidase and α-hydroxy acid reductase.
+
+Q: What enzyme converts 2 glycine to serine + CO2 in the mitochondrion?
+A: Glycine decarboxylase.
+
+Q: What cofactors does glycine decarboxylase use?
+A: THF and PLP.
+
+Q: How abundant can glycine decarboxylase be in some plants?
+A: Up to half of all mitochondrial matrix protein.
+
+Q: What is the first product of CO2 fixation in C3 plants?
+A: 3-phosphoglycerate.
+
+Q: What is the first product of CO2 fixation in C4 plants?
+A: Oxaloacetate (OAA).
+
+Q: What enzyme in C4 mesophyll cells fixes HCO3- onto PEP?
+A: PEP carboxylase.
+
+Q: Where in C4 plants does the Calvin cycle occur?
+A: In bundle sheath cells.
+
+Q: What is the C4 carbon shuttle pathway?
+A: HCO3- + PEP → oxaloacetate → malate → (transported to bundle sheath) → pyruvate + CO2 → CO2 enters Calvin cycle.
+
+Q: What is the key feature of C4 bundle sheath cells?
+A: They are gas-impermeable, allowing CO2 concentration.
+
+Q: How does C4 RuBisCO compare to C3 RuBisCO?
+A: C4 RuBisCO is faster but "sloppier"; C3 RuBisCO is slower but better at CO2 vs. O2 discrimination.
+
+Q: What activates malate dehydrogenase in C4 plants?
+A: Reduced thioredoxin.
+
+Q: What mechanism does PEP carboxylase use?
+A: A phosphorylated histidine (E-His-P) intermediate.
+
+Q: How does pyruvate get back to PEP in C4 mesophyll cells?
+A: Via pyruvate-Pi dikinase (uses ATP → AMP + PPi).
+
+Q: Where does sucrose synthesis occur?
+A: The cytosol.
+
+Q: What activated sugar is used to make sucrose?
+A: UDP-glucose.
+
+Q: Why is UDP a good leaving group?
+A: It's stabilized and released easily, driving the reaction forward.
+
+Q: What two enzymes make sucrose from UDP-glucose + fructose-6-phosphate?
+A: Sucrose-6-phosphate synthase, then sucrose-6-phosphate phosphatase.
+
+Q: What thermodynamically drives sucrose synthesis?
+A: Final Pi hydrolysis (by sucrose-6-phosphate phosphatase).
+
+Q: What regulates sucrose synthesis?
+A: Fructose-2,6-bisphosphate (F26BP), which inhibits fructose-1,6-bisphosphatase.
+
+Q: What does high F26BP signal?
+A: Dark conditions — stop making sucrose, run glycolysis instead.
+
+Q: What activated sugar is used for starch synthesis?
+A: ADP-glucose.
+
+Q: Why is ADP a good leaving group?
+A: Same reason as UDP — stable, released easily, drives reaction forward.
+
+Q: What enzyme makes ADP-glucose from glucose-1-phosphate?
+A: ADP-glucose pyrophosphorylase.
+
+Q: What enzyme adds ADP-glucose onto a growing starch chain?
+A: Starch synthase.
+
+Q: What is the unbranched starch product called?
+A: Amylose.
+
+Q: What enzyme adds branches to starch?
+A: Branching enzyme.
+
+Q: How does starch branching compare to glycogen?
+A: Starch has fewer branches than glycogen.
+
+Q: What activates ADP-glucose pyrophosphorylase?
+A: High 3-phosphoglycerate and low Pi (signals active photosynthesis).
+
+Q: Draw: glycerate
+A: HOCH2-CH(OH)-COOH (3C: hydroxymethyl – hydroxyl – carboxyl).
+
+Q: Draw: ribulose-1,5-bisphosphate (RuBP)
+A: 5C ketose: CH2OPO3 – C(=O) – CHOH – CHOH – CH2OPO3 (phosphates on C1 and C5; ketone at C2).
+
+Q: Draw: 3-phosphoglycerate (3-PG)
+A: 3C: COO- – CHOH – CH2OPO3 (carboxyl on C1, phosphate on C3).
+
+Q: Draw: 1,3-bisphosphoglycerate (1,3-BPG)
+A: 3C: phosphoanhydride at C1 (acyl phosphate) – CHOH – CH2OPO3 (phosphates on C1 and C3).
+
+Q: Draw: glyceraldehyde 3-phosphate (G3P)
+A: 3C aldose: CHO – CHOH – CH2OPO3 (aldehyde at C1, phosphate on C3).
+
+Q: Draw: dihydroxyacetone phosphate (DHAP)
+A: 3C ketose: CH2OH – C(=O) – CH2OPO3 (ketone at C2, phosphate on C3).
+
+Q: Draw: phosphoglycolate
+A: 2C: COO- – CH2OPO3 (carboxyl + phosphorylated CH2).
+
+Q: Draw: glycolate
+A: 2C: COO- – CH2OH (carboxyl + hydroxymethyl).
+
+Q: Draw: glyoxylate
+A: 2C: COO- – CHO (carboxyl + aldehyde).
+
+Q: Draw: glycine
+A: H2N-CH2-COOH (smallest amino acid).
+
+Q: Draw: serine
+A: HOCH2-CH(NH2)-COOH (amino acid with hydroxymethyl side chain).
+
+Q: Draw: hydroxypyruvate
+A: 3C: HOCH2 – C(=O) – COO- (hydroxymethyl – ketone – carboxyl).
+
+Q: Draw: oxaloacetate (OAA)
+A: HOOC-C(=O)-CH2-COOH (4C: carboxyl – ketone – CH2 – carboxyl).
+
+Q: Draw: malate
+A: HOOC-CH(OH)-CH2-COOH (4C: carboxyl – CHOH – CH2 – carboxyl).
+
+Q: Draw: pyruvate
+A: CH3-C(=O)-COO- (3C: methyl – ketone – carboxylate).
+
+Q: Draw: UDP-glucose
+A: Glucose with UDP (uridine diphosphate) attached at C1 via the anomeric oxygen.
+
+Q: Draw: fructose 6-phosphate
+A: Fructose (6C ketose, furanose form) with phosphate on C6.
+
+Q: Draw: sucrose
+A: Glucose α(1→2)β fructose disaccharide (glucose + fructose joined by an α,β-1,2 glycosidic bond).
+
+Q: Draw: ADP-glucose
+A: Glucose with ADP (adenosine diphosphate) attached at C1 via the anomeric oxygen.
+
+Q: Draw: starch (amylose)
+A: Linear chain of α-D-glucose residues linked by α(1→4) glycosidic bonds.
+
+Q: How many steps from RuBP to 3-phosphoglycerate (carboxylase reaction)?
+A: 5 steps.
+
+Q: How many steps from 3-PG to G3P?
+A: 3 steps.
+
+Q: How many steps from RuBP to 3-PG + phosphoglycolate (oxygenase reaction)?
+A: 5 steps.
+
+Q: How many steps from phosphoglycolate to 3-PG (glycolate pathway)?
+A: 8 steps.
