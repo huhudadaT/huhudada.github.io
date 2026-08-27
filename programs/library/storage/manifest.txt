@@ -1,0 +1,7 @@
+# Fallback list for the library page.
+# The page normally reads this folder live from the GitHub API and ignores this
+# file. It only falls back to this list if that request fails (offline, or the
+# API's hourly limit hit). One filename per line; lines starting with # ignored.
+
+cell-biology-the-mitochondria.txt
+the-french-revolution.txt

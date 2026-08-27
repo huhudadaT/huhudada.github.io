@@ -1,0 +1,10 @@
+Name: Cell Biology — The Mitochondria
+Description: Structure and function of the mitochondria in eukaryotic cells.
+Subject: Biology
+Semester: Fall 2026
+
+Q: What does the mitochondria produce?
+A: ATP.
+
+Q: Why is the mitochondria called the powerhouse of the cell?
+A: It generates most of the cell's ATP.
