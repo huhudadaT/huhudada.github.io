@@ -1,6 +1,12 @@
 CHANGELOG - huhudada.com
 Newest first. Format: see CHANGELOG_GUIDE.md
 
+2026-08-27
+  - [programs] Fix favicon
+
+2026-08-26
+  - [meata] Added favicon
+
 2026-08-25
   - [meta] Added CHANGELOG.txt and CHANGELOG_GUIDE.md to start logging changes.
   - [baseline] Site: index.html, portfolio.html + portfolio/, programs/ (flashcards + quiz). Detail in HANDOFF.md.
