@@ -322,6 +322,19 @@
     }
     .set-empty[hidden] { display: none; }
 
+    /* ── pager ────────────────────────────────────────────────────── */
+    .pager {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 16px; flex-wrap: wrap; padding: 20px 12px 0;
+    }
+    .pager[hidden] { display: none; }
+    .pager-nav { display: flex; align-items: center; gap: 10px; }
+    .pager-nav[hidden] { display: none; }
+    .pager-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-dim);
+    }
+
     /* ── story block (§7.5) ───────────────────────────────────────── */
     .block {
         display: grid; grid-template-columns: 200px 1fr; gap: 60px;
@@ -479,6 +492,16 @@
             <p class="list-status" id="list-status">Reading the storage folder…</p>
             <ul class="set-list" id="set-list"></ul>
             <p class="set-empty" id="set-empty" hidden></p>
+
+            <div class="pager" id="pager" hidden>
+                <span class="pager-label" id="pager-count"></span>
+                <span class="pager-nav" id="pager-nav">
+                    <button class="step" type="button" id="page-prev" aria-label="Previous page">‹</button>
+                    <span class="pager-label" id="pager-page"></span>
+                    <button class="step" type="button" id="page-next" aria-label="Next page">›</button>
+                </span>
+            </div>
+
             <p class="list-note" id="list-note" hidden></p>
 
             <noscript>
@@ -953,28 +976,73 @@ function placeValue(el, x) {
     el.style.left = Math.min(Math.max(x, half), full - half) + 'px';
 }
 
+const PER_PAGE = 10;
+const pagerEl = document.getElementById('pager');
+const pagerCount = document.getElementById('pager-count');
+const pagerPage = document.getElementById('pager-page');
+const pagerNav = document.getElementById('pager-nav');
+const prevPage = document.getElementById('page-prev');
+const nextPage = document.getElementById('page-next');
+
+let matched = [];
+let page = 1;
+
+// listEl.children, not querySelectorAll('li') — the latter also picks up
+// the option items inside an open preview and hides them
+const rows = () => Array.from(listEl.children);
+
 function applyFilters() {
     const type = fType.value, classCode = fClass.value, semester = fSemester.value;
     const min = Number(rMin.value), max = Number(rMax.value);
 
-    let shown = 0;
-    listEl.querySelectorAll('li').forEach(li => {
+    matched = rows().filter(li => {
         const n = Number(li.dataset.count);
-        const ok = (!type || li.dataset.type === type)
+        return (!type || li.dataset.type === type)
             && (!classCode || li.dataset.class === classCode)
             && (!semester || li.dataset.semester === semester)
             && (n >= min && n <= max);
-        li.hidden = !ok;
-        if (ok) shown++;
     });
 
-    if (shown === 0) {
-        emptyEl.textContent = 'No sets match those filters yet. Reset them to see the whole library.';
-        emptyEl.hidden = false;
-    } else {
-        emptyEl.hidden = true;
-    }
+    page = 1;
+    paintPage();
 }
+
+function paintPage() {
+    const pages = Math.max(1, Math.ceil(matched.length / PER_PAGE));
+    page = Math.min(Math.max(page, 1), pages);
+
+    const from = (page - 1) * PER_PAGE;
+    const onPage = new Set(matched.slice(from, from + PER_PAGE));
+    rows().forEach(li => { li.hidden = !onPage.has(li); });
+
+    if (!matched.length) {
+        emptyEl.textContent = 'No sets match those filters. Reset them to see the whole library.';
+        emptyEl.hidden = false;
+        pagerEl.hidden = true;
+        return;
+    }
+    emptyEl.hidden = true;
+    pagerEl.hidden = false;
+
+    // the count always shows; the page buttons only when there's more than one page
+    pagerCount.textContent = pages === 1
+        ? `${matched.length} set${matched.length === 1 ? '' : 's'}`
+        : `showing ${from + 1}–${Math.min(from + PER_PAGE, matched.length)} of ${matched.length} sets`;
+    pagerNav.hidden = pages === 1;
+    pagerPage.textContent = `page ${page} / ${pages}`;
+    prevPage.disabled = page === 1;
+    nextPage.disabled = page === pages;
+}
+
+function goPage(n) {
+    page = n;
+    closePanels(null);
+    paintPage();
+    // if the list has scrolled off the top, bring its start back into view
+    if (listEl.getBoundingClientRect().top < 0) listEl.scrollIntoView({ block: 'start' });
+}
+prevPage.addEventListener('click', () => goPage(page - 1));
+nextPage.addEventListener('click', () => goPage(page + 1));
 
 [fType, fClass, fSemester].forEach(el => el.addEventListener('change', applyFilters));
 
