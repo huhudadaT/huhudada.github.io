@@ -74,12 +74,11 @@
         background: rgba(251, 246, 236, 0.7);
         -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
         cursor: pointer;
-        transition: color 0.3s, border-color 0.3s;
     }
     .nav-toggle:hover, .nav-toggle:focus-visible {
         color: var(--rose-deep); border-color: var(--rose-deep);
     }
-    .nav-caret { display: inline-block; transition: transform 0.3s; }
+    .nav-caret { display: inline-block; }
     .nav-toggle[aria-expanded="true"] .nav-caret { transform: rotate(180deg); }
     .nav-dropdown {
         display: none; flex-direction: column; margin-top: 6px; min-width: 100%;
@@ -93,7 +92,6 @@
         font-family: 'JetBrains Mono', monospace;
         font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
         color: var(--ink-dim); padding: 11px 16px; white-space: nowrap;
-        transition: background 0.3s, color 0.3s;
     }
     .nav-dropdown a:hover, .nav-dropdown a:focus-visible {
         background: var(--paper-soft); color: var(--rose-deep);
@@ -151,7 +149,7 @@
         font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
         color: var(--ink-dim); background: rgba(255, 255, 255, 0.35);
         border: 1px solid var(--line); padding: 8px 30px 8px 12px;
-        cursor: pointer; transition: color 0.3s, border-color 0.3s;
+        cursor: pointer;
     }
     select:hover, select:focus-visible { color: var(--rose-deep); border-color: var(--rose-deep); }
     .filter-reset {
@@ -159,7 +157,7 @@
         font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
         color: var(--ink-dim); background: none; border: none;
         border-bottom: 1px solid var(--line); padding: 0 0 3px; margin-bottom: 9px;
-        cursor: pointer; transition: color 0.3s, border-color 0.3s;
+        cursor: pointer;
     }
     .filter-reset:hover, .filter-reset:focus-visible { color: var(--rose-deep); border-bottom-color: var(--rose-deep); }
 
@@ -185,7 +183,7 @@
         -webkit-appearance: none; appearance: none;
         width: 14px; height: 14px; border-radius: 0;
         background: var(--paper); border: 1px solid var(--rose-deep);
-        cursor: grab; pointer-events: auto; transition: background 0.3s;
+        cursor: grab; pointer-events: auto;
     }
     .range input[type="range"]::-webkit-slider-thumb:hover { background: var(--paper-soft); }
     .range input[type="range"]::-moz-range-thumb {
@@ -218,7 +216,6 @@
     .set-row {
         display: grid; grid-template-columns: 1fr auto; gap: 32px;
         align-items: start; padding: 28px 12px;
-        transition: background 0.3s;
     }
     .set-row:hover, .set-list > li.is-open .set-row { background: var(--paper-soft); }
 
@@ -234,7 +231,7 @@
     .set-title {
         font-family: 'Cormorant Garamond', serif; font-weight: 400;
         font-size: 1.7rem; line-height: 1.15; letter-spacing: -0.01em; color: var(--ink);
-        margin: 0 0 10px; transition: color 0.35s;
+        margin: 0 0 10px;
     }
     .set-row:hover .set-title { color: var(--rose-deep); }
     .set-desc { font-size: 0.98rem; line-height: 1.7; color: var(--ink-dim); margin: 0; max-width: 60ch; }
@@ -254,11 +251,8 @@
         background: rgba(255, 255, 255, 0.45);
         border: 1px solid var(--rose-deep);
         padding: 13px 20px; cursor: pointer; white-space: nowrap;
-        transition: background 0.3s, color 0.3s;
     }
     .btn:hover, .btn:focus-visible { background: var(--paper-soft); }
-    .btn-arrow { transition: transform 0.35s; }
-    .btn:hover .btn-arrow { transform: translateY(3px); }
     .btn-quiet {
         display: inline-flex; align-items: center; justify-content: center; gap: 8px;
         font-family: 'JetBrains Mono', monospace;
@@ -266,10 +260,9 @@
         color: var(--ink-dim); background: none;
         border: 1px solid var(--line);
         padding: 11px 20px; cursor: pointer; white-space: nowrap;
-        transition: color 0.3s, border-color 0.3s;
     }
     .btn-quiet:hover, .btn-quiet:focus-visible { color: var(--rose-deep); border-color: var(--rose-deep); }
-    .btn-caret { display: inline-block; transition: transform 0.3s; }
+    .btn-caret { display: inline-block; }
     .btn-quiet[aria-expanded="true"] .btn-caret { transform: rotate(180deg); }
 
     /* ── preview panel (one item at a time) ───────────────────────── */
@@ -290,7 +283,6 @@
         color: var(--rose-deep);
         background: rgba(255, 255, 255, 0.45);
         border: 1px solid var(--line); border-radius: 0;
-        transition: border-color 0.3s;
     }
     .preview-jump:hover, .preview-jump:focus-visible { border-color: var(--rose-deep); outline: none; }
     .preview-steps { display: flex; gap: 6px; }
@@ -299,7 +291,7 @@
         display: inline-flex; align-items: center; justify-content: center;
         font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1;
         color: var(--ink-dim); background: none; border: 1px solid var(--line);
-        cursor: pointer; transition: color 0.3s, border-color 0.3s;
+        cursor: pointer;
     }
     .step:hover:not(:disabled), .step:focus-visible { color: var(--rose-deep); border-color: var(--rose-deep); }
     .step:disabled { color: var(--ink-faint); cursor: default; }
@@ -354,7 +346,7 @@
     }
     .block-content ul li { padding-left: 24px; position: relative; }
     .block-content ul li::before { content: '—'; position: absolute; left: 0; color: var(--rose-deep); }
-    .inline-link { border-bottom: 1px solid var(--line); transition: color 0.3s, border-color 0.3s; }
+    .inline-link { border-bottom: 1px solid var(--line); }
     .inline-link:hover { color: var(--rose-deep); border-bottom-color: var(--rose-deep); }
 
     /* ── prev / next (§7.10) ──────────────────────────────────────── */
@@ -362,7 +354,7 @@
         display: grid; grid-template-columns: 1fr 1fr; gap: 0;
         border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 64px;
     }
-    .nav-pair a { padding: 32px 0; display: block; transition: background 0.3s; }
+    .nav-pair a { padding: 32px 0; display: block; }
     .nav-pair a:hover { background: var(--paper-soft); }
     .nav-pair a:first-child { padding-right: 32px; }
     .nav-pair a + a { border-left: 1px solid var(--line); padding-left: 32px; text-align: right; }
@@ -384,12 +376,7 @@
         text-transform: uppercase; color: var(--ink-dim);
     }
     .footer-contact { display: flex; gap: 24px; }
-    .footer-contact a { transition: color 0.3s; }
     .footer-contact a:hover { color: var(--rose-deep); }
-
-    /* ── motion (§8) ──────────────────────────────────────────────── */
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ── breakpoints (§5) ─────────────────────────────────────────── */
     @media (max-width: 900px) {
@@ -414,13 +401,6 @@
         .nav-menu { left: 16px; }
         .set-cta > * { flex: 1 1 100%; }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-        .reveal { opacity: 1; transform: none; transition: none; }
-        .nav-toggle, .nav-caret, .nav-dropdown a, .set-row, .set-title,
-        .btn, .btn-arrow, .btn-quiet, .btn-caret, select, .filter-reset,
-        .step, .preview-jump { transition: none; }
-    }
     </style>
 </head>
 <body>
@@ -442,9 +422,9 @@
     <!-- ── page header ──────────────────────────────────────────── -->
     <section class="page-header">
         <div class="wrap">
-            <div class="project-kicker reveal">Huhudada · Programs · Library</div>
-            <h1 class="reveal">Sets to borrow, <em>free.</em></h1>
-            <p class="lede reveal">Card decks and quizzes I built for my own coursework. Every set is a
+            <div class="project-kicker">Huhudada · Programs · Library</div>
+            <h1>Sets to borrow, <em>free.</em></h1>
+            <p class="lede">Card decks and quizzes I built for my own coursework. Every set is a
                 plain text file — download one and import it into the program that reads it.</p>
         </div>
     </section>
@@ -453,7 +433,7 @@
     <section>
         <div class="wrap">
 
-            <div class="filter-bar reveal">
+            <div class="filter-bar">
                 <div>
                     <h2 class="section-label">§ Available sets</h2>
                 </div>
@@ -512,7 +492,7 @@
     <!-- ── how to use a set ─────────────────────────────────────── -->
     <section>
         <div class="wrap">
-            <div class="block reveal">
+            <div class="block">
                 <div class="block-label">§ Using a set</div>
                 <div class="block-content">
                     <h2>Download it, then <em>import</em> it.</h2>
@@ -530,7 +510,7 @@
                 </div>
             </div>
 
-            <nav class="nav-pair reveal">
+            <nav class="nav-pair">
                 <a href="../flashcards/">
                     <div class="nav-pair-label">Flashcards</div>
                     <div class="nav-pair-title">Cardly</div>
@@ -600,20 +580,6 @@ document.addEventListener('keydown', (e) => {
         navDropdown.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
     }
-});
-
-/* ── scroll reveal (§8.1) ─────────────────────────────────────── */
-const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-const observeReveal = (el) => io.observe(el);
-document.querySelectorAll('.reveal').forEach(observeReveal);
-window.addEventListener('load', () => {
-    document.querySelectorAll('.page-header .reveal').forEach((el, i) => {
-        setTimeout(() => el.classList.add('visible'), i * 100);
-    });
 });
 
 /* ── helpers ──────────────────────────────────────────────────── */
@@ -728,7 +694,6 @@ let rowId = 0;
 function renderRow(set) {
     const id = `set-panel-${++rowId}`;
     const li = document.createElement('li');
-    li.className = 'reveal';
     li.dataset.type = set.type;
     li.dataset.subject = set.subject || '';
     li.dataset.semester = set.semester || '';
@@ -823,7 +788,6 @@ function renderRow(set) {
     head.addEventListener('click', flip);
 
     listEl.appendChild(li);
-    observeReveal(li);
 }
 
 /* ── find the files ───────────────────────────────────────────── */
@@ -999,7 +963,7 @@ function applyFilters() {
             && (!semester || li.dataset.semester === semester)
             && (n >= min && n <= max);
         li.hidden = !ok;
-        if (ok) { shown++; li.classList.add('visible'); }
+        if (ok) shown++;
     });
 
     if (shown === 0) {
