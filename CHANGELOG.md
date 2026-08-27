@@ -9,6 +9,7 @@ Newest first. Format: see CHANGELOG_GUIDE.md
   - [programs] Fixed the favicon.
   - [meta] Renamed Dendrite to Cardly in the flashcard instructions.
   - [meta] Added Subject: and Semester: header lines to both instruction docs.
+  - [programs/library] Uploaded all the past flashcards and quizzes to library storage.
 
 2026-08-26
   - [meta] Added a favicon.
