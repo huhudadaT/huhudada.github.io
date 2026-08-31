@@ -1,6 +1,15 @@
 CHANGELOG - huhudada.com
 Newest first. Format: see CHANGELOG_GUIDE.md
 
+2026-08-31
+  - [meta] Decreased size of favicon.
+  - [programs/flashcards] Rebuilt the app in the site palette; dropped Tailwind, lucide, and dark mode.
+  - [programs/flashcards] Removed due dates and spaced scheduling; ratings now only record recall.
+  - [programs/quiz] Rebuilt the app to match Flashcards, keeping every feature.
+  - [programs] Fixed the card entrance stagger.
+  - [programs] Centered the card titles.
+  - [programs] Restored the full palette block and the standard font link.
+
 2026-08-27
   - [programs/library] Added a library page that lists the .txt sets in programs/library/storage/.
   - [programs/library] Added set previews, download links, and filters for kind, subject, semester and size.

@@ -208,6 +208,10 @@
         margin: 14px 0 0;
     }
 
+    /* ── match count above the list (same string as the pager below) ─ */
+    .list-count { padding: 0 12px 12px; }
+    .list-count[hidden] { display: none; }
+
     /* ── set list ─────────────────────────────────────────────────── */
     .set-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
     .set-list > li { border-bottom: 1px solid var(--line); }
@@ -228,9 +232,11 @@
     }
     .tag-count { color: var(--ink-dim); }
 
+    /* Inter, not the display serif: this is a list to scan, not a heading
+       to admire, and Cormorant at row size reads thin (§8, efficient page) */
     .set-title {
-        font-family: 'Cormorant Garamond', serif; font-weight: 400;
-        font-size: 1.7rem; line-height: 1.15; letter-spacing: -0.01em; color: var(--ink);
+        font-family: 'Inter', sans-serif; font-weight: 500;
+        font-size: 1.25rem; line-height: 1.4; letter-spacing: -0.01em; color: var(--ink);
         margin: 0 0 10px;
     }
     .set-row:hover .set-title { color: var(--rose-deep); }
@@ -367,18 +373,18 @@
         display: grid; grid-template-columns: 1fr 1fr; gap: 0;
         border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 64px;
     }
-    .nav-pair a { padding: 32px 0; display: block; }
+    .nav-pair a { padding: 48px 32px; display: block; text-align: center; }
     .nav-pair a:hover { background: var(--paper-soft); }
-    .nav-pair a:first-child { padding-right: 32px; }
-    .nav-pair a + a { border-left: 1px solid var(--line); padding-left: 32px; text-align: right; }
+    .nav-pair a + a { border-left: 1px solid var(--line); }
     .nav-pair-label {
-        font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px;
-        text-transform: uppercase; color: var(--rose-deep); margin-bottom: 8px;
+        font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px;
+        text-transform: uppercase; color: var(--rose-deep); margin-bottom: 12px;
     }
     .nav-pair-title {
         font-family: 'Cormorant Garamond', serif; font-weight: 400;
-        font-size: 22px; color: var(--ink); line-height: 1.2;
+        font-size: 2rem; color: var(--ink); line-height: 1.2;
     }
+    .nav-pair a:hover .nav-pair-title { color: var(--rose-deep); }
 
     /* ── footer (§7.11) ───────────────────────────────────────────── */
     footer { padding: 40px; background: var(--paper); border-top: 1px solid var(--line); }
@@ -399,8 +405,9 @@
         .block { grid-template-columns: 1fr; gap: 16px; padding: 48px 0; }
         .block-label { padding-top: 0; }
         .nav-pair { grid-template-columns: 1fr; }
-        .nav-pair a:first-child { padding-right: 0; }
-        .nav-pair a + a { border-left: none; border-top: 1px solid var(--line); padding-left: 0; text-align: left; }
+        .nav-pair a { padding: 36px 20px; }
+        .nav-pair a + a { border-left: none; border-top: 1px solid var(--line); }
+        .nav-pair-title { font-size: 1.6rem; }
         .set-row { grid-template-columns: 1fr; gap: 20px; padding: 24px 8px; }
         .set-cta { flex-direction: row; flex-wrap: wrap; }
         .set-panel { padding-left: 8px; padding-right: 8px; }
@@ -435,9 +442,7 @@
     <section class="page-header">
         <div class="wrap">
             <div class="project-kicker">Huhudada · Programs · Library</div>
-            <h1>Sets to borrow, <em>free.</em></h1>
-            <p class="lede">Card decks and quizzes I built for my own coursework. Every set is a
-                plain text file — download one and import it into the program that reads it.</p>
+            <h1>Library for <em>download</em></h1>
         </div>
     </section>
 
@@ -461,9 +466,15 @@
                         </span>
                     </label>
                     <label class="field">
-                        <span class="field-label">Class</span>
+                        <span class="field-label">Subject</span>
                         <span class="select-wrap">
-                            <select id="f-class"><option value="">All classes</option></select>
+                            <select id="f-subject"><option value="">All subjects</option></select>
+                        </span>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Catalog</span>
+                        <span class="select-wrap">
+                            <select id="f-catalog"><option value="">All numbers</option></select>
                         </span>
                     </label>
                     <label class="field">
@@ -489,6 +500,11 @@
             </div>
 
             <p class="list-status" id="list-status">Reading the storage folder…</p>
+
+            <div class="list-count" id="list-count" hidden>
+                <span class="pager-label" id="count-top"></span>
+            </div>
+
             <ul class="set-list" id="set-list"></ul>
             <p class="set-empty" id="set-empty" hidden></p>
 
@@ -515,31 +531,26 @@
     <section>
         <div class="wrap">
             <div class="block">
-                <div class="block-label">§ Using a set</div>
+                <div class="block-label">§ How to use</div>
                 <div class="block-content">
                     <h2>Download it, then <em>import</em> it.</h2>
                     <ul>
                         <li>Download a set. It saves as a <code>.txt</code> file.</li>
-                        <li>Open <a href="../flashcards/" class="inline-link">Cardly</a> for a card deck,
-                            or <a href="../quiz/" class="inline-link">Quizzical</a> for a quiz — the tag
-                            on each row says which.</li>
+                        <li>Open <a href="../flashcards/" class="inline-link">Flashcards</a>
+                            or <a href="../quiz/" class="inline-link">Quiz</a></li>
                         <li>In its Import tab, upload the file or paste the text.</li>
                     </ul>
-                    <p>Plain text means you can edit a set in any editor first — cut what you don't
-                        need, add your own. Both apps export the same format, so whatever you build
-                        from a set goes back in. Reuse them freely: share them, rewrite them, take
-                        them somewhere else entirely.</p>
                 </div>
             </div>
 
             <nav class="nav-pair">
                 <a href="../flashcards/">
-                    <div class="nav-pair-label">Flashcards</div>
-                    <div class="nav-pair-title">Cardly</div>
+                    <div class="nav-pair-label">Open</div>
+                    <div class="nav-pair-title">Flashcards</div>
                 </a>
                 <a href="../quiz/">
-                    <div class="nav-pair-label">Quiz</div>
-                    <div class="nav-pair-title">Quizzical</div>
+                    <div class="nav-pair-label">Open</div>
+                    <div class="nav-pair-title">Quiz</div>
                 </a>
             </nav>
         </div>
@@ -567,6 +578,7 @@
                   either one alone is enough to fill the shelf.
    Row contents:  parsed out of each .txt header —
                   Name:/Title:, Description:, Class:, Semester:
+                  Class: splits into subject + catalog for the two filters.
                   Kind and item count are inferred from the body.
    Tag fallback:  if a file has no Class:/Semester: line, the page will
                   read them from a filename shaped
@@ -610,6 +622,16 @@ const esc = (s) => String(s).replace(/[&<>"']/g, c =>
 
 const titleCase = (s) => s.replace(/\S+/g, w => w[0].toUpperCase() + w.slice(1));
 
+/* "BIOSC 0340" → subject BIOSC, catalog 0340. A field name with no number
+   ("Biology") is all subject and no catalog, and drops out of that filter. */
+function splitClass(code) {
+    const s = String(code || '').trim();
+    if (!s) return { subject: '', catalog: '' };
+    const m = /^(.*?)\s+(\d[\w-]*)$/.exec(s);
+    if (m) return { subject: m[1].trim().toUpperCase(), catalog: m[2] };
+    return { subject: s.toUpperCase(), catalog: '' };
+}
+
 const SEASONS = { spring: 1, summer: 2, fall: 3 };
 function semesterKey(sem) {
     const m = /(spring|summer|fall)\s*(\d{4})/i.exec(sem || '');
@@ -644,6 +666,9 @@ function parseSet(filename, text) {
         }
     }
     if (!set.title) set.title = titleCase(filename.replace(/\.txt$/i, '').split('__').pop().replace(/[-_]+/g, ' '));
+
+    // the class code drives two filters, so keep both halves
+    Object.assign(set, splitClass(set.classCode));
 
     // kind: option lines or an Explain: line mean it's a quiz
     const isQuiz = body.some(l => /^\s*\*?[A-H]\.\s/.test(l) || /^\s*Explain\s*:/i.test(l));
@@ -717,7 +742,8 @@ function renderRow(set) {
     const id = `set-panel-${++rowId}`;
     const li = document.createElement('li');
     li.dataset.type = set.type;
-    li.dataset.class = set.classCode || '';
+    li.dataset.subject = set.subject || '';
+    li.dataset.catalog = set.catalog || '';
     li.dataset.semester = set.semester || '';
     li.dataset.count = set.count;
 
@@ -905,7 +931,8 @@ async function build() {
 
 /* ── filters ──────────────────────────────────────────────────── */
 const fType = document.getElementById('f-type');
-const fClass = document.getElementById('f-class');
+const fSubject = document.getElementById('f-subject');
+const fCatalog = document.getElementById('f-catalog');
 const fSemester = document.getElementById('f-semester');
 const rangeEl = document.getElementById('range');
 const rFill = document.getElementById('range-fill');
@@ -917,12 +944,14 @@ const rMax = document.getElementById('f-max');
 const THUMB = 14;
 let bounds = { lo: 0, hi: 0 };
 let rangeReady = false;
+let allSets = [];
 
 function buildFilterOptions(sets) {
-    // numeric-aware sort so BIOENG 220 lands before BIOENG 1085
-    const classes = [...new Set(sets.map(s => s.classCode).filter(Boolean))]
-        .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
-    classes.forEach(c => fClass.add(new Option(c, c)));
+    allSets = sets;
+
+    const subjects = [...new Set(sets.map(s => s.subject).filter(Boolean))].sort();
+    subjects.forEach(v => fSubject.add(new Option(v, v)));
+    buildCatalogOptions();
 
     const semesters = [...new Set(sets.map(s => s.semester).filter(Boolean))]
         .sort((a, b) => semesterKey(b) - semesterKey(a));
@@ -938,6 +967,21 @@ function buildFilterOptions(sets) {
     if (bounds.lo === bounds.hi) { rMin.disabled = rMax.disabled = true; }
     rangeReady = true;
     paintRange();
+}
+
+/* Catalog numbers follow the chosen subject, so the two menus can never
+   combine into a pairing no set has. Numeric-aware sort puts 220 before 1085. */
+function buildCatalogOptions() {
+    const keep = fCatalog.value;
+    const numbers = [...new Set(allSets
+        .filter(s => !fSubject.value || s.subject === fSubject.value)
+        .map(s => s.catalog).filter(Boolean))]
+        .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+    fCatalog.length = 1;                       // keep "All numbers"
+    numbers.forEach(v => fCatalog.add(new Option(v, v)));
+    fCatalog.value = numbers.includes(keep) ? keep : '';
+    fCatalog.disabled = numbers.length === 0;
 }
 
 function paintRange() {
@@ -976,6 +1020,8 @@ function placeValue(el, x) {
 }
 
 const PER_PAGE = 10;
+const countEl = document.getElementById('list-count');
+const countTop = document.getElementById('count-top');
 const pagerEl = document.getElementById('pager');
 const pagerCount = document.getElementById('pager-count');
 const pagerPage = document.getElementById('pager-page');
@@ -991,13 +1037,15 @@ let page = 1;
 const rows = () => Array.from(listEl.children);
 
 function applyFilters() {
-    const type = fType.value, classCode = fClass.value, semester = fSemester.value;
+    const type = fType.value, subject = fSubject.value, catalog = fCatalog.value;
+    const semester = fSemester.value;
     const min = Number(rMin.value), max = Number(rMax.value);
 
     matched = rows().filter(li => {
         const n = Number(li.dataset.count);
         return (!type || li.dataset.type === type)
-            && (!classCode || li.dataset.class === classCode)
+            && (!subject || li.dataset.subject === subject)
+            && (!catalog || li.dataset.catalog === catalog)
             && (!semester || li.dataset.semester === semester)
             && (n >= min && n <= max);
     });
@@ -1017,16 +1065,21 @@ function paintPage() {
     if (!matched.length) {
         emptyEl.textContent = 'No sets match those filters. Reset them to see the whole library.';
         emptyEl.hidden = false;
+        countEl.hidden = true;
         pagerEl.hidden = true;
         return;
     }
     emptyEl.hidden = true;
     pagerEl.hidden = false;
 
-    // the count always shows; the page buttons only when there's more than one page
-    pagerCount.textContent = pages === 1
+    // one string, shown above the list and again in the pager below it
+    const count = pages === 1
         ? `${matched.length} set${matched.length === 1 ? '' : 's'}`
         : `showing ${from + 1}–${Math.min(from + PER_PAGE, matched.length)} of ${matched.length} sets`;
+    pagerCount.textContent = count;
+    countTop.textContent = count;
+    countEl.hidden = false;
+
     pagerNav.hidden = pages === 1;
     pagerPage.textContent = `page ${page} / ${pages}`;
     prevPage.disabled = page === 1;
@@ -1043,7 +1096,10 @@ function goPage(n) {
 prevPage.addEventListener('click', () => goPage(page - 1));
 nextPage.addEventListener('click', () => goPage(page + 1));
 
-[fType, fClass, fSemester].forEach(el => el.addEventListener('change', applyFilters));
+[fType, fCatalog, fSemester].forEach(el => el.addEventListener('change', applyFilters));
+
+// a new subject re-cuts the catalog list before the rows are filtered
+fSubject.addEventListener('change', () => { buildCatalogOptions(); applyFilters(); });
 
 rMin.addEventListener('input', () => {
     if (Number(rMin.value) > Number(rMax.value)) rMin.value = rMax.value;
@@ -1057,7 +1113,8 @@ window.addEventListener('resize', paintRange);
 window.addEventListener('load', paintRange);
 
 document.getElementById('f-reset').addEventListener('click', () => {
-    [fType, fClass, fSemester].forEach(el => { el.value = ''; });
+    [fType, fSubject, fCatalog, fSemester].forEach(el => { el.value = ''; });
+    buildCatalogOptions();
     rMin.value = bounds.lo;
     rMax.value = bounds.hi;
     paintRange();

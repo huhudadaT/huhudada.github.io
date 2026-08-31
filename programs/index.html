@@ -10,12 +10,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap"
         rel="stylesheet">
     <style>
         /* Palette from the portfolio (sampled from 000001.jpg) */
         :root {
+            --sky-deep: #15669d;
             --sky: #3a8ab8;
+            --sky-soft: #94c6c3;
+            --cream: #f5ead8;
             --paper: #fbf6ec;
             --paper-soft: #f0e4d1;
             --rose: #cb8f9b;
@@ -181,7 +184,7 @@
         .card {
             display: flex;
             flex-direction: column;
-            text-align: left;
+            text-align: center;
             padding: 32px;
             background: rgba(255, 255, 255, 0.35);
             border: 1px solid var(--line);
@@ -227,6 +230,7 @@
             margin: 0 0 12px;
             transition: color 0.35s;
         }
+        .card-title:last-child { margin-bottom: 0; }
         .card:hover .card-title { color: var(--rose-deep); }
 
         .card-desc {
@@ -288,45 +292,18 @@
     <main>
         <div class="kicker animate d1">Huhudada · Programs</div>
         <h1 class="animate d2">Programs</h1>
-        <p class="sub animate d3">
-            Small tools I've built. Runs entirely in your browser and your data stays on your device.
-        </p>
 
         <div class="grid">
             <a href="library/" class="card card-wide animate d4">
-                <div class="card-top">
-                    <span class="tag">Sets</span>
-                    <span class="arrow">→</span>
-                </div>
                 <h2 class="card-title">Library</h2>
-                <p class="card-desc">
-                    Decks and quizzes I've already built. Preview one card at a time,
-                    then download it to import into either app.
-                </p>
             </a>
 
-            <a href="flashcards/" class="card animate d4">
-                <div class="card-top">
-                    <span class="tag">Flashcards</span>
-                    <span class="arrow">→</span>
-                </div>
-                <h2 class="card-title">Cardly</h2>
-                <p class="card-desc">
-                    Build flashcard decks by hand or import them from text, then study
-                    with flip review or a spaced-repetition schedule.
-                </p>
+            <a href="flashcards/" class="card animate d5">
+                <h2 class="card-title">Flashcards</h2>
             </a>
 
-            <a href="quiz/" class="card animate d5">
-                <div class="card-top">
-                    <span class="tag">Quiz</span>
-                    <span class="arrow">→</span>
-                </div>
-                <h2 class="card-title">Quizzical</h2>
-                <p class="card-desc">
-                    Write multiple-choice quizzes or import them, then take them with
-                    instant feedback and score tracking.
-                </p>
+            <a href="quiz/" class="card animate d6">
+                <h2 class="card-title">Quiz</h2>
             </a>
         </div>
     </main>
