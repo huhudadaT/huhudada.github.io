@@ -1,0 +1,64 @@
+Name: Kidney Pathway and Function
+Description: Renal blood and filtrate pathways, nephron segments, and the kidney's regulatory functions.
+Class: BIOENG 1052
+Semester: Fall 2026
+
+Q: What vessel delivers blood to the kidney?
+A: The renal artery.
+
+Q: What is the functional unit of the kidney?
+A: The nephron.
+
+Q: Which arteriole carries blood into the glomerulus?
+A: The afferent arteriole.
+
+Q: Which arteriole carries blood out of the glomerulus?
+A: The efferent arteriole.
+
+Q: What capillary bed surrounds the renal tubules?
+A: The peritubular capillaries.
+
+Q: Where in the nephron does filtration occur?
+A: The glomerulus.
+
+Q: What structure collects filtrate leaving the glomerulus?
+A: Bowman's capsule.
+
+Q: Which tubule segment receives filtrate from Bowman's capsule?
+A: The proximal convoluted tubule.
+
+Q: Which nephron segment reabsorbs the most filtered water and solute?
+A: The proximal convoluted tubule.
+
+Q: Which limb of the loop of Henle is permeable to water?
+A: The descending limb.
+
+Q: Which limb of the loop of Henle actively transports NaCl out?
+A: The thick ascending limb.
+
+Q: What does the distal convoluted tubule drain into?
+A: The collecting duct.
+
+Q: What chamber do the major calyces drain into?
+A: The renal pelvis.
+
+Q: What tube carries urine from the kidney to the bladder?
+A: The ureter.
+
+Q: What are the three basic renal processes?
+A: Filtration, reabsorption, and secretion.
+
+Q: Which hormone increases water reabsorption in the collecting duct?
+A: ADH (vasopressin).
+
+Q: Which hormone drives sodium reabsorption in the distal nephron?
+A: Aldosterone.
+
+Q: What enzyme do the kidneys release when blood pressure falls?
+A: Renin.
+
+Q: Which kidney hormone stimulates red blood cell production?
+A: Erythropoietin.
+
+Q: Which vitamin do the kidneys activate?
+A: Vitamin D.

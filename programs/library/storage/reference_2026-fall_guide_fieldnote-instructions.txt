@@ -1,0 +1,253 @@
+Title: Fieldnote Generation — AI Instructions
+Description: The format and quality rules for generating fieldnotes.
+Class: Reference
+Semester: Fall 2026
+
+(The four lines above are this file's own library header. They describe this
+document, not a fieldnote you should generate.)
+
+# Fieldnote Generation — AI Instructions
+
+These are the instructions given to an AI whenever it generates a fieldnote. They define the quality bar for every note produced. This document is both a human-readable reference and the literal text used by the app, so editing it changes how new fieldnotes are generated.
+
+A fieldnote is the reference layer that sits behind a deck or a quiz: condensed, sectioned notes for a single topic, meant to be read straight through before studying. Fieldnotes are **plain text** with a required four-line header, the same header the other two formats use, so a fieldnote imports and exports the same way they do.
+
+The same file also feeds the **library page** at `huhudada.com/programs/library/`. A `.txt` file dropped into `programs/library/storage/` shows up there on its own, and the library reads its title, description, class, semester, and note count straight out of the file — so the header lines below are what make a fieldnote browsable and filterable.
+
+---
+
+## Core Mandate
+
+Compress the material without hollowing it out. A flashcard answer is the bare fact; a fieldnote keeps the connective tissue — the mechanism, the sequence, the reason one thing follows from another — and cuts everything else. Someone who reads the fieldnote should be able to reconstruct the lecture.
+
+---
+
+## The Header: Title, Description, Class, Semester
+
+Every fieldnote **must** begin with these four lines, each on its own line, in this order, before any notes. They are required, not optional. Keep them uniform:
+
+**Title** — a short, specific title in Title Case.
+- Name the actual subject. "Membrane Transport", "Glycolysis", "Beam Bending".
+- Title Case. No surrounding quotes. No trailing punctuation.
+- Keep it under about 60 characters. Prefer a real subject over a vague label ("Lecture Notes" is weak; "Action Potentials" is strong).
+
+**Description** — exactly one sentence stating what the fieldnote covers.
+- Plain and informative. Say what ground the notes cover.
+- One sentence, ending in a period. No marketing language, no "These notes will help you…" filler.
+- Example: "Passive and active transport across the plasma membrane."
+
+**Class** — the course the fieldnote was made for, written as your school writes it.
+- Department code in caps, a space, then the number: "BIOENG 1085", "BIOSC 0150", "CHEM 0310".
+- No course title, no section, no instructor. Just the code.
+- Write it identically on every fieldnote for that course. The library builds its class filter from this line, so "BIOENG 1085" and "Bioeng 1085" would show up as two separate classes.
+- If a fieldnote isn't tied to a course, put the field name instead ("Biology") — but use the course code whenever there is one.
+
+**Semester** — the term the fieldnote was made for.
+- Exactly one of `Spring`, `Summer`, or `Fall`, then a space, then a four-digit year: "Fall 2026".
+- Never a month, never a date, never a range. The library groups by term, not by day.
+
+All four lines are always present and always in this order:
+
+```
+Title: Membrane Transport
+Description: Passive and active transport across the plasma membrane.
+Class: BIOSC 0150
+Semester: Fall 2026
+```
+
+Nothing else goes in the header. In particular, **do not add a note count** — the library counts the `N:` lines itself.
+
+---
+
+## Note Quality Requirements
+
+These are the critical rules every note must follow.
+
+**Sections carry the outline.** Break the topic into `S:` sections and put them in teaching order — foundations first, then mechanisms, then applications and exceptions. A reader should be able to skim the `S:` lines alone and see the shape of the topic.
+
+**One idea per note.** Each `N:` line states one thing. If a line contains two claims joined by "and" or a semicolon, split it.
+
+**Declarative, not interrogative.** A fieldnote states; it does not ask. No questions, no prompts, no "recall that…". Questions belong in a quiz or a deck.
+
+**Term — definition.** When a note introduces a term, lead with the term, an em dash, then the definition: `N: Osmosis — net movement of water across a semipermeable membrane down its water potential gradient.` The term comes first so the line is scannable.
+
+**Mechanisms in order, with arrows.** Write causal or sequential chains as arrows: `N: Depolarization → voltage-gated Na+ channels open → Na+ influx → further depolarization.` This is denser than prose and preserves the order.
+
+**Keep the numbers.** Values, units, ranges, and constants stay in when they are the point (`−70 mV`, `~7.4`, `3 Na+ out / 2 K+ in`). Drop them when they are incidental.
+
+**One or two sentences.** Most notes are a single sentence or a single arrow chain. Two only when the mechanism genuinely needs it. Never three.
+
+**No filler.** Cut "it is important to note that", "in this section", "as discussed above", and every other sentence that carries no fact. If a line would survive deletion without loss, delete it.
+
+**Say it once.** Each fact appears in exactly one note, in the section where it belongs. Repetition across sections makes the file longer without making it more complete.
+
+**Complete before deep.** Cover everything the topic contains before elaborating any single part. A fieldnote that covers eight of ten subtopics thoroughly is worse than one that covers ten adequately.
+
+**Flag the exceptions.** Where a rule has a common exception or a frequent misconception, give it its own note rather than burying it in a qualifier.
+
+---
+
+## Structural Rules
+
+These are hard constraints on the output format:
+
+- Start with the four header lines — `Title:`, `Description:`, `Class:`, `Semester:` — then a blank line, then the body.
+- `S:` starts a section. Short, Title Case, no trailing punctuation.
+- `N:` is a single note, belonging to the most recent `S:` above it.
+- Every note sits under a section. The first line of the body is always an `S:`.
+- Consecutive `N:` lines need no blank line between them. Put one blank line before each new `S:`.
+- Multi-line content is allowed — continuation lines (without an `S:` or `N:` prefix) are appended to whichever line was most recently started.
+- No numbering, no bullet points, no markdown, no headers, no commentary.
+- Use `—` for term/definition and `→` for sequence and causation. No other special punctuation.
+- Output ONLY the four header lines, the `S:` lines, and the `N:` lines.
+- Maximum 1000 notes per file. There is no target count — cover the material and stop.
+
+---
+
+## Output Format
+
+```
+Title: [short, specific title in Title Case]
+Description: [one sentence describing what the fieldnote covers]
+Class: [course code, e.g. BIOENG 1085]
+Semester: [Spring | Summer | Fall] [YYYY]
+
+S: [first section]
+N: [one idea]
+N: [one idea]
+
+S: [next section]
+N: [one idea]
+```
+
+---
+
+## Good vs Bad Example
+
+Study the difference — this is the single most important part of the guide.
+
+**Bad** (no header, no sections, prose paragraphs, filler, repetition):
+```
+It is important to understand that the sodium-potassium pump is a very
+important protein found in the plasma membrane of cells. This pump, which
+is also called Na+/K+-ATPase, moves sodium out of the cell and potassium
+into the cell, and it does this against their concentration gradients,
+which means it requires energy in the form of ATP. As mentioned, it uses
+ATP. The pump is essential for maintaining the resting membrane potential.
+```
+
+What's wrong: the header is missing; there are no sections; it is a paragraph rather than notes; "it is important to understand" and "as mentioned" carry no facts; ATP hydrolysis is stated twice; the stoichiometry — the part worth memorizing — is absent.
+
+**Good** (full header, sectioned, one idea per line, numbers kept):
+```
+Title: Membrane Transport
+Description: Passive and active transport across the plasma membrane.
+Class: BIOSC 0150
+Semester: Fall 2026
+
+S: Primary Active Transport
+N: Primary active transport — solute movement against its gradient, powered directly by ATP hydrolysis.
+N: Na+/K+-ATPase pumps 3 Na+ out and 2 K+ in per ATP.
+N: The 3:2 stoichiometry is electrogenic and contributes roughly −4 mV to the resting potential.
+N: ATP binding → phosphorylation → conformational change → Na+ release outside.
+
+S: Secondary Active Transport
+N: Secondary active transport — uses the gradient built by a primary pump, not ATP directly.
+N: SGLT1 couples Na+ influx to glucose uptake against the glucose gradient.
+N: Blocking Na+/K+-ATPase stops secondary transport indirectly, once the Na+ gradient collapses.
+```
+
+---
+
+## The Checks
+
+Before finalizing, run the fieldnote through these:
+
+1. **Header complete?** Four lines, in order — `Title:` in Title Case, a one-sentence `Description:`, a `Class:` naming the course, and a `Semester:` of the form `Fall 2026` — all before any notes?
+2. **Does every note sit under a section, and do the sections run in teaching order?**
+3. **Is any note asking rather than stating?** Rewrite it as a statement.
+4. **Is any fact stated twice?** Keep the one in the right section, cut the other.
+5. **Could any line be deleted without losing a fact?** Delete it.
+
+If any answer is "no," fix it.
+
+---
+
+## Prompt Template
+
+Use this as your prompt when generating a fieldnote with an external AI:
+
+```
+Generate a fieldnote about [TOPIC] as plain text.
+
+Start with these four lines, then a blank line, then the body:
+Title: [a short, specific title in Title Case]
+Description: [one sentence describing what the fieldnote covers]
+Class: [the course code, e.g. BIOENG 1085]
+Semester: [Spring, Summer, or Fall] [four-digit year]
+
+Then the body, using only two line prefixes:
+S: a section heading, in teaching order
+N: a single note belonging to the section above it
+
+Follow the quality rules above. Remember:
+- One idea per N: line, one or two sentences at most.
+- Lead with the term, then an em dash, then the definition.
+- Write mechanisms as arrow chains, in order.
+- Keep numbers and units where they matter; cut all filler.
+
+Cover the topic completely rather than hitting a note count.
+Output ONLY the four header lines and the S:/N: lines — no preamble, no commentary.
+```
+
+---
+
+## Generating from Notes
+
+When a user provides their own notes or slides instead of a topic:
+
+```
+Given the following material, build a fieldnote in plain text.
+
+Start with:
+Title: [a short, specific title in Title Case that reflects the material]
+Description: [one sentence describing what the fieldnote covers]
+Class: [the course code, e.g. BIOENG 1085]
+Semester: [Spring, Summer, or Fall] [four-digit year]
+
+Then a blank line, then the body in S:/N: format.
+
+Keep the material's own order unless it is clearly out of sequence. Preserve
+every fact, value, and unit; drop every sentence that carries none. One idea
+per N: line. Do not add material that isn't in the source.
+
+Material:
+[USER'S PASTED NOTES HERE]
+```
+
+---
+
+## Writing Fieldnotes by Hand
+
+Users can also write fieldnotes manually using the same format — open any text editor, write the four header lines, a blank line, then `S:` sections with `N:` notes under each, save as `.txt`, and import.
+
+When writing by hand, the same rules apply: full header first, then sections in order, one idea per note, no filler.
+
+---
+
+## Publishing a Fieldnote to the Library
+
+To put a finished fieldnote on the site:
+
+1. Save it as a `.txt` file named `class_year-term_type_title.txt` — all lowercase, no spaces, fields joined by underscores:
+   - `class` — the course code with its space removed: `biosc0150`
+   - `year-term` — four-digit year, a hyphen, then the term: `2026-fall`
+   - `type` — `fieldnote`
+   - `title` — kebab-case of the title: `membrane-transport`
+
+   Giving `biosc0150_2026-fall_fieldnote_membrane-transport.txt`.
+
+   Pad any number in the title to two digits — `module01`, not `module1` — so the files still sort correctly once there are ten or more.
+2. Commit it into `programs/library/storage/`.
+
+That's the whole process. The library page lists the folder, reads each file's header for the title, description, class, and semester, counts the `N:` lines for the note count, and builds the row and the filters from that. A fieldnote with a missing or malformed header still appears, but it lands untagged and drops out of the class and semester filters — so the header is worth getting right.

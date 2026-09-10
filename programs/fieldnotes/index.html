@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="fieldnote build 3">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fieldnote — Ty Zhang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  /* ---------- palette: DESIGN_GUIDE §2, values unchanged ---------- */
+  :root{
+    --sky-deep:   #15669d;
+    --sky:        #3a8ab8;
+    --sky-soft:   #94c6c3;
+    --cream:      #f5ead8;
+    --paper:      #fbf6ec;
+    --paper-soft: #f0e4d1;
+    --rose:       #cb8f9b;
+    --rose-deep:  #8d3c4f;
+    --ink:        #1e2a3a;
+    --ink-dim:    #5a6477;
+    --ink-faint:  #a0a8b5;
+    --line:       #e5d9c3;
+
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+    --col:44%;        /* editor pane width, dragged by the grip */
+    --doc-col:660px;  /* note reading column — ~60ch of Inter 300 17px, §3 "Measure" */
+    --ctl:33px;       /* control row height — equals the §7.1 pill, so the left
+                         control lands at exactly top:24px inside an 81px bar */
+  }
+
+  /* ---------- reset & ambient wash: DESIGN_GUIDE §4, §6 ---------- */
+  *{box-sizing:border-box}
+  html,body{
+    margin:0; padding:0; height:100%;
+    background:
+      radial-gradient(ellipse 85% 55% at 50% -12%, rgba(58,138,184,.10), transparent 62%),
+      radial-gradient(ellipse 95% 55% at 50% 112%, rgba(139,60,79,.08), transparent 62%),
+      var(--paper);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+  body{
+    color:var(--ink); font-family:var(--sans); font-weight:300;
+    font-size:16px; line-height:1.6;
+    display:flex; flex-direction:column; overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none}
+  button{font:inherit; cursor:pointer}
+  :focus-visible{outline:2px solid var(--rose-deep); outline-offset:1px}
+
+  /* ---------- header ---------- */
+  .bar{
+    flex:0 0 auto; display:flex; align-items:flex-start; gap:10px 18px;
+    padding:24px 32px; min-height:81px; border-bottom:1px solid var(--line);
+  }
+  .bar-group{
+    flex:1; min-width:0; display:flex; align-items:center; flex-wrap:wrap; gap:10px 18px;
+  }
+  .mark{
+    margin:0; font-family:var(--serif); font-weight:500; font-size:22px;
+    letter-spacing:.5px; line-height:var(--ctl); color:var(--ink); white-space:nowrap;
+  }
+  .mark b{color:var(--rose-deep); font-weight:500}
+  .mark button{border:0; background:none; padding:0; font:inherit; color:inherit; line-height:inherit}
+  .grow{flex:1; min-width:0}
+
+  /* Corner control, DESIGN_GUIDE §7.1. First item of every bar group, so it sits
+     at exactly top:24px; left:32px on every route and the pointer never moves. */
+  .pill{
+    display:inline-flex; align-items:center; flex:0 0 auto;
+    height:var(--ctl); padding:0 16px;
+    font-family:var(--mono); font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--ink-dim); background:rgba(251,246,236,.7);
+    border:1px solid var(--line);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    transition:color .3s, border-color .3s;
+  }
+  .pill:hover, .pill:focus-visible{color:var(--rose-deep); border-color:var(--rose-deep)}
+
+  .btn{
+    display:inline-flex; align-items:center; height:var(--ctl); padding:0 14px;
+    font-family:var(--sans); font-weight:400; font-size:13px; white-space:nowrap;
+    color:var(--ink); background:rgba(255,255,255,.35);
+    border:1px solid var(--line); border-radius:0;
+    transition:color .3s, border-color .3s, background .3s;
+  }
+  .btn:hover{color:var(--rose-deep); border-color:var(--rose-deep)}
+  .btn.solid{background:var(--ink); border-color:var(--ink); color:var(--paper)}
+  .btn.solid:hover{background:var(--rose-deep); border-color:var(--rose-deep); color:var(--paper)}
+  .btn.quiet{border-color:transparent; background:none; color:var(--ink-dim); padding:0 10px}
+  .btn.quiet:hover{color:var(--rose-deep)}
+
+  .seg{
+    display:flex; height:var(--ctl); border:1px solid var(--line);
+    background:rgba(255,255,255,.35); overflow:hidden; flex:0 0 auto;
+  }
+  .seg button{
+    border:0; background:none; padding:0 13px; font-size:12.5px; font-weight:400;
+    color:var(--ink-dim); transition:color .3s, background .3s;
+  }
+  .seg button:hover{color:var(--rose-deep)}
+  .seg button[aria-pressed="true"]{background:var(--ink); color:var(--paper)}
+
+  #search{
+    flex:1 1 170px; min-width:0; max-width:340px; height:var(--ctl);
+    -webkit-appearance:none; appearance:none;
+    border:0; border-bottom:1px solid var(--line); background:none;
+    padding:0 2px; font-family:var(--sans); font-weight:300; font-size:14px; color:var(--ink);
+    transition:border-color .3s;
+  }
+  #search::placeholder{color:var(--ink-faint)}
+  #search:focus{outline:0; border-bottom-color:var(--rose-deep)}
+
+  .title-in{
+    width:100%; height:var(--ctl); border:0; background:none; padding:0;
+    font-family:var(--serif); font-weight:400; font-size:20px; letter-spacing:-.01em;
+    color:var(--ink); text-overflow:ellipsis;
+  }
+  .title-in:focus{outline:0}
+
+  /* ---------- dropdown menu (paper skin of the §11.3 recipe) ---------- */
+  .menu{position:relative; flex:0 0 auto; display:flex}
+  .menu-caret{display:inline-block; margin-left:9px; transition:transform .3s}
+  .menu-toggle[aria-expanded="true"] .menu-caret{transform:rotate(180deg)}
+  .menu-panel{
+    display:none; flex-direction:column;
+    position:absolute; top:100%; right:0; margin-top:8px; min-width:190px; z-index:40;
+    background:rgba(251,246,236,.97); border:1px solid var(--line);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  }
+  .menu.open .menu-panel{display:flex}
+  .menu-panel button{
+    border:0; background:none; text-align:left; padding:11px 16px; white-space:nowrap;
+    font-family:var(--sans); font-weight:400; font-size:13px; color:var(--ink-dim);
+    transition:color .3s, background .3s;
+  }
+  .menu-panel button:hover{color:var(--rose-deep); background:var(--paper-soft)}
+  .menu-sep{height:1px; background:var(--line); margin:4px 0}
+
+  /* ---------- screens ---------- */
+  #app{flex:1; min-height:0; display:flex; flex-direction:column}
+  #home, #settings{flex:1; min-height:0; overflow:auto}
+  #settings{display:none}
+
+  /* ---------- library ---------- */
+  .home-in{
+    max-width:1280px; margin:0 auto; padding:36px 32px 96px;
+    display:grid; grid-template-columns:200px minmax(0,1fr); gap:48px; align-items:start;
+  }
+  .home-in > section{min-width:0}
+
+  .rail{position:sticky; top:0}
+  .rail h2{
+    margin:0 0 14px; font-family:var(--mono); font-weight:400;
+    font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--rose-deep);
+  }
+  .rail button{
+    display:flex; width:100%; gap:10px; align-items:baseline;
+    border:0; background:none; padding:5px 0; text-align:left;
+    font-family:var(--sans); font-weight:300; font-size:14px; color:var(--ink-dim);
+    transition:color .3s;
+  }
+  .rail button:hover{color:var(--rose-deep)}
+  .rail button[aria-pressed="true"]{color:var(--ink); font-weight:400}
+  .rail button[aria-pressed="true"] .nm::before{
+    content:""; display:inline-block; width:5px; height:5px;
+    background:var(--rose-deep); margin-right:8px; vertical-align:2px;
+  }
+  .rail .nm{flex:1}
+  .rail .ct{
+    font-family:var(--mono); font-size:10px; letter-spacing:1px;
+    font-variant-numeric:tabular-nums; color:var(--ink-faint);
+  }
+  /* only ever carries a warning or a transient message; hidden when empty */
+  .state{
+    margin:22px 0 0; padding:10px 12px;
+    background:var(--paper-soft); border-left:2px solid var(--rose-deep);
+    font-size:13px; line-height:1.6; color:var(--ink-dim);
+  }
+  .state:empty{display:none}
+  kbd{
+    font-family:var(--mono); font-size:10px; color:var(--ink);
+    border:1px solid var(--line); background:rgba(255,255,255,.35); padding:1px 5px;
+  }
+
+  .list-top{
+    display:flex; align-items:center; gap:12px; padding:0 0 9px 16px;
+    border-bottom:1px solid var(--ink);
+    font-family:var(--mono); font-size:10px; letter-spacing:2px;
+    text-transform:uppercase; color:var(--ink-dim);
+  }
+  .list-top .btn.quiet{
+    height:auto; padding:0; font-family:var(--mono); font-size:10px;
+    letter-spacing:2px; text-transform:uppercase;
+  }
+
+  .row{
+    display:grid; grid-template-columns:minmax(0,1fr) minmax(0,240px) 76px; gap:14px;
+    align-items:baseline; width:100%; padding:16px 10px 17px 16px; text-align:left;
+    position:relative; cursor:pointer;
+    background:none; border:0; border-bottom:1px solid var(--line);
+    transition:background .3s;
+  }
+  .row::before{content:""; position:absolute; left:0; top:0; bottom:0; width:2px; background:transparent}
+  .row:hover{background:var(--paper-soft)}
+  .row.sel{background:var(--paper-soft)}
+  .row:hover::before, .row.sel::before{background:var(--rose-deep)}
+  .row .c{min-width:0; overflow:hidden}
+  .row .t{
+    display:block; margin:0 0 5px; font-family:var(--serif); font-weight:400;
+    font-size:20px; line-height:1.25; letter-spacing:-.01em; color:var(--ink);
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap; transition:color .3s;
+  }
+  .row:hover .t, .row.sel .t{color:var(--rose-deep)}
+  .row .s{
+    display:block; font-family:var(--sans); font-weight:300; font-size:14px;
+    line-height:1.6; color:var(--ink-dim);
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .row .f{
+    font-family:var(--mono); font-size:10px; letter-spacing:1px; text-transform:uppercase;
+    color:var(--ink-dim); white-space:nowrap; min-width:0; overflow:hidden; text-overflow:ellipsis;
+  }
+  .row .d{
+    font-family:var(--mono); font-size:10px; letter-spacing:1px; text-align:right;
+    color:var(--ink-faint); font-variant-numeric:tabular-nums;
+  }
+  .row .tg{color:var(--rose-deep)}
+  .row .cl{color:var(--ink-dim)}
+  .empty{padding:56px 16px; max-width:52ch; color:var(--ink-dim); font-size:15px; line-height:1.75}
+  .empty strong{
+    display:block; margin-bottom:10px; font-family:var(--serif); font-weight:400;
+    font-size:28px; line-height:1.15; letter-spacing:-.01em; color:var(--ink);
+  }
+
+  /* ---------- settings (story blocks, DESIGN_GUIDE §7.5) ---------- */
+  .set-in{max-width:1280px; margin:0 auto; padding:36px 32px 96px}
+  .block{
+    display:grid; grid-template-columns:200px minmax(0,1fr); gap:48px;
+    padding:48px 0; border-top:1px solid var(--line);
+  }
+  .block:first-of-type{border-top:none; padding-top:0}
+  .block-label{
+    font-family:var(--mono); font-size:11px; letter-spacing:3px;
+    text-transform:uppercase; color:var(--rose-deep); padding-top:12px;
+  }
+  .block-content{min-width:0}
+  .block-content h2{
+    margin:0 0 22px; font-family:var(--serif); font-weight:400;
+    font-size:clamp(28px,3.5vw,40px); line-height:1.15; letter-spacing:-.01em; color:var(--ink);
+  }
+  .block-content h2 em{font-style:italic; color:var(--rose-deep)}
+  .block-content p{margin:0 0 20px; max-width:60ch; font-size:17px; line-height:1.75; color:var(--ink)}
+  .block-content p.dim{font-size:14px; line-height:1.7; color:var(--ink-dim)}
+  .block-content code{font-family:var(--mono); font-size:.85em; background:var(--paper-soft); padding:.1em .3em}
+  .set-act{display:flex; gap:12px; flex-wrap:wrap; margin:0 0 22px}
+
+  table.keys{
+    border-collapse:collapse; width:100%; max-width:60ch;
+    font-family:var(--sans); font-weight:300; font-size:15px; line-height:1.55;
+  }
+  table.keys th{
+    text-align:left; font-family:var(--mono); font-weight:400; font-size:10px;
+    letter-spacing:2px; text-transform:uppercase; color:var(--ink-dim);
+    border-bottom:1px solid var(--ink); padding:.6em .6em;
+  }
+  table.keys td{border-bottom:1px solid var(--line); padding:.6em .6em; vertical-align:top}
+  table.keys td:first-child{width:180px; white-space:nowrap}
+  table.keys tbody tr:hover{background:var(--paper-soft)}
+
+  /* ---------- note ---------- */
+  #note{flex:1; min-height:0; display:none; grid-template-columns:var(--col) 7px 1fr}
+  #note.on{display:grid}
+  #note.read{grid-template-columns:1fr}
+  #note.read #edit, #note.read #grip{display:none}
+  #edit{display:flex; flex-direction:column; min-width:0; border-right:1px solid var(--line)}
+  .edit-top{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    padding:9px 12px; background:var(--paper-soft); border-bottom:1px solid var(--line);
+  }
+  #tags{
+    width:170px; padding:5px 8px; font-family:var(--sans); font-weight:300; font-size:12.5px;
+    color:var(--ink); background:rgba(255,255,255,.45); border:1px solid var(--line);
+    transition:border-color .3s;
+  }
+  #tags::placeholder{color:var(--ink-faint)}
+  #tags:focus{outline:0; border-color:var(--rose-deep)}
+  .save{
+    margin-left:auto; font-family:var(--mono); font-size:10px; letter-spacing:2px;
+    text-transform:uppercase; color:var(--ink-dim);
+  }
+  #src{
+    flex:1; border:0; resize:none; padding:18px 20px; background:none; color:var(--ink);
+    font-family:var(--mono); font-size:12.5px; line-height:1.7;
+  }
+  #src:focus{outline:0; box-shadow:inset 3px 0 0 var(--rose-deep)}
+  #grip{background:var(--line); border:0; padding:0; cursor:col-resize; transition:background .3s}
+  #grip:hover{background:var(--rose-deep)}
+  #view{min-width:0; overflow:auto}
+  #warn{
+    margin:24px auto 0; padding:11px 14px; max-width:calc(var(--doc-col) - 80px);
+    background:var(--paper-soft); border-left:2px solid var(--rose-deep);
+    font-family:var(--sans); font-size:13px; line-height:1.6; color:var(--ink-dim);
+  }
+
+  /* ---------- dialog ---------- */
+  dialog{
+    max-width:64ch; width:92vw; padding:0; border:1px solid var(--ink); border-radius:0;
+    background:var(--paper); color:var(--ink);
+  }
+  dialog::backdrop{background:rgba(30,42,58,.42)}
+  .dlg{padding:28px 30px}
+  .dlg h2{
+    margin:0 0 10px; font-family:var(--serif); font-weight:400;
+    font-size:28px; line-height:1.15; letter-spacing:-.01em;
+  }
+  .dlg h2 em{font-style:italic; color:var(--rose-deep)}
+  .dlg p{margin:0 0 18px; font-size:14px; line-height:1.7; color:var(--ink-dim)}
+  .dlg pre{
+    margin:0 0 20px; padding:14px; max-height:42vh; overflow:auto; white-space:pre-wrap;
+    background:var(--paper-soft); border:1px solid var(--line);
+    font-family:var(--mono); font-size:11.5px; line-height:1.65;
+  }
+  .dlg-act{display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap}
+
+  /* ---------- breakpoints: DESIGN_GUIDE §5 ---------- */
+  @media (max-width:900px){
+    .home-in{grid-template-columns:minmax(0,1fr); gap:26px; padding:26px 32px 72px}
+    .rail{position:static}
+    .rail-tags{display:flex; gap:8px; flex-wrap:wrap}
+    .rail-tags button{width:auto; border:1px solid var(--line); padding:5px 10px}
+    .rail-tags button[aria-pressed="true"]{border-color:var(--rose-deep)}
+    .set-in{padding:26px 32px 72px}
+    .block{grid-template-columns:minmax(0,1fr); gap:16px; padding:40px 0}
+    .block-label{padding-top:0}
+    #note.on{display:block}
+    #note #edit{display:none; height:100%; border-right:0}
+    #note.write #edit{display:flex}
+    #note.write #view{display:none}
+    #note #grip{display:none}
+    #note.read #view{display:block; height:100%}
+    #warn{max-width:calc(var(--doc-col) - 64px)}
+    .row{grid-template-columns:minmax(0,1fr) minmax(0,auto)}
+    .row .d{display:none}
+  }
+  @media (max-width:520px){
+    .bar{padding:24px 16px; gap:8px 12px}
+    .home-in{padding:22px 16px 64px}
+    .set-in{padding:22px 16px 64px}
+    .list-top{padding-left:12px}
+    .row{grid-template-columns:minmax(0,1fr); gap:4px; padding:14px 8px 15px 12px}
+    .row .f{white-space:normal; margin-top:6px}
+    #tags{width:140px}
+    #warn{max-width:calc(var(--doc-col) - 32px); margin:24px 16px 0}
+    table.keys td:first-child{width:130px; white-space:normal}
+    .dlg{padding:22px 20px}
+  }
+
+  @media print{
+    body{display:block; height:auto; overflow:visible; background:var(--paper)}
+    #app{display:block}
+    .bar, #home, #settings, #edit, #grip, #warn{display:none !important}
+    #note, #note.on{display:block !important}
+    #view{overflow:visible}
+  }
+  /* DESIGN_GUIDE §8.4 — required on every page */
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important; transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <!-- library route -->
+  <div class="bar-group" id="bar-home">
+    <a href="../" class="pill">&larr; Programs</a>
+    <h1 class="mark"><button type="button" id="logo">Fieldnote<b>.</b></button></h1>
+    <input id="search" type="search" placeholder="Search notes" aria-label="Search notes" autocomplete="off">
+    <span class="grow"></span>
+    <button class="btn quiet" type="button" id="btn-prompt">Prompt</button>
+    <button class="btn quiet" type="button" id="btn-import">Import</button>
+    <button class="btn quiet" type="button" id="btn-settings">Settings</button>
+    <button class="btn solid" type="button" id="btn-new">New note</button>
+  </div>
+
+  <!-- note route: return on the left, view switch and More on the right -->
+  <div class="bar-group" id="bar-note" style="display:none">
+    <button class="pill" type="button" id="btn-back">&larr; Return</button>
+    <span class="grow"><input class="title-in" id="title" aria-label="Note title" readonly></span>
+    <div class="seg" role="group" aria-label="View">
+      <button type="button" data-pane="read" aria-pressed="true">Read</button>
+      <button type="button" data-pane="write" aria-pressed="false">Write</button>
+    </div>
+    <div class="menu" id="menu-note">
+      <button class="pill menu-toggle" type="button" aria-expanded="false" aria-haspopup="true">
+        More <span class="menu-caret" aria-hidden="true">&#9662;</span>
+      </button>
+      <div class="menu-panel">
+        <button type="button" id="btn-print" data-shut>Print</button>
+        <button type="button" id="btn-md" data-shut>Save as .md</button>
+        <button type="button" id="btn-html" data-shut>Save as .html</button>
+        <div class="menu-sep"></div>
+        <button type="button" id="btn-del">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- settings route -->
+  <div class="bar-group" id="bar-settings" style="display:none">
+    <button class="pill" type="button" id="btn-set-back">&larr; Return</button>
+    <h1 class="mark">Settings<b>.</b></h1>
+  </div>
+</header>
+
+<main id="app">
+  <div id="home">
+    <div class="home-in">
+      <aside class="rail">
+        <h2>Filter</h2>
+        <div class="rail-tags" id="tagList"></div>
+        <p class="state" id="libState"></p>
+      </aside>
+      <section>
+        <div class="list-top">
+          <span id="count"></span><span class="grow"></span>
+          <button class="btn quiet" type="button" id="btn-sort">Last edited</button>
+        </div>
+        <div id="list"></div>
+      </section>
+    </div>
+  </div>
+
+  <div id="settings">
+    <div class="set-in">
+      <div class="block">
+        <div class="block-label">§ Library</div>
+        <div class="block-content">
+          <h2>Where your notes <em>live.</em></h2>
+          <p id="setState"></p>
+          <div class="set-act">
+            <button class="btn" type="button" id="btn-export">Export all notes</button>
+            <button class="btn" type="button" id="btn-import-set">Import notes</button>
+          </div>
+          <p class="dim">Export writes one Markdown file per note into a single zip, each
+             named the way the note is titled. Import takes those same files back — pick as
+             many as you like at once. Older <code>.json</code> backups still import too.</p>
+          <p class="state" id="setMsg"></p>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="block-label">§ Keyboard</div>
+        <div class="block-content">
+          <h2>Every shortcut in <em>one place.</em></h2>
+          <table class="keys">
+            <thead><tr><th>Key</th><th>Does</th><th>Where</th></tr></thead>
+            <tbody>
+              <tr><td><kbd>/</kbd></td><td>Jump to search</td><td>Library</td></tr>
+              <tr><td><kbd>n</kbd></td><td>Start a new note</td><td>Library</td></tr>
+              <tr><td><kbd>&darr;</kbd> <kbd>j</kbd></td><td>Move down the list</td><td>Library</td></tr>
+              <tr><td><kbd>&uarr;</kbd> <kbd>k</kbd></td><td>Move up the list</td><td>Library</td></tr>
+              <tr><td><kbd>&crarr;</kbd></td><td>Open the selected note</td><td>Library</td></tr>
+              <tr><td><kbd>e</kbd> <kbd>w</kbd></td><td>Swap read and write</td><td>A note</td></tr>
+              <tr><td><kbd>Tab</kbd></td><td>Insert two spaces</td><td>Editor</td></tr>
+              <tr><td><kbd>&#8984;</kbd> / <kbd>Ctrl</kbd> <kbd>&crarr;</kbd></td><td>Re-render now</td><td>Editor</td></tr>
+              <tr><td><kbd>Esc</kbd></td><td>Close a menu, then return</td><td>Anywhere</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="note">
+    <section id="edit">
+      <div class="edit-top">
+        <div class="seg" role="group" aria-label="Source format">
+          <button type="button" data-mode="md" aria-pressed="true">Markdown</button>
+          <button type="button" data-mode="html" aria-pressed="false">HTML</button>
+        </div>
+        <input id="tags" placeholder="tags, comma separated" aria-label="Tags">
+        <span class="save" id="save">saved</span>
+      </div>
+      <textarea id="src" spellcheck="false" aria-label="Note source"></textarea>
+    </section>
+    <button id="grip" aria-label="Resize panels" tabindex="-1"></button>
+    <div id="view">
+      <div id="warn" hidden></div>
+      <article id="doc" class="doc"></article>
+    </div>
+  </div>
+</main>
+
+<dialog id="dlg-prompt"><div class="dlg">
+  <h2>Ask an assistant for a <em>fieldnote.</em></h2>
+  <p>Copy this, add your topic, then paste the reply into a new note. The full
+     authoring guide is the longer version — paste that instead when you want
+     figures, equations and animation.</p>
+  <pre id="promptText"></pre>
+  <div class="dlg-act">
+    <a class="btn" href="fieldnote-authoring-guide.md" target="_blank" rel="noopener">Full guide</a>
+    <button class="btn" type="button" id="btn-copy">Copy prompt</button>
+    <button class="btn solid" type="button" data-close>Done</button>
+  </div>
+</div></dialog>
+
+<input type="file" id="fileLib" multiple accept=".md,.markdown,.txt,.html,.htm,.json" hidden>
+
+<script src="app.js" defer></script>
+</body>
+</html>

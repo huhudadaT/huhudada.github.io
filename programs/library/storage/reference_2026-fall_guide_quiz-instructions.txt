@@ -1,0 +1,228 @@
+Title: Quiz Generation — AI Instructions
+Description: The format and quality rules for generating Quizzical quizzes.
+Class: Reference
+Semester: Fall 2026
+
+(The four lines above are this file's own library header. They describe this
+document, not a quiz you should generate.)
+
+# Quiz Generation — AI Instructions
+
+These are the instructions given to an AI whenever it generates a quiz for the Quizzical app. They define the quality bar for every question produced. This document is both a human-readable reference and the literal text used by the app, so editing it changes how new quizzes are generated.
+
+Quizzical reads quizzes as **plain text** in a simple format with a required four-line header. You paste AI-generated output into the Import tab (or upload it as a `.txt` file), and the app parses it into a quiz. Exported `.txt` backups use the same format, so anything Quizzical exports can be re-imported.
+
+The same file also feeds the **library page** at `huhudada.com/programs/library/`. A `.txt` file dropped into `programs/library/storage/` shows up there on its own, and the library reads its title, description, class, semester, and question count straight out of the file — so the header lines below are what make a quiz browsable and filterable.
+
+---
+
+## Core Mandate
+
+Generate EXAM-STYLE multiple-choice questions. Every quiz you produce should feel like it belongs on a real test — serious, precise, and designed to genuinely measure whether someone understands the material.
+
+---
+
+## The Header: Title, Description, Class, Semester
+
+Every quiz **must** begin with these four lines, each on its own line, in this order, before any questions. They are required, not optional. Keep them uniform:
+
+**Title** — a short, specific title in Title Case.
+- Name the actual subject. "The French Revolution", "JavaScript Closures", "Cell Respiration".
+- Title Case. No surrounding quotes. No trailing punctuation.
+- Keep it under about 60 characters. Prefer a real subject over a vague label ("Science Quiz" is weak; "The Periodic Table" is strong).
+
+**Description** — exactly one sentence stating what the quiz covers.
+- Plain and informative. Say what the test-taker will be assessed on.
+- One sentence, ending in a period. No marketing language, no "This quiz will test you on…" filler.
+
+**Class** — the course the quiz was made for, written as your school writes it.
+- Department code in caps, a space, then the number: "BIOENG 1085", "BIOSC 0150", "CHEM 0310".
+- No course title, no section, no instructor. Just the code.
+- Write it identically on every quiz for that course. The library builds its class filter from this line, so "BIOENG 1085" and "Bioeng 1085" would show up as two separate classes.
+- If a quiz isn't tied to a course, put the field name instead ("Biology") — but use the course code whenever there is one.
+
+**Semester** — the term the quiz was made for.
+- Exactly one of `Spring`, `Summer`, or `Fall`, then a space, then a four-digit year: "Spring 2026".
+- Never a month, never a date, never a range. The library groups by term, not by day.
+
+All four lines are always present and always in this order:
+
+```
+Title: The French Revolution
+Description: Key dates, figures, and causes of the French Revolution.
+Class: HIST 0100
+Semester: Spring 2026
+```
+
+Nothing else goes in the header. In particular, **do not add a question count** — the library counts the `Q:` lines itself.
+
+---
+
+## Question Quality Requirements
+
+These are the critical rules every question must follow:
+
+**Exam-style voice.** Write questions the way a real test or textbook assessment would. Formal, direct, measured. No conversational filler, no hedging, no "let's see if you know."
+
+**Concise phrasing.** Go straight to the point. Strip out unnecessary setup, scene-setting, preamble, or flavor text. If a question can be asked in ten words instead of thirty, ask it in ten.
+
+**Non-obvious correct answer.** The right answer must NOT be obvious at a glance. A test-taker should have to actually think — recall a specific fact, apply a concept, reason from principles, or distinguish between closely related ideas. If someone can pick the answer correctly without knowing the material, the question has failed.
+
+**Plausible distractors.** Every wrong option must look credible — the kind of answer someone who half-knows the material would seriously consider. Avoid throwaway options, jokes, or obvious filler. A good distractor is one the test-taker has to actively rule out.
+
+**Keep option lengths even.** Don't let the correct answer be the longest or most qualified option. Length is a tell, and a test-taker who notices it stops reading the material and starts reading the question.
+
+**"All of the above" / "None of the above" are allowed.** Use them when they genuinely fit — when all the other options really are correct, or really aren't. Do not use them as a crutch to fill a slot. Use them sparingly.
+
+**Broad coverage, moderate depth.** Cover the topic broadly — different subtopics, different angles, different levels of abstraction. But don't go to PhD-level obscurity. Test solid working knowledge, not trivia only a specialist would know.
+
+**Varied reasoning types.** Mix it up across the quiz: definitions and terminology, application to scenarios, comparison between concepts, cause and effect, sequence or ordering, identifying exceptions, interpreting results, recognizing misconceptions.
+
+**Randomize correct-answer position.** Don't default to any single slot. The correct answer should land in different positions roughly evenly across the quiz.
+
+---
+
+## Number of Options
+
+- **Default to 4 options per question.** This is the typical case and what most quizzes should use.
+- You may use between **2 and 8 options** when the material naturally calls for a different number — 2 for a true/false-style question, 5 or 6 for a broader categorization.
+- Don't pad to 4 with weak distractors just to hit the default. A well-crafted 3-option question beats a 4-option question with one throwaway.
+- Don't inflate to 6 or 7 if 4 would do.
+
+---
+
+## Structural Rules
+
+These are hard constraints on the output:
+
+- Start with the four header lines — `Title:`, `Description:`, `Class:`, `Semester:` — then a blank line, then the questions.
+- Between **2 and 8 options** per question (4 is typical).
+- Exactly one option is marked correct, with an asterisk before its letter.
+- Every question has a **concise explanation** — one or two sentences, no more.
+- Plain text only — no JSON, no markdown, no commentary before or after.
+
+---
+
+## Output Format
+
+```
+Title: A short, specific quiz title in Title Case
+Description: One sentence describing what the quiz covers.
+Class: [course code, e.g. BIOENG 1085]
+Semester: [Spring | Summer | Fall] [YYYY]
+
+Q: The question text
+A. Option A
+*B. Option B
+C. Option C
+D. Option D
+Explain: One sentence on why the correct answer is right.
+
+Q: The next question
+A. Option A
+B. Option B
+*C. Option C
+Explain: Explanation for this one.
+```
+
+Rules for the format:
+
+- Start with the four header lines, in order.
+- Each question starts with `Q:` followed by the question text.
+- Options go on their own lines, labeled `A.`, `B.`, `C.`, … (up to `H.`).
+- Mark the correct option with an asterisk directly before its letter, e.g. `*B. Paris`.
+- Follow each question with an `Explain:` line.
+- Separate questions with a blank line.
+
+---
+
+## Good vs Bad Example
+
+**Bad** (obvious answer — the distractors are unserious, and anyone can pick B by elimination):
+```
+Q: What year did World War II end?
+A. 1776
+B. 1945
+C. 2001
+D. 1066
+```
+
+**Good** (full header, plausible distractors, and "in Europe" rewards precision):
+```
+Title: The End of World War II in Europe
+Description: The final campaigns, surrenders, and settlements of the European theatre.
+Class: HIST 0100
+Semester: Spring 2026
+
+Q: In what year did World War II end in Europe?
+A. 1944
+*B. 1945
+C. 1946
+D. 1947
+Explain: V-E Day was May 8, 1945, following Germany's unconditional surrender.
+```
+
+---
+
+## The Checks
+
+Before finalizing, run the quiz through these:
+
+1. **Header complete?** Four lines, in order — `Title:` in Title Case, a one-sentence `Description:`, a `Class:` naming the course, and a `Semester:` of the form `Spring 2026` — all before any questions?
+2. **Does answering each question correctly require actually knowing the material?** If a guesser could get it right through elimination against obviously wrong options, rewrite it.
+3. **Is every distractor plausible, and is the explanation one or two sentences?**
+4. **Is the correct answer in a different slot from question to question, and no longer than the distractors?**
+
+If any answer is "no," fix it.
+
+---
+
+## Prompt Template
+
+Use this as your prompt when generating a quiz with an external AI:
+
+```
+Generate a quiz about [TOPIC] as plain text.
+
+Start with these four lines, then a blank line, then the questions:
+Title: [a short, specific quiz title in Title Case]
+Description: [one sentence describing what the quiz covers]
+Class: [the course code, e.g. BIOENG 1085]
+Semester: [Spring, Summer, or Fall] [four-digit year]
+
+Follow the quality rules above. Remember:
+- Exam-style, concise questions with non-obvious answers.
+- Plausible distractors — no filler options, even option lengths.
+- 2–8 options per question (4 is typical), exactly one marked correct with an asterisk.
+- A one-sentence Explain: line after each question.
+
+Create [NUMBER] questions at [easy / medium / hard] difficulty.
+Output ONLY the four header lines and the questions — no preamble, no commentary.
+```
+
+---
+
+## Writing Quizzes by Hand
+
+Users can also write quizzes manually using the same format — open any text editor, write the four header lines, a blank line, then the questions (each with an asterisk on the correct option and an `Explain:` line), save as `.txt`, and import.
+
+When writing by hand, the same rules apply: full header first, then concise questions with plausible distractors.
+
+---
+
+## Publishing a Quiz to the Library
+
+To put a finished quiz on the site:
+
+1. Save it as a `.txt` file named `class_year-term_type_title.txt` — all lowercase, no spaces, fields joined by underscores:
+   - `class` — the course code with its space removed: `hist0100`
+   - `year-term` — four-digit year, a hyphen, then the term: `2026-spring`
+   - `type` — `quiz`
+   - `title` — kebab-case of the title: `the-french-revolution`
+
+   Giving `hist0100_2026-spring_quiz_the-french-revolution.txt`.
+
+   Pad any number in the title to two digits — `module01`, not `module1` — so the files still sort correctly once there are ten or more.
+2. Commit it into `programs/library/storage/`.
+
+That's the whole process. The library page lists the folder, reads each file's header for the title, description, class, and semester, counts the `Q:` lines for the question count, and builds the row and the filters from that. A quiz with a missing or malformed header still appears, but it lands untagged and drops out of the class and semester filters — so the header is worth getting right.

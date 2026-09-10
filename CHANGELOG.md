@@ -1,6 +1,10 @@
 CHANGELOG - huhudada.com
 Newest first. Format: see CHANGELOG_GUIDE.md
 
+2026-09-10
+  - [programs/fieldnote] Added Fieldnote, a note library that renders Markdown with math, diagrams, charts and drawings.
+  - [programs] Added the Fieldnote card to the programs index.
+
 2026-08-31
   - [meta] Decreased size of favicon.
   - [programs/flashcards] Rebuilt the app in the site palette; dropped Tailwind, lucide, and dark mode.

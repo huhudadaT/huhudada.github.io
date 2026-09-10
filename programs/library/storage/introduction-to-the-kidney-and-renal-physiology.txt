@@ -1,0 +1,202 @@
+Name: Introduction to the Kidney and Renal Physiology
+Description: Kidney functions, glomerular filtration and GFR, and the nephron from proximal tubule to collecting duct.
+Class: BIOENG 1052
+Semester: Fall 2026
+
+Q: Who is considered the father of renal physiology?
+A: Homer W. Smith.
+
+Q: Which fish did Homer Smith travel to Africa in 1928 to study?
+A: The lungfish.
+
+Q: Why is the lungfish kidney useful for studying kidney evolution?
+A: It resembles the kidneys of reptiles, birds, and mammals.
+
+Q: What is the primary function of the kidney?
+A: Filtering the blood and modifying it into urine.
+
+Q: What are the three principal processes of the nephron?
+A: Filtration, reabsorption, and secretion.
+
+Q: What is the functional unit of the kidney?
+A: The nephron.
+
+Q: About how many nephrons are in a human kidney?
+A: About 1 million.
+
+Q: About how much plasma does a normal kidney filter per day?
+A: About 180 L.
+
+Q: What two regions is the kidney divided into?
+A: The cortex and the medulla.
+
+Q: Which kidney region is hypertonic relative to the other?
+A: The medulla.
+
+Q: What adaptation lets the kangaroo rat produce hyper-concentrated urine?
+A: Extremely long loops of Henle.
+
+Q: Which kidney hormone regulates blood pressure?
+A: Renin.
+
+Q: Which cells secrete renin?
+A: Juxtaglomerular cells.
+
+Q: Where are juxtaglomerular cells located?
+A: At the vascular pole of the glomerulus.
+
+Q: What triggers the RAAS cascade?
+A: Decreased blood pressure.
+
+Q: Which organ produces angiotensinogen?
+A: The liver.
+
+Q: What enzyme converts angiotensin I to angiotensin II?
+A: ACE (angiotensin-converting enzyme).
+
+Q: Where does ACE come from?
+A: The lung and vascular endothelium.
+
+Q: Which hormone does angiotensin II trigger from the adrenal cortex?
+A: Aldosterone.
+
+Q: What does aldosterone increase in the kidney?
+A: Sodium and water reabsorption.
+
+Q: Which kidney hormone stimulates red blood cell production?
+A: Erythropoietin (EPO).
+
+Q: What does the kidney sense to trigger EPO release?
+A: Low oxygen delivery.
+
+Q: What is the active form of vitamin D produced by the kidney?
+A: Calcitriol.
+
+Q: What cup-shaped structure encloses the glomerulus?
+A: Bowman's capsule.
+
+Q: What is the main driver of the glomerular filtration rate?
+A: Glomerular capillary pressure (Pgc).
+
+Q: What is the glomerular filtration rate?
+A: The volume of glomerular filtrate formed per minute by the kidneys.
+
+Q: What property do the glomeruli filter by?
+A: Particle size.
+
+Q: What are the three components of the glomerular filter?
+A: Porous endothelium, glomerular basement membrane, and podocyte foot processes with slit membrane.
+
+Q: Which cell contributes foot processes to the filtration barrier?
+A: The podocyte.
+
+Q: What is the most widely used biomarker of kidney function?
+A: Creatinine.
+
+Q: Which endogenous marker is more precise than creatinine?
+A: Cystatin C.
+
+Q: Name an injectable marker used to measure GFR.
+A: Inulin.
+
+Q: How is GFR calculated from a freely filtered marker?
+A: (Urine concentration × urine flow rate) ÷ plasma concentration.
+
+Q: Which equation is used to estimate GFR from blood?
+A: The CKD-EPI creatinine equation.
+
+Q: Which GFR method stays accurate in early kidney disease?
+A: Measured GFR (mGFR).
+
+Q: What is the filtration fraction equation?
+A: GFR ÷ renal plasma flow.
+
+Q: What is a typical filtration fraction?
+A: About 20%.
+
+Q: About how much ultrafiltrate do the kidneys produce per minute?
+A: About 120 mL/min.
+
+Q: What is the leading cause of kidney failure in the US?
+A: Diabetes.
+
+Q: What percentage of new kidney failure cases does diabetes account for?
+A: 44%.
+
+Q: Name a glomerular change caused by diabetic kidney disease.
+A: Thickening of the glomerular basement membrane.
+
+Q: What are the three broad stages of processing along the tubule?
+A: Bulk reabsorption, fine tuning, and urine concentration.
+
+Q: Which pump sets up the electrochemical gradient in every tubule segment?
+A: The Na/K-ATPase.
+
+Q: What fraction of total kidney mass is the proximal tubule?
+A: About 65%.
+
+Q: What luminal structure gives the proximal tubule its brush border?
+A: Microvilli.
+
+Q: Which transporter reabsorbs glucose in the proximal tubule?
+A: SGLT2.
+
+Q: Which proximal tubule transporter supports bicarbonate reabsorption?
+A: NHE3.
+
+Q: What does the proximal tubule secrete to adjust blood pH?
+A: Ammonia (NH3).
+
+Q: Which limb of the loop of Henle is permeable to water?
+A: The descending limb.
+
+Q: What osmolarity does the descending limb reach?
+A: About 1200 mOsm/L.
+
+Q: What happens to osmolarity along the ascending limb?
+A: It falls from about 1200 to about 100 mOsm/L.
+
+Q: Which loop of Henle transporter moves sodium, potassium, and chloride?
+A: NKCC2.
+
+Q: Which channel recycles potassium in the loop of Henle?
+A: ROMK.
+
+Q: Which transporter do loop diuretics inhibit?
+A: NKCC2.
+
+Q: What is the generic name of Lasix?
+A: Furosemide.
+
+Q: Which ions are selectively secreted in the distal convoluted tubule?
+A: Potassium and hydrogen.
+
+Q: Which DCT transporter moves sodium and chloride across the apical membrane?
+A: NCC.
+
+Q: Which DCT channel handles calcium entry?
+A: TRPV5.
+
+Q: Why are DCT cells rich in mitochondria?
+A: They pump ions against their gradient.
+
+Q: Which hormone controls aquaporins in the collecting duct?
+A: Vasopressin (antidiuretic hormone).
+
+Q: Which aquaporin sets water reabsorption in the collecting duct?
+A: AQP2.
+
+Q: Which channel reabsorbs sodium in the collecting duct?
+A: ENaC.
+
+Q: Where do the terminal collecting ducts empty?
+A: At a papilla.
+
+Q: How does black licorice raise blood pressure?
+A: It increases ENaC abundance at the apical membrane.
+
+Q: Of the 180 L of water filtered daily, how much is reabsorbed?
+A: About 179 L.
+
+Q: Which filtered substance is not reabsorbed at all?
+A: Creatinine.

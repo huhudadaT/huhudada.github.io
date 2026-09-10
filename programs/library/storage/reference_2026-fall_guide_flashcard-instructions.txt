@@ -1,0 +1,235 @@
+Title: Flashcard Generation — AI Instructions
+Description: The format and quality rules for generating Cardly flashcard decks.
+Class: Reference
+Semester: Fall 2026
+
+(The four lines above are this file's own library header. They describe this
+document, not a deck you should generate.)
+
+# Flashcard Generation — AI Instructions
+
+These are the instructions given to an AI whenever it generates flashcards for the Cardly app. They define the quality bar for every card produced. This document is both a human-readable reference and the literal text used by the app, so editing it changes how new flashcards are generated.
+
+Cardly reads flashcards as **plain text** in a simple `Q:` / `A:` format, with a required four-line header. You paste AI-generated output into the Import tab (or upload it as a `.txt` file), and the app parses it into a deck. Exported `.txt` backups use the same format, so anything Cardly exports can be re-imported.
+
+The same file also feeds the **library page** at `huhudada.com/programs/library/`. A `.txt` file dropped into `programs/library/storage/` shows up there on its own, and the library reads its title, description, class, semester, and card count straight out of the file — so the header lines below are what make a deck browsable and filterable.
+
+---
+
+## Core Mandate
+
+Generate tight, focused flashcards. Every card should test **one thing** about the topic, **straight to the point**, with the answer being the **actual answer** — not a paragraph about it.
+
+---
+
+## The Header: Name, Description, Class, Semester
+
+Every deck **must** begin with these four lines, each on its own line, in this order, before any cards. They are required, not optional. Keep them uniform:
+
+**Name** — a short, specific title in Title Case.
+- Name the actual subject. "The Krebs Cycle", "Spanish Verbs — Present Tense", "World Capitals of Europe".
+- Title Case. No surrounding quotes. No trailing punctuation.
+- Keep it under about 60 characters. Prefer a real subject over a vague label ("Biology Deck" is weak; "Human Cell Structure" is strong).
+
+**Description** — exactly one sentence stating what the deck covers.
+- Plain and informative. Say what a learner will be tested on.
+- One sentence, ending in a period. No marketing language, no "This deck will help you…" filler.
+- Example: "Core organs, systems, and functions of human anatomy."
+
+**Class** — the course the deck was made for, written as your school writes it.
+- Department code in caps, a space, then the number: "BIOENG 1085", "BIOSC 0150", "CHEM 0310".
+- No course title, no section, no instructor. Just the code.
+- Write it identically on every deck for that course. The library builds its class filter from this line, so "BIOENG 1085" and "Bioeng 1085" would show up as two separate classes.
+- If a deck isn't tied to a course, put the field name instead ("Biology") — but use the course code whenever there is one.
+
+**Semester** — the term the deck was made for.
+- Exactly one of `Spring`, `Summer`, or `Fall`, then a space, then a four-digit year: "Fall 2026".
+- Never a month, never a date, never a range. The library groups by term, not by day.
+
+All four lines are always present and always in this order:
+
+```
+Name: Human Anatomy Basics
+Description: Core organs, systems, and functions of human anatomy.
+Class: BIOSC 0150
+Semester: Fall 2026
+```
+
+Nothing else goes in the header. In particular, **do not add a card count** — the library counts the `Q:` lines itself.
+
+---
+
+## Card Quality Requirements
+
+These are the critical rules every card must follow.
+
+**One question per card.** Each card tests exactly one thing. Never combine two prompts with "and" or "also" (e.g., no "What is X *and* how does Y work?"). If two ideas matter, make two cards.
+
+**Straight to the point.** Questions are short and direct. Cut every word that isn't needed. Set-up, scene-setting, filler phrases like "Can you tell me..." or "In your own words..." — all of it goes. If a question works in six words, don't use twelve.
+
+**The answer IS the answer.** The flip side gives the exact answer — the term, the number, the name, the definition — and nothing more. No explanations. No context. No "because..." trailing on the end. No teaching paragraphs. A card is not a mini-lesson; it's a prompt and a response.
+
+**Short answers.** Most answers should be a word, a phrase, or a single sentence at most. If an answer genuinely needs more than one sentence (rare), keep it to two. Never three.
+
+**One concept per card.** One question, one answer, one thing being tested. Don't pack related facts together in the answer just because they're related.
+
+**Active recall.** Phrase questions so the learner must retrieve the answer, not recognize it. "Capital of France?" is better than "Is Paris the capital of France?"
+
+**Prefer "what / who / when / where / how / why" over yes/no.** Yes/no questions test recognition, not recall, and give a guesser 50% odds.
+
+**Specific and unambiguous.** Each question has one clear answer. Avoid vague prompts that could be answered several different ways.
+
+**Varied question types across the deck.** Mix definitions, identifications, dates, quantities, causes, sequences, and terms. Don't ask the same shape of question ten times in a row.
+
+**Progressive difficulty.** Start with foundational facts, build to relationships and applications. A learner going through the deck in order should feel their understanding compound.
+
+**Broad coverage, moderate depth.** Cover different angles and subtopics, but don't go to specialist trivia. Test solid working knowledge, not PhD-level obscurity.
+
+---
+
+## Structural Rules
+
+These are hard constraints on the output format:
+
+- Start with the four header lines — `Name:`, `Description:`, `Class:`, `Semester:` — then a blank line, then the cards.
+- Each card has exactly two parts: a `Q:` line and an `A:` line.
+- Separate cards with a single blank line between them.
+- Multi-line content is allowed — continuation lines (without a `Q:` or `A:` prefix) are appended to whichever field was most recently started.
+- No numbering, no bullet points, no markdown, no headers, no commentary.
+- Output ONLY the four header lines and the `Q:`/`A:` pairs.
+- Maximum 1000 cards per file. Aim for the number the user requests, or default to 20 if not specified.
+
+---
+
+## Output Format
+
+```
+Name: [short, specific deck title in Title Case]
+Description: [one sentence describing what the deck covers]
+Class: [course code, e.g. BIOENG 1085]
+Semester: [Spring | Summer | Fall] [YYYY]
+
+Q: [short, direct question]
+A: [the actual answer — brief]
+
+Q: [short, direct question]
+A: [the actual answer — brief]
+```
+
+---
+
+## Good vs Bad Example
+
+Study the difference — this is the single most important part of the guide.
+
+**Bad** (no header, wordy question, multi-part, explanatory answer):
+```
+Q: Can you describe what the mitochondria does in the cell, and why it is often called the powerhouse of the cell?
+A: The mitochondria is an organelle found in eukaryotic cells that produces ATP through cellular respiration. It is called the powerhouse of the cell because it generates most of the cell's supply of adenosine triphosphate, which is used as a source of chemical energy.
+```
+
+What's wrong: the header is missing; the question asks two things joined by "and"; the answer is three sentences of explanation when the user just needs the fact.
+
+**Good** (full header, two tight cards, each answer is the answer):
+```
+Name: Cell Biology — The Mitochondria
+Description: Structure and function of the mitochondria in eukaryotic cells.
+Class: BIOSC 0150
+Semester: Fall 2026
+
+Q: What does the mitochondria produce?
+A: ATP.
+
+Q: Why is the mitochondria called the powerhouse of the cell?
+A: It generates most of the cell's ATP.
+```
+
+---
+
+## The Checks
+
+Before finalizing, run the deck through these:
+
+1. **Header complete?** Four lines, in order — `Name:` in Title Case, a one-sentence `Description:`, a `Class:` naming the course, and a `Semester:` of the form `Fall 2026` — all before any cards?
+2. **Is each question one question, not two?** If you see "and" or "also" linking two prompts, split the card.
+3. **Is each answer the actual answer, not an explanation of it?** If the answer starts with a definition and then keeps going into context, cut everything after the answer itself.
+4. **Could anything be cut without losing the point?** If yes, cut it.
+
+If any answer is "no," fix it.
+
+---
+
+## Prompt Template
+
+Use this as your prompt when generating flashcards with an external AI:
+
+```
+Generate a set of flashcards about [TOPIC] as plain text.
+
+Start with these four lines, then a blank line, then the cards:
+Name: [a short, specific deck title in Title Case]
+Description: [one sentence describing what the deck covers]
+Class: [the course code, e.g. BIOENG 1085]
+Semester: [Spring, Summer, or Fall] [four-digit year]
+
+Follow the quality rules above. Remember:
+- One question per card, straight to the point.
+- The answer is the actual answer — no explanations, no paragraphs.
+- Short answers: a word, a phrase, or one sentence.
+
+Create [NUMBER] flashcards (default: 20 if not specified).
+Output ONLY the four header lines and the flashcard text — no preamble, no commentary.
+```
+
+---
+
+## Generating from Notes
+
+When a user provides their own notes instead of a topic:
+
+```
+Given the following notes, extract the key facts and build tight flashcards
+in plain text.
+
+Start with:
+Name: [a short, specific deck title in Title Case that reflects the notes]
+Description: [one sentence describing what the deck covers]
+Class: [the course code, e.g. BIOENG 1085]
+Semester: [Spring, Summer, or Fall] [four-digit year]
+
+Then a blank line, then the cards in Q:/A: format, one card per pair,
+separated by blank lines.
+
+One question per card. The answer should be the fact itself, not an
+explanation of the fact. Keep answers to a word, a phrase, or one sentence.
+
+Notes:
+[USER'S PASTED NOTES HERE]
+```
+
+---
+
+## Writing Flashcards by Hand
+
+Users can also write flashcards manually using the same format — open any text editor, write the four header lines, a blank line, then `Q:`/`A:` pairs separated by blank lines, save as `.txt`, and import.
+
+When writing by hand, the same rules apply: full header first, then one question per card, tight phrasing, the answer is the answer.
+
+---
+
+## Publishing a Deck to the Library
+
+To put a finished deck on the site:
+
+1. Save it as a `.txt` file named `class_year-term_type_title.txt` — all lowercase, no spaces, fields joined by underscores:
+   - `class` — the course code with its space removed: `biosc0150`
+   - `year-term` — four-digit year, a hyphen, then the term: `2026-fall`
+   - `type` — `flashcards`
+   - `title` — kebab-case of the deck name: `the-mitochondria`
+
+   Giving `biosc0150_2026-fall_flashcards_the-mitochondria.txt`.
+
+   Pad any number in the title to two digits — `module01`, not `module1` — so the files still sort correctly once there are ten or more.
+2. Commit it into `programs/library/storage/`.
+
+That's the whole process. The library page lists the folder, reads each file's header for the title, description, class, and semester, counts the `Q:` lines for the card count, and builds the row and the filters from that. A deck with a missing or malformed header still appears, but it lands untagged and drops out of the class and semester filters — so the header is worth getting right.
