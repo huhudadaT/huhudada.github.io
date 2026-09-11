@@ -2,6 +2,8 @@ CHANGELOG - huhudada.com
 Newest first. Format: see CHANGELOG_GUIDE.md
 
 2026-09-10
+  - [programs/PDF_editor] Added PDF_editor
+  - [programs/longhand] Added longhand, a tool used to convert handwrite page to digital page
   - [programs/fieldnote] Added Fieldnote, a note library that renders Markdown with math, diagrams, charts and drawings.
   - [programs] Added the Fieldnote card to the programs index.
   - [programs/library] Read a tag block at the top of each file — Title, Description, Kind, Subject, Catalog, Semester — ended by a divider line or a blank line.
