@@ -1,6 +1,8 @@
-Name: BIOSC 1820 HO07 Urea Cycle
+Title: BIOSC 1820 HO07 Urea Cycle
 Description: Protein digestion, transamination, ammonia transport, and the urea cycle.
-Class: BIOSC 1820
+Kind: flashcards
+Subject: BIOSC
+Catalog: 1820
 Semester: Spring 2026
 
 Q: What hormone does protein in the stomach trigger?

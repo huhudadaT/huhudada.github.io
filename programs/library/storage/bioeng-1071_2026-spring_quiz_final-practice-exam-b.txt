@@ -1,6 +1,8 @@
 Title: BIOENG 1071 Final Practice Exam B
 Description: Units 1-11 of cellular and developmental bioengineering, including simple, bonus, and complex multiple choice questions.
-Class: BIOENG 1071
+Kind: quiz
+Subject: BIOENG
+Catalog: 1071
 Semester: Spring 2026
 
 Q: Which of the following statements about morphogens or cellular responses to morphogens is FALSE?

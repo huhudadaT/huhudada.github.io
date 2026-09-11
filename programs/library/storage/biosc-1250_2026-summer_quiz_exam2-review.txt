@@ -1,6 +1,8 @@
 Title: BIOSC 1250 Exam 2 Review
 Description: Exam-style questions on muscle tissue, the heart, blood vessels, and blood (Ch. 11, 14-16).
-Class: BIOSC 1250
+Kind: quiz
+Subject: BIOSC
+Catalog: 1250
 Semester: Summer 2026
 
 Q: Which of the following statements concerning muscle is true?

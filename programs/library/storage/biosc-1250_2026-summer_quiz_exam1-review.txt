@@ -1,6 +1,8 @@
 Title: BIOSC 1250 Exam 1 Review
 Description: Exam-style questions on cell signaling, neuronal excitability, the CNS, and the sensory systems (Ch. 6-9).
-Class: BIOSC 1250
+Kind: quiz
+Subject: BIOSC
+Catalog: 1250
 Semester: Summer 2026
 
 Q: Which of the following statements concerning gap junctions is false? Gap junctions

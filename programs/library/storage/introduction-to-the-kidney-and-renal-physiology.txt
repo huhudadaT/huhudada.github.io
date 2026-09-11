@@ -1,6 +1,8 @@
-Name: Introduction to the Kidney and Renal Physiology
+Title: Introduction to the Kidney and Renal Physiology
 Description: Kidney functions, glomerular filtration and GFR, and the nephron from proximal tubule to collecting duct.
-Class: BIOENG 1052
+Kind: flashcards
+Subject: BIOENG
+Catalog: 1052
 Semester: Fall 2026
 
 Q: Who is considered the father of renal physiology?

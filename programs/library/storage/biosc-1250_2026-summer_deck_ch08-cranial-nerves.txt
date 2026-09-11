@@ -1,6 +1,8 @@
-Name: BIOSC 1250 Ch08 Cranial Nerves
+Title: BIOSC 1250 Ch08 Cranial Nerves
 Description: The twelve cranial nerves, their names, modalities, and functions.
-Class: BIOSC 1250
+Kind: flashcards
+Subject: BIOSC
+Catalog: 1250
 Semester: Summer 2026
 
 Q: Cranial nerve I

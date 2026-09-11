@@ -1,6 +1,6 @@
-Name: Fieldnote Generation — AI Instructions
+Title: Fieldnote Generation — AI Instructions
 Description: The format and quality rules for generating fieldnotes.
-Kind: Fieldnote
+Kind: fieldnote
 Subject: Reference
 Catalog: 
 Semester: Fall 2026

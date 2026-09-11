@@ -1,6 +1,8 @@
-Name: BIOSC 1250 Review 3 Respiratory, Urinary, Reproductive
+Title: BIOSC 1250 Review 3 Respiratory, Urinary, Reproductive
 Description: The respiratory, urinary, and reproductive systems (Ch. 18, 19, 23).
-Class: BIOSC 1250
+Kind: flashcards
+Subject: BIOSC
+Catalog: 1250
 Semester: Summer 2026
 
 Q: Which alveolar cell type carries out gas exchange?

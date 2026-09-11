@@ -1,6 +1,8 @@
 Title: BIOSC 1250 Final Master Quiz
 Description: Cumulative final review of the respiratory, urinary, and reproductive systems plus clinical terms.
-Class: BIOSC 1250
+Kind: quiz
+Subject: BIOSC
+Catalog: 1250
 Semester: Summer 2026
 
 Q: Air enters the nasal cavity and mouth, both of which lead to the ____, a muscular tube that is a common passageway for food and air.

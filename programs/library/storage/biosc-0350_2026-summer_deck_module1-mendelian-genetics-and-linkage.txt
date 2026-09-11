@@ -1,6 +1,8 @@
-Name: BIOSC 0350 Module 1 Mendelian Genetics and Linkage
+Title: BIOSC 0350 Module 1 Mendelian Genetics and Linkage
 Description: Mendelian inheritance, gene interactions and epistasis, sex linkage, and linkage mapping with tetrad analysis.
-Class: BIOSC 0350
+Kind: flashcards
+Subject: BIOSC
+Catalog: 0350
 Semester: Summer 2026
 
 Q: What is a gene?

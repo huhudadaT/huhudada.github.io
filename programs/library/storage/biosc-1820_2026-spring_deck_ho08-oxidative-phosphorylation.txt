@@ -1,6 +1,8 @@
-Name: BIOSC 1820 HO08 Oxidative Phosphorylation
+Title: BIOSC 1820 HO08 Oxidative Phosphorylation
 Description: Electron carriers, the respiratory chain complexes, ATP synthase, uncouplers, and photophosphorylation.
-Class: BIOSC 1820
+Kind: flashcards
+Subject: BIOSC
+Catalog: 1820
 Semester: Spring 2026
 
 Q: Why must NADH and FADH2 be recycled?

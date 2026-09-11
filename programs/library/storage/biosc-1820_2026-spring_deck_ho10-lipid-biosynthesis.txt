@@ -1,6 +1,8 @@
-Name: BIOSC 1820 HO10 Lipid Biosynthesis
+Title: BIOSC 1820 HO10 Lipid Biosynthesis
 Description: Fatty acid, phospholipid, sphingolipid, and cholesterol synthesis and their regulation.
-Class: BIOSC 1820
+Kind: flashcards
+Subject: BIOSC
+Catalog: 1820
 Semester: Spring 2026
 
 Q: What are the four main classes of lipids covered in HO10?

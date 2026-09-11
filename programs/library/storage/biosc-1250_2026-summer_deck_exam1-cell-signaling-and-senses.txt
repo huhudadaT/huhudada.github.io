@@ -1,6 +1,8 @@
-Name: BIOSC 1250 Exam 1 Cell Signaling and Senses
+Title: BIOSC 1250 Exam 1 Cell Signaling and Senses
 Description: Cell signaling, neuronal excitability, the CNS, and the sensory systems (Ch. 6-9).
-Class: BIOSC 1250
+Kind: flashcards
+Subject: BIOSC
+Catalog: 1250
 Semester: Summer 2026
 
 Q: What are the three methods of cell-to-cell communication?

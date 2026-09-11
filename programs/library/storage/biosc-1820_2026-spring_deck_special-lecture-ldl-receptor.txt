@@ -1,6 +1,8 @@
-Name: BIOSC 1820 Special Lecture LDL Receptor
+Title: BIOSC 1820 Special Lecture LDL Receptor
 Description: LDL receptor function and the five classes of LDLR mutation defects.
-Class: BIOSC 1820
+Kind: flashcards
+Subject: BIOSC
+Catalog: 1820
 Semester: Spring 2026
 
 Q: What does LDL transport?

@@ -1,6 +1,8 @@
-Name: BIOSC 1250 Exam 2 Muscle, Heart, Vessels, Blood
+Title: BIOSC 1250 Exam 2 Muscle, Heart, Vessels, Blood
 Description: Muscle tissue, the heart, blood vessels, and blood (Ch. 11, 14-16).
-Class: BIOSC 1250
+Kind: flashcards
+Subject: BIOSC
+Catalog: 1250
 Semester: Summer 2026
 
 Q: What are the three types of muscle tissue?

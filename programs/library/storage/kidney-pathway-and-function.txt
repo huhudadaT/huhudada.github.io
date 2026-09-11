@@ -1,6 +1,8 @@
-Name: Kidney Pathway and Function
+Title: Kidney Pathway and Function
 Description: Renal blood and filtrate pathways, nephron segments, and the kidney's regulatory functions.
-Class: BIOENG 1052
+Kind: flashcards
+Subject: BIOENG
+Catalog: 1052
 Semester: Fall 2026
 
 Q: What vessel delivers blood to the kidney?

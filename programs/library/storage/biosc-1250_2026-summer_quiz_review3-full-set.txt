@@ -1,6 +1,8 @@
 Title: BIOSC 1250 Review 3 Full Set
 Description: Full set of exam-style questions on the respiratory, urinary, and reproductive systems (Ch. 18, 19, 23).
-Class: BIOSC 1250
+Kind: quiz
+Subject: BIOSC
+Catalog: 1250
 Semester: Summer 2026
 
 Q: Which alveolar cell type secretes surfactant?

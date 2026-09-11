@@ -1,6 +1,8 @@
-Name: BIOSC 1820 HO11 Nitrogen-Containing Compounds
+Title: BIOSC 1820 HO11 Nitrogen-Containing Compounds
 Description: Nitrogen cycling, heme synthesis, neurotransmitter derivatives, and nucleotide biosynthesis.
-Class: BIOSC 1820
+Kind: flashcards
+Subject: BIOSC
+Catalog: 1820
 Semester: Spring 2026
 
 Q: What is nitrogen fixation?

@@ -1,6 +1,8 @@
-Name: BIOSC 1820 HO09 Carbohydrate Synthesis
+Title: BIOSC 1820 HO09 Carbohydrate Synthesis
 Description: The Calvin cycle, photorespiration, C4 metabolism, and sucrose and starch synthesis.
-Class: BIOSC 1820
+Kind: flashcards
+Subject: BIOSC
+Catalog: 1820
 Semester: Spring 2026
 
 Q: What process is the ultimate source of all carbohydrates in human metabolism?
