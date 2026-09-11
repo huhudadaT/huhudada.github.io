@@ -1,6 +1,8 @@
-Title: Fieldnote Generation — AI Instructions
+Name: Fieldnote Generation — AI Instructions
 Description: The format and quality rules for generating fieldnotes.
-Class: Reference
+Kind: Fieldnote
+Subject: Reference
+Catalog: 
 Semester: Fall 2026
 
 (The four lines above are this file's own library header. They describe this

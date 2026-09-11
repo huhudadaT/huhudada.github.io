@@ -310,6 +310,8 @@
     .preview-q { font-size: 17px; line-height: 1.7; color: var(--ink); margin: 0 0 12px; max-width: 70ch; }
     .preview-a { font-size: 16px; line-height: 1.7; color: var(--ink-dim); margin: 0; max-width: 70ch; }
     .preview-a .preview-label { display: inline; margin-right: 10px; }
+    /* reference sections are prose: keep the file's own line breaks */
+    .preview-doc { white-space: pre-line; }
     .preview-options { list-style: none; margin: 0; padding: 0; max-width: 70ch; }
     .preview-options li {
         position: relative; padding: 3px 0 3px 30px;
@@ -370,7 +372,7 @@
 
     /* ── prev / next (§7.10) ──────────────────────────────────────── */
     .nav-pair {
-        display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
         border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 64px;
     }
     .nav-pair a { padding: 48px 32px; display: block; text-align: center; }
@@ -443,6 +445,8 @@
         <div class="wrap">
             <div class="project-kicker">Huhudada · Programs · Library</div>
             <h1>Library for <em>download</em></h1>
+            <p class="lede">Flashcards, quizzes, and fieldnotes, plus the guides that define
+                each format.</p>
         </div>
     </section>
 
@@ -452,17 +456,13 @@
 
             <div class="filter-bar">
                 <div>
-                    <h2 class="section-label">§ Available sets</h2>
+                    <h2 class="section-label">§ Available files</h2>
                 </div>
                 <div class="filter-fields">
                     <label class="field">
                         <span class="field-label">Kind</span>
                         <span class="select-wrap">
-                            <select id="f-type">
-                                <option value="">All kinds</option>
-                                <option value="flashcards">Flashcards</option>
-                                <option value="quiz">Quiz</option>
-                            </select>
+                            <select id="f-type"><option value="">All kinds</option></select>
                         </span>
                     </label>
                     <label class="field">
@@ -522,7 +522,7 @@
             <noscript>
                 <p class="list-status">This page builds its list from the files in
                     <code>programs/library/storage/</code>, which needs JavaScript. You can still browse
-                    the folder directly on GitHub and download any <code>.txt</code> file from there.</p>
+                    the folder directly on GitHub and download any file from there.</p>
             </noscript>
         </div>
     </section>
@@ -535,11 +535,16 @@
                 <div class="block-content">
                     <h2>Download it, then <em>import</em> it.</h2>
                     <ul>
-                        <li>Download a set. It saves as a <code>.txt</code> file.</li>
-                        <li>Open <a href="../flashcards/" class="inline-link">Flashcards</a>
-                            or <a href="../quiz/" class="inline-link">Quiz</a></li>
+                        <li>Download a set. It saves as a plain text file.</li>
+                        <li>Open <a href="../flashcards/" class="inline-link">Flashcards</a>,
+                            <a href="../quiz/" class="inline-link">Quiz</a>, or
+                            <a href="../fieldnotes/" class="inline-link">Fieldnotes</a> — whichever
+                            kind the row says.</li>
                         <li>In its Import tab, upload the file or paste the text.</li>
                     </ul>
+                    <p>Every file names its own kind at the top, so the row tells you which
+                        program opens it. Files under the Reference subject are the format rules
+                        themselves — hand one to an AI to get a set that imports cleanly.</p>
                 </div>
             </div>
 
@@ -551,6 +556,10 @@
                 <a href="../quiz/">
                     <div class="nav-pair-label">Open</div>
                     <div class="nav-pair-title">Quiz</div>
+                </a>
+                <a href="../fieldnotes/">
+                    <div class="nav-pair-label">Open</div>
+                    <div class="nav-pair-title">Fieldnotes</div>
                 </a>
             </nav>
         </div>
@@ -571,18 +580,30 @@
 
 <script>
 /* ══════════════════════════════════════════════════════════════════
-   The library builds itself. Drop a .txt into programs/library/storage/,
-   commit, and it appears here — no edit to this file.
+   The library builds itself. Drop a .txt or .md into
+   programs/library/storage/, commit, and it appears here — no edit
+   to this file.
 
    File listing:  GitHub contents API and storage/manifest.txt, merged —
                   either one alone is enough to fill the shelf.
-   Row contents:  parsed out of each .txt header —
-                  Name:/Title:, Description:, Class:, Semester:
-                  Class: splits into subject + catalog for the two filters.
-                  Kind and item count are inferred from the body.
-   Tag fallback:  if a file has no Class:/Semester: line, the page will
-                  read them from a filename shaped
-                  bioeng-1085__fall-2026__title.txt
+   Tag block:     the top of every file, walled off by --- above and
+                  below. One tag per filter, plus two for display:
+
+                    Title:        row title
+                    Description:  row description
+                    Kind:         Flashcards | Quiz | Fieldnote
+                    Subject:      department code, e.g. BIOSC
+                    Catalog:      course number, e.g. 0350
+                    Semester:     Spring | Summer | Fall + year
+
+   Kind:          the file's FORMAT, i.e. which program reads it — not
+                  what the content is about. A lecture and a page of
+                  condensed notes are both fieldnotes.
+   Item count:    cards, questions, notes, or — for a fieldnote written
+                  as a markdown document — its sections.
+   Older files:   a bare tag block with no --- walls still parses, and a
+                  fused "Class: BIOSC 0350" still splits into the two
+                  filters.
    ══════════════════════════════════════════════════════════════════ */
 
 const REPO = 'huhudadaT/huhudada.github.io';
@@ -616,14 +637,46 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+/* ── the three kinds ─────────────────────────────────────────── */
+/* Kind names the file's FORMAT — which program reads it — not what the
+   content is about. A lecture, a summary and a page of condensed notes are
+   all fieldnotes; Subject is what tells them apart. */
+const KINDS = {
+    flashcards: { label: 'Flashcards', one: 'card',     many: 'cards'     },
+    quiz:       { label: 'Quiz',       one: 'question', many: 'questions' },
+    fieldnote:  { label: 'Fieldnote',  one: 'note',     many: 'notes',
+                  doc: { one: 'section', many: 'sections' } },
+};
+const KIND_ORDER = Object.keys(KINDS);
+
+/* What a file may write on its Kind: line, and what the type field of a
+   filename may say. Words for documents fold into fieldnote, because a
+   document is a fieldnote by format whatever its content is. */
+const KIND_ALIASES = {
+    flashcards: 'flashcards', flashcard: 'flashcards', cards: 'flashcards',
+    card: 'flashcards', deck: 'flashcards',
+    quiz: 'quiz', quizzes: 'quiz', test: 'quiz', exam: 'quiz',
+    fieldnote: 'fieldnote', fieldnotes: 'fieldnote', note: 'fieldnote', notes: 'fieldnote',
+    lecture: 'fieldnote', lectures: 'fieldnote', slides: 'fieldnote', reading: 'fieldnote',
+    guide: 'fieldnote', guides: 'fieldnote', reference: 'fieldnote',
+    instructions: 'fieldnote', doc: 'fieldnote', document: 'fieldnote',
+};
+const asKind = (v) => KIND_ALIASES[String(v || '').trim().toLowerCase()] || '';
+
+/* One tag per filter, plus the two display lines. Anything else — Q:, S:,
+   N: — is body, so a file that forgets its divider still parses. */
+const HEADER_KEYS = new Set(['title', 'name', 'description', 'kind', 'type',
+                             'subject', 'catalog', 'semester', 'class']);
+const DIVIDER = /^\s*(-{3,}|={3,})\s*$/;
+
 /* ── helpers ──────────────────────────────────────────────────── */
 const esc = (s) => String(s).replace(/[&<>"']/g, c =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 const titleCase = (s) => s.replace(/\S+/g, w => w[0].toUpperCase() + w.slice(1));
 
-/* "BIOSC 0340" → subject BIOSC, catalog 0340. A field name with no number
-   ("Biology") is all subject and no catalog, and drops out of that filter. */
+/* Older files fuse the two filters onto one Class: line. "BIOSC 0340" →
+   subject BIOSC, catalog 0340; a word with no number is all subject. */
 function splitClass(code) {
     const s = String(code || '').trim();
     if (!s) return { subject: '', catalog: '' };
@@ -639,44 +692,97 @@ function semesterKey(sem) {
     return parseInt(m[2], 10) * 10 + SEASONS[m[1].toLowerCase()];
 }
 
-/* ── parse one .txt into a set object ─────────────────────────── */
+/* ── the tag block at the top of the file ─────────────────────── */
+/* The block ends at a divider line — any run of three or more hyphens or
+   equals signs — so a program reading the file knows exactly where the
+   tags stop and the content starts. The divider is consumed, not left in
+   the body. A block with no divider still parses: it ends at the first
+   blank line or the first line that is not a tag. An opening divider
+   above the tags is allowed too. */
+function readHeader(lines) {
+    const meta = {};
+    let i = 0;
+    while (i < lines.length && !lines[i].trim()) i++;
+
+    const walled = DIVIDER.test(lines[i] || '');
+    if (walled) i++;
+
+    for (; i < lines.length; i++) {
+        const line = lines[i];
+        if (DIVIDER.test(line)) { i++; break; }        // a divider always ends the block
+        if (!line.trim()) { if (walled) continue; break; }
+        const m = /^\s*([A-Za-z][A-Za-z ]*?)\s*:\s*(.*)$/.exec(line);
+        if (!m || !HEADER_KEYS.has(m[1].trim().toLowerCase())) {
+            if (walled) continue;
+            break;
+        }
+        meta[m[1].trim().toLowerCase()] = m[2].trim();
+    }
+    return { meta, body: lines.slice(i) };
+}
+
+/* ── parse one file into a set object ─────────────────────────── */
 function parseSet(filename, text) {
     const lines = text.replace(/\r\n?/g, '\n').split('\n');
-    const firstQ = lines.findIndex(l => /^\s*Q:/i.test(l));
-    const header = (firstQ === -1 ? lines : lines.slice(0, firstQ));
-    const body   = (firstQ === -1 ? [] : lines.slice(firstQ));
+    const { meta, body } = readHeader(lines);
+    const stem = filename.replace(/\.(txt|md|markdown)$/i, '');
+    const parts = stem.split('_');
 
-    const set = { file: filename, title: '', description: '', classCode: '', semester: '' };
-    header.forEach(line => {
-        const m = /^\s*([A-Za-z]+)\s*:\s*(.+?)\s*$/.exec(line);
-        if (!m) return;
-        const key = m[1].toLowerCase(), val = m[2];
-        if (key === 'name' || key === 'title') set.title = val;
-        else if (key === 'description') set.description = val;
-        else if (key === 'class' || key === 'subject') set.classCode = val;  // Subject: read too, for older files
-        else if (key === 'semester') set.semester = val;
-    });
+    const set = {
+        file: filename,
+        title: meta.title || meta.name || '',
+        description: meta.description || '',
+        semester: meta.semester || '',
+        subject: '', catalog: '',
+    };
 
-    // tags from the filename, if the header didn't carry them
-    if (!set.classCode || !set.semester) {
-        const parts = filename.replace(/\.txt$/i, '').split('__');
-        if (parts.length >= 2) {
-            if (!set.classCode) set.classCode = parts[0].replace(/[-_]+/g, ' ').toUpperCase();
-            if (!set.semester) set.semester = titleCase(parts[1].replace(/[-_]+/g, ' '));
-        }
+    /* Subject and Catalog are each their own tag, one per filter. A number
+       inside Subject: means an older file fused them, so split it. */
+    if (meta.subject && !/\d/.test(meta.subject)) {
+        set.subject = meta.subject.toUpperCase();
+        set.catalog = (meta.catalog || '').trim();
+    } else {
+        Object.assign(set, splitClass(meta.subject || meta.class));
+        if (meta.catalog) set.catalog = meta.catalog.trim();
     }
-    if (!set.title) set.title = titleCase(filename.replace(/\.txt$/i, '').split('__').pop().replace(/[-_]+/g, ' '));
+    set.classCode = [set.subject, set.catalog].filter(Boolean).join(' ');
 
-    // the class code drives two filters, so keep both halves
-    Object.assign(set, splitClass(set.classCode));
+    /* filename fallback: class_year-term_type_title */
+    if (!set.semester && /^\d{4}-(spring|summer|fall)$/i.test(parts[1] || '')) {
+        const [year, season] = parts[1].split('-');
+        set.semester = titleCase(season) + ' ' + year;
+    }
+    if (!set.title) set.title = titleCase((parts.slice(3).join(' ') || stem).replace(/[-_]+/g, ' '));
 
-    // kind: option lines or an Explain: line mean it's a quiz
-    const isQuiz = body.some(l => /^\s*\*?[A-H]\.\s/.test(l) || /^\s*Explain\s*:/i.test(l));
-    set.type = isQuiz ? 'quiz' : 'flashcards';
-    set.items = isQuiz ? parseQuiz(body) : parseCards(body);
+    set.kind = asKind(meta.kind) || asKind(meta.type) || asKind(parts[2]) || sniffKind(body);
+
+    /* A fieldnote comes in two shapes: S:/N: lines, or a markdown
+       document. Both are the same kind; only the unit differs. */
+    if (set.kind === 'quiz')            { set.shape = 'quiz';  set.items = parseQuiz(body); }
+    else if (set.kind === 'flashcards') { set.shape = 'cards'; set.items = parseCards(body); }
+    else if (startsSectioned(body))     { set.shape = 'notes'; set.items = parseNotes(body); }
+    else                                { set.shape = 'doc';   set.items = parseDoc(body); }
+
+    const u = set.shape === 'doc' ? KINDS.fieldnote.doc : KINDS[set.kind];
     set.count = set.items.length;
-    set.unit = isQuiz ? 'questions' : 'cards';
+    set.one = u.one;
+    set.unit = set.count === 1 ? u.one : u.many;
     return set;
+}
+
+/* An S:/N: fieldnote opens its body with S:, so that first line is the
+   test. Merely containing an N: line is not enough — the instruction files
+   quote S:/N: examples inside a document. */
+function startsSectioned(body) {
+    const first = body.find(l => l.trim());
+    return /^\s*[SN]:\s/i.test(first || '');
+}
+
+/* last resort, for a file with neither a Kind: tag nor a typed filename */
+function sniffKind(body) {
+    if (body.some(l => /^\s*\*?\s*[A-H]\.\s/.test(l) || /^\s*Explain\s*:/i.test(l))) return 'quiz';
+    if (body.some(l => /^\s*Q:\s/i.test(l))) return 'flashcards';
+    return 'fieldnote';
 }
 
 function parseCards(body) {
@@ -707,15 +813,85 @@ function parseQuiz(body) {
     return qs;
 }
 
+/* S: opens a section, N: is one note inside it. The note is the item — it
+   carries its section name so a preview reads in context. */
+function parseNotes(body) {
+    const notes = [];
+    let section = '', cur = null, at = null;
+    body.forEach(raw => {
+        const line = raw.trimEnd();
+        let m;
+        if ((m = /^\s*S:\s*(.*)$/i.exec(line))) { section = m[1]; cur = null; at = 's'; }
+        else if ((m = /^\s*N:\s*(.*)$/i.exec(line))) { cur = { section, text: m[1] }; notes.push(cur); at = 'n'; }
+        else if (line.trim()) {
+            if (at === 'n' && cur) cur.text += ' ' + line.trim();
+            else if (at === 's') section += ' ' + line.trim();
+        }
+    });
+    return notes;
+}
+
+/* A document fieldnote is markdown. The heading is the item, so the count
+   measures size and the preview steps section by section. Headings inside
+   a fenced block are not headings.
+
+   Fences split two ways. A bare ``` block is content worth showing — the
+   format templates in the instruction files live in them. A
+   language-tagged block (```svg, ```mermaid, ```chart) is figure source:
+   hundreds of lines of markup that would bury the prose, so the preview
+   names it instead. */
+function parseDoc(body) {
+    const sections = [];
+    let cur = null, inFence = false, lang = '';
+    body.forEach(raw => {
+        const line = raw.trimEnd();
+        const f = /^\s{0,3}(?:```|~~~)\s*([A-Za-z0-9+#-]*)/.exec(line);
+        if (f) {
+            if (inFence) { inFence = false; lang = ''; }
+            else {
+                inFence = true; lang = f[1].toLowerCase();
+                if (lang && cur) cur.lines.push(`[${lang}]`);
+            }
+            return;
+        }
+        if (inFence) { if (!lang && cur) cur.lines.push(line); return; }
+        const m = /^\s{0,3}(#{1,3})\s+(.+?)\s*#*$/.exec(line);
+        if (m) { cur = { heading: m[2].trim(), lines: [] }; sections.push(cur); return; }
+        if (cur) cur.lines.push(line);
+    });
+    if (!sections.length && body.some(l => l.trim())) sections.push({ heading: '', lines: body.slice() });
+
+    sections.forEach(s => {
+        s.text = s.lines
+            .filter(l => !DIVIDER.test(l) && !/^\s{0,3}([-*_]\s*){3,}$/.test(l))
+            .join('\n').replace(/\n{3,}/g, '\n\n').trim()
+            .replace(/~~(.+?)~~/g, '')
+            .replace(/==(.+?)==/g, '$1')
+            .replace(/\*\*(.+?)\*\*/g, '$1').replace(/`([^`]+)`/g, '$1');
+        delete s.lines;
+    });
+    return sections;
+}
+
 /* ── preview: one item at a time, so a 400-card deck adds no more
       page height than a 4-card one ──────────────────────────────── */
 function itemHTML(set, i) {
     const item = set.items[i];
     if (!item) return '<p class="preview-a">Nothing could be read out of this file.</p>';
-    if (set.type === 'flashcards') {
+
+    if (set.shape === 'cards') {
         return `<div class="preview-label">Q</div>
                 <p class="preview-q">${esc(item.q)}</p>
                 <p class="preview-a"><span class="preview-label">A</span>${esc(item.a)}</p>`;
+    }
+    if (set.shape === 'notes') {
+        return `${item.section ? `<div class="preview-label">\u00a7 ${esc(item.section)}</div>` : ''}
+                <p class="preview-q">${esc(item.text)}</p>`;
+    }
+    if (set.shape === 'doc') {
+        return `${item.heading ? `<div class="preview-label">Section</div>
+                <p class="preview-q">${esc(item.heading)}</p>` : ''}
+                <p class="preview-a preview-doc">${esc(item.text) || '\u2014'}</p>`;
     }
     // quiz previews deliberately hide which option is right, and the
     // explanation with it — the preview is a sample, not an answer key
@@ -741,17 +917,20 @@ let rowId = 0;
 function renderRow(set) {
     const id = `set-panel-${++rowId}`;
     const li = document.createElement('li');
-    li.dataset.type = set.type;
+    li.dataset.type = set.kind;
     li.dataset.subject = set.subject || '';
     li.dataset.catalog = set.catalog || '';
     li.dataset.semester = set.semester || '';
     li.dataset.count = set.count;
 
+    const label = KINDS[set.kind].label;
+    const ext = (/\.([a-z0-9]+)$/i.exec(set.file) || [, 'txt'])[1].toLowerCase();
+
     li.innerHTML = `
         <div class="set-row">
             <div class="set-head">
                 <div class="set-tags">
-                    <span class="tag">${set.type === 'quiz' ? 'Quiz' : 'Flashcards'}</span>
+                    <span class="tag">${label}</span>
                     ${set.classCode ? `<span class="tag">${esc(set.classCode)}</span>` : ''}
                     <span class="tag tag-count">${set.count} ${set.unit}</span>
                 </div>
@@ -761,7 +940,7 @@ function renderRow(set) {
             </div>
             <div class="set-cta">
                 <a class="btn" href="storage/${encodeURIComponent(set.file)}" download>
-                    Download .txt <span class="btn-arrow" aria-hidden="true">↓</span>
+                    Download .${ext} <span class="btn-arrow" aria-hidden="true">↓</span>
                 </a>
                 <button class="btn-quiet set-toggle" type="button" aria-expanded="false" aria-controls="${id}">
                     Preview <span class="btn-caret" aria-hidden="true">&#9662;</span>
@@ -773,7 +952,7 @@ function renderRow(set) {
     const panel = li.querySelector('.set-panel');
     const toggle = li.querySelector('.set-toggle');
     const head = li.querySelector('.set-head');
-    const noun = set.type === 'flashcards' ? 'card' : 'question';
+    const noun = set.one;
 
     let at = 0;
     function buildPanel() {
@@ -842,9 +1021,13 @@ function renderRow(set) {
 /* Both sources are tried and their results merged, so a stale
    manifest can never hide a file the API can see, and an API
    outage can never empty the shelf.                              */
+const READABLE = /\.(txt|md|markdown)$/i;
+const HOUSEKEEPING = /^(manifest|readme)\.(txt|md)$/i;   // never rows
+
 async function listFiles() {
     const names = new Set();
     const problems = [];
+    const found = { api: null, manifest: null };   // null = that source did not answer
     let live = false;
 
     try {
@@ -853,21 +1036,23 @@ async function listFiles() {
         if (!r.ok) throw new Error(`GitHub API answered ${r.status}`);
         const json = await r.json();
         if (!Array.isArray(json)) throw new Error('GitHub API sent no file list');
-        json.filter(f => f.type === 'file' && /\.txt$/i.test(f.name)
-                      && f.name.toLowerCase() !== 'manifest.txt')
-            .forEach(f => names.add(f.name));
+        const hits = json.filter(f => f.type === 'file' && READABLE.test(f.name) && !HOUSEKEEPING.test(f.name))
+                         .map(f => f.name);
+        hits.forEach(n => names.add(n));
+        found.api = hits.length;
         live = true;
-    } catch (e) { problems.push(e.message); }
+    } catch (e) { problems.push('GitHub API — ' + e.message); }
 
     try {
         const r = await fetch('storage/manifest.txt', { cache: 'no-cache' });
-        if (!r.ok) throw new Error(`storage/manifest.txt answered ${r.status}`);
-        (await r.text()).split('\n').map(s => s.trim())
-            .filter(s => s && !s.startsWith('#') && /\.txt$/i.test(s))
-            .forEach(n => names.add(n));
-    } catch (e) { problems.push(e.message); }
+        if (!r.ok) throw new Error(`answered ${r.status}`);
+        const hits = (await r.text()).split('\n').map(s => s.trim())
+            .filter(s => s && !s.startsWith('#') && READABLE.test(s) && !HOUSEKEEPING.test(s));
+        hits.forEach(n => names.add(n));
+        found.manifest = hits.length;
+    } catch (e) { problems.push('storage/manifest.txt — ' + e.message); }
 
-    return { names: [...names], live, problems };
+    return { names: [...names], live, problems, found };
 }
 
 /* ── load, parse, render ──────────────────────────────────────── */
@@ -881,18 +1066,19 @@ async function build() {
         return;
     }
 
-    const { names, live, problems } = await listFiles();
+    const { names, live, problems, found } = await listFiles();
     console.info('[library] listing', { live, found: names.length, problems });
 
     if (!names.length) {
-        statusEl.innerHTML = 'Found no <code>.txt</code> files in <code>' + STORAGE_DIR + '/</code>. ' +
+        statusEl.innerHTML = 'Found no <code>.txt</code> or <code>.md</code> files in <code>' +
+            STORAGE_DIR + '/</code>. ' +
             (problems.length
                 ? 'Both ways of listing the folder failed: ' + esc(problems.join('; ')) + '.'
-                : 'Commit a set into that folder and it will appear here.');
+                : 'Commit a file into that folder and it will appear here.');
         return;
     }
 
-    statusEl.textContent = `Loading ${names.length} set${names.length === 1 ? '' : 's'}…`;
+    statusEl.textContent = `Loading ${names.length} file${names.length === 1 ? '' : 's'}…`;
 
     const sets = [], failed = [];
     for (let i = 0; i < names.length; i += CHUNK) {
@@ -916,17 +1102,23 @@ async function build() {
         return;
     }
 
-    // newest semester first, then alphabetical
-    sets.sort((a, b) => (semesterKey(b.semester) - semesterKey(a.semester)) || a.title.localeCompare(b.title));
+    // course material first, the format guides last, then newest semester
+    const shelfRank = (s) => (s.subject === 'REFERENCE' ? 1 : 0);
+    sets.sort((a, b) => (shelfRank(a) - shelfRank(b))
+        || (semesterKey(b.semester) - semesterKey(a.semester))
+        || a.title.localeCompare(b.title));
     sets.forEach(renderRow);
 
     statusEl.hidden = true;
     buildFilterOptions(sets);
     applyFilters();
 
-    const notes = [];
-    if (failed.length) notes.push('Could not read: ' + failed.join(', '));
-    if (notes.length) { noteEl.textContent = notes.join(' · '); noteEl.hidden = false; }
+    const tally = (n) => n === null ? 'no answer' : n + ' file' + (n === 1 ? '' : 's');
+    const notes = [`listed from github api: ${tally(found.api)} · manifest.txt: ${tally(found.manifest)} · shown: ${sets.length}`];
+    if (failed.length) notes.unshift('Could not read: ' + failed.join(', '));
+    if (problems.length) notes.push(problems.join(' · '));
+    noteEl.textContent = notes.join(' · ');
+    noteEl.hidden = false;
 }
 
 /* ── filters ──────────────────────────────────────────────────── */
@@ -948,6 +1140,11 @@ let allSets = [];
 
 function buildFilterOptions(sets) {
     allSets = sets;
+
+    // only kinds the folder actually holds, in KINDS order
+    fType.length = 1;
+    KIND_ORDER.filter(k => sets.some(s => s.kind === k))
+        .forEach(k => fType.add(new Option(KINDS[k].label, k)));
 
     const subjects = [...new Set(sets.map(s => s.subject).filter(Boolean))].sort();
     subjects.forEach(v => fSubject.add(new Option(v, v)));
@@ -1063,7 +1260,7 @@ function paintPage() {
     rows().forEach(li => { li.hidden = !onPage.has(li); });
 
     if (!matched.length) {
-        emptyEl.textContent = 'No sets match those filters. Reset them to see the whole library.';
+        emptyEl.textContent = 'No files match those filters. Reset them to see the whole library.';
         emptyEl.hidden = false;
         countEl.hidden = true;
         pagerEl.hidden = true;
@@ -1074,8 +1271,8 @@ function paintPage() {
 
     // one string, shown above the list and again in the pager below it
     const count = pages === 1
-        ? `${matched.length} set${matched.length === 1 ? '' : 's'}`
-        : `showing ${from + 1}–${Math.min(from + PER_PAGE, matched.length)} of ${matched.length} sets`;
+        ? `${matched.length} file${matched.length === 1 ? '' : 's'}`
+        : `showing ${from + 1}–${Math.min(from + PER_PAGE, matched.length)} of ${matched.length} files`;
     pagerCount.textContent = count;
     countTop.textContent = count;
     countEl.hidden = false;

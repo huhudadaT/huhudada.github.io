@@ -1,6 +1,8 @@
 Title: Quiz Generation — AI Instructions
 Description: The format and quality rules for generating Quizzical quizzes.
-Class: Reference
+Kind: quiz
+Subject: Reference
+Catalog: 
 Semester: Fall 2026
 
 (The four lines above are this file's own library header. They describe this

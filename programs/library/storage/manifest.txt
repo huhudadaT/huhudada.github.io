@@ -5,6 +5,9 @@
 
 bioeng-1071_2026-spring_quiz_final-practice-exam-a.txt
 bioeng-1071_2026-spring_quiz_final-practice-exam-b.txt
+bioeng1220_2026-fall_lecture_biotransport-01 copy.txt
+bioeng1220_2026-fall_lecture_biotransport-01.md
+ biosc-0350_2026-summer_deck_module1-mendelian-genetics-and-linkage copy.txt
 biosc-0350_2026-summer_deck_module1-mendelian-genetics-and-linkage.txt
 biosc-1250_2026-summer_deck_ch08-cranial-nerves.txt
 biosc-1250_2026-summer_deck_exam1-cell-signaling-and-senses.txt
@@ -21,3 +24,8 @@ biosc-1820_2026-spring_deck_ho09-carbohydrate-synthesis.txt
 biosc-1820_2026-spring_deck_ho10-lipid-biosynthesis.txt
 biosc-1820_2026-spring_deck_ho11-nitrogen-containing-compounds.txt
 biosc-1820_2026-spring_deck_special-lecture-ldl-receptor.txt
+introduction-to-the-kidney-and-renal-physiology.txt
+kidney-pathway-and-function.txt
+reference_2026-fall_guide_fieldnote-instructions.txt
+reference_2026-fall_guide_flashcard-instructions.txt
+reference_2026-fall_guide_quiz-instructions.txt

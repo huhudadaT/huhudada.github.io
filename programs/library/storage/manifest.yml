@@ -1,0 +1,41 @@
+name: Rebuild library manifest
+
+# The library page lists the storage folder through the GitHub API, which is
+# live but capped at 60 requests an hour per visitor IP. storage/manifest.txt
+# is the stand-in for when that cap is hit. Kept by hand it goes stale and
+# new files vanish from the shelf with no error, so this writes it instead.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'programs/library/storage/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: List the storage folder
+        run: |
+          cd programs/library/storage
+          ls -1 \
+            | grep -E '\.(txt|md|markdown)$' \
+            | grep -vixE '(manifest|readme)\.(txt|md)' \
+            | LC_ALL=C sort > manifest.txt
+          echo "--- manifest.txt ---"
+          cat manifest.txt
+
+      - name: Commit if it changed
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add programs/library/storage/manifest.txt
+          git diff --staged --quiet && echo 'no change' && exit 0
+          git commit -m 'Rebuild library manifest'
+          git push

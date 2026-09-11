@@ -1,6 +1,8 @@
 Title: BIOENG 1071 Final Practice Exam A
 Description: Units 1-11 of cellular and developmental bioengineering, including simple, bonus, and complex multiple choice questions.
-Class: BIOENG 1071
+Kind: quiz
+Subject: BIOENG
+Catalog: 1071
 Semester: Spring 2026
 
 Q: Which statement about MHC molecules is TRUE? (Ignore any cross-presentation by dendritic cells.)

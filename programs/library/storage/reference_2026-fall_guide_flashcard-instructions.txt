@@ -1,6 +1,8 @@
 Title: Flashcard Generation — AI Instructions
 Description: The format and quality rules for generating Cardly flashcard decks.
-Class: Reference
+Kind: flashcards
+Subject: Reference
+Catalog: 
 Semester: Fall 2026
 
 (The four lines above are this file's own library header. They describe this

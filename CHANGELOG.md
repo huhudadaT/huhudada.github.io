@@ -4,6 +4,20 @@ Newest first. Format: see CHANGELOG_GUIDE.md
 2026-09-10
   - [programs/fieldnote] Added Fieldnote, a note library that renders Markdown with math, diagrams, charts and drawings.
   - [programs] Added the Fieldnote card to the programs index.
+  - [programs/library] Read a tag block at the top of each file — Title, Description, Kind, Subject, Catalog, Semester — ended by a divider line or a blank line.
+  - [programs/library] Replaced Class: with separate Subject: and Catalog: tags, one per filter; the fused form still splits for older files.
+  - [programs/library] Took Kind from the file instead of guessing it from the body, with the filename type field as fallback.
+  - [programs/library] Added Fieldnote as a kind, counted in notes for S:/N: files and in sections for markdown documents.
+  - [programs/library] Added .md to the shelf, with the download button showing the file's real extension.
+  - [programs/library] Added section-stepping previews for documents, naming language-tagged code fences instead of printing their source.
+  - [programs/library] Built the Kind menu from the kinds present in storage instead of hard-coding it.
+  - [programs/library] Made the GitHub folder listing authoritative; manifest.txt is read only when the API cannot answer.
+  - [programs/library] Turned off caching on the listing and on file reads so a committed change shows on the next load.
+  - [programs/library] Named the listing source under the pager, so a file missing from the shelf is traceable.
+  - [programs/library] Sorted Reference-subject files last on the shelf.
+  - [programs/library] Reworded the page for files rather than sets, added a lede, and added Fieldnotes to the how-to-use block and footer nav.
+  - [meta] Added a workflow that rebuilds storage/manifest.txt on every push to the storage folder.
+  - [library/storage] Re-headed the AI instruction files to the new tag block.
 
 2026-08-31
   - [meta] Decreased size of favicon.
