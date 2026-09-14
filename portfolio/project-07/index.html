@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs Suite — Ty Zhang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           SHARED PALETTE — keep identical to main portfolio page
+           ============================================ */
+        :root {
+            --sky-deep:   #15669d;
+            --sky:        #3a8ab8;
+            --sky-soft:   #94c6c3;
+            --cream:      #f5ead8;
+            --paper:      #fbf6ec;
+            --paper-soft: #f0e4d1;
+            --rose:       #cb8f9b;
+            --rose-deep:  #8d3c4f;
+            --ink:        #1e2a3a;
+            --ink-dim:    #5a6477;
+            --ink-faint:  #a0a8b5;
+            --line:       #e5d9c3;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ============ TOP HEADER ============ */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(251, 246, 236, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+            padding: 20px 40px;
+        }
+        .site-header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .identity {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .identity-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 22px;
+            letter-spacing: 0.5px;
+            color: var(--ink);
+        }
+        .identity-role {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+        }
+        .identity-role::before {
+            content: '/';
+            margin-right: 10px;
+            color: var(--rose-deep);
+        }
+        /* Back link sits on the right of the header */
+        .header-back {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            transition: color 0.3s;
+            padding-bottom: 2px;
+            border-bottom: 1px solid transparent;
+        }
+        .header-back:hover {
+            color: var(--rose-deep);
+            border-bottom-color: var(--rose-deep);
+        }
+
+        /* ============ LAYOUT ============ */
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        .wrap-wide {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        section {
+            padding: 96px 0;
+        }
+        section + section { padding-top: 0; }
+
+        /* ============ PROJECT HEADER ============ */
+        .project-header {
+            padding: 100px 0 60px;
+        }
+        .project-kicker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--rose-deep);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .project-kicker::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--rose-deep);
+        }
+        .project-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(40px, 5.5vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -0.015em;
+            margin: 0 0 32px;
+            max-width: 22ch;
+            color: var(--ink);
+        }
+        .project-title em {
+            font-style: italic;
+            color: var(--rose-deep);
+        }
+        .project-summary {
+            font-size: 19px;
+            line-height: 1.6;
+            color: var(--ink-dim);
+            max-width: 60ch;
+            margin: 0 0 48px;
+        }
+
+        /* Meta strip — quick facts row */
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            padding: 28px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .project-meta-item h5 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rose-deep);
+            margin: 0 0 8px;
+        }
+        .project-meta-item p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--ink);
+            margin: 0;
+        }
+
+        /* Inline text link — hairline underline, rose on hover */
+        .link-inline {
+            color: var(--rose-deep);
+            border-bottom: 1px solid var(--line);
+            transition: border-color 0.3s;
+        }
+        .link-inline:hover { border-bottom-color: var(--rose-deep); }
+
+        /* ============ HERO IMAGE ============ */
+        .hero-image {
+            margin: 0 auto;
+            max-width: 1280px;
+            padding: 0 40px 96px;
+        }
+        .hero-image-frame {
+            aspect-ratio: 16/9;
+            background: var(--paper-soft);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .hero-image-frame::after {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px dashed var(--ink-faint);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        /* hide dashed frame when an actual image is loaded */
+        .hero-image-frame:has(img)::after { display: none; }
+
+        .hero-image-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--ink-dim);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 2;
+        }
+        .hero-image-caption {
+            margin-top: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            text-align: right;
+        }
+
+        /* ============ STORY BLOCK ============ */
+        .block {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 60px;
+            padding: 64px 0;
+            border-top: 1px solid var(--line);
+        }
+        .block:first-of-type { border-top: none; padding-top: 0; }
+
+        .block-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--rose-deep);
+            padding-top: 8px;
+        }
+        .block-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(28px, 3.5vw, 40px);
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+            margin: 0 0 24px;
+            color: var(--ink);
+        }
+        .block-content h2 em {
+            font-style: italic;
+            color: var(--rose-deep);
+        }
+        .block-content p {
+            font-size: 17px;
+            line-height: 1.75;
+            color: var(--ink);
+            margin: 0 0 20px;
+        }
+        .block-content p strong {
+            color: var(--ink);
+            font-weight: 500;
+        }
+        .block-content ul {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--ink);
+            padding: 0;
+            margin: 0 0 20px;
+            list-style: none;
+        }
+        .block-content ul li {
+            padding-left: 24px;
+            position: relative;
+        }
+        .block-content ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--rose-deep);
+        }
+        /* monospace inline code — file names, line prefixes */
+        .block-content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            color: var(--ink-dim);
+        }
+
+        /* Inline secondary image (single image inside a block) */
+        .block-image {
+            margin: 32px 0 8px;
+        }
+        .block-image-frame {
+            aspect-ratio: 16/10;
+            background: var(--paper-soft);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden;
+        }
+        .block-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .block-image-frame::after {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px dashed var(--ink-faint);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        .block-image-frame:has(img)::after { display: none; }
+        .block-image-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--ink-dim);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 2;
+        }
+        .block-image-caption {
+            margin-top: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+        }
+
+        /* Two-up image grid for process / contextual photos */
+        .image-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 32px 0 8px;
+        }
+
+        /* Pull-quote / key takeaway — used sparingly */
+        .pullquote {
+            margin: 32px 0;
+            padding: 24px 28px;
+            background: var(--paper-soft);
+            border-left: 2px solid var(--rose-deep);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 1.5;
+            color: var(--ink);
+        }
+
+        /* ============ FULL-BLEED IMAGE BREAK ============ */
+        .bleed {
+            max-width: 1280px;
+            margin: 64px auto;
+            padding: 0 40px;
+        }
+        .bleed-frame {
+            aspect-ratio: 21/9;
+            background: var(--paper-soft);
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden;
+        }
+        .bleed-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .bleed-frame::after {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px dashed var(--ink-faint);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        .bleed-frame:has(img)::after { display: none; }
+        .bleed-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ink-dim);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ============ NEXT / PREV ============ */
+        .nav-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            margin-top: 64px;
+        }
+        .nav-pair a {
+            padding: 32px 0;
+            display: block;
+            transition: background 0.3s;
+        }
+        .nav-pair a:hover {
+            background: var(--paper-soft);
+        }
+        .nav-pair a + a {
+            border-left: 1px solid var(--line);
+            padding-left: 32px;
+            text-align: right;
+        }
+        .nav-pair a:first-child {
+            padding-right: 32px;
+        }
+        .nav-pair-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rose-deep);
+            margin-bottom: 8px;
+        }
+        .nav-pair-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 22px;
+            color: var(--ink);
+            line-height: 1.2;
+        }
+        .nav-pair-title em { font-style: italic; }
+
+        /* ============ FOOTER ============ */
+        footer {
+            padding: 40px;
+            background: var(--paper);
+            border-top: 1px solid var(--line);
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+        }
+        .footer-contact {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-contact a { transition: color 0.3s; }
+        .footer-contact a:hover { color: var(--rose-deep); }
+
+        /* ============ REVEAL ============ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 900px) {
+            .site-header { padding: 16px 20px; }
+            .identity-name { font-size: 20px; }
+
+            .wrap, .wrap-wide, .hero-image, .bleed { padding-left: 20px; padding-right: 20px; }
+            section { padding: 64px 0; }
+            .project-header { padding: 60px 0 40px; }
+
+            .project-meta {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .block {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 48px 0;
+            }
+            .block-label { padding-top: 0; }
+
+            .image-pair { grid-template-columns: 1fr; }
+
+            .nav-pair { grid-template-columns: 1fr; }
+            .nav-pair a + a {
+                border-left: none;
+                border-top: 1px solid var(--line);
+                padding-left: 0;
+                text-align: left;
+            }
+            .nav-pair a:first-child { padding-right: 0; }
+
+            .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+            .footer-contact { justify-content: center; }
+        }
+
+        /* ============ REDUCED MOTION ============ */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .nav-pair a, .header-back, .footer-contact a, .link-inline { transition: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ TOP HEADER ============ -->
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div class="identity">
+                <span class="identity-name">Ty Zhang</span>
+                <span class="identity-role">Bioengineering &amp; Biochemistry · University of Pittsburgh</span>
+            </div>
+            <a href="../" class="header-back">← Back to portfolio</a>
+        </div>
+    </header>
+
+    <!-- ============ PROJECT HEADER ============ -->
+    <section class="project-header">
+        <div class="wrap">
+            <div class="project-kicker reveal">Software · huhudada.com · 2026</div>
+
+            <h1 class="project-title reveal">
+                Four study tools, one <em>library.</em>
+            </h1>
+
+            <p class="project-summary reveal">
+                A suite of browser-based study programs built into this site.
+                Flashcards, quizzes, and sectioned reference notes all read the
+                same plain-text file, and a self-building library indexes every
+                file in the repository and makes it browsable and filterable.
+            </p>
+
+            <div class="project-meta reveal">
+                <div class="project-meta-item">
+                    <h5>Role</h5>
+                    <p>Designer &amp; developer</p>
+                </div>
+                <div class="project-meta-item">
+                    <h5>Built with</h5>
+                    <p>HTML · CSS · JavaScript · GitHub Actions</p>
+                </div>
+                <div class="project-meta-item">
+                    <h5>Live</h5>
+                    <p><a class="link-inline" href="../../programs/">huhudada.com/programs</a></p>
+                </div>
+                <div class="project-meta-item">
+                    <h5>Timeline</h5>
+                    <p>2026 — Present</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ HERO IMAGE ============ -->
+    <div class="hero-image reveal">
+        <div class="hero-image-frame">
+            <img src="image-project-07-1.png" alt="The Programs index page showing its study tools">
+        </div>
+        <div class="hero-image-caption">Fig. 01 — The programs index</div>
+    </div>
+
+    <!-- ============ STORY: BEGINNING ============ -->
+    <section>
+        <div class="wrap">
+            <div class="block reveal">
+                <div class="block-label">§ The problem</div>
+                <div class="block-content">
+                    <h2>Notes that outlive the <em>app.</em></h2>
+                    <p>
+                        Study tools tend to keep your material inside an account
+                        and hand it back only as a proprietary export. Switch
+                        tools, or lose access, and a semester of typed-out cards
+                        has to be rebuilt from scratch. The material is the
+                        valuable part; the app around it is not.
+                    </p>
+                    <p>
+                        So the constraint came first: every deck, quiz, and set
+                        of notes is a plain <code>.txt</code> file committed to
+                        the repository. It opens in any text editor, diffs
+                        cleanly, and is versioned for free. The programs are
+                        readers for those files rather than owners of them.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ STORY: MIDDLE ============ -->
+    <section>
+        <div class="wrap">
+            <div class="block reveal">
+                <div class="block-label">§ Approach</div>
+                <div class="block-content">
+                    <h2>One format, four <em>readers.</em></h2>
+                    <p>
+                        Every study file opens with the same four-line header —
+                        title, description, class, and semester — followed by a
+                        body whose line prefixes say which program the file is
+                        for:
+                    </p>
+                    <ul>
+                        <li><code>Q:</code> and <code>A:</code> pairs make a flashcard deck</li>
+                        <li><code>Q:</code> with lettered options, an asterisk on the correct one, and an <code>Explain:</code> line makes a quiz</li>
+                        <li><code>S:</code> sections with <code>N:</code> notes beneath them make a fieldnote</li>
+                    </ul>
+                    <p>
+                        The files are self-describing, and that is the design
+                        decision the rest follows from. The library reads each
+                        file's own header for its title, course, and term, and
+                        counts the body lines for its item count — so there is no
+                        separate index of metadata to keep in sync, and adding a
+                        file is a one-step operation.
+                    </p>
+                    <p>
+                        The library lists its storage folder through the GitHub
+                        Contents API, with a committed manifest as a fallback
+                        when the API is unavailable; a GitHub Action regenerates
+                        that manifest whenever a file is pushed. Everything else
+                        runs in the browser — no backend, no accounts — and
+                        review progress lives in <code>localStorage</code>.
+                    </p>
+
+                    <div class="block-image">
+                        <!-- TODO: <img src="images/library-filters.png" alt="The library page with its filters applied"> -->
+                        <div class="block-image-frame">
+                            <div class="block-image-placeholder">
+                                Library screenshot<br>—<br>16 : 10 · filters applied
+                            </div>
+                        </div>
+                        <div class="block-image-caption">Fig. 02 — The library, filtered by course and term</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ STORY: DETAIL ============ -->
+    <section>
+        <div class="wrap">
+            <div class="block reveal">
+                <div class="block-label">§ Detail</div>
+                <div class="block-content">
+                    <h2>The four <em>programs.</em></h2>
+                    <ul>
+                        <li><strong>Library</strong> — browses every study file in the repository, filtered by kind, subject, catalog, semester, and item count</li>
+                        <li><strong>Flashcards</strong> — deck review that tracks hits and repetitions per card and shows each card's strength as a colour run</li>
+                        <li><strong>Quiz</strong> — multiple choice with a per-question explanation and a scored verdict at the end</li>
+                        <li><strong>Fieldnotes</strong> — sectioned reference notes for reading straight through before a session, exportable as Markdown</li>
+                    </ul>
+                    <p>
+                        All four are built on the site's design system, so a
+                        program looks like the rest of the site rather than like
+                        an embedded app — the same palette, the same three
+                        typefaces, the same hairline borders. They also share a
+                        structural template: the same corner navigation in the
+                        same position, a settings page with export and import,
+                        and destructive actions kept behind a menu.
+                    </p>
+                    <p>
+                        The motion budget is deliberately different here. The
+                        editorial pages of this site use a slow scroll reveal;
+                        the programs use none, because they are opened repeatedly
+                        to get something done and an entrance animation is only a
+                        delay.
+                    </p>
+
+                    <div class="image-pair">
+                        <!-- TODO: <img src="images/flashcards.png" alt="A flashcard mid-review"> -->
+                        <div class="block-image-frame">
+                            <div class="block-image-placeholder">
+                                Detail A · flashcard review
+                            </div>
+                        </div>
+                        <!-- TODO: <img src="images/quiz.png" alt="A quiz question with its explanation shown"> -->
+                        <div class="block-image-frame">
+                            <div class="block-image-placeholder">
+                                Detail B · quiz question
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pullquote">
+                        Drop a text file into the storage folder and it appears in
+                        the library on its own — titled, tagged, and counted.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ STORY: END ============ -->
+    <section>
+        <div class="wrap">
+            <div class="block reveal">
+                <div class="block-label">§ Outcomes</div>
+                <div class="block-content">
+                    <h2>In use, and what's <em>missing.</em></h2>
+                    <p>
+                        The suite is in regular use for coursework, with files
+                        written for BIOENG 1071, BIOSC 1820, BIOSC 1250, and
+                        BIOSC 0350. Writing a deck now means writing a text file
+                        and committing it, which is fast enough that the notes
+                        actually get made.
+                    </p>
+                    <p>
+                        What it doesn't do yet: there is no spaced repetition.
+                        Flashcards record hits and repetitions but nothing
+                        schedules the next review, so the data is there and the
+                        scheduling layer is not. Progress is per-browser, since
+                        <code>localStorage</code> doesn't sync between machines.
+                        And the library's file listing depends on an
+                        unauthenticated API rate limit, which is exactly why the
+                        manifest fallback exists.
+                    </p>
+                    <p>
+                        Next: a scheduler built over the existing hit and
+                        repetition data, and progress export so a review history
+                        can move between devices.
+                    </p>
+                </div>
+            </div>
+
+            <div class="block reveal">
+                <div class="block-label">§ Credits</div>
+                <div class="block-content">
+                    <h2>Acknowledgments.</h2>
+                    <p>
+                        <strong>Design &amp; development</strong> — Ty Zhang<br>
+                        <strong>Hosting</strong> — GitHub Pages<br>
+                        <strong>Live</strong> — <a class="link-inline" href="../../programs/">huhudada.com/programs</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ NEXT / PREV ============ -->
+    <div class="wrap-wide">
+        <nav class="nav-pair">
+            <a href="../project-06/">
+                <div class="nav-pair-label">← Previous</div>
+                <div class="nav-pair-title">VMIC <em>Editor</em></div>
+            </a>
+            <a href="../project-01/">
+                <div class="nav-pair-label">Next →</div>
+                <div class="nav-pair-title">Bridge <em>model</em></div>
+            </a>
+        </nav>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div>© 2026 Ty Zhang</div>
+            <div class="footer-contact">
+                <a href="mailto:tyz10@pitt.edu">tyz10@pitt.edu</a>
+                <a href="https://www.linkedin.com/in/ty-zhang-338218398/">LinkedIn</a>
+                <a href="https://github.com/tyz10Pitt">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Reveal hero items immediately
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.project-header .reveal, .hero-image.reveal').forEach((el, i) => {
+                setTimeout(() => el.classList.add('visible'), i * 100);
+            });
+        });
+    </script>
+
+</body>
+</html>
